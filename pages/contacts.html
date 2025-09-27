@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Связаться с нами</title>
+    <link rel="stylesheet" href="../style/styles.css">
+</head>
+<body>
+    <!-- Header с навигацией -->
+    <header>
+        <div class="links">
+            <div class="link1"><a href="../index.html">Главная</a></div>
+            <div class="link2"><a href="products.html">Товары</a></div>
+            <div class="link3"><a href="about.html">О нас</a></div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер с контактами -->
+    <main class="main-content">
+        <div class="content-container">
+            <h1>Свяжитесь с нами</h1>
+            
+            <!-- Контактная информация -->
+            <section class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3>Email</h3>
+                        <p>frolov.kirill@university.edu</p>
+                        <p>info@ourcompany.ru</p>
+                        <small>Ответим в течение 24 часов</small>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3>Телефон</h3>
+                        <p>+7 (999) 123-45-67</p>
+                        <p>+7 (800) 555-35-35</p>
+                        <small>Пн-Пт: 9:00-18:00 МСК</small>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <h3>Адрес</h3>
+                        <p>г. Москва</p>
+                        <p>ул. Университетская, 1</p>
+                        <small>Офис 203, 2 этаж</small>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">🌐</div>
+                        <h3>Социальные сети</h3>
+                        <p>@frolov_kirill</p>
+                        <p>linkedin.com/in/frolov</p>
+                        <small>Следите за новостями</small>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Контактная форма -->
+            <section class="contact-form-section">
+                <h2>Отправьте нам сообщение</h2>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="name">Ваше имя *</label>
+                                <input type="text" id="name" name="name" required 
+                                       placeholder="Введите ваше имя">
+                            </div>
+                            <div class="input-field">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required 
+                                       placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-row">
+                            <div class="input-field">
+                                <label for="phone">Телефон</label>
+                                <input type="tel" id="phone" name="phone" 
+                                       placeholder="+7 (999) 123-45-67">
+                            </div>
+                            <div class="input-field">
+                                <label for="company">Компания</label>
+                                <input type="text" id="company" name="company" 
+                                       placeholder="Название вашей компании">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Тема обращения *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Выберите тему</option>
+                            <option value="general">Общие вопросы</option>
+                            <option value="products">Вопросы о товарах</option>
+                            <option value="support">Техническая поддержка</option>
+                            <option value="partnership">Сотрудничество</option>
+                            <option value="complaint">Жалоба</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Сообщение *</label>
+                        <textarea id="message" name="message" rows="6" required 
+                                  placeholder="Напишите ваше сообщение здесь..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox-field">
+                            <input type="checkbox" id="agree" name="agree" required>
+                            <label for="agree">Я согласен с <a href="#" class="link">политикой конфиденциальности</a> *</label>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="submit-btn">
+                            <span class="btn-text">Отправить сообщение</span>
+                            <span class="btn-icon">📤</span>
+                        </button>
+                        <button type="reset" class="reset-btn">Очистить форму</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- FAQ секция -->
+            <section class="faq-section">
+                <h2>Часто задаваемые вопросы</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Как быстро вы отвечаете на сообщения?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Мы стараемся отвечать на все сообщения в течение 24 часов в рабочие дни. 
+                               Срочные вопросы можете задать по телефону.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Можно ли встретиться лично?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, мы можем организовать личную встречу в нашем офисе. 
+                               Предварительно свяжитесь с нами для согласования времени.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>В какое время лучше звонить?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Наш колл-центр работает с понедельника по пятницу с 9:00 до 18:00 по московскому времени. 
+                               В это время вы гарантированно получите быстрый ответ.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Есть ли у вас техническая поддержка?</span>
+                            <span class="faq-toggle">+</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Да, у нас есть отдел технической поддержки. Выберите соответствующую тему 
+                               в форме обращения или позвоните по указанному телефону.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Карта (заглушка) -->
+            <section class="map-section">
+                <h2>Как нас найти</h2>
+                <div class="map-placeholder">
+                    <div class="map-content">
+                        <div class="map-icon">🗺️</div>
+                        <h3>Наш офис</h3>
+                        <p>г. Москва, ул. Университетская, 1</p>
+                        <p>Офис 203, 2 этаж</p>
+                        <div class="map-actions">
+                            <button class="map-btn">📍 Показать на Яндекс Картах</button>
+                            <button class="map-btn">🚗 Построить маршрут</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Фролов Кирилл Иванович. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

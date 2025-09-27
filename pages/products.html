@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Товары - Наш магазин</title>
+    <link rel="stylesheet" href="../style/styles.css">
+    
+</head>
+<body>
+    <!-- Header с навигацией -->
+    <header>
+        <div class="links">
+            <div class="link1"><a href="../index.html">Главная</a></div>
+            <div class="link2"><a href="about.html">О нас</a></div>
+            <div class="link3"><a href="contacts.html">Контакты</a></div>
+        </div>
+    </header>
+
+    <!-- Основной контейнер с товарами -->
+    <main class="main-content">
+        <div class="content-container">
+            <h1>Наши товары</h1>
+            
+            <!-- Фильтры товаров -->
+            <section class="filters">
+                <h2>Категории товаров</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">Все товары</button>
+                    <button class="filter-btn" data-category="electronics">Электроника</button>
+                    <button class="filter-btn" data-category="clothing">Одежда</button>
+                    <button class="filter-btn" data-category="home">Для дома</button>
+                    <button class="filter-btn" data-category="sports">Спорт</button>
+                </div>
+            </section>
+
+            <!-- Каталог товаров -->
+            <section class="products-catalog">
+                <div class="products-grid">
+                    <!-- Электроника -->
+                    <div class="product-card" data-category="electronics">
+                        <div class="product-image">
+                            <div class="image-placeholder">📱</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Смартфон Galaxy Pro</h3>
+                            <p class="product-description">Современный смартфон с отличной камерой и долгой работой батареи.</p>
+                            <div class="product-price">45 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="electronics">
+                        <div class="product-image">
+                            <div class="image-placeholder">💻</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Ноутбук UltraBook</h3>
+                            <p class="product-description">Легкий и мощный ноутбук для работы и развлечений.</p>
+                            <div class="product-price">89 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="electronics">
+                        <div class="product-image">
+                            <div class="image-placeholder">🎧</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Беспроводные наушники</h3>
+                            <p class="product-description">Качественный звук и активное шумоподавление.</p>
+                            <div class="product-price">12 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Одежда -->
+                    <div class="product-card" data-category="clothing">
+                        <div class="product-image">
+                            <div class="image-placeholder">👕</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Футболка Premium</h3>
+                            <p class="product-description">Комфортная футболка из натурального хлопка.</p>
+                            <div class="product-price">2 490 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="clothing">
+                        <div class="product-image">
+                            <div class="image-placeholder">👖</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Джинсы Classic</h3>
+                            <p class="product-description">Классические джинсы прямого кроя из качественного денима.</p>
+                            <div class="product-price">4 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="clothing">
+                        <div class="product-image">
+                            <div class="image-placeholder">🧥</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Куртка Winter Pro</h3>
+                            <p class="product-description">Теплая зимняя куртка с водоотталкивающей пропиткой.</p>
+                            <div class="product-price">8 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Для дома -->
+                    <div class="product-card" data-category="home">
+                        <div class="product-image">
+                            <div class="image-placeholder">☕</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Кофемашина DeluxeHome</h3>
+                            <p class="product-description">Автоматическая кофемашина для приготовления идеального кофе.</p>
+                            <div class="product-price">25 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="home">
+                        <div class="product-image">
+                            <div class="image-placeholder">🪑</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Офисное кресло Comfort</h3>
+                            <p class="product-description">Эргономичное кресло для комфортной работы за компьютером.</p>
+                            <div class="product-price">15 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Спорт -->
+                    <div class="product-card" data-category="sports">
+                        <div class="product-image">
+                            <div class="image-placeholder">🏃</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Кроссовки RunnerPro</h3>
+                            <p class="product-description">Профессиональные беговые кроссовки с амортизацией.</p>
+                            <div class="product-price">7 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <div class="product-card" data-category="sports">
+                        <div class="product-image">
+                            <div class="image-placeholder">🏋️</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Набор гантелей FitnessPro</h3>
+                            <p class="product-description">Регулируемые гантели для домашних тренировок.</p>
+                            <div class="product-price">12 990 ₽</div>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Информация о доставке -->
+            <section class="delivery-info">
+                <h2>Информация о доставке</h2>
+                <div class="delivery-grid">
+                    <div class="delivery-item">
+                        <h3>🚚 Быстрая доставка</h3>
+                        <p>Доставка по городу в течение 1-2 дней</p>
+                    </div>
+                    <div class="delivery-item">
+                        <h3>📦 Бесплатная доставка</h3>
+                        <p>При заказе от 3000 рублей</p>
+                    </div>
+                    <div class="delivery-item">
+                        <h3>🔄 Возврат товара</h3>
+                        <p>14 дней на возврат без объяснения причин</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2025 Наша компания. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
