@@ -1,120 +1,63 @@
-// Функционал для страницы товаров
+// Фильтры, поиск, сортировка и кнопки
+document.addEventListener('DOMContentLoaded',()=>{
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.product-item');
+  const grid = document.getElementById('productsGrid');
+  const search = document.getElementById('searchInput');
+  const sort = document.getElementById('sortSelect');
+  const empty = document.getElementById('noResults');
 
-// Фильтрация по категориям
-const filterButtons = document.querySelectorAll('.filter-btn');
-const productCards = document.querySelectorAll('.product-card');
-const noResults = document.getElementById('noResults');
-const searchInput = document.getElementById('searchInput');
-const sortSelect = document.getElementById('sortSelect');
+  let cat='all', q='';
 
-let currentCategory = 'all';
-let currentSearchTerm = '';
-
-// Обработка кликов по фильтрам
-filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Убрать active у всех кнопок
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        
-        // Добавить active текущей кнопке
-        button.classList.add('active');
-        
-        // Получить категорию
-        currentCategory = button.getAttribute('data-category');
-        
-        // Применить фильтрацию
-        filterProducts();
+  function apply(){
+    let visible=0;
+    items.forEach(it=>{
+      const okCat = cat==='all' || it.dataset.category===cat;
+      const okSearch = !q || it.dataset.name.toLowerCase().includes(q);
+      const show = okCat && okSearch;
+      it.style.display = show ? '' : 'none';
+      if(show) visible++;
     });
-});
+    if(empty){ empty.style.display = visible? 'none':'block'; }
+  }
 
-// Поиск товаров
-if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-        currentSearchTerm = e.target.value.toLowerCase();
-        filterProducts();
+  filterButtons.forEach(b=>b.addEventListener('click',()=>{
+    filterButtons.forEach(x=>x.classList.remove('active'));
+    b.classList.add('active'); cat=b.dataset.category; apply();
+  }));
+  if(search) search.addEventListener('input', e=>{ q=e.target.value.toLowerCase(); apply(); });
+  if(sort) sort.addEventListener('change', e=>{
+    const type=e.target.value;
+    const arr=[...items].filter(it=>it.style.display!=='none');
+    arr.sort((a,b)=>{
+      const pa=+a.dataset.price, pb=+b.dataset.price;
+      const na=a.dataset.name, nb=b.dataset.name;
+      switch(type){
+        case 'price-asc': return pa-pb;
+        case 'price-desc': return pb-pa;
+        case 'name-asc': return na.localeCompare(nb);
+        case 'name-desc': return nb.localeCompare(na);
+        default: return 0;
+      }
     });
-}
+    arr.forEach(x=>grid.appendChild(x));
+  });
 
-// Функция фильтрации
-function filterProducts() {
-    let visibleCount = 0;
-    
-    productCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        const name = card.getAttribute('data-name').toLowerCase();
-        
-        // Проверка по категории
-        const categoryMatch = currentCategory === 'all' || category === currentCategory;
-        
-        // Проверка по поиску
-        const searchMatch = currentSearchTerm === '' || name.includes(currentSearchTerm);
-        
-        // Показать или скрыть карточку
-        if (categoryMatch && searchMatch) {
-            card.classList.remove('hidden');
-            visibleCount++;
-        } else {
-            card.classList.add('hidden');
-        }
+  document.querySelectorAll('.product-btn').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      const prev=this.textContent;
+      this.textContent='✓ Добавлено!'; this.style.background='linear-gradient(135deg, #10b981, #059669)';
+      setTimeout(()=>{ this.textContent=prev; this.style.background=''; },1500);
     });
-    
-    // Показать сообщение если нет результатов
-    if (visibleCount === 0) {
-        noResults.classList.add('show');
-    } else {
-        noResults.classList.remove('show');
-    }
-}
+  });
 
-// Сортировка товаров
-if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
-        const sortType = e.target.value;
-        const productsGrid = document.getElementById('productsGrid');
-        const cardsArray = Array.from(productCards);
-        
-        cardsArray.sort((a, b) => {
-            const priceA = parseInt(a.getAttribute('data-price'));
-            const priceB = parseInt(b.getAttribute('data-price'));
-            const nameA = a.getAttribute('data-name');
-            const nameB = b.getAttribute('data-name');
-            
-            switch(sortType) {
-                case 'price-asc':
-                    return priceA - priceB;
-                case 'price-desc':
-                    return priceB - priceA;
-                case 'name-asc':
-                    return nameA.localeCompare(nameB);
-                case 'name-desc':
-                    return nameB.localeCompare(nameA);
-                default:
-                    return 0;
-            }
-        });
-        
-        // Перестроить DOM
-        cardsArray.forEach(card => {
-            productsGrid.appendChild(card);
-        });
-    });
-}
+  window.resetFilters = function(){
+    const all = document.querySelector('.filter-btn[data-category="all"]');
+    if(all){ all.click(); }
+    if(search){ search.value=''; q=''; }
+    if(sort){ sort.value='default'; }
+    apply();
+  }
 
-// Добавление в корзину с анимацией
-const addToCartButtons = document.querySelectorAll('.add-to-cart');
-
-addToCartButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const originalText = this.textContent;
-        
-        // Изменить текст кнопки
-        this.textContent = '✓ Добавлено!';
-        this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-        
-        // Вернуть через 2 секунды
-        setTimeout(() => {
-            this.textContent = originalText;
-            this.style.background = '';
-        }, 2000);
-    });
+  apply();
 });
