@@ -1,274 +1,144 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>О нас - Информация об авторе</title>
-    <link rel="stylesheet" href="../style/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>О нас — Автор</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style/styles.css">
 </head>
-
 <body>
-    <!-- Переключатель тем -->
-    <div class="theme-switcher">
-        <button class="theme-btn" data-theme="purple" title="Классическая тема">🟣</button>
-        <button class="theme-btn" data-theme="dark" title="Тёмная тема">⚫</button>
-        <button class="theme-btn" data-theme="neon" title="Неоновая тема">💚</button>
-        <button class="theme-btn" data-theme="retro" title="Ретро-волна тема">🌊</button>
-        <button class="theme-btn" data-theme="minimal" title="Минимализм тема">⚪</button>
+  <div class="nav-wrap">
+    <nav class="navbar navbar-expand-lg container py-2">
+      <a class="navbar-brand fw-bold text-white" href="../index.html">Brand</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Товары</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">О нас</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item ms-lg-3">
+            <div class="theme-switch">
+              <button data-theme="neo" aria-label="Неоновая" class="active">💠</button>
+              <button data-theme="dark" aria-label="Тёмная">🌑</button>
+              <button data-theme="light" aria-label="Светлая">🌤️</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <main class="container section">
+    <div class="glass p-4 mb-4 reveal text-center">
+      <h1 class="mb-1">Информация об авторе</h1>
+      <p class="lead mb-0">Журавлев Алексей Игоревич • ЭФБО-12-24</p>
     </div>
 
-    <!-- Header с навигацией -->
-    <header>
-        <div class="links desktop-nav">
-            <div class="link1"><a href="../index.html">Главная</a></div>
-            <div class="link2"><a href="products.html">Товары</a></div>
-            <div class="link3"><a href="contacts.html">Контакты</a></div>
+    <section class="row g-4">
+      <div class="col-lg-4">
+        <div class="glass p-4 reveal text-center">
+          <div class="photo-placeholder mb-3" style="width:140px;height:140px;margin:0 auto;border-radius:50%;overflow:hidden;border:4px solid rgba(255,255,255,.12)">
+            <img src="../src/images/avtr.jpg" alt="Журавлев Алексей Игоревич" class="profile-image" style="width:100%;height:100%;object-fit:cover;object-position:center top">
+          </div>
+          <h3 class="mb-0">Алексей Журавлев</h3>
+          <p class="text-muted">Разработчик • Студент • Инноватор</p>
         </div>
-        
-        <!-- Мобильное меню -->
-        <button class="hamburger" aria-label="Открыть меню">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </header>
-
-    <!-- Мобильная навигация -->
-    <nav class="mobile-nav">
-        <a href="../index.html">Главная</a>
-        <a href="products.html">Товары</a>
-        <a href="contacts.html">Контакты</a>
-    </nav>
-
-    <!-- Основной контейнер -->
-    <main class="main-content">
-        <div class="content-container">
-            <h1>Познакомьтесь с автором</h1>
-
-            <!-- Профиль автора -->
-            <section class="author-profile">
-                <div class="profile-header">
-                    <div class="profile-photo">
-                        <div class="photo-placeholder">
-                            <img src="../src/images/avtr.jpg" alt="Журавлев Алексей Игоревич" class="profile-image">
-                        </div>
-                    </div>
-                    <div class="profile-info">
-                        <h2 class="author-name">Журавлев Алексей Игоревич</h2>
-                        <p class="author-group">ЭФБО-12-24</p>
-                        <p class="author-subtitle">Разработчик • Студент • Инноватор</p>
-                    </div>
-                </div>
-
-                <!-- Информация о себе -->
-                <div class="about-section">
-                    <h3>💡 Обо мне</h3>
-                    <div class="about-text">
-                        <p>Привет! Я студент факультета информационных технологий РТУ МИРЭА, увлечённый созданием современных веб-приложений и видеоигр. Специализируюсь на fullstack-разработке с акцентом на пользовательский опыт и красивый дизайн.</p>
-                        <p>Моя страсть — превращать идеи в работающие продукты. Изучаю новейшие технологии и постоянно совершенствую свои навыки в программировании, дизайне интерфейсов и разработке игр.</p>
-                        <p>В свободное время люблю экспериментировать с новыми фреймворками, участвовать в хакатонах и делиться знаниями с сообществом разработчиков.</p>
-                    </div>
-                </div>
-
-                <!-- Навыки -->
-                <div class="skills-section">
-                    <h3>🚀 Технические навыки</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <div class="skill-icon">🌐</div>
-                            <div class="skill-info">
-                                <h4>HTML/CSS</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 85%"></div>
-                                </div>
-                                <span class="skill-level">85%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-icon">⚡</div>
-                            <div class="skill-info">
-                                <h4>JavaScript</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 70%"></div>
-                                </div>
-                                <span class="skill-level">70%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-icon">🎨</div>
-                            <div class="skill-info">
-                                <h4>UI/UX Design</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 60%"></div>
-                                </div>
-                                <span class="skill-level">60%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-icon">📱</div>
-                            <div class="skill-info">
-                                <h4>Адаптивная верстка</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 80%"></div>
-                                </div>
-                                <span class="skill-level">80%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-icon">🎮</div>
-                            <div class="skill-info">
-                                <h4>Game Development</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 65%"></div>
-                                </div>
-                                <span class="skill-level">65%</span>
-                            </div>
-                        </div>
-
-                        <div class="skill-item">
-                            <div class="skill-icon">🔧</div>
-                            <div class="skill-info">
-                                <h4>Fullstack Development</h4>
-                                <div class="skill-bar">
-                                    <div class="skill-progress" style="width: 75%"></div>
-                                </div>
-                                <span class="skill-level">75%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Опыт и образование -->
-                <div class="experience-section">
-                    <div class="experience-grid">
-                        <div class="experience-item">
-                            <h3>📚 Образование</h3>
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <h4>Бакалавриат РТУ МИРЭА</h4>
-                                    <p>Факультет информационных технологий<br>Специализация: Программная инженерия</p>
-                                    <span class="timeline-date">2024 - настоящее время</span>
-                                </div>
-                                <div class="timeline-item">
-                                    <h4>Онлайн-курсы и сертификации</h4>
-                                    <p>Веб-разработка, JavaScript, React, Node.js<br>Современные технологии и фреймворки</p>
-                                    <span class="timeline-date">2023 - 2024</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="experience-item">
-                            <h3>💼 Проекты и достижения</h3>
-                            <div class="timeline">
-                                <div class="timeline-item">
-                                    <h4>Интернет-магазин с фильтрацией</h4>
-                                    <p>Разработка адаптивного каталога товаров<br>Реализация системы фильтров и корзины</p>
-                                    <span class="timeline-date">Октябрь 2024</span>
-                                </div>
-                                <div class="timeline-item">
-                                    <h4>Портфолио-сайт с темами</h4>
-                                    <p>Создание персонального сайта с переключением тем<br>Адаптивный дизайн и анимации</p>
-                                    <span class="timeline-date">Октябрь 2024</span>
-                                </div>
-                                <div class="timeline-item">
-                                    <h4>Участие в хакатонах</h4>
-                                    <p>Разработка прототипов веб-приложений<br>Командная работа над реальными проектами</p>
-                                    <span class="timeline-date">2023 - 2024</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Интересы и хобби -->
-                <div class="interests-section">
-                    <h3>🎯 Интересы и увлечения</h3>
-                    <div class="interests-grid">
-                        <div class="interest-item">
-                            <div class="interest-icon">💻</div>
-                            <span>Программирование</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">🎮</div>
-                            <span>Разработка игр</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">📱</div>
-                            <span>Мобильная разработка</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">🚀</div>
-                            <span>Инновации в IT</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">🎵</div>
-                            <span>Музыка</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">📚</div>
-                            <span>Техническая литература</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">🎨</div>
-                            <span>Графический дизайн</span>
-                        </div>
-                        <div class="interest-item">
-                            <div class="interest-icon">🌐</div>
-                            <span>Open Source</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Контактная информация -->
-                <div class="contact-info-section">
-                    <h3>📬 Связаться со мной</h3>
-                    <p class="contact-intro">Открыт для интересных предложений и сотрудничества!</p>
-                    <div class="contact-methods">
-                        <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-details">
-                                <span class="contact-label">Email</span>
-                                <span class="contact-value">zhuravlev.a.i1@edu.mirea.ru</span>
-                            </div>
-                        </a>
-                        <a href="tel:+78005553535" class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-details">
-                                <span class="contact-label">Телефон</span>
-                                <span class="contact-value">+7 (800) 555-35-35</span>
-                            </div>
-                        </a>
-                        <a href="https://linkedin.com/in/ssssx" target="_blank" class="contact-item">
-                            <div class="contact-icon">💼</div>
-                            <div class="contact-details">
-                                <span class="contact-label">LinkedIn</span>
-                                <span class="contact-value">linkedin.com/in/ssssx</span>
-                            </div>
-                        </a>
-                        <a href="https://github.com/shxvier" target="_blank" class="contact-item">
-                            <div class="contact-icon">🐙</div>
-                            <div class="contact-details">
-                                <span class="contact-label">GitHub</span>
-                                <span class="contact-value">github.com/shxvier</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </section>
+      </div>
+      <div class="col-lg-8">
+        <div class="glass p-4 reveal">
+          <h3 class="mb-2">О себе</h3>
+          <p class="text-muted">Студент РТУ МИРЭА, увлечён fullstack-разработкой, современными веб-технологиями и игровым девом. Люблю создавать интерфейсы с чистой эстетикой и сильной типографикой — чтобы продукт говорил сам за себя.</p>
+          <p class="text-muted mb-0">Экспериментирую с фреймворками, участвую в хакатонах, развиваю навыки дизайна и архитектуры приложений.</p>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Журавлев Алексей Игоревич. Создано с ❤️ и кофе ☕</p>
+    <section class="section">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="glass p-4 reveal h-100">
+            <h3 class="mb-3">Навыки</h3>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <span>HTML/CSS</span><span>85%</span>
+            </div>
+            <div class="skill-bar" style="height:9px;background:rgba(255,255,255,.12);border-radius:6px;overflow:hidden">
+              <div style="width:85%;height:100%;background:linear-gradient(90deg, var(--accent), var(--accent-2))"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between my-3">
+              <span>JavaScript</span><span>70%</span>
+            </div>
+            <div class="skill-bar" style="height:9px;background:rgba(255,255,255,.12);border-radius:6px;overflow:hidden">
+              <div style="width:70%;height:100%;background:linear-gradient(90deg, var(--accent), var(--accent-2))"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between my-3">
+              <span>Адаптивная верстка</span><span>80%</span>
+            </div>
+            <div class="skill-bar" style="height:9px;background:rgba(255,255,255,.12);border-radius:6px;overflow:hidden">
+              <div style="width:80%;height:100%;background:linear-gradient(90deg, var(--accent), var(--accent-2))"></div>
+            </div>
+            <div class="d-flex align-items-center justify-content-between my-3">
+              <span>UI/UX</span><span>60%</span>
+            </div>
+            <div class="skill-bar" style="height:9px;background:rgba(255,255,255,.12);border-radius:6px;overflow:hidden">
+              <div style="width:60%;height:100%;background:linear-gradient(90deg, var(--accent), var(--accent-2))"></div>
+            </div>
+          </div>
         </div>
-    </footer>
+        <div class="col-md-6">
+          <div class="glass p-4 reveal h-100">
+            <h3 class="mb-3">Опыт и образование</h3>
+            <div class="timeline">
+              <div class="mb-4">
+                <h5 class="mb-1">Бакалавриат РТУ МИРЭА</h5>
+                <p class="text-muted mb-1">Факультет ИТ • Программная инженерия</p>
+                <small class="text-muted">2024 — наст. время</small>
+              </div>
+              <div class="mb-4">
+                <h5 class="mb-1">Онлайн-курсы и сертификации</h5>
+                <p class="text-muted mb-1">JS, React, Node.js, современные фреймворки</p>
+                <small class="text-muted">2023 — 2024</small>
+              </div>
+              <div>
+                <h5 class="mb-1">Проекты</h5>
+                <p class="text-muted mb-1">Интернет-магазин с фильтрацией, портфолио-сайт с темами</p>
+                <small class="text-muted">2024 — 2025</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <script src="../script.js"></script>
+    <section class="section">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="card-glass reveal h-100">
+            <h3 class="mb-2">Интересы</h3>
+            <p class="text-muted mb-0">Программирование, дизайн, игровая индустрия, open source, системное мышление и исследование пользовательского опыта.</p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="card-glass reveal h-100">
+            <h3 class="mb-2">Контакты</h3>
+            <div class="d-grid gap-2">
+              <a class="contact-card p-3" href="mailto:zhuravlev.a.i1@edu.mirea.ru">📧 zhuravlev.a.i1@edu.mirea.ru</a>
+              <a class="contact-card p-3" href="https://github.com/shxvier" target="_blank">🐙 github.com/shxvier</a>
+              <div class="contact-card p-3">📱 +7 (800) 555-35-35</div>
+              <a class="contact-card p-3" href="https://linkedin.com/in/ssssx" target="_blank">💼 linkedin.com/in/ssssx</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container py-5">
+    <div class="text-center text-muted">© 2025 Журавлев Алексей Игоревич</div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../script.js"></script>
 </body>
 </html>
