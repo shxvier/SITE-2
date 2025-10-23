@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,19 +8,42 @@
 </head>
 
 <body>
+    <!-- Переключатель тем -->
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="purple" title="Классическая тема">🟣</button>
+        <button class="theme-btn" data-theme="dark" title="Тёмная тема">⚫</button>
+        <button class="theme-btn" data-theme="neon" title="Неоновая тема">💚</button>
+        <button class="theme-btn" data-theme="retro" title="Ретро-волна тема">🌊</button>
+        <button class="theme-btn" data-theme="minimal" title="Минимализм тема">⚪</button>
+    </div>
+
     <!-- Header с навигацией -->
     <header>
-        <div class="links">
+        <div class="links desktop-nav">
             <div class="link1"><a href="../index.html">Главная</a></div>
             <div class="link2"><a href="products.html">Товары</a></div>
             <div class="link3"><a href="contacts.html">Контакты</a></div>
         </div>
+        
+        <!-- Мобильное меню -->
+        <button class="hamburger" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <!-- Основной контейнер с информацией об авторе -->
+    <!-- Мобильная навигация -->
+    <nav class="mobile-nav">
+        <a href="../index.html">Главная</a>
+        <a href="products.html">Товары</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+
+    <!-- Основной контейнер -->
     <main class="main-content">
         <div class="content-container">
-            <h1>Информация об авторе</h1>
+            <h1>Познакомьтесь с автором</h1>
 
             <!-- Профиль автора -->
             <section class="author-profile">
@@ -30,26 +52,27 @@
                         <div class="photo-placeholder">
                             <img src="../src/images/avtr.jpg" alt="Журавлев Алексей Игоревич" class="profile-image">
                         </div>
-
                     </div>
                     <div class="profile-info">
                         <h2 class="author-name">Журавлев Алексей Игоревич</h2>
                         <p class="author-group">ЭФБО-12-24</p>
+                        <p class="author-subtitle">Разработчик • Студент • Инноватор</p>
                     </div>
                 </div>
 
                 <!-- Информация о себе -->
                 <div class="about-section">
-                    <h3>Обо мне:</h3>
+                    <h3>💡 Обо мне</h3>
                     <div class="about-text">
-                        <p>Студент факультета информационных технологий, увлеченный видеограми и фуллстек разработкой.</p>
-                        <p>В свободное время отдыхаю.</p>
+                        <p>Привет! Я студент факультета информационных технологий РТУ МИРЭА, увлечённый созданием современных веб-приложений и видеоигр. Специализируюсь на fullstack-разработке с акцентом на пользовательский опыт и красивый дизайн.</p>
+                        <p>Моя страсть — превращать идеи в работающие продукты. Изучаю новейшие технологии и постоянно совершенствую свои навыки в программировании, дизайне интерфейсов и разработке игр.</p>
+                        <p>В свободное время люблю экспериментировать с новыми фреймворками, участвовать в хакатонах и делиться знаниями с сообществом разработчиков.</p>
                     </div>
                 </div>
 
                 <!-- Навыки -->
                 <div class="skills-section">
-                    <h3>Мои навыки:</h3>
+                    <h3>🚀 Технические навыки</h3>
                     <div class="skills-grid">
                         <div class="skill-item">
                             <div class="skill-icon">🌐</div>
@@ -58,6 +81,7 @@
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 85%"></div>
                                 </div>
+                                <span class="skill-level">85%</span>
                             </div>
                         </div>
 
@@ -68,6 +92,7 @@
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 70%"></div>
                                 </div>
+                                <span class="skill-level">70%</span>
                             </div>
                         </div>
 
@@ -78,6 +103,7 @@
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 60%"></div>
                                 </div>
+                                <span class="skill-level">60%</span>
                             </div>
                         </div>
 
@@ -88,6 +114,29 @@
                                 <div class="skill-bar">
                                     <div class="skill-progress" style="width: 80%"></div>
                                 </div>
+                                <span class="skill-level">80%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-icon">🎮</div>
+                            <div class="skill-info">
+                                <h4>Game Development</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 65%"></div>
+                                </div>
+                                <span class="skill-level">65%</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-icon">🔧</div>
+                            <div class="skill-info">
+                                <h4>Fullstack Development</h4>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%"></div>
+                                </div>
+                                <span class="skill-level">75%</span>
                             </div>
                         </div>
                     </div>
@@ -100,30 +149,35 @@
                             <h3>📚 Образование</h3>
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <h4>Бакалавриат</h4>
-                                    <p>Факультет информационных технологий</p>
-                                    <span class="timeline-date">2021 - настоящее время</span>
+                                    <h4>Бакалавриат РТУ МИРЭА</h4>
+                                    <p>Факультет информационных технологий<br>Специализация: Программная инженерия</p>
+                                    <span class="timeline-date">2024 - настоящее время</span>
                                 </div>
                                 <div class="timeline-item">
-                                    <h4>Дополнительные курсы</h4>
-                                    <p>Веб-разработка и современные технологии</p>
+                                    <h4>Онлайн-курсы и сертификации</h4>
+                                    <p>Веб-разработка, JavaScript, React, Node.js<br>Современные технологии и фреймворки</p>
                                     <span class="timeline-date">2023 - 2024</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="experience-item">
-                            <h3>💼 Проекты</h3>
+                            <h3>💼 Проекты и достижения</h3>
                             <div class="timeline">
                                 <div class="timeline-item">
-                                    <h4>Интернет-магазин</h4>
-                                    <p>Разработка каталога товаров с фильтрацией</p>
-                                    <span class="timeline-date">2024</span>
+                                    <h4>Интернет-магазин с фильтрацией</h4>
+                                    <p>Разработка адаптивного каталога товаров<br>Реализация системы фильтров и корзины</p>
+                                    <span class="timeline-date">Октябрь 2024</span>
                                 </div>
                                 <div class="timeline-item">
-                                    <h4>Личный портфолио</h4>
-                                    <p>Создание адаптивного сайта-визитки</p>
-                                    <span class="timeline-date">2024</span>
+                                    <h4>Портфолио-сайт с темами</h4>
+                                    <p>Создание персонального сайта с переключением тем<br>Адаптивный дизайн и анимации</p>
+                                    <span class="timeline-date">Октябрь 2024</span>
+                                </div>
+                                <div class="timeline-item">
+                                    <h4>Участие в хакатонах</h4>
+                                    <p>Разработка прототипов веб-приложений<br>Командная работа над реальными проектами</p>
+                                    <span class="timeline-date">2023 - 2024</span>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +186,7 @@
 
                 <!-- Интересы и хобби -->
                 <div class="interests-section">
-                    <h3>Интересы и хобби:</h3>
+                    <h3>🎯 Интересы и увлечения</h3>
                     <div class="interests-grid">
                         <div class="interest-item">
                             <div class="interest-icon">💻</div>
@@ -140,7 +194,7 @@
                         </div>
                         <div class="interest-item">
                             <div class="interest-icon">🎮</div>
-                            <span>Игровые технологии</span>
+                            <span>Разработка игр</span>
                         </div>
                         <div class="interest-item">
                             <div class="interest-icon">📱</div>
@@ -156,31 +210,52 @@
                         </div>
                         <div class="interest-item">
                             <div class="interest-icon">📚</div>
-                            <span>Чтение</span>
+                            <span>Техническая литература</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">🎨</div>
+                            <span>Графический дизайн</span>
+                        </div>
+                        <div class="interest-item">
+                            <div class="interest-icon">🌐</div>
+                            <span>Open Source</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Контактная информация -->
                 <div class="contact-info-section">
-                    <h3>Связаться со мной:</h3>
+                    <h3>📬 Связаться со мной</h3>
+                    <p class="contact-intro">Открыт для интересных предложений и сотрудничества!</p>
                     <div class="contact-methods">
-                        <div class="contact-item">
+                        <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="contact-item">
                             <div class="contact-icon">📧</div>
-                            <span>zhuravlev.a.i1@edu.mirea.ru</span>
-                        </div>
-                        <div class="contact-item">
+                            <div class="contact-details">
+                                <span class="contact-label">Email</span>
+                                <span class="contact-value">zhuravlev.a.i1@edu.mirea.ru</span>
+                            </div>
+                        </a>
+                        <a href="tel:+78005553535" class="contact-item">
                             <div class="contact-icon">📱</div>
-                            <span>+7 (800) 555-35-35</span>
-                        </div>
-                        <div class="contact-item">
+                            <div class="contact-details">
+                                <span class="contact-label">Телефон</span>
+                                <span class="contact-value">+7 (800) 555-35-35</span>
+                            </div>
+                        </a>
+                        <a href="https://linkedin.com/in/ssssx" target="_blank" class="contact-item">
                             <div class="contact-icon">💼</div>
-                            <span>linkedin.com/in/ssssx</span>
-                        </div>
-                        <div class="contact-item">
+                            <div class="contact-details">
+                                <span class="contact-label">LinkedIn</span>
+                                <span class="contact-value">linkedin.com/in/ssssx</span>
+                            </div>
+                        </a>
+                        <a href="https://github.com/shxvier" target="_blank" class="contact-item">
                             <div class="contact-icon">🐙</div>
-                            <span>https://github.com/shxvier</span>
-                        </div>
+                            <div class="contact-details">
+                                <span class="contact-label">GitHub</span>
+                                <span class="contact-value">github.com/shxvier</span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </section>
@@ -190,9 +265,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Журавлев Алексей Игоревич. Все права защищены.</p>
+            <p>&copy; 2025 Журавлев Алексей Игоревич. Создано с ❤️ и кофе ☕</p>
         </div>
     </footer>
-</body>
 
+    <script src="../script.js"></script>
+</body>
 </html>
