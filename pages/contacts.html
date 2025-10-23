@@ -7,19 +7,43 @@
     <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
+    <!-- Переключатель тем -->
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="purple" title="Классическая тема">🟣</button>
+        <button class="theme-btn" data-theme="dark" title="Тёмная тема">⚫</button>
+        <button class="theme-btn" data-theme="neon" title="Неоновая тема">💚</button>
+        <button class="theme-btn" data-theme="retro" title="Ретро-волна тема">🌊</button>
+        <button class="theme-btn" data-theme="minimal" title="Минимализм тема">⚪</button>
+    </div>
+
     <!-- Header с навигацией -->
     <header>
-        <div class="links">
+        <div class="links desktop-nav">
             <div class="link1"><a href="../index.html">Главная</a></div>
             <div class="link2"><a href="products.html">Товары</a></div>
             <div class="link3"><a href="about.html">О нас</a></div>
         </div>
+        
+        <!-- Мобильное меню -->
+        <button class="hamburger" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <!-- Основной контейнер с контактами -->
+    <!-- Мобильная навигация -->
+    <nav class="mobile-nav">
+        <a href="../index.html">Главная</a>
+        <a href="products.html">Товары</a>
+        <a href="about.html">О нас</a>
+    </nav>
+
+    <!-- Основной контейнер -->
     <main class="main-content">
         <div class="content-container">
-            <h1>Свяжитесь с нами</h1>
+            <h1>Мы всегда на связи!</h1>
+            <p class="page-intro">Есть вопросы? Предложения? Хотите сотрудничать? Напишите или позвоните нам — мы будем рады помочь!</p>
             
             <!-- Контактная информация -->
             <section class="contact-info">
@@ -27,31 +51,31 @@
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h3>Email</h3>
-                        <p>shxvier@gmail.com</p>
-                        <p>info@ourcompany.ru</p>
+                        <a href="mailto:shxvier@gmail.com" class="contact-link">shxvier@gmail.com</a>
+                        <a href="mailto:info@ourcompany.ru" class="contact-link">info@ourcompany.ru</a>
                         <small>Ответим в течение 24 часов</small>
                     </div>
 
                     <div class="contact-card">
                         <div class="contact-icon">📱</div>
                         <h3>Телефон</h3>
-                        <p>+7 (999) 123-45-67</p>
-                        <p>+7 (800) 555-35-35</p>
+                        <a href="tel:+79991234567" class="contact-link">+7 (999) 123-45-67</a>
+                        <a href="tel:+78005553535" class="contact-link">+7 (800) 555-35-35</a>
                         <small>Пн-Пт: 9:00-18:00 МСК</small>
                     </div>
 
                     <div class="contact-card">
                         <div class="contact-icon">📍</div>
-                        <h3>Адрес</h3>
-                        <p>г. Москва</p>
-                        <p>ул. Университетская, 1</p>
+                        <h3>Адрес офиса</h3>
+                        <p class="contact-address">г. Москва<br>ул. Университетская, 1</p>
                         <small>Офис 203, 2 этаж</small>
                     </div>
 
                     <div class="contact-card">
                         <div class="contact-icon">🌐</div>
                         <h3>Социальные сети</h3>
-                        <p>@shxvier</p>
+                        <a href="https://github.com/shxvier" target="_blank" class="contact-link">@shxvier</a>
+                        <a href="#" class="contact-link">Telegram</a>
                         <small>Следите за новостями</small>
                     </div>
                 </div>
@@ -60,61 +84,58 @@
             <!-- Контактная форма -->
             <section class="contact-form-section">
                 <h2>Отправьте нам сообщение</h2>
+                <p class="form-intro">Заполните форму ниже, и мы свяжемся с вами в ближайшее время</p>
+                
                 <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <div class="input-row">
-                            <div class="input-field">
-                                <label for="name">Ваше имя *</label>
-                                <input type="text" id="name" name="name" required 
-                                       placeholder="Введите ваше имя">
-                            </div>
-                            <div class="input-field">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required 
-                                       placeholder="your.email@example.com">
-                            </div>
+                    <div class="form-row">
+                        <div class="input-field">
+                            <label for="name">Ваше имя *</label>
+                            <input type="text" id="name" name="name" required 
+                                   placeholder="Иван Иванов">
+                        </div>
+                        <div class="input-field">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required 
+                                   placeholder="ivan@example.com">
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <div class="input-row">
-                            <div class="input-field">
-                                <label for="phone">Телефон</label>
-                                <input type="tel" id="phone" name="phone" 
-                                       placeholder="+7 (999) 123-45-67">
-                            </div>
-                            <div class="input-field">
-                                <label for="company">Компания</label>
-                                <input type="text" id="company" name="company" 
-                                       placeholder="Название вашей компании">
-                            </div>
+                    <div class="form-row">
+                        <div class="input-field">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" 
+                                   placeholder="+7 (999) 123-45-67">
+                        </div>
+                        <div class="input-field">
+                            <label for="company">Компания</label>
+                            <input type="text" id="company" name="company" 
+                                   placeholder="Название вашей компании">
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="input-field full-width">
                         <label for="subject">Тема обращения *</label>
                         <select id="subject" name="subject" required>
                             <option value="">Выберите тему</option>
-                            <option value="general">Общие вопросы</option>
-                            <option value="products">Вопросы о товарах</option>
-                            <option value="support">Техническая поддержка</option>
-                            <option value="partnership">Сотрудничество</option>
-                            <option value="complaint">Жалоба</option>
-                            <option value="other">Другое</option>
+                            <option value="general">💬 Общие вопросы</option>
+                            <option value="products">🛍️ Вопросы о товарах</option>
+                            <option value="support">🔧 Техническая поддержка</option>
+                            <option value="partnership">🤝 Сотрудничество</option>
+                            <option value="complaint">⚠️ Жалоба</option>
+                            <option value="other">📌 Другое</option>
                         </select>
                     </div>
 
-                    <div class="form-group">
+                    <div class="input-field full-width">
                         <label for="message">Сообщение *</label>
                         <textarea id="message" name="message" rows="6" required 
-                                  placeholder="Напишите ваше сообщение здесь..."></textarea>
+                                  placeholder="Расскажите подробнее о вашем вопросе или предложении..."></textarea>
+                        <span class="char-counter"><span id="charCount">0</span> / 1000</span>
                     </div>
 
-                    <div class="form-group">
-                        <div class="checkbox-field">
-                            <input type="checkbox" id="agree" name="agree" required>
-                            <label for="agree">Я согласен с <a href="#" class="link">политикой конфиденциальности</a> *</label>
-                        </div>
+                    <div class="checkbox-field">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree">Я согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a> *</label>
                     </div>
 
                     <div class="form-actions">
@@ -122,9 +143,19 @@
                             <span class="btn-text">Отправить сообщение</span>
                             <span class="btn-icon">📤</span>
                         </button>
-                        <button type="reset" class="reset-btn">Очистить форму</button>
+                        <button type="reset" class="reset-btn">
+                            <span>Очистить форму</span>
+                            <span>🗑️</span>
+                        </button>
                     </div>
                 </form>
+
+                <!-- Сообщение об успешной отправке -->
+                <div class="form-success" id="formSuccess">
+                    <div class="success-icon">✅</div>
+                    <h3>Спасибо за ваше сообщение!</h3>
+                    <p>Мы получили ваше обращение и свяжемся с вами в ближайшее время.</p>
+                </div>
             </section>
 
             <!-- FAQ секция -->
@@ -132,63 +163,78 @@
                 <h2>Часто задаваемые вопросы</h2>
                 <div class="faq-list">
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Как быстро вы отвечаете на сообщения?</span>
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>❓ Как быстро вы отвечаете на сообщения?</span>
                             <span class="faq-toggle">+</span>
-                        </div>
+                        </button>
                         <div class="faq-answer">
                             <p>Мы стараемся отвечать на все сообщения в течение 24 часов в рабочие дни. 
-                               Срочные вопросы можете задать по телефону.</p>
+                               Срочные вопросы можете задать по телефону в часы работы нашего офиса.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Можно ли встретиться лично?</span>
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>🤝 Можно ли встретиться лично?</span>
                             <span class="faq-toggle">+</span>
-                        </div>
+                        </button>
                         <div class="faq-answer">
-                            <p>Да, мы можем организовать личную встречу в нашем офисе. 
-                               Предварительно свяжитесь с нами для согласования времени.</p>
+                            <p>Да, мы можем организовать личную встречу в нашем офисе или в удобном для вас месте. 
+                               Предварительно свяжитесь с нами для согласования времени и деталей встречи.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>В какое время лучше звонить?</span>
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>⏰ В какое время лучше звонить?</span>
                             <span class="faq-toggle">+</span>
-                        </div>
+                        </button>
                         <div class="faq-answer">
                             <p>Наш колл-центр работает с понедельника по пятницу с 9:00 до 18:00 по московскому времени. 
-                               В это время вы гарантированно получите быстрый ответ.</p>
+                               В это время вы гарантированно получите быстрый и квалифицированный ответ на ваш вопрос.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
-                        <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span>Есть ли у вас техническая поддержка?</span>
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>🔧 Есть ли у вас техническая поддержка?</span>
                             <span class="faq-toggle">+</span>
-                        </div>
+                        </button>
                         <div class="faq-answer">
-                            <p>Да, у нас есть отдел технической поддержки. Выберите соответствующую тему 
-                               в форме обращения или позвоните по указанному телефону.</p>
+                            <p>Да, у нас есть отдел технической поддержки, который работает над решением любых технических вопросов. 
+                               Выберите соответствующую тему в форме обращения или позвоните по указанному телефону.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" onclick="toggleFAQ(this)">
+                            <span>💼 Рассматриваете ли вы предложения о сотрудничестве?</span>
+                            <span class="faq-toggle">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Безусловно! Мы всегда открыты для новых партнёрств и интересных проектов. 
+                               Отправьте нам детали вашего предложения через форму обратной связи, выбрав тему "Сотрудничество".</p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Карта (заглушка) -->
+            <!-- Карта -->
             <section class="map-section">
                 <h2>Как нас найти</h2>
                 <div class="map-placeholder">
                     <div class="map-content">
                         <div class="map-icon">🗺️</div>
-                        <h3>Наш офис</h3>
-                        <p>г. Москва, ул. Университетская, 1</p>
-                        <p>Офис 203, 2 этаж</p>
+                        <h3>Наш офис в Москве</h3>
+                        <p class="map-address">г. Москва, ул. Университетская, 1<br>Офис 203, 2 этаж</p>
+                        <div class="map-details">
+                            <p>🚇 Метро: Университет (5 минут пешком)</p>
+                            <p>🚗 Парковка: Имеется бесплатная парковка для клиентов</p>
+                            <p>♿ Доступность: Оборудован пандус и лифт</p>
+                        </div>
                         <div class="map-actions">
-                            <button class="map-btn">📍 Показать на Яндекс Картах</button>
-                            <button class="map-btn">🚗 Построить маршрут</button>
+                            <button class="map-btn primary">📍 Яндекс Карты</button>
+                            <button class="map-btn secondary">🚗 Маршрут</button>
                         </div>
                     </div>
                 </div>
@@ -199,10 +245,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Журавлев Алексей Игоревич. Все права защищены.</p>
+            <p>&copy; 2025 Журавлев Алексей Игоревич. Создано с ❤️ и кофе ☕</p>
         </div>
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../contacts.js"></script>
 </body>
 </html>
