@@ -1,184 +1,312 @@
 <!DOCTYPE html>
 <html lang="ru">
-    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Товары - Наш магазин</title>
+    <title>Товары - Каталог продукции</title>
     <link rel="stylesheet" href="../style/styles.css">
-    
 </head>
 <body>
+    <!-- Переключатель тем -->
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="purple" title="Классическая тема">🟣</button>
+        <button class="theme-btn" data-theme="dark" title="Тёмная тема">⚫</button>
+        <button class="theme-btn" data-theme="neon" title="Неоновая тема">💚</button>
+        <button class="theme-btn" data-theme="retro" title="Ретро-волна тема">🌊</button>
+        <button class="theme-btn" data-theme="minimal" title="Минимализм тема">⚪</button>
+    </div>
+
     <!-- Header с навигацией -->
     <header>
-        <div class="links">
+        <div class="links desktop-nav">
             <div class="link1"><a href="../index.html">Главная</a></div>
-            <div class="link2"><a href="about.html">О нас</a></div>
             <div class="link3"><a href="contacts.html">Контакты</a></div>
+            <div class="link4"><a href="about.html">О нас</a></div>
         </div>
+        
+        <!-- Мобильное меню -->
+        <button class="hamburger" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
 
-    <!-- Основной контейнер с товарами -->
+    <!-- Мобильная навигация -->
+    <nav class="mobile-nav">
+        <a href="../index.html">Главная</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="about.html">О нас</a>
+    </nav>
+
+    <!-- Основной контейнер -->
     <main class="main-content">
         <div class="content-container">
-            <h1>Наши товары</h1>
-            
-            <!-- Фильтры товаров -->
+            <h1>Каталог товаров</h1>
+            <p class="page-intro">Откройте для себя нашу коллекцию премиальных товаров. Качество, проверенное временем!</p>
+
+            <!-- Фильтры и поиск -->
             <section class="filters">
-                <h2>Категории товаров</h2>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="🔍 Поиск товаров..." class="search-input">
+                </div>
+                
                 <div class="filter-buttons">
                     <button class="filter-btn active" data-category="all">Все товары</button>
                     <button class="filter-btn" data-category="electronics">Электроника</button>
                     <button class="filter-btn" data-category="clothing">Одежда</button>
-                    <button class="filter-btn" data-category="home">Для дома</button>
+                    <button class="filter-btn" data-category="books">Книги</button>
                     <button class="filter-btn" data-category="sports">Спорт</button>
+                    <button class="filter-btn" data-category="home">Для дома</button>
+                </div>
+
+                <div class="sort-controls">
+                    <label for="sortSelect">Сортировка:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="default">По умолчанию</option>
+                        <option value="price-asc">Цена: по возрастанию</option>
+                        <option value="price-desc">Цена: по убыванию</option>
+                        <option value="name-asc">Название: А-Я</option>
+                        <option value="name-desc">Название: Я-А</option>
+                    </select>
                 </div>
             </section>
 
-            <!-- Каталог товаров -->
-            <section class="products-catalog">
-                <div class="products-grid">
-                    <!-- Электроника -->
-                    <div class="product-card" data-category="electronics">
+            <!-- Сетка товаров -->
+            <section class="products-section">
+                <div class="products-grid" id="productsGrid">
+                    
+                    <!-- Товар 1 -->
+                    <div class="product-card" data-category="electronics" data-name="Смартфон" data-price="45000">
+                        <div class="product-badge">Хит продаж</div>
                         <div class="product-image">
                             <div class="image-placeholder">📱</div>
                         </div>
                         <div class="product-info">
-                            <h3>Смартфон Galaxy Pro</h3>
-                            <p class="product-description">Современный смартфон с отличной камерой и долгой работой батареи.</p>
-                            <div class="product-price">45 990 ₽</div>
+                            <h3>Смартфон Premium X</h3>
+                            <p class="product-description">Флагманский смартфон с потрясающим дисплеем и мощным процессором для любых задач.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(124 отзыва)</span>
+                            </div>
+                            <p class="product-price">45 000 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <div class="product-card" data-category="electronics">
-                        <div class="product-image">
-                            <div class="image-placeholder">💻</div>
-                        </div>
-                        <div class="product-info">
-                            <h3>Ноутбук UltraBook</h3>
-                            <p class="product-description">Легкий и мощный ноутбук для работы и развлечений.</p>
-                            <div class="product-price">89 990 ₽</div>
-                            <button class="add-to-cart">В корзину</button>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="electronics">
+                    <!-- Товар 2 -->
+                    <div class="product-card" data-category="electronics" data-name="Наушники" data-price="8500">
+                        <div class="product-badge new">Новинка</div>
                         <div class="product-image">
                             <div class="image-placeholder">🎧</div>
                         </div>
                         <div class="product-info">
-                            <h3>Беспроводные наушники</h3>
-                            <p class="product-description">Качественный звук и активное шумоподавление.</p>
-                            <div class="product-price">12 990 ₽</div>
+                            <h3>Наушники Wireless Pro</h3>
+                            <p class="product-description">Беспроводные наушники с активным шумоподавлением и 30 часами автономной работы.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(89 отзывов)</span>
+                            </div>
+                            <p class="product-price">8 500 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <!-- Одежда -->
-                    <div class="product-card" data-category="clothing">
+                    <!-- Товар 3 -->
+                    <div class="product-card" data-category="electronics" data-name="Ноутбук" data-price="75000">
                         <div class="product-image">
-                            <div class="image-placeholder">👕</div>
+                            <div class="image-placeholder">💻</div>
                         </div>
                         <div class="product-info">
-                            <h3>Футболка Premium</h3>
-                            <p class="product-description">Комфортная футболка из натурального хлопка.</p>
-                            <div class="product-price">2 490 ₽</div>
+                            <h3>Ноутбук UltraBook 15</h3>
+                            <p class="product-description">Тонкий и мощный ноутбук для работы и развлечений с процессором последнего поколения.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span class="rating-count">(67 отзывов)</span>
+                            </div>
+                            <p class="product-price">75 000 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <div class="product-card" data-category="clothing">
-                        <div class="product-image">
-                            <div class="image-placeholder">👖</div>
-                        </div>
-                        <div class="product-info">
-                            <h3>Джинсы Classic</h3>
-                            <p class="product-description">Классические джинсы прямого кроя из качественного денима.</p>
-                            <div class="product-price">4 990 ₽</div>
-                            <button class="add-to-cart">В корзину</button>
-                        </div>
-                    </div>
-
-                    <div class="product-card" data-category="clothing">
+                    <!-- Товар 4 -->
+                    <div class="product-card" data-category="clothing" data-name="Куртка" data-price="12000">
+                        <div class="product-badge sale">-30%</div>
                         <div class="product-image">
                             <div class="image-placeholder">🧥</div>
                         </div>
                         <div class="product-info">
-                            <h3>Куртка Winter Pro</h3>
-                            <p class="product-description">Теплая зимняя куртка с водоотталкивающей пропиткой.</p>
-                            <div class="product-price">8 990 ₽</div>
+                            <h3>Куртка зимняя Comfort</h3>
+                            <p class="product-description">Стильная и тёплая куртка из водоотталкивающей ткани. Идеальна для холодной погоды.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(156 отзывов)</span>
+                            </div>
+                            <p class="product-price"><span class="old-price">17 000 ₽</span> 12 000 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <!-- Для дома -->
-                    <div class="product-card" data-category="home">
+                    <!-- Товар 5 -->
+                    <div class="product-card" data-category="clothing" data-name="Кроссовки" data-price="7500">
                         <div class="product-image">
-                            <div class="image-placeholder">☕</div>
+                            <div class="image-placeholder">👟</div>
                         </div>
                         <div class="product-info">
-                            <h3>Кофемашина DeluxeHome</h3>
-                            <p class="product-description">Автоматическая кофемашина для приготовления идеального кофе.</p>
-                            <div class="product-price">25 990 ₽</div>
+                            <h3>Кроссовки Sport Air</h3>
+                            <p class="product-description">Лёгкие спортивные кроссовки с дышащей сеткой и амортизирующей подошвой.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span class="rating-count">(203 отзыва)</span>
+                            </div>
+                            <p class="product-price">7 500 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <div class="product-card" data-category="home">
+                    <!-- Товар 6 -->
+                    <div class="product-card" data-category="books" data-name="Книга" data-price="1200">
                         <div class="product-image">
-                            <div class="image-placeholder">🪑</div>
+                            <div class="image-placeholder">📚</div>
                         </div>
                         <div class="product-info">
-                            <h3>Офисное кресло Comfort</h3>
-                            <p class="product-description">Эргономичное кресло для комфортной работы за компьютером.</p>
-                            <div class="product-price">15 990 ₽</div>
+                            <h3>Программирование на JavaScript</h3>
+                            <p class="product-description">Современное руководство по JavaScript для начинающих и опытных разработчиков.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(412 отзывов)</span>
+                            </div>
+                            <p class="product-price">1 200 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <!-- Спорт -->
-                    <div class="product-card" data-category="sports">
+                    <!-- Товар 7 -->
+                    <div class="product-card" data-category="books" data-name="Книга" data-price="950">
+                        <div class="product-badge">Бестселлер</div>
                         <div class="product-image">
-                            <div class="image-placeholder">🏃</div>
+                            <div class="image-placeholder">📖</div>
                         </div>
                         <div class="product-info">
-                            <h3>Кроссовки RunnerPro</h3>
-                            <p class="product-description">Профессиональные беговые кроссовки с амортизацией.</p>
-                            <div class="product-price">7 990 ₽</div>
+                            <h3>Дизайн для программистов</h3>
+                            <p class="product-description">Практическое руководство по созданию красивых пользовательских интерфейсов.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(387 отзывов)</span>
+                            </div>
+                            <p class="product-price">950 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
 
-                    <div class="product-card" data-category="sports">
+                    <!-- Товар 8 -->
+                    <div class="product-card" data-category="sports" data-name="Гантели" data-price="3500">
                         <div class="product-image">
                             <div class="image-placeholder">🏋️</div>
                         </div>
                         <div class="product-info">
-                            <h3>Набор гантелей FitnessPro</h3>
-                            <p class="product-description">Регулируемые гантели для домашних тренировок.</p>
-                            <div class="product-price">12 990 ₽</div>
+                            <h3>Гантели разборные 20 кг</h3>
+                            <p class="product-description">Универсальный комплект разборных гантелей для домашних тренировок.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span class="rating-count">(78 отзывов)</span>
+                            </div>
+                            <p class="product-price">3 500 ₽</p>
                             <button class="add-to-cart">В корзину</button>
                         </div>
                     </div>
+
+                    <!-- Товар 9 -->
+                    <div class="product-card" data-category="sports" data-name="Коврик" data-price="1800">
+                        <div class="product-image">
+                            <div class="image-placeholder">🧘</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Коврик для йоги Premium</h3>
+                            <p class="product-description">Нескользящий коврик из экологичных материалов с отличной амортизацией.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(234 отзыва)</span>
+                            </div>
+                            <p class="product-price">1 800 ₽</p>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 10 -->
+                    <div class="product-card" data-category="home" data-name="Лампа" data-price="4200">
+                        <div class="product-badge new">Новинка</div>
+                        <div class="product-image">
+                            <div class="image-placeholder">💡</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Умная лампа RGB</h3>
+                            <p class="product-description">Настольная лампа с управлением через смартфон и миллионами цветов подсветки.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐☆ <span class="rating-count">(142 отзыва)</span>
+                            </div>
+                            <p class="product-price">4 200 ₽</p>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 11 -->
+                    <div class="product-card" data-category="home" data-name="Ваза" data-price="2500">
+                        <div class="product-image">
+                            <div class="image-placeholder">🏺</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Ваза керамическая Nordic</h3>
+                            <p class="product-description">Элегантная ваза в скандинавском стиле для создания уютной атмосферы.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(95 отзывов)</span>
+                            </div>
+                            <p class="product-price">2 500 ₽</p>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                    <!-- Товар 12 -->
+                    <div class="product-card" data-category="home" data-name="Подушка" data-price="1650">
+                        <div class="product-badge sale">-20%</div>
+                        <div class="product-image">
+                            <div class="image-placeholder">🛏️</div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Подушка ортопедическая Memory</h3>
+                            <p class="product-description">Анатомическая подушка с эффектом памяти для здорового и комфортного сна.</p>
+                            <div class="product-rating">
+                                ⭐⭐⭐⭐⭐ <span class="rating-count">(312 отзывов)</span>
+                            </div>
+                            <p class="product-price"><span class="old-price">2 000 ₽</span> 1 650 ₽</p>
+                            <button class="add-to-cart">В корзину</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Сообщение если товары не найдены -->
+                <div class="no-results" id="noResults">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>Товары не найдены</h3>
+                    <p>Попробуйте изменить критерии поиска или сбросить фильтры</p>
                 </div>
             </section>
 
             <!-- Информация о доставке -->
             <section class="delivery-info">
-                <h2>Информация о доставке</h2>
+                <h2>Условия доставки и оплаты</h2>
                 <div class="delivery-grid">
                     <div class="delivery-item">
-                        <h3>🚚 Быстрая доставка</h3>
-                        <p>Доставка по городу в течение 1-2 дней</p>
+                        <div class="delivery-icon">🚚</div>
+                        <h3>Быстрая доставка</h3>
+                        <p>Доставляем по всей России от 1 до 5 дней. Бесплатная доставка при заказе от 5000 ₽.</p>
                     </div>
                     <div class="delivery-item">
-                        <h3>📦 Бесплатная доставка</h3>
-                        <p>При заказе от 3000 рублей</p>
+                        <div class="delivery-icon">💳</div>
+                        <h3>Удобная оплата</h3>
+                        <p>Принимаем карты, электронные кошельки и наличные при получении. Оплата безопасна.</p>
                     </div>
                     <div class="delivery-item">
-                        <h3>🔄 Возврат товара</h3>
-                        <p>14 дней на возврат без объяснения причин</p>
+                        <div class="delivery-icon">🔄</div>
+                        <h3>Возврат 30 дней</h3>
+                        <p>Не подошёл товар? Вернём деньги в течение 30 дней без лишних вопросов.</p>
+                    </div>
+                    <div class="delivery-item">
+                        <div class="delivery-icon">✅</div>
+                        <h3>Гарантия качества</h3>
+                        <p>Все товары сертифицированы. Предоставляем официальную гарантию от производителя.</p>
                     </div>
                 </div>
             </section>
@@ -188,10 +316,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <p>&copy; 2025 Наша компания. Все права защищены.</p>
+            <p>&copy; 2025 Журавлев Алексей Игоревич. Создано с ❤️ и кофе ☕</p>
         </div>
     </footer>
 
     <script src="../script.js"></script>
+    <script src="../products.js"></script>
 </body>
 </html>
