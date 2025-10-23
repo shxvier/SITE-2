@@ -8,78 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style/styles.css">
-  <style>
-    :root{
-      --bg: #0b0b0c;
-      --panel: rgba(255,255,255,.06);
-      --panel-2: rgba(255,255,255,.08);
-      --text: #f5f7fb;
-      --muted:#a9afbc;
-      --accent:#7a62e1;
-      --accent-2:#5e44b4;
-      --ring: rgba(122,98,225,.25);
-      --shadow: 0 10px 30px rgba(0,0,0,.5);
-      --radius: 16px;
-    }
-    [data-theme="light"]{
-      --bg:#ffffff; --panel: rgba(0,0,0,.04); --panel-2: rgba(0,0,0,.06);
-      --text:#121418; --muted:#5c6370; --accent:#212529; --accent-2:#343a40; --ring: rgba(0,0,0,.08);
-    }
-    [data-theme="neo"]{
-      --bg: radial-gradient(1200px 600px at 80% -10%, #1a2950 0%, #0b0b0c 60%);
-      --panel: rgba(255,255,255,.07); --panel-2: rgba(255,255,255,.1);
-      --text:#e9fbff; --muted:#a0e7e5; --accent:#00ff9f; --accent-2:#00b8ff; --ring: rgba(0,255,159,.2);
-    }
-
-    html,body{background:var(--bg); color:var(--text)}
-    body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; overflow-x:hidden}
-
-    /* Навбар «воздушный» */
-    .nav-wrap{position:sticky; top:0; z-index:50; backdrop-filter: saturate(180%) blur(20px);
-      background:linear-gradient(to bottom, rgba(10,10,11,.75), rgba(10,10,11,.35)); border-bottom:1px solid rgba(255,255,255,.08)}
-    [data-theme="light"] .nav-wrap{background:linear-gradient(to bottom, rgba(255,255,255,.75), rgba(255,255,255,.35)); border-bottom-color:rgba(0,0,0,.08)}
-    .navbar .nav-link{color:var(--text)!important; opacity:.85; padding:.5rem .9rem; border-radius:10px; transition:.2s}
-    .navbar .nav-link:hover,.navbar .nav-link.active{opacity:1; background:var(--panel)}
-
-    /* Переключатель тем */
-    .theme-switch{display:flex; gap:8px; padding:6px; border-radius:999px; background:var(--panel); backdrop-filter: blur(14px); border:1px solid rgba(255,255,255,.08)}
-    .theme-switch button{width:34px; height:34px; border:0; border-radius:999px; background:transparent; color:var(--text); opacity:.8; transition:.2s}
-    .theme-switch button:hover{opacity:1; transform:scale(1.06)}
-    .theme-switch .active{outline:2px solid var(--accent); box-shadow:0 0 0 6px var(--ring)}
-
-    /* Hero */
-    .hero{position:relative; padding:96px 0 72px}
-    .orb{position:absolute; inset:-10% -10% auto auto; width:680px; height:680px; background:radial-gradient(closest-side, var(--accent), transparent 65%);
-      filter:blur(60px); opacity:.35; pointer-events:none}
-    .hero h1{font-weight:800; letter-spacing:-.02em; line-height:1.05; font-size:clamp(36px, 5vw, 64px)}
-    .lead{color:var(--muted); font-size:clamp(16px, 1.8vw, 20px)}
-
-    /* Стеклянная панель */
-    .glass{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); box-shadow:var(--shadow); backdrop-filter: blur(18px)}
-    .cta-btn{border-radius:999px; padding:.9rem 1.25rem; font-weight:600; border:1px solid transparent; transition:.25s; color:#fff}
-    .cta-primary{background:linear-gradient(135deg, var(--accent), var(--accent-2))}
-    .cta-primary:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(122,98,225,.35)}
-    .cta-ghost{background:transparent; border-color:rgba(255,255,255,.18); color:var(--text)}
-    .cta-ghost:hover{background:var(--panel-2)}
-
-    /* Секции преимуществ */
-    .feature{padding:18px; border-radius:14px; background:var(--panel); border:1px solid rgba(255,255,255,.08); transition:.2s}
-    .feature:hover{transform:translateY(-2px); background:var(--panel-2)}
-
-    /* Витрина (совместима с вашим products) */
-    .card-prod{border-radius:18px; background:var(--panel); border:1px solid rgba(255,255,255,.08); overflow:hidden; transition:.25s; height:100%}
-    .card-prod:hover{transform:translateY(-6px); box-shadow:0 18px 48px rgba(0,0,0,.35)}
-    .prod-media{aspect-ratio: 16 / 10; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); display:flex; align-items:center; justify-content:center}
-    .prod-emoji{font-size:56px; filter: drop-shadow(0 12px 24px rgba(0,0,0,.35))}
-    .price{font-weight:800; font-size:24px; color:#3cff99}
-
-    /* О нас / стеклянные карточки */
-    .card-glass{background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px}
-
-    /* Анимации on-scroll */
-    .reveal{opacity:0; transform:translateY(16px); transition:.6s cubic-bezier(.2,.7,.2,1)}
-    .reveal.in{opacity:1; transform:none}
-  </style>
 </head>
 <body data-theme="neo">
   <div class="nav-wrap">
@@ -109,7 +37,7 @@
     <div class="row align-items-center">
       <div class="col-lg-7">
         <h1 class="mb-3">Премиальные продукты. Созданы, чтобы восхищать.</h1>
-        <p class="lead mb-4">Чистая эстетика, безупречная инженерия и внимание к деталям — всё, чтобы вы получали лучший опыт каждый день.</p>
+        <p class="lead mb-4">Чистая эстетика, безупречная инженерия и внимание к деталям — лучший опыт каждый день.</p>
         <div class="d-flex gap-3">
           <a href="pages/products.html" class="cta-btn cta-primary">Смотреть каталог</a>
           <a href="pages/contacts.html" class="cta-btn cta-ghost">Связаться</a>
@@ -118,7 +46,6 @@
       <div class="col-lg-5 mt-4 mt-lg-0">
         <div class="glass p-4">
           <div class="ratio ratio-16x9 rounded-4" style="background:linear-gradient(135deg, rgba(0,255,159,.18), rgba(0,184,255,.12));">
-            <!-- Под видео/обложку продукта -->
             <div class="d-flex align-items-center justify-content-center">
               <span style="font-size:72px">✨</span>
             </div>
@@ -129,10 +56,10 @@
     </div>
   </header>
 
-  <section class="container py-5">
+  <section class="container section">
     <div class="text-center mb-4">
-      <h2 class="fw-bold" style="letter-spacing:-.01em">Почему нас выбирают</h2>
-      <p class="muted lead">Скорость, качество и прозрачность сервиса</p>
+      <h2 class="fw-bold">Почему нас выбирают</h2>
+      <p class="lead">Скорость, качество и прозрачность сервиса</p>
     </div>
     <div class="row g-3">
       <div class="col-md-4"><div class="feature reveal h-100"><h5>🚀 Быстро</h5><p class="mb-0 text-muted">Доставляем в кратчайшие сроки по всей стране.</p></div></div>
@@ -141,7 +68,7 @@
     </div>
   </section>
 
-  <section class="container py-5">
+  <section class="container section">
     <div class="d-flex align-items-end justify-content-between mb-3">
       <h2 class="fw-bold mb-0">Избранные товары</h2>
       <a href="pages/products.html" class="cta-btn cta-ghost">Открыть каталог</a>
@@ -151,7 +78,7 @@
         <article class="card-prod reveal">
           <div class="prod-media"><div class="prod-emoji">📱</div></div>
           <div class="p-3">
-            <h5 class="mb-2" style="letter-spacing:-.01em">Смартфон Premium X</h5>
+            <h5 class="mb-2">Смартфон Premium X</h5>
             <p class="text-muted">Дисплей, камера и производительность — без компромиссов.</p>
             <div class="d-flex align-items-center justify-content-between">
               <span class="price">45 990 ₽</span>
@@ -189,43 +116,11 @@
     </div>
   </section>
 
-  <section class="container py-5">
-    <div class="row g-4">
-      <div class="col-lg-6">
-        <div class="card-glass reveal h-100">
-          <h3 class="mb-2">Об опыте</h3>
-          <p class="text-muted mb-0">Создаём впечатления, а не просто страницы. Дизайн говорит сам за себя — минимализм, глубина и смысл.</p>
-        </div>
-      </div>
-      <div class="col-lg-6">
-        <div class="card-glass reveal h-100">
-          <h3 class="mb-2">Поддержка</h3>
-          <p class="text-muted mb-0">Помогаем на каждом шаге — от выбора до постпродажного сервиса. Быстро. Профессионально. По делу.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer class="container py-5">
     <div class="text-center text-muted">© 2025 Наша компания</div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    // Переключатель тем (HIG: мгновенно, без мигания)
-    const root=document.body; const themeBtns=document.querySelectorAll('.theme-switch button');
-    const saved=localStorage.getItem('theme')||root.getAttribute('data-theme')||'neo';
-    setTheme(saved);
-    themeBtns.forEach(b=>b.addEventListener('click',()=>setTheme(b.dataset.theme)));
-    function setTheme(t){ root.setAttribute('data-theme', t); localStorage.setItem('theme', t);
-      themeBtns.forEach(x=>x.classList.toggle('active', x.dataset.theme===t)); }
-
-    // Плавные появления по скроллу
-    const rev = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    },{threshold:.12});
-    rev.forEach(el=>io.observe(el));
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
