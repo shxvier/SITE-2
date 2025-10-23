@@ -1,64 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
-<link rel="stylesheet" href="style/styles.css">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Семестровая работа</title>
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 
 <body>
+    <!-- Переключатель тем -->
+    <div class="theme-switcher">
+        <button class="theme-btn" data-theme="purple" title="Классическая тема">🟣</button>
+        <button class="theme-btn" data-theme="dark" title="Тёмная тема">⚫</button>
+        <button class="theme-btn" data-theme="neon" title="Неоновая тема">💚</button>
+        <button class="theme-btn" data-theme="retro" title="Ретро-волна тема">🌊</button>
+        <button class="theme-btn" data-theme="minimal" title="Минимализм тема">⚪</button>
+    </div>
+
     <header>
-        <div class="links">
-        <div class="link2"><a href="pages/products.html">Товары</a></div>
-        <div class="link3"><a href="pages/contacts.html">Контакты</a></div>
-        <div class="link4"><a href="pages/about.html">О нас</a></div>
+        <div class="links desktop-nav">
+            <div class="link2"><a href="pages/products.html">Товары</a></div>
+            <div class="link3"><a href="pages/contacts.html">Контакты</a></div>
+            <div class="link4"><a href="pages/about.html">О нас</a></div>
         </div>
+        
+        <!-- Мобильное меню -->
+        <button class="hamburger" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </header>
+
+    <!-- Мобильная навигация -->
+    <nav class="mobile-nav">
+        <a href="pages/products.html">Товары</a>
+        <a href="pages/contacts.html">Контакты</a>
+        <a href="pages/about.html">О нас</a>
+    </nav>
+
     <main class="main-content">
         <div class="content-container">
-            <h1>Добро пожаловать на наш сайт!</h1>
+            <h1>Добро пожаловать в мир качества!</h1>
             
             <section class="intro">
                 <h2>О нашей компании</h2>
-                <p>Мы предлагаем качественные товары и услуги для наших клиентов. 
-                   Наша компания работает на рынке уже более 10 лет и имеет отличную репутацию.</p>
+                <p>Мы — команда профессионалов, которая создаёт и предлагает товары премиум-класса для самых требовательных клиентов. 
+                   За 10 лет работы мы завоевали доверие тысяч покупателей и построили безупречную репутацию на рынке.</p>
             </section>
 
-            <section class="features">
-                <h2>Наши преимущества</h2>
-                <div class="features-grid">
-                    <div class="feature-item">
-                        <h3>🚀 Быстрая доставка</h3>
-                        <p>Доставляем товары в кратчайшие сроки по всей стране.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>⭐ Высокое качество</h3>
-                        <p>Все наши товары проходят строгий контроль качества.</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>💰 Выгодные цены</h3>
-                        <p>Предлагаем конкурентоспособные цены и регулярные скидки.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section class="cta">
-                <h2>Готовы начать?</h2>
-                <p>Ознакомьтесь с нашим каталогом товаров или свяжитесь с нами для консультации.</p>
-                <div class="cta-buttons">
-                    <a href="pages/products.html" class="btn btn-primary">Посмотреть товары</a>
-                    <a href="pages/contacts.html" class="btn btn-secondary">Связаться с нами</a>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p>&copy; 2025 Наша компания. Все права защищены.</p>
-        </div>
-    </footer>
-</body>
-</html>
+            <section class
