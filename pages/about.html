@@ -3,26 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>О магазине — TechStore</title>
+  <title>ОБ АВТОРЕ — Журавлев А.И.</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body data-theme="dark">
   <div class="nav-wrap">
-    <nav class="navbar navbar-expand-lg container py-2">
-      <a class="navbar-brand" href="../index.html">
-        <span class="brand-icon">⚡</span>
-        <span class="brand-text">TechStore</span>
-      </a>
+    <nav class="navbar navbar-expand-lg container">
+      <a class="navbar-brand" href="../index.html">TECHSTORE</a>
       <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="nav">
-        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="products.html">Каталог</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html">О магазине</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
+          <li class="nav-item"><a class="nav-link" href="../index.html">ГЛАВНАЯ</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">КАТАЛОГ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">ОБ АВТОРЕ</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">КОНТАКТЫ</a></li>
           <li class="nav-item ms-lg-3">
             <button class="cart-btn" onclick="toggleCart()">
               🛒 <span class="cart-badge" id="cartCount">0</span>
@@ -30,9 +27,9 @@
           </li>
           <li class="nav-item ms-lg-2">
             <div class="theme-switch">
-              <button data-theme="dark" aria-label="Тёмная" class="active">🌑</button>
-              <button data-theme="neo" aria-label="Неоновая">💠</button>
-              <button data-theme="light" aria-label="Светлая">🌤️</button>
+              <button data-theme="dark" class="active">■</button>
+              <button data-theme="neo">◆</button>
+              <button data-theme="light">□</button>
             </div>
           </li>
         </ul>
@@ -40,257 +37,208 @@
     </nav>
   </div>
 
-  <!-- КОРЗИНА -->
   <div class="cart-sidebar" id="cartSidebar">
     <div class="cart-header">
-      <h3>Корзина покупок</h3>
-      <button class="cart-close" onclick="toggleCart()">✕</button>
+      <h3>КОРЗИНА</h3>
+      <button class="cart-close" onclick="toggleCart()">×</button>
     </div>
     <div class="cart-body" id="cartItems">
-      <div class="cart-empty">
-        <div style="font-size:64px;opacity:.5;margin-bottom:1rem">🛒</div>
-        <p class="fw-bold">Корзина пуста</p>
-        <small class="text-muted">Добавьте товары из каталога</small>
+      <div class="cart-empty" style="text-align:center;padding:60px 20px">
+        <div style="font-size:64px;margin-bottom:20px">🛒</div>
+        <p style="font-size:16px;font-weight:700;margin-bottom:8px;text-transform:uppercase">ПУСТО</p>
+        <p style="font-size:14px;color:var(--muted)">Добавьте товары</p>
       </div>
     </div>
     <div class="cart-footer">
       <div class="cart-total">
-        <span class="total-label">Итого:</span>
+        <span>ИТОГО:</span>
         <span class="total-price" id="cartTotal">0 ₽</span>
       </div>
-      <button class="btn cta-btn cta-primary w-100 mb-2" onclick="checkout()">Оформить заказ</button>
-      <button class="btn cta-btn cta-ghost w-100" onclick="clearCart()">Очистить корзину</button>
+      <button class="cta-btn cta-primary w-100 mb-2" onclick="checkout()">ОФОРМИТЬ</button>
+      <button class="cta-btn cta-ghost w-100" onclick="clearCart()">ОЧИСТИТЬ</button>
     </div>
   </div>
   <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
 
   <main class="container section">
-    <!-- HERO ABOUT -->
-    <div class="about-hero reveal">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="section-subtitle">О КОМПАНИИ</div>
-          <h1 class="section-title mb-4">TechStore — ваш проводник в мир технологий</h1>
-          <p class="about-lead">С 2015 года мы помогаем тысячам людей находить идеальные устройства. Наша миссия — сделать передовые технологии доступными каждому.</p>
-          <div class="about-values">
-            <div class="value-item">
-              <div class="value-icon">✨</div>
-              <div class="value-content">
-                <h6 class="value-title">Качество</h6>
-                <p class="value-text">Только оригинальная продукция с гарантией</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">🤝</div>
-              <div class="value-content">
-                <h6 class="value-title">Доверие</h6>
-                <p class="value-text">99% положительных отзывов клиентов</p>
-              </div>
-            </div>
-            <div class="value-item">
-              <div class="value-icon">🚀</div>
-              <div class="value-content">
-                <h6 class="value-title">Инновации</h6>
-                <p class="value-text">Первыми привозим новинки в Россию</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="about-image-grid">
-            <div class="about-img about-img-main">
-              <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=600&h=600&fit=crop" alt="Магазин TechStore">
-              <div class="about-img-label">Наш флагманский магазин в Москве</div>
-            </div>
-            <div class="about-img">
-              <img src="https://images.unsplash.com/photo-1556742111-a301076d9d18?w=300&h=300&fit=crop" alt="Команда">
-            </div>
-            <div class="about-img">
-              <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=300&h=300&fit=crop" alt="Офис">
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="text-center mb-5 reveal">
+      <div class="section-sub">АВТОР ПРОЕКТА</div>
+      <h1>ЖУРАВЛЕВ<br>АЛЕКСЕЙ<br>ИГОРЕВИЧ</h1>
+      <p style="font-size:18px;color:var(--text-secondary);max-width:700px;margin:32px auto 0">Студент РТУ МИРЭА, группа ЭФБО-12-24. Увлекаюсь веб-разработкой и созданием современных интерфейсов</p>
     </div>
 
-    <!-- СТАТИСТИКА -->
-    <section class="stats-section-about reveal">
+    <section class="reveal">
+      <div style="background:var(--surface);border:2px solid var(--border);padding:60px 40px">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-4 text-center">
+            <div style="width:240px;height:240px;margin:0 auto;background:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:100px;font-weight:900;color:var(--bg)">АЖ</div>
+          </div>
+          <div class="col-lg-8">
+            <h2 style="margin-bottom:32px">О СЕБЕ</h2>
+            <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:24px">Студент факультета информационных технологий РТУ МИРЭА (Российский технологический университет). Обучаюсь на направлении программной инженерии, активно развиваю навыки в области веб-разработки.</p>
+            <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:24px">Увлекаюсь созданием современных веб-приложений с чистым и интуитивным интерфейсом. Изучаю frontend-технологии (HTML, CSS, JavaScript), работу с фреймворками и принципы адаптивного дизайна.</p>
+            <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin:0">В свободное время участвую в онлайн-курсах, читаю техническую документацию и реализую учебные проекты для отработки практических навыков.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="row g-4">
-        <div class="col-md-3 col-6">
-          <div class="stat-card-about">
-            <div class="stat-number-about">10</div>
-            <div class="stat-label-about">Лет на рынке</div>
+        <div class="col-md-6">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;height:100%" class="reveal">
+            <div style="font-size:56px;margin-bottom:24px">🎓</div>
+            <h3 style="margin-bottom:24px">ОБРАЗОВАНИЕ</h3>
+            <div style="border-top:2px solid var(--border);padding-top:24px">
+              <h5 style="margin-bottom:12px">РТУ МИРЭА</h5>
+              <p style="font-size:14px;color:var(--text-secondary);margin-bottom:8px">Факультет информационных технологий</p>
+              <p style="font-size:14px;color:var(--text-secondary);margin-bottom:8px">Направление: Программная инженерия</p>
+              <p style="font-size:12px;color:var(--muted);margin:0;text-transform:uppercase">Группа ЭФБО-12-24 • 2024 — наст. время</p>
+            </div>
           </div>
         </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-card-about">
-            <div class="stat-number-about">15K+</div>
-            <div class="stat-label-about">Довольных клиентов</div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-card-about">
-            <div class="stat-number-about">500+</div>
-            <div class="stat-label-about">Товаров в наличии</div>
-          </div>
-        </div>
-        <div class="col-md-3 col-6">
-          <div class="stat-card-about">
-            <div class="stat-number-about">24/7</div>
-            <div class="stat-label-about">Поддержка клиентов</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- НАША ИСТОРИЯ -->
-    <section class="history-section reveal">
-      <div class="section-subtitle text-center">ИСТОРИЯ</div>
-      <h2 class="section-title text-center mb-5">Путь длиной в 10 лет</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-year">2015</div>
-          <div class="timeline-content">
-            <h5 class="timeline-title">Основание компании</h5>
-            <p class="timeline-text">Открытие первого магазина в Москве. Всего 50 наименований товаров и команда из 3 человек.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2017</div>
-          <div class="timeline-content">
-            <h5 class="timeline-title">Расширение ассортимента</h5>
-            <p class="timeline-text">Стали официальным партнёром Apple, Samsung и Sony. Открыли интернет-магазин.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2020</div>
-          <div class="timeline-content">
-            <h5 class="timeline-title">Федеральная сеть</h5>
-            <p class="timeline-text">Открыли 10 магазинов в крупных городах России. Запустили доставку по всей стране.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2023</div>
-          <div class="timeline-content">
-            <h5 class="timeline-title">Лидер рынка</h5>
-            <p class="timeline-text">Вошли в ТОП-3 крупнейших ритейлеров электроники в России. 15 000+ довольных клиентов.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2025</div>
-          <div class="timeline-content">
-            <h5 class="timeline-title">Сегодня</h5>
-            <p class="timeline-text">Более 500 товаров в наличии, доставка за 2 часа по Москве, рейтинг 4.9/5 и команда из 150+ профессионалов.</p>
+        <div class="col-md-6">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;height:100%" class="reveal">
+            <div style="font-size:56px;margin-bottom:24px">💻</div>
+            <h3 style="margin-bottom:24px">НАВЫКИ</h3>
+            <div style="border-top:2px solid var(--border);padding-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">HTML5</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">CSS3</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">JAVASCRIPT</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">BOOTSTRAP</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">АДАПТИВНАЯ ВЁРСТКА</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">UI/UX</span>
+              <span style="background:var(--bg);border:2px solid var(--border);padding:10px 18px;font-size:12px;font-weight:900;text-transform:uppercase">GIT</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- КОМАНДА -->
-    <section class="team-section reveal">
-      <div class="section-subtitle text-center">КОМАНДА</div>
-      <h2 class="section-title text-center mb-5">Профессионалы своего дела</h2>
+    <section class="section">
+      <div class="text-center mb-5 reveal">
+        <div class="section-sub">ПОРТФОЛИО</div>
+        <h2>УЧЕБНЫЕ<br>ПРОЕКТЫ</h2>
+      </div>
+      <div style="background:var(--surface);border:2px solid var(--border);padding:48px" class="reveal">
+        <div style="display:flex;align-items:center;gap:24px;margin-bottom:32px">
+          <div style="font-size:80px">🛒</div>
+          <div>
+            <h3 style="margin-bottom:8px">ИНТЕРНЕТ-МАГАЗИН TECHSTORE</h3>
+            <p style="font-size:13px;color:var(--muted);margin:0;text-transform:uppercase;letter-spacing:0.05em">СЕМЕСТРОВЫЙ ПРОЕКТ • 2025</p>
+          </div>
+        </div>
+        <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:32px">Полнофункциональный интернет-магазин электроники с современным дизайном. Реализованы: каталог товаров с фильтрацией и поиском, корзина покупок с подсчётом суммы, адаптивная вёрстка для всех устройств, три темы оформления с плавным переключением.</p>
+        <div style="margin-bottom:32px">
+          <h5 style="margin-bottom:20px;font-size:16px">РЕАЛИЗОВАННЫЙ ФУНКЦИОНАЛ:</h5>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">Каталог с 15+ товарами</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">Корзина покупок</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">Фильтрация товаров</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">Поиск и сортировка</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">Адаптивный дизайн</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px">
+              <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+              <span style="font-size:14px;color:var(--text-secondary)">3 темы оформления</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="products.html" class="cta-btn cta-primary">ОТКРЫТЬ КАТАЛОГ</a>
+          <a href="https://github.com/shxvier" target="_blank" class="cta-btn cta-ghost">GITHUB →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="text-center mb-5 reveal">
+        <div class="section-sub">ИНТЕРЕСЫ</div>
+        <h2>ЧЕМ УВЛЕКАЮСЬ</h2>
+      </div>
       <div class="row g-4">
-        <div class="col-lg-3 col-md-6">
-          <div class="team-card">
-            <div class="team-avatar">
-              <img src="https://i.pravatar.cc/300?img=33" alt="Алексей Иванов">
-            </div>
-            <h5 class="team-name">Алексей Иванов</h5>
-            <div class="team-role">Основатель и CEO</div>
-            <p class="team-bio">15 лет опыта в ритейле электроники. Выпускник МГУ.</p>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;text-align:center;height:100%;transition:all 0.2s" class="reveal" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:64px;margin-bottom:20px">💻</div>
+            <h5 style="margin-bottom:12px">ПРОГРАММИРОВАНИЕ</h5>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0">Изучение новых технологий</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="team-card">
-            <div class="team-avatar">
-              <img src="https://i.pravatar.cc/300?img=45" alt="Мария Петрова">
-            </div>
-            <h5 class="team-name">Мария Петрова</h5>
-            <div class="team-role">Директор по продажам</div>
-            <p class="team-bio">Эксперт в построении партнёрских отношений с брендами.</p>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;text-align:center;height:100%;transition:all 0.2s" class="reveal" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:64px;margin-bottom:20px">🎨</div>
+            <h5 style="margin-bottom:12px">UI/UX ДИЗАЙН</h5>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0">Создание интерфейсов</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="team-card">
-            <div class="team-avatar">
-              <img src="https://i.pravatar.cc/300?img=12" alt="Дмитрий Сидоров">
-            </div>
-            <h5 class="team-name">Дмитрий Сидоров</h5>
-            <div class="team-role">Технический директор</div>
-            <p class="team-bio">Создатель нашей IT-инфраструктуры и платформы.</p>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;text-align:center;height:100%;transition:all 0.2s" class="reveal" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:64px;margin-bottom:20px">🎮</div>
+            <h5 style="margin-bottom:12px">ИГРОВАЯ ИНДУСТРИЯ</h5>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0">Интерес к разработке</p>
           </div>
         </div>
-        <div class="col-lg-3 col-md-6">
-          <div class="team-card">
-            <div class="team-avatar">
-              <img src="https://i.pravatar.cc/300?img=47" alt="Анна Козлова">
-            </div>
-            <h5 class="team-name">Анна Козлова</h5>
-            <div class="team-role">Руководитель поддержки</div>
-            <p class="team-bio">Обеспечивает лучший клиентский сервис в отрасли.</p>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:40px;text-align:center;height:100%;transition:all 0.2s" class="reveal" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:64px;margin-bottom:20px">🚀</div>
+            <h5 style="margin-bottom:12px">ИННОВАЦИИ</h5>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0">Слежу за технологиями</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ПАРТНЁРЫ -->
-    <section class="partners-section reveal">
-      <div class="section-subtitle text-center">ПАРТНЁРЫ</div>
-      <h2 class="section-title text-center mb-5">Мы работаем с лучшими</h2>
-      <div class="partners-grid">
-        <div class="partner-logo">Apple</div>
-        <div class="partner-logo">Samsung</div>
-        <div class="partner-logo">Sony</div>
-        <div class="partner-logo">Dell</div>
-        <div class="partner-logo">ASUS</div>
-        <div class="partner-logo">Bose</div>
-        <div class="partner-logo">Google</div>
-        <div class="partner-logo">Xiaomi</div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section reveal">
-      <div class="cta-content">
-        <h2 class="cta-title">Присоединяйтесь к нам</h2>
-        <p class="cta-desc">Откройте для себя мир премиальной электроники. Получите персональную консультацию и специальное предложение для новых клиентов.</p>
+    <section class="cta-section-emoji reveal">
+      <div class="container text-center">
+        <h2 style="margin-bottom:24px;color:var(--bg)">СВЯЖИТЕСЬ<br>СО МНОЙ</h2>
+        <p style="font-size:18px;color:var(--bg);opacity:0.9;max-width:600px;margin:0 auto 32px">Открыт для новых знакомств, сотрудничества и интересных проектов</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
-          <a href="products.html" class="cta-btn cta-primary">Перейти в каталог</a>
-          <a href="contacts.html" class="cta-btn cta-ghost">Связаться с нами</a>
+          <a href="contacts.html" class="cta-btn" style="background:var(--bg);border-color:var(--bg);color:var(--accent)">КОНТАКТЫ</a>
+          <a href="https://github.com/shxvier" target="_blank" class="cta-btn" style="background:transparent;border-color:var(--bg);color:var(--bg)">GITHUB →</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer-new">
+  <footer>
     <div class="container">
       <div class="row g-4">
-        <div class="col-lg-4 mb-4">
-          <div class="footer-brand">
-            <span class="brand-icon">⚡</span>
-            <span class="brand-text">TechStore</span>
-          </div>
-          <p class="footer-desc">Ваш надёжный партнёр в мире технологий с 2015 года.</p>
+        <div class="col-lg-4">
+          <div class="navbar-brand" style="margin-bottom:20px">TECHSTORE</div>
+          <p style="font-size:14px;line-height:1.6;color:var(--text-secondary)">Учебный проект • Журавлев Алексей Игоревич<br>РТУ МИРЭА, ЭФБО-12-24 • 2025</p>
         </div>
         <div class="col-lg-4 col-md-6">
-          <h6 class="footer-heading">Контакты</h6>
-          <ul class="footer-contacts">
-            <li>📞 <a href="tel:+78005553535">8 800 555-35-35</a></li>
-            <li>📧 <a href="mailto:info@techstore.ru">info@techstore.ru</a></li>
+          <h6 style="font-size:14px;font-weight:900;margin-bottom:20px;text-transform:uppercase">КОНТАКТЫ</h6>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="margin-bottom:12px"><a href="mailto:zhuravlev.a.i1@edu.mirea.ru" style="color:var(--text-secondary);text-decoration:none;font-size:14px">zhuravlev.a.i1@edu.mirea.ru</a></li>
+            <li style="margin-bottom:12px"><a href="https://github.com/shxvier" target="_blank" style="color:var(--text-secondary);text-decoration:none;font-size:14px">github.com/shxvier</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-6">
-          <h6 class="footer-heading">Навигация</h6>
-          <ul class="footer-links">
-            <li><a href="../index.html">Главная</a></li>
-            <li><a href="products.html">Каталог</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
+          <h6 style="font-size:14px;font-weight:900;margin-bottom:20px;text-transform:uppercase">НАВИГАЦИЯ</h6>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="margin-bottom:12px"><a href="../index.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">ГЛАВНАЯ</a></li>
+            <li style="margin-bottom:12px"><a href="products.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">КАТАЛОГ</a></li>
+            <li style="margin-bottom:12px"><a href="contacts.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">КОНТАКТЫ</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 TechStore. Все права защищены.</p>
+      <div style="margin-top:60px;padding-top:32px;border-top:2px solid var(--border);text-align:center">
+        <p style="margin:0;color:var(--muted);font-size:12px;text-transform:uppercase">© 2025 ЖУРАВЛЕВ АЛЕКСЕЙ ИГОРЕВИЧ</p>
       </div>
     </div>
   </footer>
