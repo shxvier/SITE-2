@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>TechStore — Магазин премиальной электроники</title>
+  <title>TechStore — Журавлев Алексей Игоревич</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style/styles.css">
 </head>
@@ -21,7 +21,7 @@
         <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/products.html">Каталог</a></li>
-          <li class="nav-item"><a class="nav-link" href="pages/about.html">О магазине</a></li>
+          <li class="nav-item"><a class="nav-link" href="pages/about.html">Об авторе</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
           <li class="nav-item ms-lg-3">
             <button class="cart-btn" onclick="toggleCart()">
@@ -48,14 +48,14 @@
     </div>
     <div class="cart-body" id="cartItems">
       <div class="cart-empty">
-        <div style="font-size:64px;opacity:.5;margin-bottom:1rem">🛒</div>
-        <p class="fw-bold">Корзина пуста</p>
-        <small class="text-muted">Добавьте товары из каталога</small>
+        <div style="font-size:80px;opacity:.5;margin-bottom:1.5rem">🛒</div>
+        <p style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px">Корзина пуста</p>
+        <p style="font-size:16px;color:var(--muted)">Добавьте товары из каталога</p>
       </div>
     </div>
     <div class="cart-footer">
       <div class="cart-total">
-        <span class="total-label">Итого:</span>
+        <span style="font-size:18px;font-weight:600;color:var(--text)">Итого:</span>
         <span class="total-price" id="cartTotal">0 ₽</span>
       </div>
       <button class="btn cta-btn cta-primary w-100 mb-2" onclick="checkout()">Оформить заказ</button>
@@ -66,41 +66,43 @@
 
   <header class="hero container">
     <div class="orb"></div>
-    <div class="row align-items-center">
-      <div class="col-lg-6">
-        <div class="hero-badge reveal">🏆 #1 магазин электроники в России</div>
-        <h1 class="mb-4 reveal">Технологии, которые меняют жизнь к лучшему</h1>
-        <p class="hero-lead mb-4 reveal">Мы тщательно отбираем лучшие устройства от мировых брендов. Гарантия качества, быстрая доставка и профессиональная поддержка — всё для вашего комфорта.</p>
-        <div class="hero-stats mb-4 reveal">
-          <div class="stat-mini">
-            <div class="stat-mini-number">15K+</div>
-            <div class="stat-mini-label">Довольных клиентов</div>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-7">
+        <div class="hero-badge reveal">🏆 Проект студента РТУ МИРЭА</div>
+        <h1 class="mb-4 reveal" style="font-size:clamp(42px,6vw,72px);line-height:1.1">Интернет-магазин премиальной электроники</h1>
+        <p class="hero-lead mb-4 reveal" style="font-size:20px;line-height:1.7">Современный веб-проект с полным функционалом: каталог товаров, корзина покупок, адаптивный дизайн и переключение тем оформления.</p>
+        <div class="hero-stats-row mb-5 reveal">
+          <div class="stat-mini-box">
+            <div class="stat-mini-num">15+</div>
+            <div class="stat-mini-text">Товаров</div>
           </div>
-          <div class="stat-mini">
-            <div class="stat-mini-number">4.9★</div>
-            <div class="stat-mini-label">Средний рейтинг</div>
+          <div class="stat-mini-box">
+            <div class="stat-mini-num">3</div>
+            <div class="stat-mini-text">Темы</div>
           </div>
-          <div class="stat-mini">
-            <div class="stat-mini-number">24/7</div>
-            <div class="stat-mini-label">Поддержка</div>
+          <div class="stat-mini-box">
+            <div class="stat-mini-num">100%</div>
+            <div class="stat-mini-text">Адаптив</div>
           </div>
         </div>
         <div class="d-flex gap-3 flex-wrap reveal">
-          <a href="pages/products.html" class="cta-btn cta-primary">Перейти в каталог</a>
-          <a href="pages/contacts.html" class="cta-btn cta-ghost">Получить консультацию</a>
+          <a href="pages/products.html" class="cta-btn cta-primary" style="font-size:18px;padding:16px 32px">Перейти в каталог</a>
+          <a href="pages/about.html" class="cta-btn cta-ghost" style="font-size:18px;padding:16px 32px">Об авторе</a>
         </div>
       </div>
-      <div class="col-lg-6 mt-5 mt-lg-0">
-        <div class="hero-gallery reveal">
-          <div class="gallery-item gallery-main">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop" alt="Премиум наушники" class="gallery-img">
-            <div class="gallery-label">Новинки месяца</div>
-          </div>
-          <div class="gallery-item gallery-small">
-            <img src="https://images.unsplash.com/photo-1588058365548-db7f561eb3ed?w=300&h=300&fit=crop" alt="Смартфон" class="gallery-img">
-          </div>
-          <div class="gallery-item gallery-small">
-            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=300&h=300&fit=crop" alt="Ноутбук" class="gallery-img">
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="hero-visual-emoji reveal">
+          <div class="emoji-grid">
+            <div class="emoji-card emoji-main">
+              <div style="font-size:80px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4))">📱</div>
+              <p style="margin-top:16px;font-size:16px;font-weight:600;color:var(--text)">Новинки месяца</p>
+            </div>
+            <div class="emoji-card">
+              <div style="font-size:56px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4))">💻</div>
+            </div>
+            <div class="emoji-card">
+              <div style="font-size:56px;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.4))">🎧</div>
+            </div>
           </div>
         </div>
       </div>
@@ -109,45 +111,37 @@
 
   <section class="container section">
     <div class="text-center mb-5">
-      <div class="section-subtitle reveal">ПРЕИМУЩЕСТВА</div>
-      <h2 class="section-title reveal">Почему выбирают нас</h2>
-      <p class="section-desc reveal">Мы предлагаем не просто товары — мы создаём безупречный опыт покупки</p>
+      <div class="section-sub reveal" style="font-size:14px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px">ПРЕИМУЩЕСТВА</div>
+      <h2 class="reveal" style="font-size:clamp(32px,4vw,48px);font-weight:900;color:var(--text);margin-bottom:16px">Возможности проекта</h2>
+      <p class="reveal" style="font-size:20px;color:var(--text-secondary);max-width:700px;margin:0 auto">Полнофункциональный интернет-магазин с современным дизайном</p>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
-        <div class="feature reveal">
-          <div class="feature-icon-wrapper">
-            <div class="feature-icon">🚀</div>
-          </div>
-          <h5>Быстрая доставка</h5>
-          <p class="text-muted mb-0">Доставка по Москве за 2-4 часа. По России — от 1 до 3 дней. Отслеживание в реальном времени через личный кабинет.</p>
+        <div class="feature-emoji reveal">
+          <div style="font-size:64px;margin-bottom:20px">🛒</div>
+          <h5 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px">Корзина покупок</h5>
+          <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin:0">Добавление товаров, изменение количества, подсчёт итоговой суммы.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="feature reveal">
-          <div class="feature-icon-wrapper">
-            <div class="feature-icon">🛡️</div>
-          </div>
-          <h5>Гарантия качества</h5>
-          <p class="text-muted mb-0">100% оригинальная продукция с официальной гарантией производителя. Проверка каждого товара перед отправкой.</p>
+        <div class="feature-emoji reveal">
+          <div style="font-size:64px;margin-bottom:20px">🎨</div>
+          <h5 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px">Три темы</h5>
+          <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin:0">Тёмная, светлая и неоновая темы оформления с плавным переключением.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="feature reveal">
-          <div class="feature-icon-wrapper">
-            <div class="feature-icon">💳</div>
-          </div>
-          <h5>Удобная оплата</h5>
-          <p class="text-muted mb-0">Оплата картой, Apple Pay, Google Pay, рассрочка 0-0-24 и кредит. Безопасные платежи с защитой данных.</p>
+        <div class="feature-emoji reveal">
+          <div style="font-size:64px;margin-bottom:20px">📱</div>
+          <h5 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px">Адаптивность</h5>
+          <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin:0">Идеальное отображение на смартфонах, планшетах и десктопах.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-3">
-        <div class="feature reveal">
-          <div class="feature-icon-wrapper">
-            <div class="feature-icon">🎁</div>
-          </div>
-          <h5>Бонусная программа</h5>
-          <p class="text-muted mb-0">Кешбэк 5% на все покупки, персональные скидки и эксклюзивные предложения для постоянных клиентов.</p>
+        <div class="feature-emoji reveal">
+          <div style="font-size:64px;margin-bottom:20px">🔍</div>
+          <h5 style="font-size:20px;font-weight:800;color:var(--text);margin-bottom:12px">Поиск и фильтры</h5>
+          <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin:0">Поиск по названию, фильтрация по категориям, сортировка товаров.</p>
         </div>
       </div>
     </div>
@@ -156,35 +150,35 @@
   <section class="container section">
     <div class="d-flex align-items-end justify-content-between mb-5 flex-wrap gap-3">
       <div>
-        <div class="section-subtitle reveal">ПОПУЛЯРНОЕ</div>
-        <h2 class="section-title reveal">Хиты продаж</h2>
-        <p class="section-desc reveal">Самые востребованные товары этого месяца</p>
+        <div class="section-sub reveal" style="font-size:14px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px">КАТАЛОГ</div>
+        <h2 class="reveal" style="font-size:clamp(32px,4vw,48px);font-weight:900;color:var(--text);margin-bottom:8px">Примеры товаров</h2>
+        <p class="reveal" style="font-size:18px;color:var(--text-secondary)">Товары с подробными описаниями и характеристиками</p>
       </div>
-      <a href="pages/products.html" class="cta-btn cta-ghost reveal">Весь каталог →</a>
+      <a href="pages/products.html" class="cta-btn cta-ghost reveal" style="font-size:16px">Полный каталог →</a>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
-        <article class="product-card-new reveal">
-          <div class="product-badge-new hot">🔥 ХИТ</div>
-          <div class="product-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1592286927505-b0527abb4bcf?w=600&h=400&fit=crop" alt="Смартфон" class="product-image-new">
+        <article class="product-emoji-card reveal">
+          <div class="product-badge-emoji hot">🔥 ХИТ</div>
+          <div class="product-emoji-icon">
+            <div style="font-size:100px;filter:drop-shadow(0 12px 32px rgba(0,0,0,0.4))">📱</div>
           </div>
-          <div class="product-content-new">
-            <div class="product-category">Смартфоны</div>
-            <h5 class="product-name-new">iPhone 15 Pro Max</h5>
-            <p class="product-desc-new">Титановый корпус, чип A17 Pro, камера 48MP с 5х зумом. Революционная производительность в вашем кармане.</p>
-            <div class="product-features">
-              <span class="feature-tag">128GB</span>
-              <span class="feature-tag">5G</span>
-              <span class="feature-tag">ProMotion</span>
+          <div style="padding:24px">
+            <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">Смартфоны</div>
+            <h5 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-0.01em">iPhone 15 Pro Max</h5>
+            <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin-bottom:16px">Титановый корпус, чип A17 Pro, камера 48MP с 5х оптическим зумом.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">256GB</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">5G</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">ProMotion</span>
             </div>
-            <div class="product-footer-new">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
               <div>
-                <div class="product-price-old">139 990 ₽</div>
-                <div class="product-price-new">119 990 ₽</div>
+                <div style="font-size:16px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">139 990 ₽</div>
+                <div style="font-size:30px;font-weight:900;color:#00ff88;line-height:1">119 990 ₽</div>
               </div>
-              <button class="btn-add-cart" onclick='addToCart(1, "iPhone 15 Pro Max", 119990, "https://images.unsplash.com/photo-1592286927505-b0527abb4bcf?w=200&h=200&fit=crop")'>
-                <span>В корзину</span>
+              <button class="btn-emoji-cart" onclick='addToCart(1, "iPhone 15 Pro Max", 119990, "📱")'>
+                <span>Купить</span>
                 <span>→</span>
               </button>
             </div>
@@ -193,26 +187,26 @@
       </div>
 
       <div class="col-md-6 col-lg-4">
-        <article class="product-card-new reveal">
-          <div class="product-badge-new new">✨ НОВИНКА</div>
-          <div class="product-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop" alt="Наушники" class="product-image-new">
+        <article class="product-emoji-card reveal">
+          <div class="product-badge-emoji new">✨ НОВИНКА</div>
+          <div class="product-emoji-icon">
+            <div style="font-size:100px;filter:drop-shadow(0 12px 32px rgba(0,0,0,0.4))">🎧</div>
           </div>
-          <div class="product-content-new">
-            <div class="product-category">Аудио</div>
-            <h5 class="product-name-new">Sony WH-1000XM5</h5>
-            <p class="product-desc-new">Премиальное шумоподавление, 30 часов автономности, Hi-Res Audio. Идеальный звук для работы и отдыха.</p>
-            <div class="product-features">
-              <span class="feature-tag">ANC</span>
-              <span class="feature-tag">LDAC</span>
-              <span class="feature-tag">30ч</span>
+          <div style="padding:24px">
+            <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">Аудио</div>
+            <h5 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-0.01em">Sony WH-1000XM5</h5>
+            <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin-bottom:16px">Премиальное шумоподавление, 30 часов работы, Hi-Res Audio.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">ANC</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">LDAC</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">30ч</span>
             </div>
-            <div class="product-footer-new">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
               <div>
-                <div class="product-price-new">34 990 ₽</div>
+                <div style="font-size:30px;font-weight:900;color:#00ff88;line-height:1">34 990 ₽</div>
               </div>
-              <button class="btn-add-cart" onclick='addToCart(2, "Sony WH-1000XM5", 34990, "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop")'>
-                <span>В корзину</span>
+              <button class="btn-emoji-cart" onclick='addToCart(2, "Sony WH-1000XM5", 34990, "🎧")'>
+                <span>Купить</span>
                 <span>→</span>
               </button>
             </div>
@@ -221,25 +215,25 @@
       </div>
 
       <div class="col-md-6 col-lg-4">
-        <article class="product-card-new reveal">
-          <div class="product-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop" alt="Ноутбук" class="product-image-new">
+        <article class="product-emoji-card reveal">
+          <div class="product-emoji-icon">
+            <div style="font-size:100px;filter:drop-shadow(0 12px 32px rgba(0,0,0,0.4))">💻</div>
           </div>
-          <div class="product-content-new">
-            <div class="product-category">Ноутбуки</div>
-            <h5 class="product-name-new">MacBook Pro 14" M3</h5>
-            <p class="product-desc-new">Чип M3 Pro, 18GB RAM, SSD 512GB, XDR дисплей. Невероятная мощность для профессионалов.</p>
-            <div class="product-features">
-              <span class="feature-tag">M3 Pro</span>
-              <span class="feature-tag">18GB</span>
-              <span class="feature-tag">512GB</span>
+          <div style="padding:24px">
+            <div style="font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">Ноутбуки</div>
+            <h5 style="font-size:22px;font-weight:800;color:var(--text);margin-bottom:12px;letter-spacing:-0.01em">MacBook Pro 14" M3</h5>
+            <p style="font-size:16px;line-height:1.6;color:var(--text-secondary);margin-bottom:16px">Чип M3 Pro, 18GB unified memory, SSD 512GB, XDR дисплей.</p>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">M3 Pro</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">18GB</span>
+              <span style="background:var(--panel-2);border:1px solid var(--border);padding:6px 12px;border-radius:8px;font-size:13px;font-weight:700;color:var(--text-secondary)">512GB</span>
             </div>
-            <div class="product-footer-new">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
               <div>
-                <div class="product-price-new">189 990 ₽</div>
+                <div style="font-size:30px;font-weight:900;color:#00ff88;line-height:1">189 990 ₽</div>
               </div>
-              <button class="btn-add-cart" onclick='addToCart(3, "MacBook Pro 14\" M3", 189990, "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop")'>
-                <span>В корзину</span>
+              <button class="btn-emoji-cart" onclick='addToCart(3, "MacBook Pro 14\" M3", 189990, "💻")'>
+                <span>Купить</span>
                 <span>→</span>
               </button>
             </div>
@@ -249,123 +243,68 @@
     </div>
   </section>
 
-  <section class="trust-section reveal">
+  <section class="author-section-home reveal">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-4 mb-lg-0">
-          <div class="section-subtitle">ДОВЕРИЕ</div>
-          <h2 class="section-title mb-3">Нам доверяют тысячи клиентов</h2>
-          <p class="trust-text">С 2015 года мы помогаем людям выбирать правильные технологии. Более 15 000 довольных покупателей, 99% положительных отзывов и рейтинг 4.9 из 5 звёзд на независимых платформах.</p>
-          <div class="trust-stats">
-            <div class="trust-stat-item">
-              <div class="trust-stat-number">15,247</div>
-              <div class="trust-stat-label">Завершённых заказов</div>
-            </div>
-            <div class="trust-stat-item">
-              <div class="trust-stat-number">99.2%</div>
-              <div class="trust-stat-label">Довольных клиентов</div>
-            </div>
-            <div class="trust-stat-item">
-              <div class="trust-stat-number">4.9/5</div>
-              <div class="trust-stat-label">Средний рейтинг</div>
-            </div>
+      <div class="row align-items-center g-5">
+        <div class="col-lg-4 text-center">
+          <div style="width:180px;height:180px;margin:0 auto 24px;border-radius:50%;overflow:hidden;border:4px solid var(--border);box-shadow:0 12px 40px rgba(0,0,0,0.4)">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-size:80px;font-weight:900;color:#fff">АЖ</div>
           </div>
+          <h3 style="font-size:28px;font-weight:900;color:var(--text);margin-bottom:8px">Журавлев Алексей Игоревич</h3>
+          <p style="font-size:16px;color:var(--muted);font-weight:600">Студент РТУ МИРЭА • ЭФБО-12-24</p>
         </div>
-        <div class="col-lg-6">
-          <div class="testimonials">
-            <div class="testimonial-card">
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text">"Заказывал MacBook Pro. Доставили на следующий день, товар в идеальном состоянии. Консультанты помогли выбрать конфигурацию. Рекомендую!"</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">АМ</div>
-                <div>
-                  <div class="author-name">Алексей Михайлов</div>
-                  <div class="author-date">2 дня назад</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card">
-              <div class="testimonial-rating">⭐⭐⭐⭐⭐</div>
-              <p class="testimonial-text">"Купила iPhone 15. Цены лучше, чем в офлайн магазинах. Бонусы начислили сразу. Спасибо за отличный сервис!"</p>
-              <div class="testimonial-author">
-                <div class="author-avatar">ЕК</div>
-                <div>
-                  <div class="author-name">Екатерина Королёва</div>
-                  <div class="author-date">5 дней назад</div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-8">
+          <div class="section-sub" style="font-size:14px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px">АВТОР ПРОЕКТА</div>
+          <h2 style="font-size:clamp(28px,4vw,42px);font-weight:900;color:var(--text);margin-bottom:20px">О разработчике</h2>
+          <p style="font-size:18px;line-height:1.7;color:var(--text-secondary);margin-bottom:20px">Студент факультета информационных технологий РТУ МИРЭА. Увлекаюсь веб-разработкой, UI/UX дизайном и созданием современных интерактивных приложений.</p>
+          <p style="font-size:18px;line-height:1.7;color:var(--text-secondary);margin-bottom:32px">Этот проект демонстрирует навыки работы с HTML, CSS, JavaScript, адаптивной версткой и созданием пользовательских интерфейсов.</p>
+          <a href="pages/about.html" class="cta-btn cta-primary" style="font-size:16px">Подробнее обо мне →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="cta-section reveal">
-    <div class="container">
-      <div class="cta-content">
-        <h2 class="cta-title">Не нашли нужный товар?</h2>
-        <p class="cta-desc">Наши эксперты помогут подобрать идеальное устройство под ваши задачи и бюджет. Оставьте заявку, и мы свяжемся с вами в течение 15 минут.</p>
-        <div class="d-flex gap-3 justify-content-center flex-wrap">
-          <a href="pages/contacts.html" class="cta-btn cta-primary">Получить консультацию</a>
-          <a href="tel:+78005553535" class="cta-btn cta-ghost">Позвонить: 8 800 555-35-35</a>
-        </div>
+  <section class="cta-section-emoji reveal">
+    <div class="container text-center">
+      <h2 style="font-size:clamp(32px,5vw,48px);font-weight:900;color:#fff;margin-bottom:20px">Хотите посмотреть полный каталог?</h2>
+      <p style="font-size:20px;color:rgba(255,255,255,0.9);max-width:700px;margin:0 auto 32px;line-height:1.6">Исследуйте весь ассортимент товаров с подробными описаниями, характеристиками и возможностью добавления в корзину.</p>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <a href="pages/products.html" class="cta-btn cta-primary" style="font-size:18px;background:#fff;color:var(--accent);border-color:#fff">Открыть каталог</a>
+        <a href="pages/contacts.html" class="cta-btn cta-ghost" style="font-size:18px;border-color:rgba(255,255,255,0.4);color:#fff">Связаться</a>
       </div>
     </div>
   </section>
 
-  <footer class="footer-new">
+  <footer style="background:var(--panel);border-top:2px solid var(--border);padding:48px 0 32px;margin-top:80px">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4 mb-4">
-          <div class="footer-brand">
+          <div class="footer-brand" style="margin-bottom:20px">
             <span class="brand-icon">⚡</span>
             <span class="brand-text">TechStore</span>
           </div>
-          <p class="footer-desc">Ваш надёжный партнёр в мире технологий. Официальный дилер Apple, Samsung, Sony и других ведущих брендов.</p>
-          <div class="footer-social">
-            <a href="#" class="social-link">Telegram</a>
-            <a href="#" class="social-link">VK</a>
-            <a href="#" class="social-link">Instagram</a>
-          </div>
+          <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:16px">Учебный проект интернет-магазина электроники.<br>Автор: Журавлев Алексей Игоревич, ЭФБО-12-24.</p>
+          <p style="font-size:14px;color:var(--muted)">РТУ МИРЭА, 2025</p>
         </div>
-        <div class="col-lg-2 col-md-4 col-6">
-          <h6 class="footer-heading">Каталог</h6>
-          <ul class="footer-links">
-            <li><a href="pages/products.html">Смартфоны</a></li>
-            <li><a href="pages/products.html">Ноутбуки</a></li>
-            <li><a href="pages/products.html">Наушники</a></li>
-            <li><a href="pages/products.html">Аксессуары</a></li>
+        <div class="col-lg-4 col-md-6">
+          <h6 style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px">Контакты</h6>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="margin-bottom:12px"><a href="mailto:zhuravlev.a.i1@edu.mirea.ru" style="color:var(--text-secondary);text-decoration:none;font-size:16px">📧 zhuravlev.a.i1@edu.mirea.ru</a></li>
+            <li style="margin-bottom:12px"><a href="https://github.com/shxvier" style="color:var(--text-secondary);text-decoration:none;font-size:16px" target="_blank">🐙 github.com/shxvier</a></li>
+            <li style="margin-bottom:12px"><span style="color:var(--text-secondary);font-size:16px">📱 +7 (800) 555-35-35</span></li>
           </ul>
         </div>
-        <div class="col-lg-2 col-md-4 col-6">
-          <h6 class="footer-heading">Информация</h6>
-          <ul class="footer-links">
-            <li><a href="pages/about.html">О компании</a></li>
-            <li><a href="pages/contacts.html">Контакты</a></li>
-            <li><a href="#">Доставка</a></li>
-            <li><a href="#">Гарантия</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <h6 class="footer-heading">Контакты</h6>
-          <ul class="footer-contacts">
-            <li>📞 <a href="tel:+78005553535">8 800 555-35-35</a></li>
-            <li>📧 <a href="mailto:info@techstore.ru">info@techstore.ru</a></li>
-            <li>📍 Москва, ул. Тверская, 1</li>
-            <li>🕐 Пн-Вс: 10:00 — 22:00</li>
+        <div class="col-lg-4 col-md-6">
+          <h6 style="font-size:18px;font-weight:800;color:var(--text);margin-bottom:20px">Навигация</h6>
+          <ul style="list-style:none;padding:0;margin:0">
+            <li style="margin-bottom:12px"><a href="pages/products.html" style="color:var(--text-secondary);text-decoration:none;font-size:16px">Каталог товаров</a></li>
+            <li style="margin-bottom:12px"><a href="pages/about.html" style="color:var(--text-secondary);text-decoration:none;font-size:16px">Об авторе</a></li>
+            <li style="margin-bottom:12px"><a href="pages/contacts.html" style="color:var(--text-secondary);text-decoration:none;font-size:16px">Контакты</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-bottom">
-        <p>© 2025 TechStore. Все права защищены.</p>
-        <div class="footer-payment">
-          <span>Принимаем:</span>
-          <span>💳 Visa</span>
-          <span>💳 Mastercard</span>
-          <span>💳 МИР</span>
-          <span>🍎 Apple Pay</span>
-        </div>
+      <div style="margin-top:48px;padding-top:32px;border-top:2px solid var(--border);text-center">
+        <p style="margin:0;color:var(--muted);font-size:15px">© 2025 Журавлев Алексей Игоревич. Учебный проект РТУ МИРЭА.</p>
       </div>
     </div>
   </footer>
