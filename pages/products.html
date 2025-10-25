@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>КАТАЛОГ — TechStore</title>
+  <title>КОНТАКТЫ — TechStore</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../style/styles.css">
 </head>
@@ -17,9 +17,9 @@
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-2">
           <li class="nav-item"><a class="nav-link" href="../index.html">ГЛАВНАЯ</a></li>
-          <li class="nav-item"><a class="nav-link active" href="products.html">КАТАЛОГ</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">КАТАЛОГ</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">ОБ АВТОРЕ</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacts.html">КОНТАКТЫ</a></li>
+          <li class="nav-item"><a class="nav-link active" href="contacts.html">КОНТАКТЫ</a></li>
           <li class="nav-item ms-lg-3">
             <button class="cart-btn" onclick="toggleCart()">
               🛒 <span class="cart-badge" id="cartCount">0</span>
@@ -62,241 +62,107 @@
 
   <main class="container section">
     <div class="text-center mb-5 reveal">
-      <div class="section-sub">КАТАЛОГ</div>
-      <h1>ПРЕМИАЛЬНАЯ<br>ЭЛЕКТРОНИКА</h1>
-      <p style="font-size:18px;color:var(--text-secondary);max-width:700px;margin:32px auto 0">Более 15 товаров от ведущих мировых брендов с официальной гарантией и быстрой доставкой</p>
+      <div class="section-sub">СВЯЗАТЬСЯ</div>
+      <h1>КОНТАКТНАЯ<br>ИНФОРМАЦИЯ</h1>
+      <p style="font-size:18px;color:var(--text-secondary);max-width:700px;margin:32px auto 0">Свяжитесь со мной для обсуждения проектов, сотрудничества или по любым вопросам</p>
     </div>
 
-    <section class="mb-5 reveal">
-      <div style="background:var(--surface);border:2px solid var(--border);padding:32px">
-        <div class="row g-3">
-          <div class="col-lg-6">
-            <input id="searchInput" class="form-control" placeholder="ПОИСК ПО НАЗВАНИЮ..." style="background:var(--bg);border:2px solid var(--border);padding:14px 20px;color:var(--text);font-weight:700;text-transform:uppercase;font-size:13px">
+    <section class="reveal">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:32px;text-align:center;height:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:56px;margin-bottom:20px">📧</div>
+            <h5 style="margin-bottom:16px">EMAIL</h5>
+            <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" style="font-size:13px;color:var(--text-secondary);text-decoration:none;word-break:break-all;display:block">zhuravlev.a.i1@edu.mirea.ru</a>
           </div>
-          <div class="col-lg-6">
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              <button class="filter-btn active" data-category="all" style="background:var(--accent);border:2px solid var(--accent);color:var(--bg);padding:14px 20px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s">ВСЕ</button>
-              <button class="filter-btn" data-category="smartphones" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:14px 20px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s">📱 СМАРТФОНЫ</button>
-              <button class="filter-btn" data-category="laptops" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:14px 20px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s">💻 НОУТБУКИ</button>
-              <button class="filter-btn" data-category="audio" style="background:transparent;border:2px solid var(--border);color:var(--text);padding:14px 20px;font-weight:900;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;cursor:pointer;transition:all 0.2s">🎧 АУДИО</button>
-            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:32px;text-align:center;height:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:56px;margin-bottom:20px">📱</div>
+            <h5 style="margin-bottom:16px">ТЕЛЕФОН</h5>
+            <a href="tel:+78005553535" style="font-size:14px;color:var(--text-secondary);text-decoration:none;display:block">+7 (800) 555-35-35</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:32px;text-align:center;height:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:56px;margin-bottom:20px">🐙</div>
+            <h5 style="margin-bottom:16px">GITHUB</h5>
+            <a href="https://github.com/shxvier" target="_blank" style="font-size:14px;color:var(--text-secondary);text-decoration:none;display:block">github.com/shxvier</a>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div style="background:var(--surface);border:2px solid var(--border);padding:32px;text-align:center;height:100%;transition:all 0.2s" onmouseover="this.style.borderColor='var(--accent)';this.style.transform='translate(-4px,-4px)';this.style.boxShadow='8px 8px 0 var(--border)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+            <div style="font-size:56px;margin-bottom:20px">📍</div>
+            <h5 style="margin-bottom:16px">АДРЕС</h5>
+            <p style="font-size:14px;color:var(--text-secondary);margin:0">Москва, Россия<br>РТУ МИРЭА</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section>
-      <div class="row g-4" id="productsGrid">
-        <!-- СМАРТФОНЫ -->
-        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="iPhone 15 Pro Max" data-price="119990">
-          <article class="product-emoji-card reveal">
-            <div class="product-badge-emoji hot">ХИТ</div>
-            <div class="product-emoji-icon"><div style="font-size:100px">📱</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">СМАРТФОНЫ</div>
-              <h5 style="margin-bottom:12px">IPHONE 15 PRO MAX</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Титановый корпус Natural, чип A17 Pro, камера 48MP с 5х оптическим зумом</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">256GB</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">5G</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">iOS 17</span>
+    <section class="section">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5">
+          <div class="reveal">
+            <div class="section-sub">ОБРАТНАЯ СВЯЗЬ</div>
+            <h2 style="margin-bottom:24px">НАПИШИТЕ МНЕ</h2>
+            <p style="font-size:16px;line-height:1.7;color:var(--text-secondary);margin-bottom:32px">Заполните форму ниже, и я свяжусь с вами в ближайшее время. Открыт для предложений по сотрудничеству и интересных проектов.</p>
+            <div style="display:flex;flex-direction:column;gap:16px">
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+                <span style="font-size:14px;color:var(--text-secondary)">Быстрый ответ</span>
               </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div>
-                  <div style="font-size:14px;color:var(--muted);text-decoration:line-through;margin-bottom:4px">139 990 ₽</div>
-                  <div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">119 990 ₽</div>
-                </div>
-                <button class="btn-emoji-cart" onclick='addToCart(101, "iPhone 15 Pro Max", 119990, "📱")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+                <span style="font-size:14px;color:var(--text-secondary)">Профессиональный подход</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px">
+                <span style="color:var(--accent);font-size:24px;font-weight:900">✓</span>
+                <span style="font-size:14px;color:var(--text-secondary)">Конфиденциальность</span>
               </div>
             </div>
-          </article>
+          </div>
         </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="Samsung Galaxy S24 Ultra" data-price="109990">
-          <article class="product-emoji-card reveal">
-            <div class="product-badge-emoji new">NEW</div>
-            <div class="product-emoji-icon"><div style="font-size:100px">📱</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">СМАРТФОНЫ</div>
-              <h5 style="margin-bottom:12px">SAMSUNG GALAXY S24 ULTRA</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Snapdragon 8 Gen 3, камера 200MP, S Pen, батарея 5000mAh</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">512GB</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">AI</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">S PEN</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">109 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(102, "Samsung Galaxy S24 Ultra", 109990, "📱")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
+        <div class="col-lg-7">
+          <form id="contactForm" style="background:var(--surface);border:2px solid var(--border);padding:40px" class="reveal">
+            <div style="margin-bottom:24px">
+              <label style="display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">ИМЯ *</label>
+              <input type="text" required style="width:100%;background:var(--bg);border:2px solid var(--border);padding:14px 20px;color:var(--text);font-weight:700;font-size:14px;transition:all 0.2s" onfocus="this.style.borderColor='var(--accent)';this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--border)'" onblur="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
             </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="Google Pixel 8 Pro" data-price="74990">
-          <article class="product-emoji-card reveal">
-            <div class="product-emoji-icon"><div style="font-size:100px">📱</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">СМАРТФОНЫ</div>
-              <h5 style="margin-bottom:12px">GOOGLE PIXEL 8 PRO</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Чистый Android, AI камера, Tensor G3, дисплей LTPO 120Hz</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">256GB</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">AI PHOTO</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">74 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(103, "Google Pixel 8 Pro", 74990, "📱")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
+            <div style="margin-bottom:24px">
+              <label style="display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">EMAIL *</label>
+              <input type="email" required style="width:100%;background:var(--bg);border:2px solid var(--border);padding:14px 20px;color:var(--text);font-weight:700;font-size:14px;transition:all 0.2s" onfocus="this.style.borderColor='var(--accent)';this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--border)'" onblur="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
             </div>
-          </article>
-        </div>
-
-        <!-- НОУТБУКИ -->
-        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="MacBook Pro 14 M3 Pro" data-price="189990">
-          <article class="product-emoji-card reveal">
-            <div class="product-badge-emoji hot">ХИТ</div>
-            <div class="product-emoji-icon"><div style="font-size:100px">💻</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">НОУТБУКИ</div>
-              <h5 style="margin-bottom:12px">MACBOOK PRO 14" M3 PRO</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Чип M3 Pro, 18GB unified memory, SSD 512GB, Liquid Retina XDR</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">M3 PRO</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">18GB</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">XDR</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">189 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(201, "MacBook Pro 14\" M3 Pro", 189990, "💻")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
+            <div style="margin-bottom:24px">
+              <label style="display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">ТЕМА</label>
+              <select style="width:100%;background:var(--bg);border:2px solid var(--border);padding:14px 20px;color:var(--text);font-weight:700;font-size:14px;transition:all 0.2s" onfocus="this.style.borderColor='var(--accent)';this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--border)'" onblur="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'">
+                <option>ОБЩИЙ ВОПРОС</option>
+                <option>СОТРУДНИЧЕСТВО</option>
+                <option>ТЕХНИЧЕСКАЯ ПОДДЕРЖКА</option>
+                <option>ДРУГОЕ</option>
+              </select>
             </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="Dell XPS 15" data-price="149990">
-          <article class="product-emoji-card reveal">
-            <div class="product-emoji-icon"><div style="font-size:100px">💻</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">НОУТБУКИ</div>
-              <h5 style="margin-bottom:12px">DELL XPS 15 9530</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Intel Core i7-13700H, RTX 4060, 32GB RAM, 1TB SSD, OLED 3.5K</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">i7</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">RTX 4060</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">OLED</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">149 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(202, "Dell XPS 15 9530", 149990, "💻")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
+            <div style="margin-bottom:24px">
+              <label style="display:block;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">СООБЩЕНИЕ *</label>
+              <textarea required rows="5" style="width:100%;background:var(--bg);border:2px solid var(--border);padding:14px 20px;color:var(--text);font-weight:500;font-size:14px;resize:vertical;font-family:inherit;transition:all 0.2s" onfocus="this.style.borderColor='var(--accent)';this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--border)'" onblur="this.style.borderColor='var(--border)';this.style.transform='none';this.style.boxShadow='none'"></textarea>
             </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="ASUS ROG Zephyrus G14" data-price="139990">
-          <article class="product-emoji-card reveal">
-            <div class="product-emoji-icon"><div style="font-size:100px">💻</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">НОУТБУКИ</div>
-              <h5 style="margin-bottom:12px">ASUS ROG ZEPHYRUS G14</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">AMD Ryzen 9 7940HS, RTX 4070, 32GB DDR5, дисплей 165Hz QHD+</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">RYZEN 9</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">165HZ</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">139 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(203, "ASUS ROG Zephyrus G14", 139990, "💻")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- АУДИО -->
-        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="Sony WH-1000XM5" data-price="34990">
-          <article class="product-emoji-card reveal">
-            <div class="product-badge-emoji new">NEW</div>
-            <div class="product-emoji-icon"><div style="font-size:100px">🎧</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">АУДИО</div>
-              <h5 style="margin-bottom:12px">SONY WH-1000XM5</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Лучшее шумоподавление, 30 часов работы, LDAC, multipoint</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">ANC</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">LDAC</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">30Ч</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">34 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(301, "Sony WH-1000XM5", 34990, "🎧")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="AirPods Pro 2" data-price="27990">
-          <article class="product-emoji-card reveal">
-            <div class="product-emoji-icon"><div style="font-size:100px">🎧</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">АУДИО</div>
-              <h5 style="margin-bottom:12px">AIRPODS PRO 2 (USB-C)</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">ANC 2.0, пространственный звук, отслеживание головы, MagSafe</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">ANC 2.0</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">USB-C</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">27 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(302, "AirPods Pro 2 (USB-C)", 27990, "🎧")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="Bose QuietComfort Ultra" data-price="39990">
-          <article class="product-emoji-card reveal">
-            <div class="product-emoji-icon"><div style="font-size:100px">🎧</div></div>
-            <div style="padding:24px">
-              <div style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);margin-bottom:8px">АУДИО</div>
-              <h5 style="margin-bottom:12px">BOSE QUIETCOMFORT ULTRA</h5>
-              <p style="font-size:14px;line-height:1.5;color:var(--text-secondary);margin-bottom:16px">Immersive Audio с пространственным звуком, 24 часа работы</p>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px">
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">IMMERSIVE</span>
-                <span style="background:var(--bg);border:2px solid var(--border);padding:6px 12px;font-size:11px;font-weight:700;text-transform:uppercase">24Ч</span>
-              </div>
-              <div style="display:flex;justify-content:space-between;align-items:center;gap:16px">
-                <div><div style="font-size:28px;font-weight:900;color:var(--accent);line-height:1">39 990 ₽</div></div>
-                <button class="btn-emoji-cart" onclick='addToCart(303, "Bose QuietComfort Ultra", 39990, "🎧")'>
-                  <span>КУПИТЬ</span><span>→</span>
-                </button>
-              </div>
-            </div>
-          </article>
+            <button type="submit" class="cta-btn cta-primary w-100">ОТПРАВИТЬ СООБЩЕНИЕ</button>
+          </form>
+          <div id="formSuccess" style="display:none;background:var(--surface);border:2px solid var(--accent);padding:40px;text-align:center">
+            <div style="font-size:64px;margin-bottom:20px">✓</div>
+            <h3 style="margin-bottom:16px">СООБЩЕНИЕ ОТПРАВЛЕНО</h3>
+            <p style="color:var(--text-secondary);margin:0">Спасибо за обращение! Я свяжусь с вами в ближайшее время.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div id="noResults" style="display:none;text-align:center;padding:80px 20px;background:var(--surface);border:2px solid var(--border);margin-top:40px">
-        <div style="font-size:80px;margin-bottom:24px">🔍</div>
-        <h3 style="margin-bottom:16px">НИЧЕГО НЕ НАЙДЕНО</h3>
-        <p style="color:var(--text-secondary);margin-bottom:24px">Попробуйте изменить критерии поиска</p>
-        <button class="cta-btn cta-primary" onclick="resetFilters()">СБРОСИТЬ</button>
+    <section class="section">
+      <div style="background:var(--surface);border:2px solid var(--border);padding:80px 40px;text-align:center" class="reveal">
+        <div style="font-size:80px;margin-bottom:24px">📍</div>
+        <h2 style="margin-bottom:16px">МЕСТОПОЛОЖЕНИЕ</h2>
+        <p style="font-size:18px;color:var(--text-secondary);margin-bottom:8px">Москва, Россия</p>
+        <p style="font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em">РТУ МИРЭА • ФАКУЛЬТЕТ ИТ</p>
       </div>
     </section>
   </main>
@@ -312,14 +178,15 @@
           <h6 style="font-size:14px;font-weight:900;margin-bottom:20px;text-transform:uppercase">КОНТАКТЫ</h6>
           <ul style="list-style:none;padding:0;margin:0">
             <li style="margin-bottom:12px"><a href="mailto:zhuravlev.a.i1@edu.mirea.ru" style="color:var(--text-secondary);text-decoration:none;font-size:14px">zhuravlev.a.i1@edu.mirea.ru</a></li>
+            <li style="margin-bottom:12px"><a href="https://github.com/shxvier" target="_blank" style="color:var(--text-secondary);text-decoration:none;font-size:14px">github.com/shxvier</a></li>
           </ul>
         </div>
         <div class="col-lg-4 col-md-6">
           <h6 style="font-size:14px;font-weight:900;margin-bottom:20px;text-transform:uppercase">НАВИГАЦИЯ</h6>
           <ul style="list-style:none;padding:0;margin:0">
             <li style="margin-bottom:12px"><a href="../index.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">ГЛАВНАЯ</a></li>
+            <li style="margin-bottom:12px"><a href="products.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">КАТАЛОГ</a></li>
             <li style="margin-bottom:12px"><a href="about.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">ОБ АВТОРЕ</a></li>
-            <li style="margin-bottom:12px"><a href="contacts.html" style="color:var(--text-secondary);text-decoration:none;font-size:14px">КОНТАКТЫ</a></li>
           </ul>
         </div>
       </div>
@@ -332,50 +199,21 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../script.js"></script>
   <script src="../cart.js"></script>
-  <script src="../products.js"></script>
   <script>
-    // Стили для фильтров при ховере
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('mouseenter', function() {
-        if (!this.classList.contains('active')) {
-          this.style.borderColor = 'var(--accent)';
-          this.style.transform = 'translate(-2px, -2px)';
-          this.style.boxShadow = '4px 4px 0 var(--border)';
-        }
-      });
-      btn.addEventListener('mouseleave', function() {
-        if (!this.classList.contains('active')) {
-          this.style.borderColor = 'var(--border)';
-          this.style.transform = 'none';
-          this.style.boxShadow = 'none';
-        }
-      });
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('active');
-          b.style.background = 'transparent';
-          b.style.borderColor = 'var(--border)';
-          b.style.color = 'var(--text)';
-        });
-        this.classList.add('active');
-        this.style.background = 'var(--accent)';
-        this.style.borderColor = 'var(--accent)';
-        this.style.color = 'var(--bg)';
-      });
-    });
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
     
-    // Стиль для поиска
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-      searchInput.addEventListener('focus', function() {
-        this.style.borderColor = 'var(--accent)';
-        this.style.transform = 'translate(-2px, -2px)';
-        this.style.boxShadow = '4px 4px 0 var(--border)';
-      });
-      searchInput.addEventListener('blur', function() {
-        this.style.borderColor = 'var(--border)';
-        this.style.transform = 'none';
-        this.style.boxShadow = 'none';
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        form.style.display = 'none';
+        success.style.display = 'block';
+        
+        setTimeout(function() {
+          form.reset();
+          form.style.display = 'block';
+          success.style.display = 'none';
+        }, 5000);
       });
     }
   </script>
