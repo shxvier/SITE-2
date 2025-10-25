@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Наша компания — Премиум качество</title>
+  <title>Brand — Премиум качество</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style/styles.css">
 </head>
-<body data-theme="neo">
+<body data-theme="dark">
   <div class="nav-wrap">
     <nav class="navbar navbar-expand-lg container py-2">
-      <a class="navbar-brand fw-bold text-white" href="index.html">Brand</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand" href="index.html">✨ Brand</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link active" href="index.html">Главная</a></li>
@@ -21,9 +21,14 @@
           <li class="nav-item"><a class="nav-link" href="pages/about.html">О нас</a></li>
           <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
           <li class="nav-item ms-lg-3">
+            <button class="cart-btn" onclick="toggleCart()">
+              🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
             <div class="theme-switch">
-              <button data-theme="neo" aria-label="Неоновая" class="active">💠</button>
-              <button data-theme="dark" aria-label="Тёмная">🌑</button>
+              <button data-theme="dark" aria-label="Тёмная" class="active">🌑</button>
+              <button data-theme="neo" aria-label="Неоновая">💠</button>
               <button data-theme="light" aria-label="Светлая">🌤️</button>
             </div>
           </li>
@@ -32,57 +37,105 @@
     </nav>
   </div>
 
+  <!-- КОРЗИНА (выдвижная панель) -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Корзина</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cartItems">
+      <div class="cart-empty">
+        <div style="font-size:64px;opacity:.5;margin-bottom:1rem">🛒</div>
+        <p>Корзина пуста</p>
+        <small class="text-muted">Добавьте товары из каталога</small>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Итого:</span>
+        <span class="total-price" id="cartTotal">0 ₽</span>
+      </div>
+      <button class="btn cta-btn cta-primary w-100" onclick="checkout()">Оформить заказ</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
   <header class="hero container">
     <div class="orb"></div>
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <h1 class="mb-3">Премиальные продукты. Созданы, чтобы восхищать.</h1>
-        <p class="lead mb-4">Чистая эстетика, безупречная инженерия и внимание к деталям — лучший опыт каждый день.</p>
-        <div class="d-flex gap-3">
+        <h1 class="mb-3 reveal">Премиальные продукты.<br>Созданы, чтобы восхищать.</h1>
+        <p class="lead mb-4 reveal">Чистая эстетика, безупречная инженерия и внимание к деталям — лучший опыт каждый день.</p>
+        <div class="d-flex gap-3 reveal">
           <a href="pages/products.html" class="cta-btn cta-primary">Смотреть каталог</a>
           <a href="pages/contacts.html" class="cta-btn cta-ghost">Связаться</a>
         </div>
       </div>
       <div class="col-lg-5 mt-4 mt-lg-0">
-        <div class="glass p-4">
-          <div class="ratio ratio-16x9 rounded-4" style="background:linear-gradient(135deg, rgba(0,255,159,.18), rgba(0,184,255,.12));">
-            <div class="d-flex align-items-center justify-content-center">
-              <span style="font-size:72px">✨</span>
+        <div class="glass p-4 reveal">
+          <div class="hero-visual">
+            <div class="visual-grid">
+              <div class="visual-item">📱</div>
+              <div class="visual-item">💻</div>
+              <div class="visual-item">🎧</div>
+              <div class="visual-item">⌚</div>
             </div>
           </div>
-          <p class="mt-3 text-muted">Видео-тизер продукта или интерактивная обложка</p>
+          <p class="mt-3 text-muted text-center">Более 100 товаров премиум-класса</p>
         </div>
       </div>
     </div>
   </header>
 
   <section class="container section">
-    <div class="text-center mb-4">
-      <h2 class="fw-bold">Почему нас выбирают</h2>
-      <p class="lead">Скорость, качество и прозрачность сервиса</p>
+    <div class="text-center mb-5">
+      <h2 class="reveal">Почему нас выбирают</h2>
+      <p class="lead reveal">Скорость, качество и прозрачность сервиса</p>
     </div>
-    <div class="row g-3">
-      <div class="col-md-4"><div class="feature reveal h-100"><h5>🚀 Быстро</h5><p class="mb-0 text-muted">Доставляем в кратчайшие сроки по всей стране.</p></div></div>
-      <div class="col-md-4"><div class="feature reveal h-100"><h5>⭐ Качество</h5><p class="mb-0 text-muted">Строгий контроль и гарантия производителя.</p></div></div>
-      <div class="col-md-4"><div class="feature reveal h-100"><h5>💬 Поддержка</h5><p class="mb-0 text-muted">Экспертная помощь и честные условия.</p></div></div>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature reveal">
+          <div class="feature-icon">🚀</div>
+          <h5>Молниеносная доставка</h5>
+          <p class="text-muted mb-0">Доставляем в кратчайшие сроки по всей России. Отслеживание в реальном времени.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature reveal">
+          <div class="feature-icon">⭐</div>
+          <h5>Гарантия качества</h5>
+          <p class="text-muted mb-0">Строгий контроль каждого товара. Официальная гарантия от производителя.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature reveal">
+          <div class="feature-icon">💬</div>
+          <h5>Поддержка 24/7</h5>
+          <p class="text-muted mb-0">Экспертная помощь в любое время. Честные условия и прозрачные цены.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section class="container section">
-    <div class="d-flex align-items-end justify-content-between mb-3">
-      <h2 class="fw-bold mb-0">Избранные товары</h2>
-      <a href="pages/products.html" class="cta-btn cta-ghost">Открыть каталог</a>
+    <div class="d-flex align-items-end justify-content-between mb-4 reveal">
+      <div>
+        <h2 class="mb-1">Избранные товары</h2>
+        <p class="text-muted">Хиты продаж этого месяца</p>
+      </div>
+      <a href="pages/products.html" class="cta-btn cta-ghost">Весь каталог →</a>
     </div>
     <div class="row g-4">
       <div class="col-md-6 col-lg-4">
-        <article class="card-prod reveal">
+        <article class="card-prod reveal" data-product='{"id":1,"name":"Смартфон Galaxy Pro","price":45990,"image":"📱"}'>
+          <div class="prod-badge">ХИТ</div>
           <div class="prod-media"><div class="prod-emoji">📱</div></div>
-          <div class="p-3">
-            <h5 class="mb-2">Смартфон Premium X</h5>
-            <p class="text-muted">Дисплей, камера и производительность — без компромиссов.</p>
+          <div class="p-4">
+            <h5>Смартфон Galaxy Pro</h5>
+            <p class="text-muted mb-3">Флагманская камера, мощный процессор, автономность 2 дня</p>
             <div class="d-flex align-items-center justify-content-between">
               <span class="price">45 990 ₽</span>
-              <a class="cta-btn cta-primary" href="pages/products.html">Купить</a>
+              <button class="btn product-btn" onclick='addToCart(1, "Смартфон Galaxy Pro", 45990, "📱")'>В корзину</button>
             </div>
           </div>
         </article>
@@ -90,12 +143,12 @@
       <div class="col-md-6 col-lg-4">
         <article class="card-prod reveal">
           <div class="prod-media"><div class="prod-emoji">💻</div></div>
-          <div class="p-3">
-            <h5 class="mb-2">Ноутбук UltraBook 15</h5>
-            <p class="text-muted">Сверхтонкий корпус и автономность на весь день.</p>
+          <div class="p-4">
+            <h5>Ноутбук UltraBook Pro</h5>
+            <p class="text-muted mb-3">Сверхлёгкий корпус, 16GB RAM, дисплей Retina</p>
             <div class="d-flex align-items-center justify-content-between">
               <span class="price">89 990 ₽</span>
-              <a class="cta-btn cta-primary" href="pages/products.html">Купить</a>
+              <button class="btn product-btn" onclick='addToCart(2, "Ноутбук UltraBook Pro", 89990, "💻")'>В корзину</button>
             </div>
           </div>
         </article>
@@ -103,12 +156,12 @@
       <div class="col-md-6 col-lg-4">
         <article class="card-prod reveal">
           <div class="prod-media"><div class="prod-emoji">🎧</div></div>
-          <div class="p-3">
-            <h5 class="mb-2">Наушники Wireless Pro</h5>
-            <p class="text-muted">Чистый звук и активное шумоподавление.</p>
+          <div class="p-4">
+            <h5>Наушники AirPods Max</h5>
+            <p class="text-muted mb-3">Активное шумоподавление, пространственный звук</p>
             <div class="d-flex align-items-center justify-content-between">
               <span class="price">12 990 ₽</span>
-              <a class="cta-btn cta-primary" href="pages/products.html">Купить</a>
+              <button class="btn product-btn" onclick='addToCart(3, "Наушники AirPods Max", 12990, "🎧")'>В корзину</button>
             </div>
           </div>
         </article>
@@ -116,11 +169,53 @@
     </div>
   </section>
 
+  <section class="container section">
+    <div class="stats-grid reveal">
+      <div class="stat-item glass text-center p-4">
+        <div class="stat-number">10K+</div>
+        <div class="stat-label">Довольных клиентов</div>
+      </div>
+      <div class="stat-item glass text-center p-4">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Товаров в наличии</div>
+      </div>
+      <div class="stat-item glass text-center p-4">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">Позитивных отзывов</div>
+      </div>
+      <div class="stat-item glass text-center p-4">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Поддержка клиентов</div>
+      </div>
+    </div>
+  </section>
+
   <footer class="container py-5">
-    <div class="text-center text-muted">© 2025 Наша компания</div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <h5 class="mb-3">О компании</h5>
+        <p class="text-muted">Мы создаём впечатления, а не просто продаём товары. Качество и сервис — наш приоритет.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="mb-3">Навигация</h5>
+        <ul class="footer-links">
+          <li><a href="pages/products.html">Каталог товаров</a></li>
+          <li><a href="pages/about.html">О нас</a></li>
+          <li><a href="pages/contacts.html">Контакты</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4 mb-4">
+        <h5 class="mb-3">Связь</h5>
+        <p class="text-muted">Email: info@brand.ru<br>Тел: +7 (800) 555-35-35</p>
+      </div>
+    </div>
+    <div class="text-center text-muted mt-4 pt-4" style="border-top:1px solid var(--border)">
+      © 2025 Brand. Все права защищены.
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
+  <script src="cart.js"></script>
 </body>
 </html>
