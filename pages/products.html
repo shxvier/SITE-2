@@ -1,546 +1,266 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Наши товары - Каталог</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        /* CSS переменные для тем */
-        :root {
-            --bg-primary: linear-gradient(135deg, #1a1a1a, #2c2c2c);
-            --bg-secondary: #222;
-            --bg-tertiary: #333;
-            --bg-quaternary: #444;
-            --header-gradient: linear-gradient(90deg, #6a5acd, #483d8b);
-            --cta-gradient: linear-gradient(45deg, #7a62e1, #5e44b4);
-            --accent-color: #7a62e1;
-            --text-primary: #eaeaea;
-            --text-secondary: #ccc;
-            --hover-bg: rgba(255, 255, 255, 0.15);
-            --shadow-color: rgba(0, 0, 0, 0.4);
-            --price-color: #3cff99;
-            --border-color: #555;
-        }
-
-        [data-theme="dark"] {
-            --bg-primary: linear-gradient(135deg, #0d0d0d, #1a1a1a);
-            --bg-secondary: #1a1a1a;
-            --bg-tertiary: #242424;
-            --accent-color: #ffffff;
-            --price-color: #4ade80;
-        }
-
-        [data-theme="neon"] {
-            --bg-primary: linear-gradient(135deg, #0a0e27, #16213e);
-            --bg-secondary: #0f1729;
-            --accent-color: #00ff9f;
-            --price-color: #ff00ff;
-        }
-
-        [data-theme="retro"] {
-            --bg-primary: linear-gradient(135deg, #2b1055, #7597de);
-            --accent-color: #f72585;
-            --price-color: #ffbe0b;
-        }
-
-        [data-theme="minimal"] {
-            --bg-primary: linear-gradient(135deg, #f8f9fa, #e9ecef);
-            --bg-secondary: #ffffff;
-            --bg-tertiary: #f1f3f5;
-            --accent-color: #212529;
-            --text-primary: #212529;
-            --text-secondary: #495057;
-            --price-color: #087f5b;
-        }
-
-        body {
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            min-height: 100vh;
-            transition: all 0.4s ease;
-        }
-
-        /* Переключатель тем */
-        .theme-switcher {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            gap: 8px;
-            background: var(--bg-secondary);
-            padding: 10px;
-            border-radius: 50px;
-            box-shadow: 0 4px 20px var(--shadow-color);
-            z-index: 1000;
-        }
-
-        .theme-btn {
-            width: 40px;
-            height: 40px;
-            border: none;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background: var(--bg-tertiary);
-        }
-
-        .theme-btn:hover {
-            transform: scale(1.15);
-        }
-
-        .theme-btn.active {
-            transform: scale(1.2);
-            box-shadow: 0 0 20px var(--accent-color);
-        }
-
-        /* Header */
-        .header {
-            background: var(--header-gradient);
-            box-shadow: 0 4px 15px var(--shadow-color);
-            margin-bottom: 30px;
-        }
-
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 500;
-            padding: 8px 16px !important;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            background: var(--hover-bg);
-            color: white !important;
-        }
-
-        /* Заголовки */
-        .page-title {
-            color: var(--accent-color);
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-
-        .page-subtitle {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Поиск и фильтры */
-        .search-input {
-            padding: 15px 25px;
-            border: 2px solid var(--border-color);
-            border-radius: 30px;
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            border-color: var(--accent-color);
-            background: var(--bg-secondary);
-            outline: none;
-        }
-
-        .filter-btn {
-            padding: 12px 24px;
-            background: var(--bg-tertiary);
-            color: var(--text-primary);
-            border: 2px solid var(--border-color);
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-2px);
-        }
-
-        .filter-btn.active {
-            background: var(--cta-gradient);
-            border-color: transparent;
-            color: white;
-        }
-
-        /* Карточки товаров */
-        .product-card {
-            background: var(--bg-tertiary);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 3px 15px var(--shadow-color);
-            transition: all 0.3s ease;
-            position: relative;
-            height: 100%;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px var(--accent-color);
-        }
-
-        .product-icon {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            background: var(--bg-quaternary);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .product-title {
-            color: var(--accent-color);
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
-
-        .product-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 15px;
-        }
-
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--price-color);
-            text-align: center;
-            margin: 15px 0;
-        }
-
-        .product-btn {
-            background: var(--cta-gradient);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 30px;
-            font-weight: 700;
-            width: 100%;
-            transition: all 0.3s ease;
-        }
-
-        .product-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px var(--accent-color);
-        }
-
-        .product-item.hidden {
-            display: none !important;
-        }
-
-        /* Доставка */
-        .delivery-card {
-            background: var(--bg-tertiary);
-            padding: 30px 20px;
-            border-radius: 15px;
-            box-shadow: 0 3px 15px var(--shadow-color);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .delivery-card:hover {
-            transform: translateY(-8px);
-        }
-
-        .delivery-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-        }
-
-        .delivery-title-small {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        /* Footer */
-        .footer {
-            background: var(--bg-tertiary);
-            color: var(--text-secondary);
-            margin-top: 50px;
-            padding: 30px 0;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Каталог товаров</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../style/styles.css">
 </head>
+<body data-theme="dark">
+  <div class="nav-wrap">
+    <nav class="navbar navbar-expand-lg container py-2">
+      <a class="navbar-brand" href="../index.html">Brand</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Товары</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
+          <li class="nav-item ms-lg-3">
+            <div class="theme-switch">
+              <button data-theme="dark" aria-label="Тёмная" class="active">🌑</button>
+              <button data-theme="neo" aria-label="Неоновая">💠</button>
+              <button data-theme="light" aria-label="Светлая">🌤️</button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
-<body>
-    <!-- Переключатель тем -->
-    <div class="theme-switcher">
-        <button class="theme-btn active" data-theme="purple">🟣</button>
-        <button class="theme-btn" data-theme="dark">⚫</button>
-        <button class="theme-btn" data-theme="neon">💚</button>
-        <button class="theme-btn" data-theme="retro">🌊</button>
-        <button class="theme-btn" data-theme="minimal">⚪</button>
+  <main class="container section">
+    <div class="glass mb-5 reveal text-center">
+      <h1 class="mb-2">Премиальный каталог</h1>
+      <p class="lead mb-0">Избранные товары высочайшего качества — для тех, кто ценит лучшее</p>
     </div>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand" href="index.html">💎 Мой Сайт</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="products.html">Товары</a></li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-
-    <!-- Контент -->
-    <main class="py-5">
-        <div class="container">
-            <h1 class="page-title text-center mb-3">Каталог товаров</h1>
-            <p class="page-subtitle text-center mb-5">Лучшие предложения для вас</p>
-
-            <!-- Поиск -->
-            <div class="row justify-content-center mb-4">
-                <div class="col-lg-8">
-                    <input type="text" id="searchInput" class="form-control search-input" 
-                           placeholder="🔍 Поиск товаров...">
-                </div>
-            </div>
-
-            <!-- Фильтры -->
-            <div class="text-center mb-5">
-                <button class="filter-btn active m-2" data-category="all">Все товары</button>
-                <button class="filter-btn m-2" data-category="electronics">📱 Электроника</button>
-                <button class="filter-btn m-2" data-category="clothing">👕 Одежда</button>
-                <button class="filter-btn m-2" data-category="home">🏠 Дом</button>
-                <button class="filter-btn m-2" data-category="sports">⚽ Спорт</button>
-            </div>
-
-            <!-- Товары -->
-            <div class="row g-4" id="productsGrid">
-                <div class="col-lg-4 col-md-6 product-item" data-category="electronics" data-name="Смартфон">
-                    <div class="product-card">
-                        <div class="product-icon">📱</div>
-                        <h3 class="product-title">Смартфон Galaxy Pro</h3>
-                        <p class="product-description">Флагманский смартфон с отличной камерой</p>
-                        <div class="product-price">45 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="electronics" data-name="Ноутбук">
-                    <div class="product-card">
-                        <div class="product-icon">💻</div>
-                        <h3 class="product-title">Ноутбук UltraBook</h3>
-                        <p class="product-description">Легкий и мощный ноутбук для работы</p>
-                        <div class="product-price">89 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="electronics" data-name="Наушники">
-                    <div class="product-card">
-                        <div class="product-icon">🎧</div>
-                        <h3 class="product-title">Наушники Wireless</h3>
-                        <p class="product-description">С шумоподавлением и чистым звуком</p>
-                        <div class="product-price">12 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="clothing" data-name="Футболка">
-                    <div class="product-card">
-                        <div class="product-icon">👕</div>
-                        <h3 class="product-title">Футболка Premium</h3>
-                        <p class="product-description">Натуральный хлопок премиум-класса</p>
-                        <div class="product-price">2 490 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="clothing" data-name="Джинсы">
-                    <div class="product-card">
-                        <div class="product-icon">👖</div>
-                        <h3 class="product-title">Джинсы Classic</h3>
-                        <p class="product-description">Классические джинсы прямого кроя</p>
-                        <div class="product-price">4 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="clothing" data-name="Куртка">
-                    <div class="product-card">
-                        <div class="product-icon">🧥</div>
-                        <h3 class="product-title">Куртка Winter Pro</h3>
-                        <p class="product-description">Теплая зимняя куртка</p>
-                        <div class="product-price">8 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="home" data-name="Кофемашина">
-                    <div class="product-card">
-                        <div class="product-icon">☕</div>
-                        <h3 class="product-title">Кофемашина Deluxe</h3>
-                        <p class="product-description">Автоматическая кофемашина премиум</p>
-                        <div class="product-price">25 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="home" data-name="Кресло">
-                    <div class="product-card">
-                        <div class="product-icon">🪑</div>
-                        <h3 class="product-title">Кресло Comfort</h3>
-                        <p class="product-description">Эргономичное офисное кресло</p>
-                        <div class="product-price">15 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="sports" data-name="Кроссовки">
-                    <div class="product-card">
-                        <div class="product-icon">👟</div>
-                        <h3 class="product-title">Кроссовки Runner</h3>
-                        <p class="product-description">Профессиональные беговые кроссовки</p>
-                        <div class="product-price">7 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-6 product-item" data-category="sports" data-name="Гантели">
-                    <div class="product-card">
-                        <div class="product-icon">🏋️</div>
-                        <h3 class="product-title">Гантели FitnessPro</h3>
-                        <p class="product-description">Разборные гантели для тренировок</p>
-                        <div class="product-price">12 990 ₽</div>
-                        <button class="btn product-btn">В корзину 🛒</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Доставка -->
-            <div class="row g-4 mt-5">
-                <div class="col-md-3 col-sm-6">
-                    <div class="delivery-card">
-                        <div class="delivery-icon">🚚</div>
-                        <h3 class="delivery-title-small">Быстрая доставка</h3>
-                        <p>1-2 дня по городу</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="delivery-card">
-                        <div class="delivery-icon">📦</div>
-                        <h3 class="delivery-title-small">Бесплатно от 3000₽</h3>
-                        <p>Выгодные условия</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="delivery-card">
-                        <div class="delivery-icon">🔄</div>
-                        <h3 class="delivery-title-small">Возврат 14 дней</h3>
-                        <p>Без лишних вопросов</p>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="delivery-card">
-                        <div class="delivery-icon">✅</div>
-                        <h3 class="delivery-title-small">Гарантия</h3>
-                        <p>От производителя</p>
-                    </div>
-                </div>
-            </div>
+    <div class="row g-3 align-items-center mb-5">
+      <div class="col-12 col-md-6">
+        <input id="searchInput" class="form-control search-input w-100" placeholder="🔍 Поиск по названию товара">
+      </div>
+      <div class="col-12 col-md-6">
+        <div class="d-flex flex-wrap gap-2 justify-content-md-end">
+          <button class="filter-btn active" data-category="all">Все</button>
+          <button class="filter-btn" data-category="electronics">📱</button>
+          <button class="filter-btn" data-category="clothing">👕</button>
+          <button class="filter-btn" data-category="home">🏠</button>
+          <button class="filter-btn" data-category="sports">⚽</button>
         </div>
-    </main>
+      </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container text-center">
-            <p>&copy; 2025 Фролов Кирилл Иванович ❤️</p>
+    <div class="row g-4 mb-5" id="productsGrid">
+      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Смартфон Galaxy Pro" data-price="45990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">📱</div>
+          </div>
+          <div class="p-4">
+            <h5>Смартфон Galaxy Pro</h5>
+            <p class="text-muted mb-3">Флагманская камера 108MP, процессор последнего поколения и автономность 2 дня.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">45 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Ноутбук UltraBook" data-price="89990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">💻</div>
+          </div>
+          <div class="p-4">
+            <h5>Ноутбук UltraBook Pro</h5>
+            <p class="text-muted mb-3">Сверхлёгкий алюминиевый корпус, 16GB RAM, SSD 512GB и дисплей Retina.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">89 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Наушники" data-price="12990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">🎧</div>
+          </div>
+          <div class="p-4">
+            <h5>Наушники AirPods Max</h5>
+            <p class="text-muted mb-3">Активное шумоподавление, пространственный звук и 20 часов автономности.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">12 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Футболка" data-price="2490">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">👕</div>
+          </div>
+          <div class="p-4">
+            <h5>Футболка Premium Cotton</h5>
+            <p class="text-muted mb-3">100% органический хлопок, дышащая ткань и минималистичный крой.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">2 490 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Джинсы" data-price="4990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">👖</div>
+          </div>
+          <div class="p-4">
+            <h5>Джинсы Slim Fit</h5>
+            <p class="text-muted mb-3">Эластичный деним, классический крой и устойчивость к износу.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">4 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Куртка" data-price="8990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">🧥</div>
+          </div>
+          <div class="p-4">
+            <h5>Куртка Winter Shield</h5>
+            <p class="text-muted mb-3">Водонепроницаемая мембрана, пуховый утеплитель и стильный дизайн.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">8 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="home" data-name="Кофемашина" data-price="25990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">☕</div>
+          </div>
+          <div class="p-4">
+            <h5>Кофемашина Barista Pro</h5>
+            <p class="text-muted mb-3">Автоматическая система, встроенная кофемолка и 15 рецептов напитков.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">25 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="home" data-name="Кресло" data-price="15990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">🪑</div>
+          </div>
+          <div class="p-4">
+            <h5>Кресло Ergo Comfort</h5>
+            <p class="text-muted mb-3">Ортопедическая спинка, регулируемые подлокотники и поясничная поддержка.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">15 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="sports" data-name="Кроссовки" data-price="7990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">👟</div>
+          </div>
+          <div class="p-4">
+            <h5>Кроссовки Marathon Elite</h5>
+            <p class="text-muted mb-3">Технология амортизации Boost, дышащий верх и профессиональная поддержка стопы.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">7 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="col-md-6 col-lg-4 product-item" data-category="sports" data-name="Гантели" data-price="12990">
+        <article class="product-card reveal">
+          <div class="prod-media">
+            <div class="prod-emoji">🏋️</div>
+          </div>
+          <div class="p-4">
+            <h5>Гантели Adjustable Set</h5>
+            <p class="text-muted mb-3">Разборные гантели 2.5-20 кг, компактное хранение и быстрая регулировка веса.</p>
+            <div class="d-flex align-items-center justify-content-between">
+              <span class="price">12 990 ₽</span>
+              <button class="btn product-btn">В корзину</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="no-results text-center py-5 glass" id="noResults" style="display:none;">
+      <div style="font-size:72px;opacity:.6;margin-bottom:1rem">🔍</div>
+      <h3 class="mb-2">Товары не найдены</h3>
+      <p class="text-muted mb-3">Попробуйте изменить критерии поиска или сбросьте фильтры</p>
+      <button class="btn cta-btn cta-primary" onclick="resetFilters()">Сбросить фильтры</button>
+    </div>
+
+    <section class="section">
+      <h2 class="text-center mb-5">Условия покупки</h2>
+      <div class="row g-4">
+        <div class="col-md-3 col-sm-6">
+          <div class="delivery-card reveal text-center">
+            <div class="delivery-icon">🚚</div>
+            <h5>Быстрая доставка</h5>
+            <p class="text-muted mb-0">1–2 дня по городу<br>до 5 дней по РФ</p>
+          </div>
         </div>
-    </footer>
+        <div class="col-md-3 col-sm-6">
+          <div class="delivery-card reveal text-center">
+            <div class="delivery-icon">📦</div>
+            <h5>Бесплатно от 3000₽</h5>
+            <p class="text-muted mb-0">Выгодные условия<br>без минимума</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="delivery-card reveal text-center">
+            <div class="delivery-icon">🔄</div>
+            <h5>Возврат 14 дней</h5>
+            <p class="text-muted mb-0">Без объяснения<br>причин</p>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+          <div class="delivery-card reveal text-center">
+            <div class="delivery-icon">✅</div>
+            <h5>Гарантия качества</h5>
+            <p class="text-muted mb-0">Официальная<br>поддержка</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Переключение тем
-        const themeButtons = document.querySelectorAll('.theme-btn');
-        const body = document.body;
-        
-        const savedTheme = localStorage.getItem('theme') || 'purple';
-        body.setAttribute('data-theme', savedTheme);
-        updateActiveButton(savedTheme);
+  <footer class="container py-4">
+    <div class="text-center text-muted">© 2025 Наша компания. Все права защищены.</div>
+  </footer>
 
-        themeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const theme = btn.dataset.theme;
-                body.setAttribute('data-theme', theme);
-                localStorage.setItem('theme', theme);
-                updateActiveButton(theme);
-            });
-        });
-
-        function updateActiveButton(theme) {
-            themeButtons.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
-            });
-        }
-
-        // Фильтрация
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const products = document.querySelectorAll('.product-item');
-        const searchInput = document.getElementById('searchInput');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const category = btn.dataset.category;
-                
-                products.forEach(product => {
-                    if (category === 'all' || product.dataset.category === category) {
-                        product.classList.remove('hidden');
-                    } else {
-                        product.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // Поиск
-        searchInput.addEventListener('input', (e) => {
-            const search = e.target.value.toLowerCase();
-            products.forEach(product => {
-                const name = product.dataset.name.toLowerCase();
-                if (name.includes(search)) {
-                    product.classList.remove('hidden');
-                } else {
-                    product.classList.add('hidden');
-                }
-            });
-        });
-
-        // Добавление в корзину
-        document.querySelectorAll('.product-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const original = this.textContent;
-                this.textContent = '✓ Добавлено!';
-                this.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-                setTimeout(() => {
-                    this.textContent = original;
-                    this.style.background = '';
-                }, 2000);
-            });
-        });
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../script.js"></script>
+  <script src="../products.js"></script>
 </body>
 </html>
