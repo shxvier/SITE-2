@@ -3,25 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Контакты — Связаться с нами</title>
+  <title>Контакты — TechStore</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../style/styles.css">
 </head>
-<body>
+<body data-theme="dark">
   <div class="nav-wrap">
     <nav class="navbar navbar-expand-lg container py-2">
-      <a class="navbar-brand fw-bold text-white" href="../index.html">Brand</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand" href="../index.html">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">TechStore</span>
+      </a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link" href="products.html">Товары</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+          <li class="nav-item"><a class="nav-link" href="products.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">О магазине</a></li>
           <li class="nav-item"><a class="nav-link active" href="contacts.html">Контакты</a></li>
           <li class="nav-item ms-lg-3">
+            <button class="cart-btn" onclick="toggleCart()">
+              🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
             <div class="theme-switch">
-              <button data-theme="neo" aria-label="Неоновая" class="active">💠</button>
-              <button data-theme="dark" aria-label="Тёмная">🌑</button>
+              <button data-theme="dark" aria-label="Тёмная" class="active">🌑</button>
+              <button data-theme="neo" aria-label="Неоновая">💠</button>
               <button data-theme="light" aria-label="Светлая">🌤️</button>
             </div>
           </li>
@@ -30,149 +40,293 @@
     </nav>
   </div>
 
+  <!-- КОРЗИНА -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Корзина покупок</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cartItems">
+      <div class="cart-empty">
+        <div style="font-size:64px;opacity:.5;margin-bottom:1rem">🛒</div>
+        <p class="fw-bold">Корзина пуста</p>
+        <small class="text-muted">Добавьте товары из каталога</small>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="total-label">Итого:</span>
+        <span class="total-price" id="cartTotal">0 ₽</span>
+      </div>
+      <button class="btn cta-btn cta-primary w-100 mb-2" onclick="checkout()">Оформить заказ</button>
+      <button class="btn cta-btn cta-ghost w-100" onclick="clearCart()">Очистить корзину</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
   <main class="container section">
-    <div class="glass p-4 mb-4 reveal text-center">
-      <h1 class="mb-1">Свяжитесь с нами</h1>
-      <p class="lead mb-0">Ответим в течение 24 часов в рабочее время</p>
+    <!-- HERO -->
+    <div class="contacts-hero reveal text-center">
+      <div class="section-subtitle">СВЯЖИТЕСЬ С НАМИ</div>
+      <h1 class="section-title mb-3">Мы всегда на связи</h1>
+      <p class="contacts-lead">Ответим на все вопросы в течение 15 минут. Работаем для вас 24/7 без выходных.</p>
     </div>
 
-    <section class="row g-4 mb-4">
-      <div class="col-md-3 col-sm-6">
-        <div class="contact-card glass p-4 reveal text-center h-100">
-          <div class="contact-icon" style="font-size:42px">📧</div>
-          <h5>Email</h5>
-          <a class="contact-link d-block" href="mailto:shxvier@gmail.com">shxvier@gmail.com</a>
-          <a class="contact-link d-block" href="mailto:info@ourcompany.ru">info@ourcompany.ru</a>
-          <small class="text-muted">Ответ в течение суток</small>
+    <!-- КОНТАКТНЫЕ КАРТОЧКИ -->
+    <section class="contact-cards-section reveal">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📞</div>
+            <h5 class="contact-info-title">Телефон</h5>
+            <p class="contact-info-text"><a href="tel:+78005553535">8 800 555-35-35</a></p>
+            <p class="contact-info-text"><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+            <small class="contact-info-note">Бесплатно по России</small>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="contact-card glass p-4 reveal text-center h-100">
-          <div class="contact-icon" style="font-size:42px">📱</div>
-          <h5>Телефон</h5>
-          <a class="contact-link d-block" href="tel:+79991234567">+7 (999) 123-45-67</a>
-          <a class="contact-link d-block" href="tel:+78005553535">+7 (800) 555-35-35</a>
-          <small class="text-muted">Пн–Пт: 9:00—18:00 МСК</small>
+        <div class="col-lg-3 col-md-6">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📧</div>
+            <h5 class="contact-info-title">Email</h5>
+            <p class="contact-info-text"><a href="mailto:info@techstore.ru">info@techstore.ru</a></p>
+            <p class="contact-info-text"><a href="mailto:support@techstore.ru">support@techstore.ru</a></p>
+            <small class="contact-info-note">Ответ в течение 1 часа</small>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="contact-card glass p-4 reveal text-center h-100">
-          <div class="contact-icon" style="font-size:42px">📍</div>
-          <h5>Адрес</h5>
-          <p class="mb-1">Москва, ул. Университетская, 1</p>
-          <small class="text-muted">Офис 203, 2 этаж</small>
+        <div class="col-lg-3 col-md-6">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">📍</div>
+            <h5 class="contact-info-title">Адрес</h5>
+            <p class="contact-info-text">Москва, ул. Тверская, 1</p>
+            <p class="contact-info-text">Офис 203, 2 этаж</p>
+            <small class="contact-info-note">Пн-Вс: 10:00 — 22:00</small>
+          </div>
         </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="contact-card glass p-4 reveal text-center h-100">
-          <div class="contact-icon" style="font-size:42px">🌐</div>
-          <h5>Соцсети</h5>
-          <a class="contact-link d-block" href="https://github.com/shxvier" target="_blank">@shxvier</a>
-          <a class="contact-link d-block" href="#" target="_blank">Telegram</a>
-          <small class="text-muted">Новости и обновления</small>
+        <div class="col-lg-3 col-md-6">
+          <div class="contact-info-card">
+            <div class="contact-info-icon">💬</div>
+            <h5 class="contact-info-title">Мессенджеры</h5>
+            <p class="contact-info-text"><a href="#">Telegram: @techstore</a></p>
+            <p class="contact-info-text"><a href="#">WhatsApp</a></p>
+            <small class="contact-info-note">Онлайн 24/7</small>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="glass p-4 reveal mb-4">
-      <h2 class="mb-3">Напишите нам</h2>
-      <form id="contactForm" class="contact-form">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <label class="form-label">Имя *</label>
-            <input id="name" class="form-control" required placeholder="Иван Иванов">
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Email *</label>
-            <input id="email" type="email" class="form-control" required placeholder="ivan@example.com">
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Телефон</label>
-            <input id="phone" type="tel" class="form-control" placeholder="+7 (999) 123-45-67">
-          </div>
-          <div class="col-md-6">
-            <label class="form-label">Тема *</label>
-            <select id="subject" class="form-select" required>
-              <option value="">Выберите тему</option>
-              <option value="general">Общие вопросы</option>
-              <option value="products">Вопросы о товарах</option>
-              <option value="support">Техническая поддержка</option>
-              <option value="partnership">Сотрудничество</option>
-              <option value="complaint">Жалоба</option>
-            </select>
-          </div>
-          <div class="col-12">
-            <label class="form-label">Сообщение *</label>
-            <textarea id="message" rows="6" class="form-control" required placeholder="Ваше сообщение..."></textarea>
-            <div class="text-end small text-muted mt-1"><span id="charCount">0</span> / 1000</div>
-          </div>
-          <div class="col-12 d-flex align-items-center gap-2">
-            <input id="agree" type="checkbox" required>
-            <label for="agree" class="mb-0">Согласен с <a href="#" class="privacy-link">политикой конфиденциальности</a> *</label>
-          </div>
-          <div class="col-12 d-flex flex-wrap gap-2">
-            <button class="btn cta-btn cta-primary" type="submit">Отправить сообщение</button>
-            <button class="btn btn-outline-light" type="reset">Очистить</button>
+    <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+    <section class="contact-form-section reveal">
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="section-subtitle">НАПИШИТЕ НАМ</div>
+          <h2 class="section-title mb-3">Получите консультацию</h2>
+          <p class="contact-form-desc">Оставьте заявку, и наш менеджер свяжется с вами в течение 15 минут. Поможем выбрать идеальное устройство под ваши задачи и бюджет.</p>
+          <div class="contact-benefits">
+            <div class="contact-benefit-item">
+              <div class="benefit-check">✓</div>
+              <div class="benefit-content">
+                <h6 class="benefit-title-small">Быстрый ответ</h6>
+                <p class="benefit-text-small">Перезвоним в течение 15 минут</p>
+              </div>
+            </div>
+            <div class="contact-benefit-item">
+              <div class="benefit-check">✓</div>
+              <div class="benefit-content">
+                <h6 class="benefit-title-small">Экспертная консультация</h6>
+                <p class="benefit-text-small">Поможем выбрать лучший вариант</p>
+              </div>
+            </div>
+            <div class="contact-benefit-item">
+              <div class="benefit-check">✓</div>
+              <div class="benefit-content">
+                <h6 class="benefit-title-small">Специальное предложение</h6>
+                <p class="benefit-text-small">Персональная скидка 5%</p>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-      <div id="formSuccess" class="glass p-4 mt-3" style="display:none">
-        <div style="font-size:42px">✅</div>
-        <h3 class="mb-1">Спасибо!</h3>
-        <p class="mb-0">Сообщение отправлено. Мы свяжемся с вами.</p>
+        <div class="col-lg-6">
+          <form class="contact-form-new" id="contactForm">
+            <div class="form-group-new mb-3">
+              <label class="form-label-new">Ваше имя *</label>
+              <input type="text" class="form-input-new" id="name" placeholder="Иван Иванов" required>
+            </div>
+            <div class="form-group-new mb-3">
+              <label class="form-label-new">Телефон *</label>
+              <input type="tel" class="form-input-new" id="phone" placeholder="+7 (999) 123-45-67" required>
+            </div>
+            <div class="form-group-new mb-3">
+              <label class="form-label-new">Email</label>
+              <input type="email" class="form-input-new" id="email" placeholder="ivan@example.com">
+            </div>
+            <div class="form-group-new mb-3">
+              <label class="form-label-new">Что вас интересует? *</label>
+              <select class="form-input-new" id="interest" required>
+                <option value="">Выберите категорию</option>
+                <option value="smartphones">Смартфоны</option>
+                <option value="laptops">Ноутбуки</option>
+                <option value="audio">Аудио</option>
+                <option value="accessories">Аксессуары</option>
+                <option value="other">Другое</option>
+              </select>
+            </div>
+            <div class="form-group-new mb-4">
+              <label class="form-label-new">Ваш вопрос</label>
+              <textarea class="form-input-new" id="message" rows="4" placeholder="Расскажите подробнее о ваших требованиях..."></textarea>
+              <div class="char-counter"><span id="charCount">0</span> / 500</div>
+            </div>
+            <div class="form-check mb-4">
+              <input type="checkbox" class="form-check-input" id="agree" required>
+              <label class="form-check-label" for="agree">
+                Согласен с <a href="#" class="privacy-link-new">политикой конфиденциальности</a>
+              </label>
+            </div>
+            <button type="submit" class="btn cta-btn cta-primary w-100">Отправить заявку</button>
+          </form>
+          <div class="form-success" id="formSuccess" style="display:none;">
+            <div class="success-icon">✓</div>
+            <h4 class="success-title">Спасибо за обращение!</h4>
+            <p class="success-text">Мы получили вашу заявку и свяжемся с вами в ближайшее время.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="glass p-4 reveal">
-      <h2 class="mb-3">FAQ</h2>
-      <div class="accordion" id="faq">
-        <div class="accordion-item glass">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f1">Как быстро вы отвечаете?</button>
-          </h2>
-          <div id="f1" class="accordion-collapse collapse" data-bs-parent="#faq">
-            <div class="accordion-body text-muted">Обычно в течение 24 часов в рабочие дни. Срочные вопросы — по телефону.</div>
-          </div>
-        </div>
-        <div class="accordion-item glass mt-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f2">Можно встретиться лично?</button>
-          </h2>
-          <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq">
-            <div class="accordion-body text-muted">Да, по предварительной договорённости в нашем офисе.</div>
-          </div>
-        </div>
-        <div class="accordion-item glass mt-2">
-          <h2 class="accordion-header">
-            <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#f3">График звонков?</button>
-          </h2>
-          <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faq">
-            <div class="accordion-body text-muted">Пн–Пт: 9:00—18:00 МСК. В это время ответ быстрее всего.</div>
+    <!-- КАРТА (заглушка) -->
+    <section class="map-section reveal">
+      <div class="section-subtitle text-center">НАШИ МАГАЗИНЫ</div>
+      <h2 class="section-title text-center mb-5">Приходите к нам</h2>
+      <div class="map-placeholder">
+        <div class="map-marker">📍</div>
+        <p class="map-address">Москва, ул. Тверская, 1</p>
+        <p class="map-hint">Метро: Тверская, Пушкинская (5 мин пешком)</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section reveal">
+      <div class="section-subtitle text-center">ЧАСТЫЕ ВОПРОСЫ</div>
+      <h2 class="section-title text-center mb-5">Ответы на популярные вопросы</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item-new">
+              <button class="accordion-button-new" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                Как быстро вы отвечаете на обращения?
+              </button>
+              <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                <div class="accordion-body-new">
+                  <p>Мы стараемся отвечать в течение 15 минут в рабочее время (10:00-22:00 МСК). По срочным вопросам звоните по телефону — консультанты на связи 24/7.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item-new">
+              <button class="accordion-button-new collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Можно ли приехать в магазин без записи?
+              </button>
+              <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body-new">
+                  <p>Да, конечно! Наши магазины работают без предварительной записи. Однако если хотите получить персональную консультацию, рекомендуем записаться заранее.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item-new">
+              <button class="accordion-button-new collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Какие способы оплаты вы принимаете?
+              </button>
+              <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body-new">
+                  <p>Мы принимаем все популярные способы: наличные, банковские карты, Apple Pay, Google Pay, безналичный расчёт. Также доступна рассрочка 0-0-24 и кредит.</p>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item-new">
+              <button class="accordion-button-new collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                Есть ли доставка в регионы?
+              </button>
+              <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                <div class="accordion-body-new">
+                  <p>Да, доставляем по всей России. Москва и МО — 1-2 дня, регионы — 3-5 дней. Бесплатная доставка при заказе от 5000₽.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="container py-5">
-    <div class="text-center text-muted">© 2025 Журавлев Алексей Игоревич</div>
+  <footer class="footer-new">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4">
+          <div class="footer-brand">
+            <span class="brand-icon">⚡</span>
+            <span class="brand-text">TechStore</span>
+          </div>
+          <p class="footer-desc">Ваш надёжный партнёр в мире технологий с 2015 года.</p>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h6 class="footer-heading">Контакты</h6>
+          <ul class="footer-contacts">
+            <li>📞 <a href="tel:+78005553535">8 800 555-35-35</a></li>
+            <li>📧 <a href="mailto:info@techstore.ru">info@techstore.ru</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h6 class="footer-heading">Навигация</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="products.html">Каталог</a></li>
+            <li><a href="about.html">О магазине</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 TechStore. Все права защищены.</p>
+      </div>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../script.js"></script>
+  <script src="../cart.js"></script>
   <script>
-    // Счётчик символов и валидация
-    const msg=document.getElementById('message'); const cc=document.getElementById('charCount');
-    if(msg && cc){ msg.maxLength=1000; msg.addEventListener('input',()=>cc.textContent=msg.value.length.toString()); }
-    const form=document.getElementById('contactForm'); const ok=document.getElementById('formSuccess');
-    if(form){ form.addEventListener('submit',e=>{ e.preventDefault();
-      const need=['name','email','subject','message','agree'].every(id=>document.getElementById(id).value||document.getElementById(id).checked);
-      if(!need) return alert('Заполните обязательные поля.');
-      const btn=form.querySelector('button[type="submit"]'); const prev=btn.innerHTML; btn.innerHTML='Отправка... ⏳'; btn.disabled=true;
-      setTimeout(()=>{ form.reset(); cc.textContent='0'; ok.style.display='block';
-        setTimeout(()=>{ ok.style.display='none'; btn.innerHTML=prev; btn.disabled=false; }, 4000);
-      }, 1200);
-    });}
+    // Счётчик символов
+    const msgArea = document.getElementById('message');
+    const charCount = document.getElementById('charCount');
+    if (msgArea && charCount) {
+      msgArea.maxLength = 500;
+      msgArea.addEventListener('input', function() {
+        charCount.textContent = this.value.length;
+      });
+    }
+
+    // Отправка формы
+    const form = document.getElementById('contactForm');
+    const success = document.getElementById('formSuccess');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('button[type="submit"]');
+        const originalText = btn.textContent;
+        btn.textContent = 'Отправка...';
+        btn.disabled = true;
+        
+        setTimeout(function() {
+          form.style.display = 'none';
+          success.style.display = 'block';
+          setTimeout(function() {
+            form.reset();
+            charCount.textContent = '0';
+            form.style.display = 'block';
+            success.style.display = 'none';
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 5000);
+        }, 1500);
+      });
+    }
   </script>
 </body>
 </html>
