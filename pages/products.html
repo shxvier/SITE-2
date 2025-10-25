@@ -3,22 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Каталог товаров</title>
+  <title>Каталог товаров — TechStore</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body data-theme="dark">
   <div class="nav-wrap">
     <nav class="navbar navbar-expand-lg container py-2">
-      <a class="navbar-brand" href="../index.html">Brand</a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"><span class="navbar-toggler-icon"></span></button>
+      <a class="navbar-brand" href="../index.html">
+        <span class="brand-icon">⚡</span>
+        <span class="brand-text">TechStore</span>
+      </a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
           <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-          <li class="nav-item"><a class="nav-link active" href="products.html">Товары</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+          <li class="nav-item"><a class="nav-link active" href="products.html">Каталог</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">О магазине</a></li>
           <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
           <li class="nav-item ms-lg-3">
+            <button class="cart-btn" onclick="toggleCart()">
+              🛒 <span class="cart-badge" id="cartCount">0</span>
+            </button>
+          </li>
+          <li class="nav-item ms-lg-2">
             <div class="theme-switch">
               <button data-theme="dark" aria-label="Тёмная" class="active">🌑</button>
               <button data-theme="neo" aria-label="Неоновая">💠</button>
@@ -30,237 +40,511 @@
     </nav>
   </div>
 
+  <!-- КОРЗИНА -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Корзина покупок</h3>
+      <button class="cart-close" onclick="toggleCart()">✕</button>
+    </div>
+    <div class="cart-body" id="cartItems">
+      <div class="cart-empty">
+        <div style="font-size:64px;opacity:.5;margin-bottom:1rem">🛒</div>
+        <p class="fw-bold">Корзина пуста</p>
+        <small class="text-muted">Добавьте товары из каталога</small>
+      </div>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span class="total-label">Итого:</span>
+        <span class="total-price" id="cartTotal">0 ₽</span>
+      </div>
+      <button class="btn cta-btn cta-primary w-100 mb-2" onclick="checkout()">Оформить заказ</button>
+      <button class="btn cta-btn cta-ghost w-100" onclick="clearCart()">Очистить корзину</button>
+    </div>
+  </div>
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
   <main class="container section">
-    <div class="glass mb-5 reveal text-center">
-      <h1 class="mb-2">Премиальный каталог</h1>
-      <p class="lead mb-0">Избранные товары высочайшего качества — для тех, кто ценит лучшее</p>
-    </div>
-
-    <div class="row g-3 align-items-center mb-5">
-      <div class="col-12 col-md-6">
-        <input id="searchInput" class="form-control search-input w-100" placeholder="🔍 Поиск по названию товара">
-      </div>
-      <div class="col-12 col-md-6">
-        <div class="d-flex flex-wrap gap-2 justify-content-md-end">
-          <button class="filter-btn active" data-category="all">Все</button>
-          <button class="filter-btn" data-category="electronics">📱</button>
-          <button class="filter-btn" data-category="clothing">👕</button>
-          <button class="filter-btn" data-category="home">🏠</button>
-          <button class="filter-btn" data-category="sports">⚽</button>
+    <div class="catalog-header reveal">
+      <div class="row align-items-end">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="section-subtitle">КАТАЛОГ</div>
+          <h1 class="section-title mb-2">Премиальная электроника</h1>
+          <p class="section-desc">Более 500 товаров от ведущих мировых брендов. Официальная гарантия и быстрая доставка по всей России.</p>
+        </div>
+        <div class="col-lg-6">
+          <div class="catalog-stats">
+            <div class="catalog-stat">
+              <div class="catalog-stat-number" id="totalProducts">15</div>
+              <div class="catalog-stat-label">Товаров в наличии</div>
+            </div>
+            <div class="catalog-stat">
+              <div class="catalog-stat-number">5</div>
+              <div class="catalog-stat-label">Категорий</div>
+            </div>
+            <div class="catalog-stat">
+              <div class="catalog-stat-number">Бесплатно</div>
+              <div class="catalog-stat-label">Доставка от 5000₽</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="row g-4 mb-5" id="productsGrid">
-      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Смартфон Galaxy Pro" data-price="45990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">📱</div>
+    <!-- ФИЛЬТРЫ И ПОИСК -->
+    <section class="filters-section reveal">
+      <div class="row g-3 align-items-center">
+        <div class="col-lg-5">
+          <div class="search-wrapper">
+            <input id="searchInput" class="search-input-new" placeholder="🔍 Поиск по названию или бренду...">
           </div>
-          <div class="p-4">
-            <h5>Смартфон Galaxy Pro</h5>
-            <p class="text-muted mb-3">Флагманская камера 108MP, процессор последнего поколения и автономность 2 дня.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">45 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
+        </div>
+        <div class="col-lg-7">
+          <div class="filters-wrapper">
+            <button class="filter-btn-new active" data-category="all">
+              <span class="filter-icon">📦</span>
+              <span>Все товары</span>
+            </button>
+            <button class="filter-btn-new" data-category="smartphones">
+              <span class="filter-icon">📱</span>
+              <span>Смартфоны</span>
+            </button>
+            <button class="filter-btn-new" data-category="laptops">
+              <span class="filter-icon">💻</span>
+              <span>Ноутбуки</span>
+            </button>
+            <button class="filter-btn-new" data-category="audio">
+              <span class="filter-icon">🎧</span>
+              <span>Аудио</span>
+            </button>
+            <button class="filter-btn-new" data-category="accessories">
+              <span class="filter-icon">⌚</span>
+              <span>Аксессуары</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-4">
+          <select id="sortSelect" class="sort-select-new">
+            <option value="default">Сортировка: по умолчанию</option>
+            <option value="price-asc">Цена: по возрастанию</option>
+            <option value="price-desc">Цена: по убыванию</option>
+            <option value="name-asc">Название: А-Я</option>
+            <option value="name-desc">Название: Я-А</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- ТОВАРЫ -->
+    <section class="products-grid-section">
+      <div class="row g-4" id="productsGrid">
+        
+        <!-- СМАРТФОНЫ -->
+        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="iPhone 15 Pro Max" data-price="119990">
+          <article class="product-card-new reveal">
+            <div class="product-badge-new hot">🔥 ХИТ</div>
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1592286927505-b0527abb4bcf?w=600&h=400&fit=crop" alt="iPhone 15 Pro Max" class="product-image-new">
             </div>
-          </div>
-        </article>
+            <div class="product-content-new">
+              <div class="product-category">Смартфоны • Apple</div>
+              <h5 class="product-name-new">iPhone 15 Pro Max</h5>
+              <p class="product-desc-new">Титановый корпус Natural, чип A17 Pro, камера 48MP с 5х оптическим зумом, ProMotion дисплей 120Hz.</p>
+              <div class="product-features">
+                <span class="feature-tag">256GB</span>
+                <span class="feature-tag">5G</span>
+                <span class="feature-tag">iOS 17</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-old">139 990 ₽</div>
+                  <div class="product-price-new">119 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(101, "iPhone 15 Pro Max", 119990, "https://images.unsplash.com/photo-1592286927505-b0527abb4bcf?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="Samsung Galaxy S24 Ultra" data-price="109990">
+          <article class="product-card-new reveal">
+            <div class="product-badge-new new">✨ НОВИНКА</div>
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=600&h=400&fit=crop" alt="Samsung Galaxy S24 Ultra" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Смартфоны • Samsung</div>
+              <h5 class="product-name-new">Samsung Galaxy S24 Ultra</h5>
+              <p class="product-desc-new">Snapdragon 8 Gen 3, камера 200MP, S Pen, батарея 5000mAh с быстрой зарядкой 45W.</p>
+              <div class="product-features">
+                <span class="feature-tag">512GB</span>
+                <span class="feature-tag">AI</span>
+                <span class="feature-tag">S Pen</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">109 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(102, "Samsung Galaxy S24 Ultra", 109990, "https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="smartphones" data-name="Google Pixel 8 Pro" data-price="74990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=600&h=400&fit=crop" alt="Google Pixel 8 Pro" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Смартфоны • Google</div>
+              <h5 class="product-name-new">Google Pixel 8 Pro</h5>
+              <p class="product-desc-new">Чистый Android, лучшая камера с AI обработкой, Tensor G3, дисплей LTPO 120Hz.</p>
+              <div class="product-features">
+                <span class="feature-tag">256GB</span>
+                <span class="feature-tag">AI Photo</span>
+                <span class="feature-tag">Stock Android</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">74 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(103, "Google Pixel 8 Pro", 74990, "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- НОУТБУКИ -->
+        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="MacBook Pro 14 M3 Pro" data-price="189990">
+          <article class="product-card-new reveal">
+            <div class="product-badge-new hot">🔥 ХИТ</div>
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&h=400&fit=crop" alt="MacBook Pro 14" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Ноутбуки • Apple</div>
+              <h5 class="product-name-new">MacBook Pro 14" M3 Pro</h5>
+              <p class="product-desc-new">Чип M3 Pro, 18GB unified memory, SSD 512GB, Liquid Retina XDR дисплей, автономность до 18 часов.</p>
+              <div class="product-features">
+                <span class="feature-tag">M3 Pro</span>
+                <span class="feature-tag">18GB</span>
+                <span class="feature-tag">XDR</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">189 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(201, "MacBook Pro 14\" M3 Pro", 189990, "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="Dell XPS 15" data-price="149990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=600&h=400&fit=crop" alt="Dell XPS 15" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Ноутбуки • Dell</div>
+              <h5 class="product-name-new">Dell XPS 15 9530</h5>
+              <p class="product-desc-new">Intel Core i7-13700H, RTX 4060, 32GB RAM, 1TB SSD, дисплей OLED 3.5K HDR.</p>
+              <div class="product-features">
+                <span class="feature-tag">i7</span>
+                <span class="feature-tag">RTX 4060</span>
+                <span class="feature-tag">OLED</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">149 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(202, "Dell XPS 15 9530", 149990, "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="laptops" data-name="ASUS ROG Zephyrus G14" data-price="139990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=600&h=400&fit=crop" alt="ASUS ROG" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Ноутбуки • ASUS</div>
+              <h5 class="product-name-new">ASUS ROG Zephyrus G14</h5>
+              <p class="product-desc-new">AMD Ryzen 9 7940HS, RTX 4070, 32GB DDR5, 1TB NVMe, дисплей 165Hz QHD+.</p>
+              <div class="product-features">
+                <span class="feature-tag">Ryzen 9</span>
+                <span class="feature-tag">165Hz</span>
+                <span class="feature-tag">Gaming</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">139 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(203, "ASUS ROG Zephyrus G14", 139990, "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- АУДИО -->
+        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="Sony WH-1000XM5" data-price="34990">
+          <article class="product-card-new reveal">
+            <div class="product-badge-new new">✨ НОВИНКА</div>
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=400&fit=crop" alt="Sony WH-1000XM5" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аудио • Sony</div>
+              <h5 class="product-name-new">Sony WH-1000XM5</h5>
+              <p class="product-desc-new">Лучшее шумоподавление в классе, 30 часов автономности, LDAC, multipoint подключение.</p>
+              <div class="product-features">
+                <span class="feature-tag">ANC</span>
+                <span class="feature-tag">LDAC</span>
+                <span class="feature-tag">30ч</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">34 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(301, "Sony WH-1000XM5", 34990, "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="AirPods Pro 2" data-price="27990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=600&h=400&fit=crop" alt="AirPods Pro 2" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аудио • Apple</div>
+              <h5 class="product-name-new">AirPods Pro 2 (USB-C)</h5>
+              <p class="product-desc-new">Активное шумоподавление 2.0, пространственный звук с отслеживанием головы, MagSafe.</p>
+              <div class="product-features">
+                <span class="feature-tag">ANC 2.0</span>
+                <span class="feature-tag">Spatial</span>
+                <span class="feature-tag">USB-C</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">27 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(302, "AirPods Pro 2 (USB-C)", 27990, "https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="audio" data-name="Bose QuietComfort Ultra" data-price="39990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&h=400&fit=crop" alt="Bose QC Ultra" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аудио • Bose</div>
+              <h5 class="product-name-new">Bose QuietComfort Ultra</h5>
+              <p class="product-desc-new">Immersive Audio с пространственным звуком, премиальное ANC, 24 часа работы.</p>
+              <div class="product-features">
+                <span class="feature-tag">Immersive</span>
+                <span class="feature-tag">ANC</span>
+                <span class="feature-tag">24ч</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">39 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(303, "Bose QuietComfort Ultra", 39990, "https://images.unsplash.com/photo-1484704849700-f032a568e944?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- АКСЕССУАРЫ -->
+        <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-name="Apple Watch Series 9" data-price="44990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=600&h=400&fit=crop" alt="Apple Watch" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аксессуары • Apple</div>
+              <h5 class="product-name-new">Apple Watch Series 9</h5>
+              <p class="product-desc-new">Чип S9, Always-On Retina дисплей, датчики здоровья, автономность до 18 часов.</p>
+              <div class="product-features">
+                <span class="feature-tag">GPS</span>
+                <span class="feature-tag">ECG</span>
+                <span class="feature-tag">45mm</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">44 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(401, "Apple Watch Series 9", 44990, "https://images.unsplash.com/photo-1434494878577-86c23bcb06b9?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-name="iPad Pro 12.9 M2" data-price="129990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&h=400&fit=crop" alt="iPad Pro" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аксессуары • Apple</div>
+              <h5 class="product-name-new">iPad Pro 12.9" M2</h5>
+              <p class="product-desc-new">Чип M2, Liquid Retina XDR, поддержка Apple Pencil 2, Magic Keyboard.</p>
+              <div class="product-features">
+                <span class="feature-tag">M2</span>
+                <span class="feature-tag">XDR</span>
+                <span class="feature-tag">256GB</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">129 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(402, "iPad Pro 12.9\" M2", 129990, "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-lg-4 product-item" data-category="accessories" data-name="Samsung Galaxy Buds2 Pro" data-price="17990">
+          <article class="product-card-new reveal">
+            <div class="product-image-wrapper">
+              <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=600&h=400&fit=crop" alt="Galaxy Buds2 Pro" class="product-image-new">
+            </div>
+            <div class="product-content-new">
+              <div class="product-category">Аксессуары • Samsung</div>
+              <h5 class="product-name-new">Samsung Galaxy Buds2 Pro</h5>
+              <p class="product-desc-new">Интеллектуальное ANC, 360 Audio, Hi-Fi звук, водозащита IPX7.</p>
+              <div class="product-features">
+                <span class="feature-tag">ANC</span>
+                <span class="feature-tag">360 Audio</span>
+                <span class="feature-tag">IPX7</span>
+              </div>
+              <div class="product-footer-new">
+                <div>
+                  <div class="product-price-new">17 990 ₽</div>
+                </div>
+                <button class="btn-add-cart" onclick='addToCart(403, "Samsung Galaxy Buds2 Pro", 17990, "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=200&h=200&fit=crop")'>
+                  <span>Купить</span><span>→</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+
       </div>
 
-      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Ноутбук UltraBook" data-price="89990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">💻</div>
-          </div>
-          <div class="p-4">
-            <h5>Ноутбук UltraBook Pro</h5>
-            <p class="text-muted mb-3">Сверхлёгкий алюминиевый корпус, 16GB RAM, SSD 512GB и дисплей Retina.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">89 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
+      <!-- Пустой результат -->
+      <div class="no-results-new" id="noResults" style="display:none;">
+        <div class="no-results-icon">🔍</div>
+        <h3>Товары не найдены</h3>
+        <p class="text-muted">Попробуйте изменить критерии поиска или сбросьте фильтры</p>
+        <button class="btn cta-btn cta-primary" onclick="resetFilters()">Сбросить фильтры</button>
       </div>
+    </section>
 
-      <div class="col-md-6 col-lg-4 product-item" data-category="electronics" data-name="Наушники" data-price="12990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">🎧</div>
-          </div>
-          <div class="p-4">
-            <h5>Наушники AirPods Max</h5>
-            <p class="text-muted mb-3">Активное шумоподавление, пространственный звук и 20 часов автономности.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">12 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Футболка" data-price="2490">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">👕</div>
-          </div>
-          <div class="p-4">
-            <h5>Футболка Premium Cotton</h5>
-            <p class="text-muted mb-3">100% органический хлопок, дышащая ткань и минималистичный крой.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">2 490 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Джинсы" data-price="4990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">👖</div>
-          </div>
-          <div class="p-4">
-            <h5>Джинсы Slim Fit</h5>
-            <p class="text-muted mb-3">Эластичный деним, классический крой и устойчивость к износу.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">4 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="clothing" data-name="Куртка" data-price="8990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">🧥</div>
-          </div>
-          <div class="p-4">
-            <h5>Куртка Winter Shield</h5>
-            <p class="text-muted mb-3">Водонепроницаемая мембрана, пуховый утеплитель и стильный дизайн.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">8 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="home" data-name="Кофемашина" data-price="25990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">☕</div>
-          </div>
-          <div class="p-4">
-            <h5>Кофемашина Barista Pro</h5>
-            <p class="text-muted mb-3">Автоматическая система, встроенная кофемолка и 15 рецептов напитков.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">25 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="home" data-name="Кресло" data-price="15990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">🪑</div>
-          </div>
-          <div class="p-4">
-            <h5>Кресло Ergo Comfort</h5>
-            <p class="text-muted mb-3">Ортопедическая спинка, регулируемые подлокотники и поясничная поддержка.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">15 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="sports" data-name="Кроссовки" data-price="7990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">👟</div>
-          </div>
-          <div class="p-4">
-            <h5>Кроссовки Marathon Elite</h5>
-            <p class="text-muted mb-3">Технология амортизации Boost, дышащий верх и профессиональная поддержка стопы.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">7 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-md-6 col-lg-4 product-item" data-category="sports" data-name="Гантели" data-price="12990">
-        <article class="product-card reveal">
-          <div class="prod-media">
-            <div class="prod-emoji">🏋️</div>
-          </div>
-          <div class="p-4">
-            <h5>Гантели Adjustable Set</h5>
-            <p class="text-muted mb-3">Разборные гантели 2.5-20 кг, компактное хранение и быстрая регулировка веса.</p>
-            <div class="d-flex align-items-center justify-content-between">
-              <span class="price">12 990 ₽</span>
-              <button class="btn product-btn">В корзину</button>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <div class="no-results text-center py-5 glass" id="noResults" style="display:none;">
-      <div style="font-size:72px;opacity:.6;margin-bottom:1rem">🔍</div>
-      <h3 class="mb-2">Товары не найдены</h3>
-      <p class="text-muted mb-3">Попробуйте изменить критерии поиска или сбросьте фильтры</p>
-      <button class="btn cta-btn cta-primary" onclick="resetFilters()">Сбросить фильтры</button>
-    </div>
-
-    <section class="section">
-      <h2 class="text-center mb-5">Условия покупки</h2>
+    <!-- ПРЕИМУЩЕСТВА ПОКУПКИ -->
+    <section class="benefits-section reveal">
+      <div class="section-subtitle text-center">ГАРАНТИИ</div>
+      <h2 class="section-title text-center mb-5">Безопасная покупка</h2>
       <div class="row g-4">
-        <div class="col-md-3 col-sm-6">
-          <div class="delivery-card reveal text-center">
-            <div class="delivery-icon">🚚</div>
-            <h5>Быстрая доставка</h5>
-            <p class="text-muted mb-0">1–2 дня по городу<br>до 5 дней по РФ</p>
+        <div class="col-md-3 col-6">
+          <div class="benefit-card">
+            <div class="benefit-icon">🛡️</div>
+            <h6 class="benefit-title">Гарантия качества</h6>
+            <p class="benefit-text">Только оригинал</p>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="delivery-card reveal text-center">
-            <div class="delivery-icon">📦</div>
-            <h5>Бесплатно от 3000₽</h5>
-            <p class="text-muted mb-0">Выгодные условия<br>без минимума</p>
+        <div class="col-md-3 col-6">
+          <div class="benefit-card">
+            <div class="benefit-icon">🚚</div>
+            <h6 class="benefit-title">Доставка 1-3 дня</h6>
+            <p class="benefit-text">По всей России</p>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="delivery-card reveal text-center">
-            <div class="delivery-icon">🔄</div>
-            <h5>Возврат 14 дней</h5>
-            <p class="text-muted mb-0">Без объяснения<br>причин</p>
+        <div class="col-md-3 col-6">
+          <div class="benefit-card">
+            <div class="benefit-icon">🔄</div>
+            <h6 class="benefit-title">Возврат 14 дней</h6>
+            <p class="benefit-text">Без вопросов</p>
           </div>
         </div>
-        <div class="col-md-3 col-sm-6">
-          <div class="delivery-card reveal text-center">
-            <div class="delivery-icon">✅</div>
-            <h5>Гарантия качества</h5>
-            <p class="text-muted mb-0">Официальная<br>поддержка</p>
+        <div class="col-md-3 col-6">
+          <div class="benefit-card">
+            <div class="benefit-icon">💳</div>
+            <h6 class="benefit-title">Рассрочка 0%</h6>
+            <p class="benefit-text">До 24 месяцев</p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="container py-4">
-    <div class="text-center text-muted">© 2025 Наша компания. Все права защищены.</div>
+  <footer class="footer-new">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 mb-4">
+          <div class="footer-brand">
+            <span class="brand-icon">⚡</span>
+            <span class="brand-text">TechStore</span>
+          </div>
+          <p class="footer-desc">Ваш надёжный партнёр в мире технологий с 2015 года.</p>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h6 class="footer-heading">Контакты</h6>
+          <ul class="footer-contacts">
+            <li>📞 <a href="tel:+78005553535">8 800 555-35-35</a></li>
+            <li>📧 <a href="mailto:info@techstore.ru">info@techstore.ru</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h6 class="footer-heading">Навигация</h6>
+          <ul class="footer-links">
+            <li><a href="../index.html">Главная</a></li>
+            <li><a href="about.html">О магазине</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 TechStore. Все права защищены.</p>
+      </div>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../script.js"></script>
+  <script src="../cart.js"></script>
   <script src="../products.js"></script>
 </body>
 </html>
