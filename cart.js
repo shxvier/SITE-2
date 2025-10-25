@@ -202,3 +202,17 @@ if (document.readyState === 'loading') {
 } else {
   loadCart();
 }
+// Добавьте эту функцию в конец файла cart.js
+
+function clearCart() {
+  if (cart.length === 0) {
+    showNotification('Корзина уже пуста', 'error');
+    return;
+  }
+  
+  if (confirm('Очистить корзину? Все товары будут удалены.')) {
+    cart = [];
+    updateCartUI();
+    showNotification('Корзина очищена');
+  }
+}
