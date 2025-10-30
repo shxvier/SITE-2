@@ -1,23 +1,18 @@
 // Dark Veil Background Effect
 class DarkVeil {
-    constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
+    constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        if (!this.canvas) {
+            console.error('Canvas element not found');
+            return;
+        }
+        
+        this.ctx = this.canvas.getContext('2d');
+        this.time = 0;
         this.resize();
         
-        // Параметры эффекта
-        this.time = 0;
-        this.hueShift = 220; // Синий оттенок
-        this.noiseIntensity = 0.15;
-        this.scanlineIntensity = 0.08;
-        this.warpAmount = 0.025;
-        this.speed = 0.5;
-        
-        // Создание буфера для шума
-        this.noiseData = this.createNoiseTexture(256, 256);
-        
-        this.animate();
         window.addEventListener('resize', () => this.resize());
+        this.animate();
     }
     
     resize() {
@@ -25,120 +20,75 @@ class DarkVeil {
         this.canvas.height = window.innerHeight;
     }
     
-    createNoiseTexture(width, height) {
-        const imageData = this.ctx.createImageData(width, height);
-        const data = imageData.data;
-        
-        for (let i = 0; i < data.length; i += 4) {
-            const value = Math.random() * 255;
-            data[i] = value;
-            data[i + 1] = value;
-            data[i + 2] = value;
-            data[i + 3] = 255;
-        }
-        
-        return imageData;
-    }
-    
-    drawVeil() {
+    drawBackground() {
         const { width, height } = this.canvas;
         const ctx = this.ctx;
         
         // Базовый градиент
         const gradient = ctx.createLinearGradient(0, 0, width, height);
-        const hue1 = (this.hueShift) % 360;
-        const hue2 = (this.hueShift + 30) % 360;
-        const hue3 = (this.hueShift - 30) % 360;
-        
-        gradient.addColorStop(0, `hsl(${hue1}, 70%, 5%)`);
-        gradient.addColorStop(0.5, `hsl(${hue2}, 60%, 3%)`);
-        gradient.addColorStop(1, `hsl(${hue3}, 65%, 4%)`);
+        gradient.addColorStop(0, '#0a1929');
+        gradient.addColorStop(0.5, '#1e3c72');
+        gradient.addColorStop(1, '#0a1929');
         
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
         
-        // Волновой эффект с искажением
-        this.drawWarpEffect();
+        // Волновой эффект
+        this.drawWaves();
         
         // Шум
         this.drawNoise();
-        
-        // Сканлайны
-        this.drawScanlines();
         
         // Виньетка
         this.drawVignette();
     }
     
-    drawWarpEffect() {
+    drawWaves() {
         const { width, height } = this.canvas;
         const ctx = this.ctx;
         
-        ctx.globalCompositeOperation = 'screen';
-        ctx.globalAlpha = 0.15;
+        ctx.globalAlpha = 0.1;
         
-        const gridSize = 40;
-        
-        for (let x = 0; x < width; x += gridSize) {
-            for (let y = 0; y < height; y += gridSize) {
-                const warpX = Math.sin(this.time * 0.001 + x * 0.01 + y * 0.005) * this.warpAmount * 100;
-                const warpY = Math.cos(this.time * 0.001 + y * 0.01 + x * 0.005) * this.warpAmount * 100;
+        for (let i = 0; i < 3; i++) {
+            ctx.beginPath();
+            
+            for (let x = 0; x < width; x += 5) {
+                const y = height / 2 + 
+                    Math.sin((x + this.time * (i + 1)) * 0.01) * 50 +
+                    Math.sin((x + this.time * (i + 1)) * 0.02) * 30;
                 
-                const brightness = Math.sin(this.time * 0.002 + x * 0.02) * 0.5 + 0.5;
-                const hue = (this.hueShift + brightness * 30) % 360;
-                
-                ctx.fillStyle = `hsl(${hue}, 80%, ${brightness * 20}%)`;
-                ctx.fillRect(x + warpX, y + warpY, gridSize * 1.5, gridSize * 1.5);
+                if (x === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
             }
+            
+            const hue = 200 + i * 20;
+            ctx.strokeStyle = `hsl(${hue}, 70%, 50%)`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
         }
         
         ctx.globalAlpha = 1;
-        ctx.globalCompositeOperation = 'source-over';
     }
     
     drawNoise() {
         const { width, height } = this.canvas;
         const ctx = this.ctx;
         
-        // Обновление шума каждый кадр для анимации
-        if (Math.random() > 0.9) {
-            this.noiseData = this.createNoiseTexture(256, 256);
-        }
+        ctx.globalAlpha = 0.05;
         
-        // Создание паттерна из шума
-        const noiseCanvas = document.createElement('canvas');
-        noiseCanvas.width = 256;
-        noiseCanvas.height = 256;
-        const noiseCtx = noiseCanvas.getContext('2d');
-        noiseCtx.putImageData(this.noiseData, 0, 0);
-        
-        const pattern = ctx.createPattern(noiseCanvas, 'repeat');
-        
-        ctx.globalCompositeOperation = 'overlay';
-        ctx.globalAlpha = this.noiseIntensity;
-        ctx.fillStyle = pattern;
-        ctx.fillRect(0, 0, width, height);
-        ctx.globalAlpha = 1;
-        ctx.globalCompositeOperation = 'source-over';
-    }
-    
-    drawScanlines() {
-        const { width, height } = this.canvas;
-        const ctx = this.ctx;
-        
-        ctx.globalCompositeOperation = 'multiply';
-        ctx.globalAlpha = this.scanlineIntensity;
-        
-        const lineHeight = 4;
-        const offset = (this.time * 0.5) % (lineHeight * 2);
-        
-        for (let y = -offset; y < height; y += lineHeight * 2) {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
-            ctx.fillRect(0, y, width, lineHeight);
+        for (let i = 0; i < 100; i++) {
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+            const size = Math.random() * 2;
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.fillRect(x, y, size, size);
         }
         
         ctx.globalAlpha = 1;
-        ctx.globalCompositeOperation = 'source-over';
     }
     
     drawVignette() {
@@ -146,28 +96,25 @@ class DarkVeil {
         const ctx = this.ctx;
         
         const gradient = ctx.createRadialGradient(
-            width / 2, height / 2, height * 0.3,
+            width / 2, height / 2, height * 0.2,
             width / 2, height / 2, height * 0.8
         );
         
         gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
-        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.7)');
+        gradient.addColorStop(1, 'rgba(0, 0, 0, 0.6)');
         
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
     }
     
     animate() {
-        this.time += this.speed;
-        this.drawVeil();
+        this.time += 0.5;
+        this.drawBackground();
         requestAnimationFrame(() => this.animate());
     }
 }
 
-// Инициализация при загрузке страницы
+// Инициализация
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('darkVeilCanvas');
-    if (canvas) {
-        new DarkVeil(canvas);
-    }
+    new DarkVeil('darkVeilCanvas');
 });
