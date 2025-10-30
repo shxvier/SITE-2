@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Портфолио - Журавлев Алексей</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body class="bg-dark">
@@ -37,107 +38,154 @@
     <main class="container my-5">
         <!-- Hero Section -->
         <section class="text-center mb-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="display-4 mb-4 text-white">Привет! Я студент</h1>
-                    <p class="lead text-warning mb-4">Группа ЭФБО-12-24<br>Увлекаюсь веб-разработкой</p>
-                    <a href="assets/resume.pdf" class="btn btn-warning btn-lg px-4" download>
-                        <i class="bi bi-download me-2"></i>Скачать резюме
-                    </a>
-                </div>
+            <h1 class="display-4 text-white mb-3">Добро пожаловать в мое портфолио</h1>
+            <p class="lead text-light mb-4">Веб-разработчик | Студент МИРЭА | Энтузиаст технологий</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="pages/projects.html" class="btn btn-warning btn-lg">
+                    <i class="bi bi-folder me-2"></i>Мои проекты
+                </a>
+                <a href="pages/contacts.html" class="btn btn-outline-warning btn-lg">
+                    <i class="bi bi-envelope me-2"></i>Связаться
+                </a>
             </div>
         </section>
 
-        <!-- Photo Section -->
-        <section class="text-center mb-5">
-            <img src="images/photo.jpg" alt="Фото студента" class="img-fluid rounded-circle border border-3 border-warning" style="width: 200px; height: 200px; object-fit: cover;">
-        </section>
-
-        <!-- Skills Section -->
-        <section class="mb-5">
-            <h2 class="h3 text-center mb-4 text-white">Мои навыки</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="skill-item">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-light">HTML/CSS</span>
-                            <span class="text-warning">90%</span>
-                        </div>
-                        <div class="progress" style="height: 8px;">
-                            <div class="progress-bar bg-warning" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill-item">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-light">JavaScript</span>
-                            <span class="text-warning">80%</span>
-                        </div>
-                        <div class="progress" style="height: 8px;">
-                            <div class="progress-bar bg-warning" style="width: 80%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill-item">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-light">Bootstrap</span>
-                            <span class="text-warning">85%</span>
-                        </div>
-                        <div class="progress" style="height: 8px;">
-                            <div class="progress-bar bg-warning" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill-item">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-light">React</span>
-                            <span class="text-warning">60%</span>
-                        </div>
-                        <div class="progress" style="height: 8px;">
-                            <div class="progress-bar bg-warning" style="width: 60%"></div>
-                        </div>
+        <!-- About Section -->
+        <section class="row g-4 mb-5">
+            <div class="col-lg-6">
+                <div class="card bg-dark border-warning h-100">
+                    <div class="card-body">
+                        <h3 class="card-title h4 text-white mb-3">
+                            <i class="bi bi-person-circle text-warning me-2"></i>Обо мне
+                        </h3>
+                        <p class="text-light">
+                            Я студент МИРЭА, увлеченный веб-разработкой и программированием. 
+                            Специализируюсь на создании адаптивных и современных веб-приложений 
+                            с использованием последних технологий.
+                        </p>
+                        <p class="text-light mb-0">
+                            Постоянно изучаю новые технологии и совершенствую свои навыки в 
+                            HTML, CSS, JavaScript, React и других современных инструментах разработки.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Best Projects Section -->
-        <section class="mb-5">
-            <h2 class="h3 text-center mb-4 text-white">Лучшие проекты</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card bg-dark border-info h-100 text-center">
-                        <div class="card-body">
-                            <div class="project-icon mb-3">
-                                <i class="bi bi-laptop text-info" style="font-size: 3rem;"></i>
+            <div class="col-lg-6">
+                <div class="card bg-dark border-info h-100">
+                    <div class="card-body">
+                        <h3 class="card-title h4 text-white mb-3">
+                            <i class="bi bi-code-slash text-info me-2"></i>Навыки
+                        </h3>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-light">HTML/CSS</span>
+                                <span class="text-warning">95%</span>
                             </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-light">JavaScript</span>
+                                <span class="text-warning">85%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-light">React</span>
+                                <span class="text-warning">70%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span class="text-light">Bootstrap</span>
+                                <span class="text-warning">90%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="mb-5">
+            <h2 class="text-center text-white mb-4">Избранные проекты</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bg-dark border-warning h-100 project-card">
+                        <img src="images/project1.jpg" class="card-img-top" alt="Проект 1" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
                             <h3 class="card-title h5 text-white">Личный сайт</h3>
-                            <p class="card-text text-light">Адаптивный сайт-портфолио на HTML/CSS</p>
+                            <p class="card-text text-light">Адаптивный сайт-портфолио</p>
+                            <div class="mt-2">
+                                <span class="badge bg-primary">HTML5</span>
+                                <span class="badge bg-success">CSS3</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card bg-dark border-success h-100 text-center">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bg-dark border-info h-100 project-card">
+                        <img src="images/project2.jpg" class="card-img-top" alt="Проект 2" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <div class="project-icon mb-3">
-                                <i class="bi bi-check2-square text-success" style="font-size: 3rem;"></i>
+                            <h3 class="card-title h5 text-white">Todo-приложение</h3>
+                            <p class="card-text text-light">Приложение для задач</p>
+                            <div class="mt-2">
+                                <span class="badge bg-warning text-dark">JavaScript</span>
                             </div>
-                            <h3 class="card-title h5 text-white">Todo App</h3>
-                            <p class="card-text text-light">Приложение для управления задачами на JavaScript</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card bg-dark border-warning h-100 text-center">
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card bg-dark border-success h-100 project-card">
+                        <img src="images/project3.jpg" class="card-img-top" alt="Проект 3" style="height: 200px; object-fit: cover;">
                         <div class="card-body">
-                            <div class="project-icon mb-3">
-                                <i class="bi bi-cart text-warning" style="font-size: 3rem;"></i>
-                            </div>
                             <h3 class="card-title h5 text-white">Интернет-магазин</h3>
-                            <p class="card-text text-light">E-commerce проект на React</p>
+                            <p class="card-text text-light">E-commerce платформа</p>
+                            <div class="mt-2">
+                                <span class="badge bg-info">React</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="pages/projects.html" class="btn btn-warning btn-lg">
+                    Все проекты <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Contact Info -->
+        <section class="row g-4">
+            <div class="col-12">
+                <div class="card bg-dark border-warning">
+                    <div class="card-body text-center py-5">
+                        <h2 class="text-white mb-4">Готов к сотрудничеству</h2>
+                        <p class="text-light mb-4">Заинтересованы в совместной работе? Свяжитесь со мной!</p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                            <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="btn btn-outline-warning">
+                                <i class="bi bi-envelope me-2"></i>Email
+                            </a>
+                            <a href="https://github.com/shxvier" target="_blank" class="btn btn-outline-warning">
+                                <i class="bi bi-github me-2"></i>GitHub
+                            </a>
+                            <a href="https://t.me/k1riho" target="_blank" class="btn btn-outline-warning">
+                                <i class="bi bi-telegram me-2"></i>Telegram
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -145,9 +193,9 @@
         </section>
     </main>
 
-    <footer class="bg-dark text-warning text-center py-3 border-top border-warning">
+    <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
         <div class="container">
-            <p class="mb-0">© 2025 Контакты</p>
+            <p class="mb-0">© 2025 Журавлев Алексей | Все права защищены</p>
         </div>
     </footer>
 
