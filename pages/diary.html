@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник - Журавлев Алексей</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/styles.css">
+    <style>
+        .progress-course {
+            height: 25px;
+        }
+        .completed {
+            color: #28a745 !important;
+        }
+        .in-progress {
+            color: #ffc107 !important;
+        }
+    </style>
+</head>
+<body class="bg-dark">
+    <header class="bg-dark border-bottom border-warning">
+        <div class="container py-3">
+            <div class="d-flex align-items-center justify-content-center">
+                <img src="../images/logo.png" alt="Логотип" class="me-3" style="height: 40px;">
+                <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="../index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="projects.html">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="diary.html">Дневник</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5 text-white">Мой учебный прогресс</h1>
+        
+        <div class="row g-4">
+            <!-- Progress Timeline -->
+            <div class="col-lg-8">
+                <div class="card bg-dark border-warning mb-4">
+                    <div class="card-body">
+                        <h3 class="card-title h4 text-white mb-4">Хронология обучения</h3>
+                        
+                        <div class="timeline">
+                            <!-- Entry 1 -->
+                            <div class="timeline-item mb-4">
+                                <div class="d-flex">
+                                    <div class="timeline-badge completed me-3">
+                                        <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h5 class="text-white mb-1">15 дек - Верстка макета сайта</h5>
+                                        <p class="text-light mb-0">Освоил основы HTML/CSS, создал первый адаптивный макет</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 2 -->
+                            <div class="timeline-item mb-4">
+                                <div class="d-flex">
+                                    <div class="timeline-badge completed me-3">
+                                        <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h5 class="text-white mb-1">10 дек - JavaScript основы</h5>
+                                        <p class="text-light mb-0">Изучил переменные, функции, DOM manipulation</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 3 -->
+                            <div class="timeline-item mb-4">
+                                <div class="d-flex">
+                                    <div class="timeline-badge in-progress me-3">
+                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h5 class="text-white mb-1">05 дек - Работа с формами</h5>
+                                        <p class="text-light mb-0">Изучаю валидацию форм и обработку пользовательского ввода</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 4 -->
+                            <div class="timeline-item mb-4">
+                                <div class="d-flex">
+                                    <div class="timeline-badge in-progress me-3">
+                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h5 class="text-white mb-1">01 дек - Адаптивный дизайн</h5>
+                                        <p class="text-light mb-0">Осваиваю медиа-запросы и mobile-first подход</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#addEntryModal">
+                            <i class="bi bi-plus-circle me-2"></i>Добавить запись
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Current Courses -->
+            <div class="col-lg-4">
+                <div class="card bg-dark border-info">
+                    <div class="card-body">
+                        <h3 class="card-title h4 text-white mb-4">Текущие курсы</h3>
+                        
+                        <!-- Course 1 -->
+                        <div class="course-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light">Веб-разработка</span>
+                                <span class="text-warning">90%</span>
+                            </div>
+                            <div class="progress progress-course">
+                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 2 -->
+                        <div class="course-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light">JavaScript</span>
+                                <span class="text-warning">70%</span>
+                            </div>
+                            <div class="progress progress-course">
+                                <div class="progress-bar bg-warning" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 3 -->
+                        <div class="course-item mb-4">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light">React</span>
+                                <span class="text-warning">50%</span>
+                            </div>
+                            <div class="progress progress-course">
+                                <div class="progress-bar bg-info" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 4 -->
+                        <div class="course-item">
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light">Базы данных</span>
+                                <span class="text-warning">30%</span>
+                            </div>
+                            <div class="progress progress-course">
+                                <div class="progress-bar bg-primary" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="card bg-dark border-success mt-4">
+                    <div class="card-body">
+                        <h4 class="text-white mb-3">Достижения</h4>
+                        <div class="achievements">
+                            <div class="achievement-item text-center mb-3">
+                                <i class="bi bi-trophy-fill text-warning" style="font-size: 2rem;"></i>
+                                <p class="text-light mb-0 mt-2">Завершил 2 проекта</p>
+                            </div>
+                            <div class="achievement-item text-center">
+                                <i class="bi bi-star-fill text-info" style="font-size: 2rem;"></i>
+                                <p class="text-light mb-0 mt-2">Изучил 5 технологий</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Entry Modal -->
+    <div class="modal fade" id="addEntryModal" tabindex="-1" aria-labelledby="addEntryModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark border-warning">
+                <div class="modal-header border-warning">
+                    <h5 class="modal-title text-white" id="addEntryModalLabel">Добавить запись</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="diaryForm">
+                        <div class="mb-3">
+                            <label for="entryDate" class="form-label text-light">Дата</label>
+                            <input type="date" class="form-control bg-secondary border-warning text-light" id="entryDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="entryTitle" class="form-label text-light">Заголовок</label>
+                            <input type="text" class="form-control bg-secondary border-warning text-light" id="entryTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="entryDescription" class="form-label text-light">Описание</label>
+                            <textarea class="form-control bg-secondary border-warning text-light" id="entryDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="entryStatus" class="form-label text-light">Статус</label>
+                            <select class="form-select bg-secondary border-warning text-light" id="entryStatus" required>
+                                <option value="completed">Завершено</option>
+                                <option value="in-progress">В процессе</option>
+                                <option value="planned">Запланировано</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-warning">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-warning" id="saveEntryBtn">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
+        <div class="container">
+            <p class="mb-0">© 2025 Контакты</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/diary.js"></script>
+</body>
+</html>
