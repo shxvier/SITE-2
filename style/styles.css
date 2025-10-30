@@ -1,4 +1,7 @@
-/* Основные стили */
+/* ============================================
+   ОСНОВНЫЕ СТИЛИ И АНИМИРОВАННЫЙ ФОН
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,52 +11,579 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 100%);
+    /* Анимированный синий градиентный фон */
+    background: linear-gradient(270deg, #0a1929, #1e3c72, #2a5298, #1e3c72, #0a1929);
+    background-size: 1000% 1000%;
+    animation: gradientShift 20s ease infinite;
     color: #dcdcdc;
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* Навыки */
-.skill-item {
-    margin-bottom: 1.5rem;
+/* Анимация движения градиента */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
+
+/* Дополнительный слой с частицами (опционально) */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(120, 200, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(100, 150, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(80, 180, 255, 0.1) 0%, transparent 50%);
+    animation: particleFloat 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes particleFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-20px) scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Контейнер страницы */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(20, 20, 30, 0.85);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   ШАПКА И НАВИГАЦИЯ
+   ============================================ */
+
+header {
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9));
+    color: #f0f0f0;
+    padding: 1.6rem 1rem;
+    text-align: center;
+    font-size: clamp(1.4rem, 5vw, 2.1rem);
+    font-weight: 700;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
+    letter-spacing: 1.2px;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.3);
+    animation: headerSlideDown 0.8s ease;
+}
+
+@keyframes headerSlideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Логотип с пульсацией */
+header img {
+    animation: logoPulse 3s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Навигация */
+.navbar {
+    background: linear-gradient(135deg, rgba(42, 82, 152, 0.9), rgba(30, 60, 114, 0.9));
+    border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
+    animation: navSlideIn 1s ease;
+}
+
+@keyframes navSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-link {
+    color: #e0e0e0 !important;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 0.6rem 1.2rem !important;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ffa500);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 80%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: linear-gradient(135deg, rgba(100, 140, 200, 0.3), rgba(70, 110, 180, 0.3));
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+/* ============================================
+   АНИМАЦИИ ДЛЯ ЭЛЕМЕНТОВ
+   ============================================ */
+
+/* Плавное появление снизу */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Плавное появление */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Масштабирование при появлении */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Применение анимаций */
+h1 {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+h2, h3 {
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+}
+
+.card {
+    animation: scaleIn 0.7s ease forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+/* Задержка для каждой карточки */
+.card:nth-child(1) { animation-delay: 0.5s; }
+.card:nth-child(2) { animation-delay: 0.6s; }
+.card:nth-child(3) { animation-delay: 0.7s; }
+.card:nth-child(4) { animation-delay: 0.8s; }
+.card:nth-child(5) { animation-delay: 0.9s; }
+.card:nth-child(6) { animation-delay: 1s; }
+
+/* ============================================
+   КАРТОЧКИ И ПРОЕКТЫ
+   ============================================ */
+
+.card {
+    background: rgba(30, 30, 40, 0.9) !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(255, 193, 7, 0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(255, 193, 7, 0.4), 
+                0 0 30px rgba(100, 150, 255, 0.3);
+    border-color: rgba(255, 193, 7, 0.6) !important;
+}
+
+.card-img-top {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.project-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(100, 150, 255, 0.1), rgba(255, 193, 7, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   КНОПКИ
+   ============================================ */
+
+.btn-warning {
+    background: linear-gradient(135deg, #f0b90b, #ffd700);
+    border: none;
+    transition: all 0.3s ease;
+    color: #1a1a1a;
+    font-weight: 600;
+    padding: 0.6rem 1.8rem;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-warning::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-warning:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-warning:hover {
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px #faca28, 0 0 40px #faca28, 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.btn-outline-warning {
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+.btn-outline-warning:hover {
+    background: #ffd700;
+    color: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px #faca28;
+}
+
+.btn-outline-warning.active {
+    background: #ffd700;
+    color: #1a1a1a;
+    box-shadow: 0 0 15px #faca28;
+}
+
+/* ============================================
+   ФОРМЫ
+   ============================================ */
+
+.form-control, .form-select {
+    background: rgba(50, 50, 60, 0.8) !important;
+    border: 1px solid rgba(255, 193, 7, 0.3) !important;
+    color: #e0e0e0 !important;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #ffd700 !important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 202, 40, 0.3) !important;
+    background: rgba(60, 60, 70, 0.9) !important;
+}
+
+.form-label {
+    color: #e0e0e0;
+    font-weight: 500;
+}
+
+/* ============================================
+   ПРОГРЕСС-БАРЫ
+   ============================================ */
 
 .progress {
-    background-color: #344050;
+    background-color: rgba(50, 60, 80, 0.6);
+    border-radius: 10px;
+    height: 25px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-/* Проекты */
-.project-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+.progress-bar {
+    transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(90deg, #4CAF50, #8BC34A);
+    position: relative;
+    overflow: hidden;
 }
 
-.project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(255, 193, 7, 0.25);
+.progress-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
 }
 
-/* Дневник */
+@keyframes shimmer {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+.progress-bar.bg-success {
+    background: linear-gradient(90deg, #28c76f, #48da89);
+}
+
+.progress-bar.bg-warning {
+    background: linear-gradient(90deg, #ffca28, #ffd54f);
+}
+
+.progress-bar.bg-info {
+    background: linear-gradient(90deg, #00d4ff, #00e5ff);
+}
+
+.progress-bar.bg-primary {
+    background: linear-gradient(90deg, #5e72e4, #825ee4);
+}
+
+/* ============================================
+   TIMELINE (ДНЕВНИК)
+   ============================================ */
+
+.timeline-badge {
+    transition: all 0.3s ease;
+}
+
 .timeline-badge.completed {
-    color: #28c76f;
+    color: #28c76f !important;
 }
 
 .timeline-badge.in-progress {
-    color: #ffca28;
+    color: #ffca28 !important;
 }
 
-.timeline-content {
-    flex: 1;
+.timeline-badge:hover {
+    transform: scale(1.2) rotate(10deg);
+    filter: drop-shadow(0 0 8px currentColor);
 }
 
-/* Контакты */
-.form-control:focus,
-.form-select:focus {
-    border-color: #ffca28 !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 202, 40, 0.3) !important;
+.timeline-item {
+    animation: fadeInLeft 0.6s ease forwards;
+    opacity: 0;
 }
 
-/* Адаптивность */
+.timeline-item:nth-child(1) { animation-delay: 0.3s; }
+.timeline-item:nth-child(2) { animation-delay: 0.5s; }
+.timeline-item:nth-child(3) { animation-delay: 0.7s; }
+.timeline-item:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ============================================
+   ДОСТИЖЕНИЯ
+   ============================================ */
+
+.achievement-item {
+    transition: all 0.3s ease;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.achievement-item:hover {
+    background: rgba(255, 193, 7, 0.1);
+    transform: scale(1.05);
+}
+
+.achievement-item i {
+    transition: all 0.3s ease;
+}
+
+.achievement-item:hover i {
+    transform: rotate(15deg) scale(1.2);
+    filter: drop-shadow(0 0 10px currentColor);
+}
+
+/* ============================================
+   МОДАЛЬНЫЕ ОКНА
+   ============================================ */
+
+.modal-content {
+    background: rgba(20, 20, 30, 0.98) !important;
+    border: 2px solid rgba(255, 193, 7, 0.3) !important;
+    box-shadow: 0 0 50px rgba(255, 193, 7, 0.3);
+    border-radius: 12px;
+    animation: modalSlideIn 0.4s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(255, 193, 7, 0.3) !important;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(255, 193, 7, 0.3) !important;
+}
+
+/* ============================================
+   ЗНАЧКИ (BADGES)
+   ============================================ */
+
+.badge {
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+   ФУТЕР
+   ============================================ */
+
+footer {
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.9), rgba(42, 82, 152, 0.9));
+    border-top: 2px solid rgba(255, 193, 7, 0.3);
+    animation: fadeIn 1.5s ease;
+}
+
+/* ============================================
+   СКРОЛЛБАР
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 193, 7, 0.2);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2a5298, #3a62b8);
+    box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* ============================================
+   АДАПТИВНОСТЬ
+   ============================================ */
+
 @media (max-width: 768px) {
     .container {
         padding: 0 15px;
@@ -67,132 +597,30 @@ body {
         padding: 0.7rem 1.4rem;
         font-size: 0.95rem;
     }
-}
 
-/* Анимации */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    .card:hover {
+        transform: translateY(-5px) scale(1.01);
     }
 }
 
-.card {
-    animation: fadeInUp 0.65s ease-out;
+/* ============================================
+   ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ
+   ============================================ */
+
+/* Эффект свечения для иконок */
+.bi {
+    transition: all 0.3s ease;
 }
 
-/* Кастомный скроллбар */
-::-webkit-scrollbar {
-    width: 8px;
+.bi:hover {
+    filter: drop-shadow(0 0 8px currentColor);
 }
 
-::-webkit-scrollbar-track {
-    background: #1c1c1c;
+/* Текстовые эффекты */
+.text-warning {
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
 }
 
-::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #555, #777);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #666, #888);
-}
-
-/* Остальные стили без изменений... */
-/* Например, .page-container, .nav, .header and so on */
-
-/* Цвета фона и бордюров чуть светлее для более мягкого восприятия */
-.page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background: rgba(38, 38, 38, 0.96);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(12px);
-}
-
-.header {
-    background: linear-gradient(135deg, #1c1c1c, #303030);
-    color: #f0f0f0;
-    padding: 1.6rem 1rem;
-    text-align: center;
-    font-size: clamp(1.4rem, 5vw, 2.1rem);
-    font-weight: 700;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.65);
-    letter-spacing: 1.2px;
-    border-bottom: 1px solid #444;
-}
-
-/* Навигация */
-.nav {
-    background: linear-gradient(135deg, #303030, #1c1c1c);
-    border-bottom: 1px solid #555;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.45);
-}
-
-/* Более плавные переходы для ссылок навигации */
-.nav-link:hover,
-.nav-link.active {
-    background: linear-gradient(135deg, #666, #444);
-    color: #fff;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.65);
-    border-color: #555;
-}
-
-/* Мобильное меню */
-.menu-toggle {
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-}
-
-.menu-toggle span {
-    background: #dcdcdc;
-}
-
-/* Кнопки */
-.btn-warning {
-    background: linear-gradient(135deg, #f0b90b, #facca1);
-    border: none;
-    transition: background 0.3s ease;
-    color: #222;
-}
-
-.btn-warning:hover {
-    background: linear-gradient(135deg, #d49e00, #f6b400);
-    color: #fff;
-}
-
-/* Общая палитра текстов — немного светлее */
-.text-light {
-    color: #e6e6e6 !important;
-}
-
-/* Плавные эффекты наведения для карточек и картинок */
-.project-card:hover,
-.product-card:hover,
-.experience-card:hover,
-.news-card:hover,
-.practice-card:hover,
-.contact-info:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.75);
-    border-color: #555;
-}
-
-.product-image {
-    border-color: #555;
-    transition: transform 0.35s ease, border-color 0.35s ease;
-}
-
-.product-card:hover .product-image {
-    transform: scale(1.12);
-    border-color: #777;
+.text-white {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
