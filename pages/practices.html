@@ -3,68 +3,145 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Практики - Портфолио</title>
+    <title>Практики - Журавлев Алексей</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/styles.css">
 </head>
-<body>
-    <div class="page-container">
-        <div class="header">Портфолио студента МИРЭА</div>
-        
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="contacts.html">Контакты</a></li>
-            </ul>
+<body class="bg-dark">
+    <header class="bg-dark border-bottom border-warning">
+        <div class="container py-3">
+            <h1 class="h3 text-center mb-0 text-white">Практики Журавлева Алексея</h1>
         </div>
-        
-        <div class="content">
-            <h1 class="page-title">Практические работы</h1>
-            
-            <div class="practice-card">
-                <h2 class="practice-title">Практика №8: Основы CSS</h2>
-                <p class="practice-desc">Изучение основ каскадных таблиц стилей. Создание адаптивного дизайна с использованием флексбоксов, градиентов и анимаций. Стилизация всех страниц проекта с единым дизайном.</p>
-                <div class="practice-tech">
-                    <span class="tech-badge">CSS3</span>
-                    <span class="tech-badge">Flexbox</span>
-                    <span class="tech-badge">Responsive Design</span>
-                </div>
-            </div>
-            
-            <div class="practice-card">
-                <h2 class="practice-title">Практика №7: Основы HTML</h2>
-                <p class="practice-desc">Создание базовой структуры сайта-портфолио. Разработка главной страницы, страниц новостей, товаров и контактов. Настройка GitHub Pages для публикации проекта.</p>
-                <div class="practice-tech">
-                    <span class="tech-badge">HTML5</span>
-                    <span class="tech-badge">Semantic Markup</span>
-                    <span class="tech-badge">GitHub Pages</span>
-                </div>
-            </div>
-            
-            <div class="practice-card">
-                <h2 class="practice-title">Разработка Qt приложений</h2>
-                <p class="practice-desc">Создание калькулятора с расширенными математическими функциями на C++ и Qt. Реализация графического интерфейса, обработка событий, работа с QtCharts для построения графиков.</p>
-                <div class="practice-tech">
-                    <span class="tech-badge">C++</span>
-                    <span class="tech-badge">Qt Framework</span>
-                    <span class="tech-badge">QtCharts</span>
-                </div>
-            </div>
-            
-            <div class="practice-card">
-                <h2 class="practice-title">Программирование на C#</h2>
-                <p class="practice-desc">Разработка функций для работы с массивами и пользовательским вводом. Создание программ для классификации чисел, валидации строк и обработки данных.</p>
-                <div class="practice-tech">
-                    <span class="tech-badge">C#</span>
-                    <span class="tech-badge">Arrays</span>
-                    <span class="tech-badge">User Input</span>
-                </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-white" href="../index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link text-white" href="../index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="news.html">Новости</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="practices.html">Практики</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="goods.html">Товары</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="contacts.html">Контакты</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-5 text-white">Учебные практики и проекты</h1>
         
-        <div class="footer">© 2025 Журавлев Алексей. Все права защищены.</div>
-    </div>
+        <div class="row g-4">
+            <div class="col-lg-10 mx-auto">
+                <div class="card bg-dark border-warning mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4 text-white">Практика по веб-разработке</h2>
+                        <div class="text-warning mb-3">Сентябрь 2023 - Декабрь 2023</div>
+                        <p class="card-text" style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6;">
+                            Практика в IT-компании по направлению фронтенд-разработки. Разрабатывал пользовательские 
+                            интерфейсы для веб-приложений, работал с адаптивной версткой и оптимизацией производительности.
+                        </p>
+                        <h5 class="text-white mt-4">Основные задачи:</h5>
+                        <ul style="color: #e2e8f0;">
+                            <li>Разработка адаптивных лендингов на HTML/CSS</li>
+                            <li>Создание интерактивных элементов на JavaScript</li>
+                            <li>Интеграция с REST API</li>
+                            <li>Оптимизация загрузки страниц</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-1">HTML5</span>
+                            <span class="badge bg-success me-1">CSS3</span>
+                            <span class="badge bg-warning text-dark me-1">JavaScript</span>
+                            <span class="badge bg-info me-1">Bootstrap</span>
+                            <span class="badge bg-secondary">REST API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark border-info mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4 text-white">Учебный проект: Система управления задачами</h2>
+                        <div class="text-info mb-3">Октябрь 2023 - Ноябрь 2023</div>
+                        <p class="card-text" style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6;">
+                            Разработка полнофункционального веб-приложения для управления задачами с возможностью 
+                            создания, редактирования, удаления и категоризации задач. Реализована система фильтрации и поиска.
+                        </p>
+                        <h5 class="text-white mt-4">Функциональность:</h5>
+                        <ul style="color: #e2e8f0;">
+                            <li>CRUD операции с задачами</li>
+                            <li>Система категорий и тегов</li>
+                            <li>Фильтрация и поиск</li>
+                            <li>Локальное хранение данных</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-1">HTML</span>
+                            <span class="badge bg-success me-1">CSS</span>
+                            <span class="badge bg-warning text-dark me-1">JavaScript</span>
+                            <span class="badge bg-info">Local Storage</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark border-success mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title h4 text-white">Практика по базам данных</h2>
+                        <div class="text-success mb-3">Март 2023 - Май 2023</div>
+                        <p class="card-text" style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6;">
+                            Изучение и практическое применение реляционных баз данных. Спроектировал и реализовал 
+                            базу данных для интернет-магазина, включая таблицы товаров, пользователей и заказов.
+                        </p>
+                        <h5 class="text-white mt-4">Реализовано:</h5>
+                        <ul style="color: #e2e8f0;">
+                            <li>Проектирование схемы базы данных</li>
+                            <li>Создание таблиц и связей</li>
+                            <li>Написание SQL-запросов</li>
+                            <li>Оптимизация производительности</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-danger me-1">MySQL</span>
+                            <span class="badge bg-secondary me-1">Database Design</span>
+                            <span class="badge bg-dark">SQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-dark border-warning">
+                    <div class="card-body">
+                        <h2 class="card-title h4 text-white">Фриланс-проекты</h2>
+                        <div class="text-warning mb-3">2022 - настоящее время</div>
+                        <p class="card-text" style="color: #e2e8f0; font-size: 1.1rem; line-height: 1.6;">
+                            Регулярная работа над коммерческими проектами для различных клиентов. Разработка сайтов 
+                            визиток, лендингов и небольших веб-приложений под конкретные требования заказчиков.
+                        </p>
+                        <h5 class="text-white mt-4">Ключевые проекты:</h5>
+                        <ul style="color: #e2e8f0;">
+                            <li>Сайт визитка для фотографа</li>
+                            <li>Лендинг для кофейни</li>
+                            <li>Интернет-магазин электроники</li>
+                            <li>Корпоративный сайт для IT-компании</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-primary me-1">HTML/CSS</span>
+                            <span class="badge bg-warning text-dark me-1">JavaScript</span>
+                            <span class="badge bg-info me-1">Bootstrap</span>
+                            <span class="badge bg-success">Responsive Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
+        <div class="container">
+            <p class="mb-0">2025 ООО "Тмыв денег"</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
