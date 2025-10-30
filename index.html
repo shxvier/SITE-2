@@ -3,186 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Журавлев Алексей - Frontend разработчик</title>
+    <title>Портфолио - Журавлев Алексей</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/styles.css">
 </head>
-<body>
-    <!-- Навигация -->
-    <nav class="navbar">
+<body class="bg-dark">
+    <header class="bg-dark border-bottom border-warning">
+        <div class="container py-3">
+            <div class="d-flex align-items-center justify-content-center">
+                <img src="images/logo.png" alt="Логотип" class="me-3" style="height: 40px;">
+                <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
+            </div>
+        </div>
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <div class="nav-brand">Журавлев Алексей</div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">Главная</a></li>
-                <li><a href="#about" class="nav-link">О себе</a></li>
-                <li><a href="#projects" class="nav-link">Проекты</a></li>
-                <li><a href="#skills" class="nav-link">Навыки</a></li>
-                <li><a href="#contact" class="nav-link">Контакты</a></li>
-            </ul>
+            <a class="navbar-brand fw-bold text-white" href="index.html">Portfolio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active text-white" href="index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="pages/projects.html">Проекты</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="pages/diary.html">Дневник</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="pages/contacts.html">Контакты</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
-    <!-- Главный экран -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">Frontend разработчик</h1>
-                <p class="hero-subtitle">Создаю современные веб-приложения и адаптивные интерфейсы</p>
-                <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">Мои проекты</a>
-                    <a href="#contact" class="btn btn-secondary">Связаться</a>
+    <main class="container my-5">
+        <!-- Hero Section -->
+        <section class="text-center mb-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 mb-4 text-white">Привет! Я студент</h1>
+                    <p class="lead text-warning mb-4">Группа ЭФБО-12-24<br>Увлекаюсь веб-разработкой</p>
+                    <a href="assets/resume.pdf" class="btn btn-warning btn-lg px-4" download>
+                        <i class="bi bi-download me-2"></i>Скачать резюме
+                    </a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- О себе -->
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">Обо мне</h2>
-            <div class="about-grid">
-                <div class="about-image">
-                    <img src="images/photo.png" alt="Журавлев Алексей">
-                </div>
-                <div class="about-text">
-                    <h3>Привет! Я Алексей Журавлев</h3>
-                    <p>Студент МИРЭА, увлеченный веб-разработкой и программированием. Специализируюсь на создании современных адаптивных веб-сайтов и приложений.</p>
-                    <p>Активно изучаю frontend и backend технологии, работаю с HTML, CSS, JavaScript, C++, C# и Qt Framework. Люблю создавать интересные проекты и постоянно совершенствую свои навыки.</p>
-                    <p>В свободное время играю в Counter-Strike 2 на позиции агрессивного снайпера, слушаю электронную музыку и анализирую характеры персонажей аниме.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Photo Section -->
+        <section class="text-center mb-5">
+            <img src="images/photo.jpg" alt="Фото студента" class="img-fluid rounded-circle border border-3 border-warning" style="width: 200px; height: 200px; object-fit: cover;">
+        </section>
 
-    <!-- Проекты -->
-    <section id="projects" class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Мои проекты</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/goods1.jpg" alt="Интернет-магазин">
-                    </div>
-                    <div class="project-content">
-                        <h3>Адаптивный интернет-магазин</h3>
-                        <p>Полнофункциональный веб-магазин с корзиной покупок, адаптивным дизайном для смартфонов и современным интерфейсом на Bootstrap</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML/CSS</span>
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">Bootstrap</span>
+        <!-- Skills Section -->
+        <section class="mb-5">
+            <h2 class="h3 text-center mb-4 text-white">Мои навыки</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-light">HTML/CSS</span>
+                            <span class="text-warning">90%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" style="width: 90%"></div>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/goods2.jpg" alt="Qt калькулятор">
-                    </div>
-                    <div class="project-content">
-                        <h3>Научный калькулятор Qt</h3>
-                        <p>Расширенный калькулятор на C++ с тригонометрическими функциями, историей вычислений и построением графиков</p>
-                        <div class="project-tags">
-                            <span class="tag">C++</span>
-                            <span class="tag">Qt Framework</span>
-                            <span class="tag">QtCharts</span>
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-light">JavaScript</span>
+                            <span class="text-warning">80%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" style="width: 80%"></div>
                         </div>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/goods3.jpg" alt="Портфолио">
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-light">Bootstrap</span>
+                            <span class="text-warning">85%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" style="width: 85%"></div>
+                        </div>
                     </div>
-                    <div class="project-content">
-                        <h3>Портфолио-сайт</h3>
-                        <p>Современный сайт-визитка с информацией об авторе, проектах и навыках. Адаптивный дизайн и чистый код</p>
-                        <div class="project-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">Responsive</span>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-light">React</span>
+                            <span class="text-warning">60%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" style="width: 60%"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Навыки -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Навыки и технологии</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>Frontend</h4>
-                    <ul>
-                        <li>HTML5 / CSS3</li>
-                        <li>JavaScript (ES6+)</li>
-                        <li>Bootstrap</li>
-                        <li>Responsive Design</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h4>Backend</h4>
-                    <ul>
-                        <li>C++</li>
-                        <li>C#</li>
-                        <li>Qt Framework</li>
-                        <li>Работа с массивами</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h4>Инструменты</h4>
-                    <ul>
-                        <li>Visual Studio Code</li>
-                        <li>Qt Creator</li>
-                        <li>Git / GitHub</li>
-                        <li>GitHub Pages</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h4>Другое</h4>
-                    <ul>
-                        <li>Математический анализ</li>
-                        <li>Адаптивная верстка</li>
-                        <li>Кроссплатформенная разработка</li>
-                        <li>Презентации</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты -->
-    <section id="contact" class="section section-gray">
-        <div class="container">
-            <h2 class="section-title">Контакты</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>📧 Email</h4>
-                        <p>alexey.zhuravlev@example.com</p>
+        <!-- Best Projects Section -->
+        <section class="mb-5">
+            <h2 class="h3 text-center mb-4 text-white">Лучшие проекты</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card bg-dark border-info h-100 text-center">
+                        <div class="card-body">
+                            <div class="project-icon mb-3">
+                                <i class="bi bi-laptop text-info" style="font-size: 3rem;"></i>
+                            </div>
+                            <h3 class="card-title h5 text-white">Личный сайт</h3>
+                            <p class="card-text text-light">Адаптивный сайт-портфолио на HTML/CSS</p>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h4>📍 Местоположение</h4>
-                        <p>Москва, Россия<br>МИРЭА - Российский технологический университет</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-success h-100 text-center">
+                        <div class="card-body">
+                            <div class="project-icon mb-3">
+                                <i class="bi bi-check2-square text-success" style="font-size: 3rem;"></i>
+                            </div>
+                            <h3 class="card-title h5 text-white">Todo App</h3>
+                            <p class="card-text text-light">Приложение для управления задачами на JavaScript</p>
+                        </div>
                     </div>
-                    <div class="contact-item">
-                        <h4>💼 GitHub</h4>
-                        <p>github.com/alexey-zhuravlev</p>
-                    </div>
-                    <div class="contact-item">
-                        <h4>🎮 Gaming</h4>
-                        <p>Counter-Strike 2: sH4VIER</p>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark border-warning h-100 text-center">
+                        <div class="card-body">
+                            <div class="project-icon mb-3">
+                                <i class="bi bi-cart text-warning" style="font-size: 3rem;"></i>
+                            </div>
+                            <h3 class="card-title h5 text-white">Интернет-магазин</h3>
+                            <p class="card-text text-light">E-commerce проект на React</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Футер -->
-    <footer class="footer">
+    <footer class="bg-dark text-warning text-center py-3 border-top border-warning">
         <div class="container">
-            <p>&copy; 2025 Журавлев Алексей. Все права защищены.</p>
+            <p class="mb-0">© 2025 Контакты</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
