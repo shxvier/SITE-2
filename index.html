@@ -3,63 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио - Журавлев Алексей</title>
+    <title>Журавлев Алексей - Frontend разработчик</title>
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-    <div class="page-container">
-        <div class="header">Портфолио студента МИРЭА</div>
-        
-        <div class="nav">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/news.html">Новости</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/practices.html">Практики</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/goods.html">Товары</a></li>
-                <li class="nav-item"><a class="nav-link" href="pages/contacts.html">Контакты</a></li>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Журавлев Алексей</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">О себе</a></li>
+                <li><a href="#projects" class="nav-link">Проекты</a></li>
+                <li><a href="#skills" class="nav-link">Навыки</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
             </ul>
         </div>
-        
-        <div class="content">
-            <div class="profile-header">
-                <h1 class="profile-title">Информация об авторе</h1>
-                <img class="profile-photo" src="images/photo.png" alt="Фото автора">
-                <h2 class="profile-name">Журавлев Алексей</h2>
-                <p class="profile-group">МИРЭА</p>
-            </div>
-            
-            <div class="about-me">
-                <p>Обо мне: Студент МИРЭА, увлекаюсь веб-разработкой и программированием. Активно изучаю frontend и backend технологии, создаю интересные проекты. В свободное время играю в CS2 и слушаю электронную музыку.</p>
-            </div>
-            
-            <div class="skills-container">
-                <div class="skill-tag">HTML/CSS</div>
-                <div class="skill-tag">JavaScript</div>
-                <div class="skill-tag">C++/C#</div>
-                <div class="skill-tag">Qt Framework</div>
-            </div>
-            
-            <div class="experience-section">
-                <h2 class="section-title">Мой опыт работы</h2>
-                
-                <div class="experience-card">
-                    <h3 class="experience-title">Веб-разработка</h3>
-                    <p class="experience-desc">Создание адаптивных сайтов с использованием HTML, CSS, JavaScript и Bootstrap. Разработка интернет-магазинов с корзиной и адаптивным дизайном.</p>
-                </div>
-                
-                <div class="experience-card">
-                    <h3 class="experience-title">Программирование на C++/C#</h3>
-                    <p class="experience-desc">Разработка приложений с использованием Qt Creator. Создание калькуляторов с расширенным функционалом, работа с графическими интерфейсами.</p>
-                </div>
-                
-                <div class="experience-card">
-                    <h3 class="experience-title">Математический анализ</h3>
-                    <p class="experience-desc">Решение задач на сходимость рядов, работа с математическими сериями. Использование Wolfram Alpha для верификации решений.</p>
+    </nav>
+
+    <!-- Главный экран -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Frontend разработчик</h1>
+                <p class="hero-subtitle">Создаю современные веб-приложения и адаптивные интерфейсы</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">Мои проекты</a>
+                    <a href="#contact" class="btn btn-secondary">Связаться</a>
                 </div>
             </div>
         </div>
-        
-        <div class="footer">© 2025 Журавлев Алексей. Все права защищены.</div>
-    </div>
+    </section>
+
+    <!-- О себе -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Обо мне</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="images/photo.png" alt="Журавлев Алексей">
+                </div>
+                <div class="about-text">
+                    <h3>Привет! Я Алексей Журавлев</h3>
+                    <p>Студент МИРЭА, увлеченный веб-разработкой и программированием. Специализируюсь на создании современных адаптивных веб-сайтов и приложений.</p>
+                    <p>Активно изучаю frontend и backend технологии, работаю с HTML, CSS, JavaScript, C++, C# и Qt Framework. Люблю создавать интересные проекты и постоянно совершенствую свои навыки.</p>
+                    <p>В свободное время играю в Counter-Strike 2 на позиции агрессивного снайпера, слушаю электронную музыку и анализирую характеры персонажей аниме.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="projects" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Мои проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/goods1.jpg" alt="Интернет-магазин">
+                    </div>
+                    <div class="project-content">
+                        <h3>Адаптивный интернет-магазин</h3>
+                        <p>Полнофункциональный веб-магазин с корзиной покупок, адаптивным дизайном для смартфонов и современным интерфейсом на Bootstrap</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/goods2.jpg" alt="Qt калькулятор">
+                    </div>
+                    <div class="project-content">
+                        <h3>Научный калькулятор Qt</h3>
+                        <p>Расширенный калькулятор на C++ с тригонометрическими функциями, историей вычислений и построением графиков</p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">Qt Framework</span>
+                            <span class="tag">QtCharts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/goods3.jpg" alt="Портфолио">
+                    </div>
+                    <div class="project-content">
+                        <h3>Портфолио-сайт</h3>
+                        <p>Современный сайт-визитка с информацией об авторе, проектах и навыках. Адаптивный дизайн и чистый код</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Responsive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Навыки -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Навыки и технологии</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>Frontend</h4>
+                    <ul>
+                        <li>HTML5 / CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>Bootstrap</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h4>Backend</h4>
+                    <ul>
+                        <li>C++</li>
+                        <li>C#</li>
+                        <li>Qt Framework</li>
+                        <li>Работа с массивами</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h4>Инструменты</h4>
+                    <ul>
+                        <li>Visual Studio Code</li>
+                        <li>Qt Creator</li>
+                        <li>Git / GitHub</li>
+                        <li>GitHub Pages</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h4>Другое</h4>
+                    <ul>
+                        <li>Математический анализ</li>
+                        <li>Адаптивная верстка</li>
+                        <li>Кроссплатформенная разработка</li>
+                        <li>Презентации</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section section-gray">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>📧 Email</h4>
+                        <p>alexey.zhuravlev@example.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>📍 Местоположение</h4>
+                        <p>Москва, Россия<br>МИРЭА - Российский технологический университет</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>💼 GitHub</h4>
+                        <p>github.com/alexey-zhuravlev</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🎮 Gaming</h4>
+                        <p>Counter-Strike 2: sH4VIER</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Журавлев Алексей. Все права защищены.</p>
+        </div>
+    </footer>
 </body>
 </html>
