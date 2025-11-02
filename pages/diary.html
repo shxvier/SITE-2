@@ -9,15 +9,16 @@
     <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
-    <canvas id="plasmaCanvas"></canvas>
+    <!-- Canvas фон Plasma -->
+    nvas id="plaslasmaCanvas"></canvas>
 
     <!-- Контейнер для уведомлений -->
-    <div id="notificationContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+    <div id="notificationContainer"></div>
 
     <header class="bg-dark border-bottom border-warning">
         <div class="container py-3">
             <div class="d-flex align-items-center justify-content-center">
-                <img src="../images/logo.png" alt="Логотип" class="me-3" style="height: 40px;">
+                <img src="../images/logo.png" alt="Логотип" class="me-3" style="height: 40px;" onerror="this.style.display='none'">
                 <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
             </div>
         </div>
@@ -44,16 +45,14 @@
         <h1 class="text-center mb-5 text-white">Мой учебный прогресс</h1>
         
         <div class="row g-4">
-            <!-- Progress Timeline -->
             <div class="col-lg-8">
-                <div class="card bg-dark border-warning mb-4">
+                <div class="card bg-dark border-warning mb-4 glass-effect">
                     <div class="card-body">
                         <h3 class="card-title h4 text-white mb-4">
                             <i class="bi bi-clock-history me-2"></i>Хронология обучения
                         </h3>
                         
                         <div class="timeline" id="timeline">
-                            <!-- Entry 1 -->
                             <div class="timeline-item mb-4">
                                 <div class="d-flex">
                                     <div class="timeline-badge completed me-3">
@@ -62,45 +61,6 @@
                                     <div class="timeline-content">
                                         <h5 class="text-white mb-1">15 дек - Верстка макета сайта</h5>
                                         <p class="text-light mb-0">Освоил основы HTML/CSS, создал первый адаптивный макет</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Entry 2 -->
-                            <div class="timeline-item mb-4">
-                                <div class="d-flex">
-                                    <div class="timeline-badge completed me-3">
-                                        <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h5 class="text-white mb-1">10 дек - JavaScript основы</h5>
-                                        <p class="text-light mb-0">Изучил переменные, функции, DOM manipulation</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Entry 3 -->
-                            <div class="timeline-item mb-4">
-                                <div class="d-flex">
-                                    <div class="timeline-badge in-progress me-3">
-                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h5 class="text-white mb-1">05 дек - Работа с формами</h5>
-                                        <p class="text-light mb-0">Изучаю валидацию форм и обработку пользовательского ввода</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Entry 4 -->
-                            <div class="timeline-item mb-4">
-                                <div class="d-flex">
-                                    <div class="timeline-badge in-progress me-3">
-                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
-                                    </div>
-                                    <div class="timeline-content">
-                                        <h5 class="text-white mb-1">01 дек - Адаптивный дизайн</h5>
-                                        <p class="text-light mb-0">Осваиваю медиа-запросы и mobile-first подход</p>
                                     </div>
                                 </div>
                             </div>
@@ -113,15 +73,13 @@
                 </div>
             </div>
             
-            <!-- Current Courses -->
             <div class="col-lg-4">
-                <div class="card bg-dark border-info">
+                <div class="card bg-dark border-info glass-effect">
                     <div class="card-body">
                         <h3 class="card-title h4 text-white mb-4">
                             <i class="bi bi-book me-2"></i>Текущие курсы
                         </h3>
                         
-                        <!-- Course 1 -->
                         <div class="course-item mb-4">
                             <div class="d-flex justify-content-between mb-2">
                                 <span class="text-light fw-bold">Веб-разработка</span>
@@ -131,94 +89,41 @@
                                 <div class="progress-bar bg-success" style="width: 90%"></div>
                             </div>
                         </div>
-                        
-                        <!-- Course 2 -->
-                        <div class="course-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-light fw-bold">JavaScript</span>
-                                <span class="text-warning fw-bold">70%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-warning" style="width: 70%"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Course 3 -->
-                        <div class="course-item mb-4">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-light fw-bold">React</span>
-                                <span class="text-warning fw-bold">50%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-info" style="width: 50%"></div>
-                            </div>
-                        </div>
-                        
-                        <!-- Course 4 -->
-                        <div class="course-item">
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-light fw-bold">Базы данных</span>
-                                <span class="text-warning fw-bold">30%</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-primary" style="width: 30%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Achievements -->
-                <div class="card bg-dark border-success mt-4">
-                    <div class="card-body">
-                        <h4 class="text-white mb-3">
-                            <i class="bi bi-trophy me-2"></i>Достижения
-                        </h4>
-                        <div class="achievements">
-                            <div class="achievement-item text-center mb-3">
-                                <i class="bi bi-trophy-fill text-warning" style="font-size: 2rem;"></i>
-                                <p class="text-light mb-0 mt-2">Завершил 2 проекта</p>
-                            </div>
-                            <div class="achievement-item text-center">
-                                <i class="bi bi-star-fill text-info" style="font-size: 2rem;"></i>
-                                <p class="text-light mb-0 mt-2">Изучил 5 технологий</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Add Entry Modal -->
-    <div class="modal fade" id="addEntryModal" tabindex="-1" aria-labelledby="addEntryModalLabel" aria-hidden="true">
+    <!-- Modal для добавления записи -->
+    <div class="modal fade" id="addEntryModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content bg-dark border-warning">
+            <div class="modal-content bg-dark border-warning glass-effect">
                 <div class="modal-header border-warning">
-                    <h5 class="modal-title text-white" id="addEntryModalLabel">
+                    <h5 class="modal-title text-white">
                         <i class="bi bi-plus-circle me-2"></i>Добавить запись
                     </h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="diaryForm">
                         <div class="mb-3">
                             <label for="entryDate" class="form-label text-light">Дата</label>
-                            <input type="date" class="form-control bg-secondary border-warning text-light" id="entryDate" required>
+                            <input type="date" class="form-control" id="entryDate" required>
                         </div>
                         <div class="mb-3">
                             <label for="entryTitle" class="form-label text-light">Заголовок</label>
-                            <input type="text" class="form-control bg-secondary border-warning text-light" id="entryTitle" placeholder="Введите заголовок" required>
+                            <input type="text" class="form-control" id="entryTitle" required>
                         </div>
                         <div class="mb-3">
                             <label for="entryDescription" class="form-label text-light">Описание</label>
-                            <textarea class="form-control bg-secondary border-warning text-light" id="entryDescription" rows="3" placeholder="Опишите что вы изучили" required></textarea>
+                            <textarea class="form-control" id="entryDescription" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="entryStatus" class="form-label text-light">Статус</label>
-                            <select class="form-select bg-secondary border-warning text-light" id="entryStatus" required>
+                            <select class="form-select" id="entryStatus" required>
                                 <option value="completed">Завершено</option>
                                 <option value="in-progress">В процессе</option>
-                                <option value="planned">Запланировано</option>
                             </select>
                         </div>
                     </form>
@@ -235,12 +140,13 @@
 
     <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
         <div class="container">
-            <p class="mb-0">© 2025 Контакты</p>
+            <p class="mb-0">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
         </div>
     </footer>
 
+    <!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/dark-veil.js"></script>
+    <script src="../js/plasma-background.js"></script>
     <script src="../js/notifications.js"></script>
     <script src="../js/diary.js"></script>
 </body>
