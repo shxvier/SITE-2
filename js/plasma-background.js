@@ -1,4 +1,4 @@
-// Plasma Background Effect с фиолетовым цветом
+// Оптимизированный Plasma Background с лучшей производительностью
 class PlasmaBackground {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -7,44 +7,87 @@ class PlasmaBackground {
             return;
         }
         
-        this.ctx = this.canvas.getContext('2d');
+        this.ctx = this.canvas.getContext('2d', { 
+            alpha: false,
+            desynchronized: true // Улучшает производительность
+        });
+        
         this.time = 0;
+        this.animationId = null;
+        this.isVisible = true;
+        this.lastFrameTime = 0;
+        this.fps = 30; // Ограничиваем FPS для лучшей производительности
+        this.frameInterval = 1000 / this.fps;
+        
+        // Определяем размер устройства для адаптивной оптимизации
+        this.isMobile = window.innerWidth < 768;
         this.resize();
         
-        // Фиолетовые и розовые оттенки
+        // Фиолетовые оттенки
         this.colors = [
-            { r: 138, g: 43, b: 226 },   // Фиолетовый (blueviolet)
-            { r: 147, g: 51, b: 234 },   // Фиолетовый (purple-600)
-            { r: 168, g: 85, b: 247 },   // Фиолетовый (purple-500)
-            { r: 192, g: 132, b: 252 },  // Светло-фиолетовый (purple-400)
-            { r: 216, g: 180, b: 254 },  // Очень светлый фиолетовый (purple-300)
-            { r: 236, g: 72, b: 153 }    // Розовый (pink-500)
+            { r: 138, g: 43, b: 226 },
+            { r: 147, g: 51, b: 234 },
+            { r: 168, g: 85, b: 247 },
+            { r: 192, g: 132, b: 252 },
+            { r: 216, g: 180, b: 254 },
+            { r: 236, g: 72, b: 153 }
         ];
         
-        // Орбы для анимации
+        // Уменьшаем количество орбов на мобильных
+        this.numOrbs = this.isMobile ? 4 : 6;
         this.orbs = [];
         this.initOrbs();
         
-        window.addEventListener('resize', () => this.resize());
-        this.animate();
+        // Оптимизация: останавливаем анимацию когда вкладка неактивна
+        document.addEventListener('visibilitychange', () => {
+            this.isVisible = !document.hidden;
+            if (this.isVisible) {
+                this.animate(performance.now());
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            clearTimeout(this.resizeTimeout);
+            this.resizeTimeout = setTimeout(() => this.resize(), 250);
+        });
+        
+        this.animate(performance.now());
     }
     
     resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-        this.width = this.canvas.width;
-        this.height = this.canvas.height;
+        const dpr = window.devicePixelRatio || 1;
+        // Ограничиваем DPR для производительности
+        const safeDpr = Math.min(dpr, 2);
+        
+        this.canvas.width = window.innerWidth * safeDpr;
+        this.canvas.height = window.innerHeight * safeDpr;
+        this.canvas.style.width = window.innerWidth + 'px';
+        this.canvas.style.height = window.innerHeight + 'px';
+        
+        this.ctx.scale(safeDpr, safeDpr);
+        this.width = window.innerWidth;
+        this.height = window.innerHeight;
+        
+        // Проверяем, мобильное ли устройство
+        this.isMobile = window.innerWidth < 768;
+        this.numOrbs = this.isMobile ? 4 : 6;
+        
+        // Пересоздаем орбы при изменении размера
+        if (this.orbs.length !== this.numOrbs) {
+            this.initOrbs();
+        }
     }
     
     initOrbs() {
-        const numOrbs = 8;
-        for (let i = 0; i < numOrbs; i++) {
+        this.orbs = [];
+        for (let i = 0; i < this.numOrbs; i++) {
             this.orbs.push({
                 x: Math.random() * this.width,
                 y: Math.random() * this.height,
-                radius: 150 + Math.random() * 250,
-                vx: (Math.random() - 0.5) * 0.8,
-                vy: (Math.random() - 0.5) * 0.8,
+                baseRadius: this.isMobile ? 120 : 180,
+                radiusVariation: this.isMobile ? 40 : 60,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
                 color: this.colors[i % this.colors.length],
                 phase: Math.random() * Math.PI * 2
             });
@@ -56,20 +99,17 @@ class PlasmaBackground {
             orb.x += orb.vx;
             orb.y += orb.vy;
             
-            // Отскок от краев
-            if (orb.x < -orb.radius || orb.x > this.width + orb.radius) {
-                orb.vx *= -1;
-            }
-            if (orb.y < -orb.radius || orb.y > this.height + orb.radius) {
-                orb.vy *= -1;
-            }
+            // Простой отскок от краев
+            if (orb.x < 0 || orb.x > this.width) orb.vx *= -1;
+            if (orb.y < 0 || orb.y > this.height) orb.vy *= -1;
             
-            // Пульсация размера
-            orb.radius = 200 + Math.sin(this.time * 0.002 + orb.phase) * 80;
+            // Пульсация радиуса
+            orb.radius = orb.baseRadius + Math.sin(this.time * 0.001 + orb.phase) * orb.radiusVariation;
         });
     }
     
     drawOrbs() {
+        // Используем более эффективный метод отрисовки
         this.orbs.forEach((orb, index) => {
             const gradient = this.ctx.createRadialGradient(
                 orb.x, orb.y, 0,
@@ -77,10 +117,10 @@ class PlasmaBackground {
             );
             
             const color = orb.color;
-            const alpha = 0.35 + Math.sin(this.time * 0.003 + index) * 0.15;
+            const alpha = 0.3 + Math.sin(this.time * 0.002 + index) * 0.1;
             
             gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`);
-            gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha * 0.6})`);
+            gradient.addColorStop(0.6, `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha * 0.5})`);
             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
             
             this.ctx.fillStyle = gradient;
@@ -88,17 +128,21 @@ class PlasmaBackground {
         });
     }
     
-    drawWaves() {
-        const numWaves = 4;
+    drawSimplifiedWaves() {
+        // Упрощенные волны для лучшей производительности
+        const numWaves = this.isMobile ? 2 : 3;
+        
+        this.ctx.globalAlpha = 0.15;
         
         for (let i = 0; i < numWaves; i++) {
             this.ctx.beginPath();
-            this.ctx.globalAlpha = 0.2;
             
-            for (let x = 0; x <= this.width; x += 8) {
+            const step = this.isMobile ? 15 : 10;
+            
+            for (let x = 0; x <= this.width; x += step) {
                 const y = this.height / 2 + 
-                    Math.sin((x * 0.004) + (this.time * 0.002) + (i * 2.5)) * 120 +
-                    Math.sin((x * 0.008) + (this.time * 0.003) + (i * 3)) * 60;
+                    Math.sin((x * 0.003) + (this.time * 0.0015) + (i * 2)) * 100 +
+                    Math.sin((x * 0.006) + (this.time * 0.002) + (i * 2.5)) * 50;
                 
                 if (x === 0) {
                     this.ctx.moveTo(x, y);
@@ -108,41 +152,62 @@ class PlasmaBackground {
             }
             
             const color = this.colors[i % this.colors.length];
-            this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.7)`;
-            this.ctx.lineWidth = 4;
+            this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
+            this.ctx.lineWidth = 3;
             this.ctx.stroke();
         }
         
         this.ctx.globalAlpha = 1;
     }
     
-    animate() {
-        this.time += 1.2;
+    animate(currentTime) {
+        if (!this.isVisible) return;
         
-        // Темный фон
-        this.ctx.fillStyle = '#0a0a14';
-        this.ctx.fillRect(0, 0, this.width, this.height);
+        // Ограничение FPS
+        const elapsed = currentTime - this.lastFrameTime;
         
-        // Обновляем и рисуем орбы
-        this.updateOrbs();
-        this.drawOrbs();
+        if (elapsed > this.frameInterval) {
+            this.lastFrameTime = currentTime - (elapsed % this.frameInterval);
+            
+            this.time += 0.8;
+            
+            // Базовый фон
+            this.ctx.fillStyle = '#0a0a14';
+            this.ctx.fillRect(0, 0, this.width, this.height);
+            
+            // Обновляем и рисуем орбы
+            this.updateOrbs();
+            this.drawOrbs();
+            
+            // Применяем размытие один раз (самая затратная операция)
+            // На мобильных уменьшаем размытие
+            const blurAmount = this.isMobile ? 30 : 40;
+            this.ctx.filter = `blur(${blurAmount}px)`;
+            this.ctx.drawImage(this.canvas, 0, 0);
+            this.ctx.filter = 'none';
+            
+            // Рисуем упрощенные волны
+            this.drawSimplifiedWaves();
+        }
         
-        // Размываем для плавности
-        this.ctx.filter = 'blur(50px)';
-        this.ctx.drawImage(this.canvas, 0, 0);
-        this.ctx.filter = 'none';
-        
-        // Рисуем волны поверх
-        this.drawWaves();
-        
-        requestAnimationFrame(() => this.animate());
+        this.animationId = requestAnimationFrame((time) => this.animate(time));
+    }
+    
+    // Метод для остановки анимации (если нужно)
+    destroy() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
     }
 }
 
-// Инициализация
+// Инициализация с задержкой для ускорения загрузки страницы
 document.addEventListener('DOMContentLoaded', function() {
-    const canvas = document.getElementById('plasmaCanvas');
-    if (canvas) {
-        new PlasmaBackground('plasmaCanvas');
-    }
+    // Небольшая задержка для приоритета загрузки контента
+    setTimeout(() => {
+        const canvas = document.getElementById('plasmaCanvas');
+        if (canvas) {
+            window.plasmaBackground = new PlasmaBackground('plasmaCanvas');
+        }
+    }, 100);
 });
