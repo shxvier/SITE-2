@@ -18,8 +18,8 @@ body {
     overflow-x: hidden;
 }
 
-/* Canvas фон Dark Veil - ДОЛЖЕН БЫТЬ ПОЗАДИ ВСЕГО */
-#darkVeilCanvas {
+/* Canvas фон Plasma - ДОЛЖЕН БЫТЬ ПОЗАДИ ВСЕГО */
+#plasmaCanvas {
     position: fixed;
     top: 0;
     left: 0;
@@ -30,35 +30,22 @@ body {
 }
 
 /* Все остальное содержимое ДОЛЖНО БЫТЬ ВЫШЕ canvas */
-header, nav, main, footer, .page-container {
+header, nav, main, footer {
     position: relative;
     z-index: 10;
 }
 
-/* Контейнер страницы */
-.page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    min-height: 100vh;
-}
+/* ============================================
+   GLASSMORPHISM - СТЕКЛЯННЫЙ ЭФФЕКТ
+   ============================================ */
 
-/* Сканлайны поверх всего */
-body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 150, 255, 0.02) 2px,
-        rgba(0, 150, 255, 0.02) 4px
-    );
-    pointer-events: none;
-    z-index: 100;
+.glass-effect {
+    background: rgba(15, 10, 30, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
@@ -66,17 +53,17 @@ body::after {
    ============================================ */
 
 header {
-    background: linear-gradient(135deg, rgba(15, 20, 40, 0.95), rgba(25, 35, 60, 0.95));
+    background: rgba(15, 10, 30, 0.5) !important;
+    backdrop-filter: blur(20px) saturate(180%);
     color: #f0f0f0;
     padding: 1.6rem 1rem;
     text-align: center;
     font-size: clamp(1.4rem, 5vw, 2.1rem);
     font-weight: 700;
-    text-shadow: 0 0 20px rgba(100, 150, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.8);
+    text-shadow: 0 0 20px rgba(200, 100, 255, 0.5), 2px 2px 10px rgba(0, 0, 0, 0.8);
     letter-spacing: 1.2px;
-    border-bottom: 2px solid rgba(100, 150, 255, 0.3);
+    border-bottom: 2px solid rgba(200, 100, 255, 0.3);
     animation: headerSlideDown 0.8s ease;
-    backdrop-filter: blur(10px);
 }
 
 @keyframes headerSlideDown {
@@ -93,7 +80,7 @@ header {
 /* Логотип с пульсацией */
 header img {
     animation: logoPulse 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 10px rgba(100, 150, 255, 0.5));
+    filter: drop-shadow(0 0 10px rgba(200, 100, 255, 0.5));
 }
 
 @keyframes logoPulse {
@@ -107,11 +94,11 @@ header img {
 
 /* Навигация */
 .navbar {
-    background: linear-gradient(135deg, rgba(20, 25, 50, 0.95), rgba(15, 20, 40, 0.95));
-    border-bottom: 1px solid rgba(100, 150, 255, 0.2);
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
+    background: rgba(20, 15, 40, 0.5) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(200, 100, 255, 0.2);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
     animation: navSlideIn 1s ease;
-    backdrop-filter: blur(10px);
 }
 
 @keyframes navSlideIn {
@@ -126,13 +113,13 @@ header img {
 }
 
 .nav-link {
-    color: #b0c4de !important;
+    color: #d0c0e0 !important;
     transition: all 0.3s ease;
     position: relative;
     padding: 0.6rem 1.2rem !important;
-    border-radius: 6px;
+    border-radius: 12px;
     font-weight: 500;
-    text-shadow: 0 0 10px rgba(100, 150, 255, 0.3);
+    text-shadow: 0 0 10px rgba(200, 100, 255, 0.3);
 }
 
 /* Неоновая линия под ссылкой */
@@ -143,10 +130,10 @@ header img {
     left: 50%;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00d4ff, #0096ff);
+    background: linear-gradient(90deg, #c084fc, #a855f7);
     transition: all 0.3s ease;
     transform: translateX(-50%);
-    box-shadow: 0 0 10px #00d4ff;
+    box-shadow: 0 0 10px #c084fc;
 }
 
 .nav-link:hover::before,
@@ -156,11 +143,11 @@ header img {
 
 .nav-link:hover,
 .nav-link.active {
-    background: linear-gradient(135deg, rgba(0, 100, 200, 0.3), rgba(0, 150, 255, 0.3));
-    color: #00d4ff !important;
+    background: rgba(200, 132, 252, 0.2);
+    color: #e9d5ff !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(200, 132, 252, 0.4);
+    text-shadow: 0 0 15px rgba(200, 132, 252, 0.8);
 }
 
 /* ============================================
@@ -193,14 +180,14 @@ h1 {
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.2s;
     opacity: 0;
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    text-shadow: 0 0 20px rgba(200, 132, 252, 0.5);
 }
 
 h2, h3 {
     animation: fadeInUp 0.8s ease forwards;
     animation-delay: 0.3s;
     opacity: 0;
-    text-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 15px rgba(200, 132, 252, 0.3);
 }
 
 .card {
@@ -216,28 +203,32 @@ h2, h3 {
 .card:nth-child(6) { animation-delay: 0.8s; }
 
 /* ============================================
-   КАРТОЧКИ И ПРОЕКТЫ
+   КАРТОЧКИ С СТЕКЛЯННЫМ ЭФФЕКТОМ
    ============================================ */
 
 .card {
-    background: rgba(15, 20, 35, 0.95) !important;
-    border-radius: 12px !important;
+    background: rgba(20, 15, 40, 0.4) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 20px !important;
     overflow: hidden;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(0, 150, 255, 0.3) !important;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 150, 255, 0.1);
-    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(200, 132, 252, 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 150, 255, 0.4), 
-                0 0 40px rgba(0, 212, 255, 0.2);
-    border-color: rgba(0, 212, 255, 0.6) !important;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(200, 132, 252, 0.4), 
+                0 0 60px rgba(168, 85, 247, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(200, 132, 252, 0.6) !important;
 }
 
 .card-img-top {
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease;
+    border-radius: 20px 20px 0 0;
 }
 
 .card:hover .card-img-top {
@@ -249,73 +240,80 @@ h2, h3 {
 }
 
 /* ============================================
-   КНОПКИ
+   КНОПКИ С ГРАДИЕНТОМ
    ============================================ */
 
 .btn-warning {
-    background: linear-gradient(135deg, #00d4ff, #0096ff);
+    background: linear-gradient(135deg, #c084fc, #a855f7, #9333ea);
     border: none;
     transition: all 0.3s ease;
-    color: #0a0a0f;
+    color: #ffffff;
     font-weight: 700;
     padding: 0.6rem 1.8rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
     text-transform: uppercase;
     letter-spacing: 1px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .btn-warning:hover {
-    background: linear-gradient(135deg, #00e5ff, #00b4ff);
-    color: #000;
+    background: linear-gradient(135deg, #e9d5ff, #c084fc, #a855f7);
+    color: #1a1a1a;
     transform: translateY(-2px);
-    box-shadow: 0 0 25px #00d4ff, 0 6px 20px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 30px rgba(192, 132, 252, 0.6), 
+                0 8px 25px rgba(192, 132, 252, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
 .btn-outline-warning {
-    border: 2px solid #00d4ff;
-    color: #00d4ff;
-    background: transparent;
+    border: 2px solid rgba(192, 132, 252, 0.6);
+    color: #e9d5ff;
+    background: rgba(20, 15, 40, 0.3);
+    backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     font-weight: 600;
-    border-radius: 8px;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    border-radius: 12px;
+    text-shadow: 0 0 10px rgba(200, 132, 252, 0.5);
 }
 
 .btn-outline-warning:hover {
-    background: rgba(0, 212, 255, 0.2);
-    color: #00e5ff;
-    border-color: #00e5ff;
+    background: rgba(192, 132, 252, 0.3);
+    color: #ffffff;
+    border-color: #e9d5ff;
     transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.6);
 }
 
 .btn-outline-warning.active {
-    background: rgba(0, 212, 255, 0.3);
-    color: #00e5ff;
-    box-shadow: 0 0 20px #00d4ff;
+    background: rgba(192, 132, 252, 0.4);
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.6);
 }
 
 /* ============================================
-   ФОРМЫ
+   ФОРМЫ СО СТЕКЛЯННЫМ ЭФФЕКТОМ
    ============================================ */
 
 .form-control, .form-select {
-    background: rgba(20, 25, 40, 0.9) !important;
-    border: 1px solid rgba(0, 150, 255, 0.3) !important;
-    color: #b0c4de !important;
+    background: rgba(30, 25, 50, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(200, 132, 252, 0.3) !important;
+    color: #d0c0e0 !important;
     transition: all 0.3s ease;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .form-control:focus, .form-select:focus {
-    border-color: #00d4ff !important;
-    box-shadow: 0 0 0 0.25rem rgba(0, 212, 255, 0.25) !important;
-    background: rgba(25, 30, 50, 0.95) !important;
+    border-color: #c084fc !important;
+    box-shadow: 0 0 0 0.25rem rgba(192, 132, 252, 0.25), 
+                inset 0 0 20px rgba(200, 132, 252, 0.1) !important;
+    background: rgba(40, 30, 60, 0.6) !important;
 }
 
 .form-label {
-    color: #b0c4de;
+    color: #d0c0e0;
     font-weight: 500;
 }
 
@@ -324,18 +322,20 @@ h2, h3 {
    ============================================ */
 
 .progress {
-    background-color: rgba(20, 25, 40, 0.9);
-    border-radius: 10px;
+    background: rgba(30, 25, 50, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     height: 25px;
     overflow: hidden;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(0, 150, 255, 0.3);
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(200, 132, 252, 0.2);
 }
 
 .progress-bar {
     transition: width 1.5s ease;
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
 }
 
 .progress-bar::before {
@@ -355,23 +355,75 @@ h2, h3 {
 }
 
 .progress-bar.bg-success {
-    background: linear-gradient(90deg, #00ff88, #00cc88);
-    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    background: linear-gradient(90deg, #10b981, #34d399);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
 }
 
 .progress-bar.bg-warning {
-    background: linear-gradient(90deg, #ffca28, #ffd700);
-    box-shadow: 0 0 10px rgba(255, 202, 40, 0.5);
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.6);
 }
 
 .progress-bar.bg-info {
-    background: linear-gradient(90deg, #00d4ff, #00e5ff);
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    background: linear-gradient(90deg, #06b6d4, #22d3ee);
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.6);
 }
 
 .progress-bar.bg-primary {
-    background: linear-gradient(90deg, #5e72e4, #825ee4);
-    box-shadow: 0 0 10px rgba(94, 114, 228, 0.5);
+    background: linear-gradient(90deg, #8b5cf6, #a78bfa);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
+}
+
+.progress-bar.bg-danger {
+    background: linear-gradient(90deg, #ef4444, #f87171);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+}
+
+/* ============================================
+   ПРОФИЛЬНОЕ ФОТО
+   ============================================ */
+
+.profile-photo {
+    box-shadow: 0 0 40px rgba(192, 132, 252, 0.6), 
+                0 0 80px rgba(168, 85, 247, 0.4);
+    border: 4px solid rgba(192, 132, 252, 0.6) !important;
+    transition: all 0.4s ease;
+    object-fit: cover;
+}
+
+.profile-photo:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 50px rgba(192, 132, 252, 0.8), 
+                0 0 100px rgba(168, 85, 247, 0.6);
+    border-color: rgba(233, 213, 255, 0.8) !important;
+}
+
+/* ============================================
+   ИКОНКИ ПРОЕКТОВ
+   ============================================ */
+
+.project-icon-card {
+    min-height: 200px;
+    transition: all 0.4s ease;
+    background: rgba(20, 15, 40, 0.4) !important;
+    backdrop-filter: blur(20px);
+}
+
+.project-icon-card .project-icon {
+    color: #c084fc;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(192, 132, 252, 0.6));
+}
+
+.project-icon-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 20px 50px rgba(192, 132, 252, 0.5);
+    background: rgba(30, 20, 50, 0.6) !important;
+}
+
+.project-icon-card:hover .project-icon {
+    transform: scale(1.3) rotate(15deg);
+    filter: drop-shadow(0 0 25px rgba(192, 132, 252, 1));
 }
 
 /* ============================================
@@ -383,11 +435,13 @@ h2, h3 {
 }
 
 .timeline-badge.completed {
-    color: #00ff88 !important;
+    color: #10b981 !important;
+    filter: drop-shadow(0 0 10px #10b981);
 }
 
 .timeline-badge.in-progress {
-    color: #ffca28 !important;
+    color: #f59e0b !important;
+    filter: drop-shadow(0 0 10px #f59e0b);
 }
 
 .timeline-item {
@@ -418,11 +472,11 @@ h2, h3 {
 .achievement-item {
     transition: all 0.3s ease;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: 12px;
 }
 
 .achievement-item:hover {
-    background: rgba(0, 150, 255, 0.1);
+    background: rgba(192, 132, 252, 0.2);
     transform: scale(1.05);
 }
 
@@ -431,19 +485,20 @@ h2, h3 {
    ============================================ */
 
 .modal-content {
-    background: rgba(15, 20, 35, 0.98) !important;
-    border: 2px solid rgba(0, 150, 255, 0.4) !important;
-    box-shadow: 0 0 50px rgba(0, 212, 255, 0.3);
-    border-radius: 12px;
-    backdrop-filter: blur(10px);
+    background: rgba(20, 15, 40, 0.95) !important;
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 2px solid rgba(200, 132, 252, 0.4) !important;
+    box-shadow: 0 0 60px rgba(192, 132, 252, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
 }
 
 .modal-header {
-    border-bottom: 1px solid rgba(0, 150, 255, 0.3) !important;
+    border-bottom: 1px solid rgba(200, 132, 252, 0.3) !important;
 }
 
 .modal-footer {
-    border-top: 1px solid rgba(0, 150, 255, 0.3) !important;
+    border-top: 1px solid rgba(200, 132, 252, 0.3) !important;
 }
 
 /* ============================================
@@ -452,14 +507,15 @@ h2, h3 {
 
 .badge {
     padding: 0.5rem 0.8rem;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
     transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
 .badge:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 /* ============================================
@@ -467,9 +523,9 @@ h2, h3 {
    ============================================ */
 
 footer {
-    background: linear-gradient(135deg, rgba(15, 20, 40, 0.95), rgba(25, 35, 60, 0.95));
-    border-top: 2px solid rgba(0, 150, 255, 0.3);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 10, 30, 0.5) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    border-top: 2px solid rgba(200, 132, 252, 0.3);
 }
 
 /* ============================================
@@ -485,13 +541,14 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(135deg, #00d4ff, #0096ff);
+    background: linear-gradient(135deg, #c084fc, #a855f7);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    box-shadow: 0 0 10px rgba(192, 132, 252, 0.5);
+    border: 2px solid rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(135deg, #00e5ff, #00b4ff);
+    background: linear-gradient(135deg, #e9d5ff, #c084fc);
 }
 
 /* ============================================
@@ -499,16 +556,62 @@ footer {
    ============================================ */
 
 .text-warning {
-    color: #00d4ff !important;
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    color: #c084fc !important;
+    text-shadow: 0 0 15px rgba(192, 132, 252, 0.5);
 }
 
 .text-white {
-    text-shadow: 0 0 10px rgba(0, 212, 255, 0.2);
+    text-shadow: 0 0 10px rgba(192, 132, 252, 0.2);
 }
 
 .text-light {
-    color: #b0c4de !important;
+    color: #d0c0e0 !important;
+}
+
+.border-warning {
+    border-color: rgba(192, 132, 252, 0.4) !important;
+}
+
+.border-info {
+    border-color: rgba(6, 182, 212, 0.4) !important;
+}
+
+.border-success {
+    border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+/* Сканлайны */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(200, 132, 252, 0.02) 2px,
+        rgba(200, 132, 252, 0.02) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+}
+
+/* ============================================
+   SKILL ITEMS
+   ============================================ */
+
+.skill-item {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 12px;
+}
+
+.skill-item:hover {
+    background: rgba(192, 132, 252, 0.15);
+    transform: translateX(5px);
 }
 
 /* ============================================
@@ -516,63 +619,17 @@ footer {
    ============================================ */
 
 @media (max-width: 768px) {
-    .display-4 {
-        font-size: 1.9rem;
+    .display-4, .display-5 {
+        font-size: 1.8rem;
     }
 
     .btn-lg {
         padding: 0.7rem 1.4rem;
         font-size: 0.95rem;
     }
-}
-/* Стили для профильного фото */
-.profile-photo {
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 60px rgba(0, 212, 255, 0.3);
-    border: 3px solid rgba(0, 212, 255, 0.6) !important;
-    transition: all 0.3s ease;
-}
-
-.profile-photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.7), 0 0 80px rgba(0, 212, 255, 0.5);
-}
-
-/* Стили для иконок проектов */
-.project-icon-card {
-    min-height: 200px;
-    transition: all 0.3s ease;
-}
-
-.project-icon-card .project-icon {
-    color: #00d4ff;
-    transition: all 0.3s ease;
-    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
-}
-
-.project-icon-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-}
-
-.project-icon-card:hover .project-icon {
-    transform: scale(1.2) rotate(10deg);
-    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
-}
-
-/* Анимация для навыков */
-.skill-item {
-    transition: all 0.3s ease;
-    padding: 0.5rem;
-    border-radius: 8px;
-}
-
-.skill-item:hover {
-    background: rgba(0, 150, 255, 0.1);
-    transform: translateX(5px);
-}
-
-/* Стили для прогресс-баров с процентами */
-.progress-bar.bg-danger {
-    background: linear-gradient(90deg, #ff4757, #ff6b81);
-    box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    
+    .profile-photo {
+        width: 200px !important;
+        height: 200px !important;
+    }
 }
