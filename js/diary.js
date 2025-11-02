@@ -1,8 +1,8 @@
-// Управление дневником
+// Управление дневником с уведомлениями
 document.addEventListener('DOMContentLoaded', function() {
     const saveEntryBtn = document.getElementById('saveEntryBtn');
     const diaryForm = document.getElementById('diaryForm');
-    const timeline = document.querySelector('.timeline');
+    const timeline = document.getElementById('timeline');
 
     if (saveEntryBtn && diaryForm) {
         saveEntryBtn.addEventListener('click', function() {
@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Анимация появления
                 setTimeout(() => {
-                    newEntry.style.animation = 'fadeInLeft 0.6s ease forwards';
+                    newEntry.style.opacity = '1';
+                    newEntry.style.transform = 'translateX(0)';
                 }, 10);
 
                 // Закрытие модального окна
@@ -30,8 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Очистка формы
                 diaryForm.reset();
 
-                // Уведомление
-                showNotification('Запись успешно добавлена!', 'success');
+                // Показываем уведомление об успехе
+                if (window.notify) {
+                    notify.success('Запись успешно добавлена в дневник! 📝');
+                }
+
+                // Анимация прокрутки к новой записи
+                setTimeout(() => {
+                    newEntry.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 500);
+            } else {
+                // Показываем предупреждение
+                if (window.notify) {
+                    notify.warning('Пожалуйста, заполните все поля формы!');
+                }
             }
         });
     }
@@ -42,9 +55,11 @@ function createTimelineEntry(date, title, description, status) {
     const entry = document.createElement('div');
     entry.className = 'timeline-item mb-4';
     entry.style.opacity = '0';
+    entry.style.transform = 'translateX(-30px)';
+    entry.style.transition = 'all 0.6s ease';
 
-    const statusClass = status === 'completed' ? 'completed' : 'in-progress';
-    const icon = status === 'completed' ? 'bi-check-circle-fill' : 'bi-arrow-clockwise';
+    const statusClass = status === 'completed' ? 'completed' : status === 'in-progress' ? 'in-progress' : 'planned';
+    const icon = status === 'completed' ? 'bi-check-circle-fill' : status === 'in-progress' ? 'bi-arrow-clockwise' : 'bi-clock';
 
     const formattedDate = new Date(date).toLocaleDateString('ru-RU', {
         day: 'numeric',
@@ -64,24 +79,4 @@ function createTimelineEntry(date, title, description, status) {
     `;
 
     return entry;
-}
-
-// Функция уведомлений (если не подключен contact-form.js)
-if (typeof showNotification === 'undefined') {
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `alert alert-${type} position-fixed top-0 start-50 translate-middle-x mt-3`;
-        notification.style.zIndex = '9999';
-        notification.style.animation = 'slideDown 0.5s ease';
-        notification.innerHTML = `
-            <i class="bi bi-check-circle-fill me-2"></i>${message}
-        `;
-        
-        document.body.appendChild(notification);
-
-        setTimeout(() => {
-            notification.style.animation = 'slideUp 0.5s ease';
-            setTimeout(() => notification.remove(), 500);
-        }, 3000);
-    }
 }
