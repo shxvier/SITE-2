@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Canvas фон Plasma -->
-    nvasvas id="plasmaCanvas"></canvas>
+    <canvas id="plasmaCanvas"></canvas>
 
     <!-- Уведомления -->
     <div id="notificationContainer"></div>
@@ -49,18 +49,25 @@
                     <img src="images/photo.jpg" 
                          alt="Фото студента" 
                          class="profile-photo img-fluid rounded-circle border border-warning" 
-                         style="width: 250px; height: 250px; object-fit: cover;"
-                         onerror="this.src='https://via.placeholder.com/250/3b82f6/ffffff?text=Фото'">
+                         style="width: 280px; height: 280px; object-fit: cover;"
+                         onerror="this.src='https://via.placeholder.com/280/8b5cf6/ffffff?text=Фото'">
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="card bg-dark border-warning glass-effect">
                     <div class="card-body p-4">
-                        <h1 class="display-5 text-white mb-3">Привет! Я студент</h1>
+                        <h1 class="display-5 text-white mb-3">
+                            <i class="bi bi-person-badge me-2"></i>Привет! Я студент
+                        </h1>
                         <h2 class="h4 text-warning mb-3">группы ЭФБО-12-24</h2>
-                        <p class="text-light lead mb-4">
+                        <p class="text-light lead mb-3">
                             Увлекаюсь веб-разработкой и создаю современные адаптивные веб-приложения. 
                             Специализируюсь на HTML, CSS, JavaScript, React и других современных технологиях.
+                        </p>
+                        <p class="text-light mb-4">
+                            <i class="bi bi-mortarboard-fill text-warning me-2"></i>
+                            Обучаюсь в МИРЭА - Российском технологическом университете на факультете информационных технологий. 
+                            Активно участвую в хакатонах, изучаю новые фреймворки и постоянно совершенствую свои навыки программирования.
                         </p>
                         <div class="d-flex gap-3 flex-wrap">
                             <a href="files/resume.pdf" download class="btn btn-warning btn-lg">
@@ -69,6 +76,60 @@
                             <a href="pages/contacts.html" class="btn btn-outline-warning btn-lg">
                                 <i class="bi bi-envelope me-2"></i>Связаться
                             </a>
+                            <a href="pages/projects.html" class="btn btn-outline-warning btn-lg">
+                                <i class="bi bi-folder me-2"></i>Мои работы
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Обо мне - дополнительная информация -->
+        <section class="mb-5">
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card bg-dark border-info glass-effect h-100">
+                        <div class="card-body">
+                            <h3 class="text-white mb-3">
+                                <i class="bi bi-lightbulb me-2"></i>Интересы и увлечения
+                            </h3>
+                            <ul class="text-light">
+                                <li class="mb-2"><i class="bi bi-code-square text-warning me-2"></i>Разработка веб-приложений с нуля</li>
+                                <li class="mb-2"><i class="bi bi-palette text-warning me-2"></i>UI/UX дизайн и прототипирование</li>
+                                <li class="mb-2"><i class="bi bi-graph-up text-warning me-2"></i>Изучение алгоритмов и структур данных</li>
+                                <li class="mb-2"><i class="bi bi-laptop text-warning me-2"></i>Участие в open-source проектах</li>
+                                <li class="mb-2"><i class="bi bi-trophy text-warning me-2"></i>Хакатоны и соревнования по программированию</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card bg-dark border-success glass-effect h-100">
+                        <div class="card-body">
+                            <h3 class="text-white mb-3">
+                                <i class="bi bi-award me-2"></i>Достижения
+                            </h3>
+                            <div class="achievement-list">
+                                <div class="achievement-item mb-3 p-3 rounded" style="background: rgba(147, 51, 234, 0.1);">
+                                    <h5 class="text-warning mb-1">
+                                        <i class="bi bi-star-fill me-2"></i>Успешно завершил 6+ проектов
+                                    </h5>
+                                    <p class="text-light mb-0 small">Включая личные сайты, веб-приложения и интернет-магазины</p>
+                                </div>
+                                <div class="achievement-item mb-3 p-3 rounded" style="background: rgba(147, 51, 234, 0.1);">
+                                    <h5 class="text-warning mb-1">
+                                        <i class="bi bi-people-fill me-2"></i>Работа в команде
+                                    </h5>
+                                    <p class="text-light mb-0 small">Опыт коллективной разработки с использованием Git и Agile методологий</p>
+                                </div>
+                                <div class="achievement-item p-3 rounded" style="background: rgba(147, 51, 234, 0.1);">
+                                    <h5 class="text-warning mb-1">
+                                        <i class="bi bi-book me-2"></i>Непрерывное обучение
+                                    </h5>
+                                    <p class="text-light mb-0 small">Постоянно изучаю новые технологии и фреймворки</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -77,11 +138,16 @@
 
         <!-- Мои навыки -->
         <section class="mb-5">
-            <h2 class="text-center text-white mb-4">Мои навыки</h2>
+            <h2 class="text-center text-white mb-4">
+                <i class="bi bi-gear-fill me-2"></i>Мои навыки и технологии
+            </h2>
             <div class="row g-4">
                 <div class="col-lg-6">
                     <div class="card bg-dark border-info h-100 glass-effect">
                         <div class="card-body">
+                            <h4 class="text-warning mb-4">
+                                <i class="bi bi-laptop me-2"></i>Frontend разработка
+                            </h4>
                             <div class="skill-item mb-4">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="text-light fw-bold">
@@ -124,6 +190,9 @@
                 <div class="col-lg-6">
                     <div class="card bg-dark border-success h-100 glass-effect">
                         <div class="card-body">
+                            <h4 class="text-warning mb-4">
+                                <i class="bi bi-code-slash me-2"></i>Программирование
+                            </h4>
                             <div class="skill-item mb-4">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="text-light fw-bold">
@@ -151,7 +220,7 @@
                             <div class="skill-item">
                                 <div class="d-flex justify-content-between mb-2">
                                     <span class="text-light fw-bold">
-                                        <i class="bi bi-code-slash text-success me-2"></i>C++/C#
+                                        <i class="bi bi-file-code text-success me-2"></i>C++/C#
                                     </span>
                                     <span class="text-warning fw-bold">70%</span>
                                 </div>
@@ -165,9 +234,14 @@
             </div>
         </section>
 
-        <!-- Лучшие проекты -->
+        <!-- Лучшие проекты - ВСЕ 6 ПРОЕКТОВ! -->
         <section class="mb-5">
-            <h2 class="text-center text-white mb-4">Лучшие проекты</h2>
+            <h2 class="text-center text-white mb-4">
+                <i class="bi bi-folder-fill me-2"></i>Лучшие проекты
+            </h2>
+            <p class="text-center text-light mb-4">
+                Здесь представлены мои лучшие работы в области веб-разработки. Каждый проект демонстрирует различные навыки и технологии.
+            </p>
             <div class="row g-4">
                 <!-- Проект 1 -->
                 <div class="col-lg-4 col-md-6">
@@ -176,17 +250,18 @@
                             <img src="images/project1.jpg" 
                                  class="card-img-top" 
                                  alt="Личный сайт" 
-                                 style="height: 200px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x200/3b82f6/ffffff?text=Проект+1'">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <i class="bi bi-globe2 text-warning" style="font-size: 3rem;"></i>
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/8b5cf6/ffffff?text=Проект+1'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-globe2 text-warning" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white mb-2">Личный сайт</h5>
-                                <p class="text-light small mb-0">HTML, CSS, Bootstrap</p>
-                                <div class="mt-2">
+                                <h5 class="text-white text-center mb-2">Личный сайт</h5>
+                                <p class="text-light small text-center mb-3">Адаптивный сайт-портфолио с современным дизайном</p>
+                                <div class="text-center">
                                     <span class="badge bg-primary">HTML5</span>
                                     <span class="badge bg-success">CSS3</span>
+                                    <span class="badge bg-info">Bootstrap</span>
                                 </div>
                             </div>
                         </div>
@@ -200,16 +275,17 @@
                             <img src="images/project2.jpg" 
                                  class="card-img-top" 
                                  alt="Todo-приложение" 
-                                 style="height: 200px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x200/06b6d4/ffffff?text=Проект+2'">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <i class="bi bi-list-check text-info" style="font-size: 3rem;"></i>
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/a855f7/ffffff?text=Проект+2'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-list-check text-info" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white mb-2">Todo-приложение</h5>
-                                <p class="text-light small mb-0">JavaScript, Local Storage</p>
-                                <div class="mt-2">
+                                <h5 class="text-white text-center mb-2">Todo-приложение</h5>
+                                <p class="text-light small text-center mb-3">Приложение для управления задачами с Local Storage</p>
+                                <div class="text-center">
                                     <span class="badge bg-warning text-dark">JavaScript</span>
+                                    <span class="badge bg-success">Local Storage</span>
                                 </div>
                             </div>
                         </div>
@@ -223,16 +299,89 @@
                             <img src="images/project3.jpg" 
                                  class="card-img-top" 
                                  alt="Интернет-магазин" 
-                                 style="height: 200px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x200/10b981/ffffff?text=Проект+3'">
-                            <div class="card-body text-center">
-                                <div class="mb-3">
-                                    <i class="bi bi-shop text-success" style="font-size: 3rem;"></i>
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/c084fc/ffffff?text=Проект+3'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-shop text-success" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white mb-2">Интернет-магазин</h5>
-                                <p class="text-light small mb-0">React, API</p>
-                                <div class="mt-2">
+                                <h5 class="text-white text-center mb-2">Интернет-магазин</h5>
+                                <p class="text-light small text-center mb-3">E-commerce платформа на React с корзиной</p>
+                                <div class="text-center">
                                     <span class="badge bg-info">React</span>
+                                    <span class="badge bg-primary">API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Проект 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="pages/projects.html#project4" class="text-decoration-none">
+                        <div class="card bg-dark border-warning h-100 project-card glass-effect">
+                            <img src="images/project4.jpg" 
+                                 class="card-img-top" 
+                                 alt="Портфолио" 
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/d8b4fe/ffffff?text=Проект+4'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-person-badge text-warning" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5 class="text-white text-center mb-2">Портфолио</h5>
+                                <p class="text-light small text-center mb-3">Профессиональное портфолио с анимациями</p>
+                                <div class="text-center">
+                                    <span class="badge bg-info">Bootstrap</span>
+                                    <span class="badge bg-success">Responsive</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Проект 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="pages/projects.html#project5" class="text-decoration-none">
+                        <div class="card bg-dark border-info h-100 project-card glass-effect">
+                            <img src="images/project5.jpg" 
+                                 class="card-img-top" 
+                                 alt="Weather App" 
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/ec4899/ffffff?text=Проект+5'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-cloud-sun text-info" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5 class="text-white text-center mb-2">Weather App</h5>
+                                <p class="text-light small text-center mb-3">Приложение прогноза погоды с API интеграцией</p>
+                                <div class="text-center">
+                                    <span class="badge bg-warning text-dark">JavaScript</span>
+                                    <span class="badge bg-primary">Weather API</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Проект 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="pages/projects.html#project6" class="text-decoration-none">
+                        <div class="card bg-dark border-success h-100 project-card glass-effect">
+                            <img src="images/project6.jpg" 
+                                 class="card-img-top" 
+                                 alt="Task Manager" 
+                                 style="height: 220px; object-fit: cover;"
+                                 onerror="this.src='https://via.placeholder.com/400x220/9333ea/ffffff?text=Проект+6'">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <i class="bi bi-kanban text-success" style="font-size: 2.5rem;"></i>
+                                </div>
+                                <h5 class="text-white text-center mb-2">Task Manager</h5>
+                                <p class="text-light small text-center mb-3">Система управления проектами на React</p>
+                                <div class="text-center">
+                                    <span class="badge bg-info">React</span>
+                                    <span class="badge bg-success">Context API</span>
                                 </div>
                             </div>
                         </div>
@@ -240,9 +389,51 @@
                 </div>
             </div>
             <div class="text-center mt-4">
-                <a href="pages/projects.html" class="btn btn-warning btn-lg">
-                    Все проекты <i class="bi bi-arrow-right ms-2"></i>
+                <a href="pages/projects.html" class="btn btn-warning btn-lg px-5">
+                    <i class="bi bi-folder2-open me-2"></i>Посмотреть все проекты
                 </a>
+            </div>
+        </section>
+
+        <!-- Статистика -->
+        <section class="mb-5">
+            <div class="row g-4 text-center">
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark border-warning glass-effect h-100">
+                        <div class="card-body">
+                            <i class="bi bi-code-square text-warning" style="font-size: 3rem;"></i>
+                            <h3 class="text-white mt-3 mb-2">6+</h3>
+                            <p class="text-light mb-0">Завершенных проектов</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark border-info glass-effect h-100">
+                        <div class="card-body">
+                            <i class="bi bi-stack text-info" style="font-size: 3rem;"></i>
+                            <h3 class="text-white mt-3 mb-2">10+</h3>
+                            <p class="text-light mb-0">Изученных технологий</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark border-success glass-effect h-100">
+                        <div class="card-body">
+                            <i class="bi bi-github text-success" style="font-size: 3rem;"></i>
+                            <h3 class="text-white mt-3 mb-2">50+</h3>
+                            <p class="text-light mb-0">Коммитов на GitHub</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="card bg-dark border-danger glass-effect h-100">
+                        <div class="card-body">
+                            <i class="bi bi-cup-hot text-danger" style="font-size: 3rem;"></i>
+                            <h3 class="text-white mt-3 mb-2">∞</h3>
+                            <p class="text-light mb-0">Чашек кофе</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -251,11 +442,14 @@
             <div class="col-12">
                 <div class="card bg-dark border-warning glass-effect">
                     <div class="card-body text-center py-5">
-                        <h2 class="text-white mb-4">
+                        <h2 class="text-white mb-3">
                             <i class="bi bi-envelope-heart me-2"></i>Готов к сотрудничеству
                         </h2>
-                        <p class="text-light mb-4 lead">Заинтересованы в совместной работе? Свяжитесь со мной!</p>
-                        <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <p class="text-light mb-4 lead">
+                            Заинтересованы в совместной работе или хотите обсудить проект? 
+                            Свяжитесь со мной любым удобным способом!
+                        </p>
+                        <div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
                             <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="btn btn-outline-warning">
                                 <i class="bi bi-envelope me-2"></i>Email
                             </a>
@@ -266,15 +460,22 @@
                                 <i class="bi bi-telegram me-2"></i>Telegram
                             </a>
                         </div>
+                        <p class="text-light small mb-0">
+                            <i class="bi bi-clock me-2"></i>Обычно отвечаю в течение 24 часов
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
+    <footer class="bg-dark text-warning text-center py-4 border-top border-warning mt-5">
         <div class="container">
-            <p class="mb-0">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
+            <p class="mb-2">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
+            <p class="small mb-0">
+                <i class="bi bi-heart-fill text-danger me-1"></i>
+                Сделано с любовью к коду
+            </p>
         </div>
     </footer>
 
