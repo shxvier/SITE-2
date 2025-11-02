@@ -9,16 +9,16 @@
     <link rel="stylesheet" href="style/styles.css">
 </head>
 <body>
-    <!-- Canvas фон Dark Veil -->
-    <canvas id="darkVeilCanvas"></canvas>
+    <!-- Canvas фон Plasma -->
+    <canvas id="plasmaCanvas"></canvas>
 
     <!-- Уведомления -->
-    <div id="notificationContainer" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+    <div id="notificationContainer"></div>
 
     <header class="bg-dark border-bottom border-warning">
         <div class="container py-3">
             <div class="d-flex align-items-center justify-content-center">
-                <img src="images/logo.png" alt="Логотип" class="me-3" style="height: 40px;">
+                <img src="images/logo.png" alt="Логотип" class="me-3" style="height: 40px;" onerror="this.style.display='none'">
                 <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
             </div>
         </div>
@@ -46,14 +46,18 @@
         <section class="row g-4 mb-5 align-items-center">
             <div class="col-lg-4 text-center">
                 <div class="profile-photo-container">
-                    <img src="images/profile.jpg" alt="Фото" class="profile-photo img-fluid rounded-circle border border-warning" style="width: 250px; height: 250px; object-fit: cover;">
+                    <img src="images/profile.jpg" 
+                         alt="Фото студента" 
+                         class="profile-photo img-fluid rounded-circle border border-warning" 
+                         style="width: 250px; height: 250px; object-fit: cover;"
+                         onerror="this.src='https://via.placeholder.com/250/8b5cf6/ffffff?text=ФОТО'">
                 </div>
             </div>
             <div class="col-lg-8">
-                <div class="card bg-dark border-warning">
+                <div class="card bg-dark border-warning glass-effect">
                     <div class="card-body p-4">
                         <h1 class="display-5 text-white mb-3">Привет! Я студент</h1>
-                        <h2 class="h4 text-warning mb-3">группы ЭФБО-99-99</h2>
+                        <h2 class="h4 text-warning mb-3">группы ЭФБО-12-24</h2>
                         <p class="text-light lead mb-4">
                             Увлекаюсь веб-разработкой и создаю современные адаптивные веб-приложения. 
                             Специализируюсь на HTML, CSS, JavaScript, React и других современных технологиях.
@@ -76,7 +80,7 @@
             <h2 class="text-center text-white mb-4">Мои навыки</h2>
             <div class="row g-4">
                 <div class="col-lg-6">
-                    <div class="card bg-dark border-info h-100">
+                    <div class="card bg-dark border-info h-100 glass-effect">
                         <div class="card-body">
                             <div class="skill-item mb-4">
                                 <div class="d-flex justify-content-between mb-2">
@@ -118,7 +122,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card bg-dark border-success h-100">
+                    <div class="card bg-dark border-success h-100 glass-effect">
                         <div class="card-body">
                             <div class="skill-item mb-4">
                                 <div class="d-flex justify-content-between mb-2">
@@ -220,12 +224,12 @@
 
     <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
         <div class="container">
-            <p class="mb-0">© 2025 Контакты</p>
+            <p class="mb-0">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/dark-veil.js"></script>
+    <script src="js/plasma-background.js"></script>
     <script src="js/notifications.js"></script>
 </body>
 </html>
