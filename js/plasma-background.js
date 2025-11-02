@@ -1,4 +1,4 @@
-// Plasma Background Effect
+// Plasma Background Effect с плавной анимацией
 class PlasmaBackground {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -11,14 +11,19 @@ class PlasmaBackground {
         this.time = 0;
         this.resize();
         
-        // Настройки плазмы
+        // Голубые и светлые оттенки
         this.colors = [
-            { r: 138, g: 43, b: 226 },   // Фиолетовый
-            { r: 75, g: 0, b: 130 },     // Индиго
-            { r: 255, g: 20, b: 147 },   // Розовый
-            { r: 0, g: 191, b: 255 },    // Голубой
-            { r: 148, g: 0, b: 211 }     // Темно-фиолетовый
+            { r: 14, g: 165, b: 233 },   // Светло-голубой (sky-500)
+            { r: 59, g: 130, b: 246 },   // Синий (blue-500)
+            { r: 6, g: 182, b: 212 },    // Бирюзовый (cyan-500)
+            { r: 34, g: 211, b: 238 },   // Яркий cyan (cyan-400)
+            { r: 96, g: 165, b: 250 },   // Мягкий голубой (blue-400)
+            { r: 125, g: 211, b: 252 }   // Светло-голубой (sky-300)
         ];
+        
+        // Орбы для анимации
+        this.orbs = [];
+        this.initOrbs();
         
         window.addEventListener('resize', () => this.resize());
         this.animate();
@@ -31,97 +36,103 @@ class PlasmaBackground {
         this.height = this.canvas.height;
     }
     
-    // Функция для создания плазменного эффекта
-    plasma(x, y, time) {
-        const value = Math.sin(x * 0.01 + time) +
-                     Math.sin(y * 0.01 + time) +
-                     Math.sin((x + y) * 0.01 + time) +
-                     Math.sin(Math.sqrt(x * x + y * y) * 0.01 + time);
-        return value;
-    }
-    
-    // Интерполяция цветов
-    interpolateColor(value) {
-        const normalized = (value + 4) / 8; // Нормализация от -4 до 4 в 0-1
-        const colorIndex = normalized * (this.colors.length - 1);
-        const index = Math.floor(colorIndex);
-        const nextIndex = Math.min(index + 1, this.colors.length - 1);
-        const blend = colorIndex - index;
-        
-        const color1 = this.colors[index];
-        const color2 = this.colors[nextIndex];
-        
-        return {
-            r: Math.floor(color1.r + (color2.r - color1.r) * blend),
-            g: Math.floor(color1.g + (color2.g - color1.g) * blend),
-            b: Math.floor(color1.b + (color2.b - color1.b) * blend)
-        };
-    }
-    
-    drawPlasma() {
-        const imageData = this.ctx.createImageData(this.width, this.height);
-        const data = imageData.data;
-        
-        // Уменьшаем разрешение для производительности
-        const step = 4;
-        
-        for (let y = 0; y < this.height; y += step) {
-            for (let x = 0; x < this.width; x += step) {
-                const value = this.plasma(x, y, this.time);
-                const color = this.interpolateColor(value);
-                
-                // Заполняем блок пикселей
-                for (let dy = 0; dy < step && y + dy < this.height; dy++) {
-                    for (let dx = 0; dx < step && x + dx < this.width; dx++) {
-                        const index = ((y + dy) * this.width + (x + dx)) * 4;
-                        data[index] = color.r;
-                        data[index + 1] = color.g;
-                        data[index + 2] = color.b;
-                        data[index + 3] = 255;
-                    }
-                }
-            }
-        }
-        
-        this.ctx.putImageData(imageData, 0, 0);
-        
-        // Добавляем размытие для плавности
-        this.ctx.filter = 'blur(20px)';
-        this.ctx.drawImage(this.canvas, 0, 0);
-        this.ctx.filter = 'none';
-    }
-    
-    // Рисуем градиентные орбы
-    drawOrbs() {
-        const numOrbs = 5;
-        
+    initOrbs() {
+        const numOrbs = 6;
         for (let i = 0; i < numOrbs; i++) {
-            const angle = (this.time * 0.001 + i * Math.PI * 2 / numOrbs);
-            const x = this.width / 2 + Math.cos(angle) * 200;
-            const y = this.height / 2 + Math.sin(angle) * 150;
-            const size = 300 + Math.sin(this.time * 0.002 + i) * 100;
+            this.orbs.push({
+                x: Math.random() * this.width,
+                y: Math.random() * this.height,
+                radius: 200 + Math.random() * 200,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                color: this.colors[i % this.colors.length]
+            });
+        }
+    }
+    
+    updateOrbs() {
+        this.orbs.forEach(orb => {
+            orb.x += orb.vx;
+            orb.y += orb.vy;
             
-            const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, size);
-            const color = this.colors[i % this.colors.length];
+            // Отскок от краев
+            if (orb.x < -orb.radius || orb.x > this.width + orb.radius) {
+                orb.vx *= -1;
+            }
+            if (orb.y < -orb.radius || orb.y > this.height + orb.radius) {
+                orb.vy *= -1;
+            }
             
-            gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, 0.4)`);
-            gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, 0.2)`);
+            // Пульсация размера
+            orb.radius = 200 + Math.sin(this.time * 0.001) * 50;
+        });
+    }
+    
+    drawOrbs() {
+        this.orbs.forEach((orb, index) => {
+            const gradient = this.ctx.createRadialGradient(
+                orb.x, orb.y, 0,
+                orb.x, orb.y, orb.radius
+            );
+            
+            const color = orb.color;
+            const alpha = 0.3 + Math.sin(this.time * 0.002 + index) * 0.1;
+            
+            gradient.addColorStop(0, `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`);
+            gradient.addColorStop(0.5, `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha * 0.5})`);
             gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
             
             this.ctx.fillStyle = gradient;
             this.ctx.fillRect(0, 0, this.width, this.height);
+        });
+    }
+    
+    drawWaves() {
+        const numWaves = 3;
+        
+        for (let i = 0; i < numWaves; i++) {
+            this.ctx.beginPath();
+            this.ctx.globalAlpha = 0.15;
+            
+            for (let x = 0; x <= this.width; x += 10) {
+                const y = this.height / 2 + 
+                    Math.sin((x * 0.005) + (this.time * 0.001) + (i * 2)) * 100 +
+                    Math.sin((x * 0.01) + (this.time * 0.002) + (i * 3)) * 50;
+                
+                if (x === 0) {
+                    this.ctx.moveTo(x, y);
+                } else {
+                    this.ctx.lineTo(x, y);
+                }
+            }
+            
+            const color = this.colors[i % this.colors.length];
+            this.ctx.strokeStyle = `rgba(${color.r}, ${color.g}, ${color.b}, 0.6)`;
+            this.ctx.lineWidth = 3;
+            this.ctx.stroke();
         }
+        
+        this.ctx.globalAlpha = 1;
     }
     
     animate() {
-        this.time += 0.5;
+        this.time += 1;
         
-        // Очищаем canvas
-        this.ctx.fillStyle = '#0a0a0f';
+        // Темный фон
+        this.ctx.fillStyle = '#0a0f1e';
         this.ctx.fillRect(0, 0, this.width, this.height);
         
-        // Рисуем орбы
+        // Обновляем и рисуем орбы
+        this.updateOrbs();
         this.drawOrbs();
+        
+        // Размываем для плавности
+        this.ctx.filter = 'blur(40px)';
+        this.ctx.drawImage(this.canvas, 0, 0);
+        this.ctx.filter = 'none';
+        
+        // Рисуем волны поверх
+        this.drawWaves();
         
         requestAnimationFrame(() => this.animate());
     }
