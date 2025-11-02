@@ -9,10 +9,7 @@
     <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
-    <!-- Canvas фон Plasma -->
-    nvas id="plaslasmaCanvas"></canvas>
-
-    <!-- Контейнер для уведомлений -->
+    <canvas id="plasmaCanvas"></canvas>
     <div id="notificationContainer"></div>
 
     <header class="bg-dark border-bottom border-warning">
@@ -42,9 +39,15 @@
     </nav>
 
     <main class="container my-5">
-        <h1 class="text-center mb-5 text-white">Мой учебный прогресс</h1>
+        <h1 class="text-center mb-3 text-white">
+            <i class="bi bi-journal-code me-2"></i>Мой учебный прогресс
+        </h1>
+        <p class="text-center text-light mb-5 lead">
+            Хронология моего обучения и развития в веб-разработке
+        </p>
         
         <div class="row g-4">
+            <!-- Timeline Section -->
             <div class="col-lg-8">
                 <div class="card bg-dark border-warning mb-4 glass-effect">
                     <div class="card-body">
@@ -53,40 +56,217 @@
                         </h3>
                         
                         <div class="timeline" id="timeline">
-                            <div class="timeline-item mb-4">
+                            <!-- Entry 1 -->
+                            <div class="timeline-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.05);">
                                 <div class="d-flex">
                                     <div class="timeline-badge completed me-3">
                                         <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
                                     </div>
-                                    <div class="timeline-content">
-                                        <h5 class="text-white mb-1">15 дек - Верстка макета сайта</h5>
-                                        <p class="text-light mb-0">Освоил основы HTML/CSS, создал первый адаптивный макет</p>
+                                    <div class="timeline-content flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h5 class="text-white mb-1">Верстка макета сайта</h5>
+                                            <span class="badge bg-success">Завершено</span>
+                                        </div>
+                                        <p class="text-light small mb-2">
+                                            <i class="bi bi-calendar3 me-1"></i>15 октября 2025
+                                        </p>
+                                        <p class="text-light mb-0">
+                                            Освоил основы HTML/CSS, создал первый адаптивный макет сайта. 
+                                            Изучил семантические теги, работу с Flexbox и CSS Grid.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 2 -->
+                            <div class="timeline-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.05);">
+                                <div class="d-flex">
+                                    <div class="timeline-badge completed me-3">
+                                        <i class="bi bi-check-circle-fill" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h5 class="text-white mb-1">JavaScript основы</h5>
+                                            <span class="badge bg-success">Завершено</span>
+                                        </div>
+                                        <p class="text-light small mb-2">
+                                            <i class="bi bi-calendar3 me-1"></i>20 октября 2025
+                                        </p>
+                                        <p class="text-light mb-0">
+                                            Изучил переменные, функции, циклы и условия. Научился работать с DOM, 
+                                            обрабатывать события и создавать интерактивные элементы на странице.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 3 -->
+                            <div class="timeline-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
+                                <div class="d-flex">
+                                    <div class="timeline-badge in-progress me-3">
+                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h5 class="text-white mb-1">Работа с Bootstrap</h5>
+                                            <span class="badge bg-warning text-dark">В процессе</span>
+                                        </div>
+                                        <p class="text-light small mb-2">
+                                            <i class="bi bi-calendar3 me-1"></i>25 октября 2025
+                                        </p>
+                                        <p class="text-light mb-0">
+                                            Изучаю Bootstrap 5 для быстрой разработки адаптивных сайтов. 
+                                            Осваиваю компонентную систему, сетку и утилиты фреймворка.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Entry 4 -->
+                            <div class="timeline-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
+                                <div class="d-flex">
+                                    <div class="timeline-badge in-progress me-3">
+                                        <i class="bi bi-arrow-clockwise" style="font-size: 1.5rem;"></i>
+                                    </div>
+                                    <div class="timeline-content flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-start mb-2">
+                                            <h5 class="text-white mb-1">React JS</h5>
+                                            <span class="badge bg-warning text-dark">В процессе</span>
+                                        </div>
+                                        <p class="text-light small mb-2">
+                                            <i class="bi bi-calendar3 me-1"></i>1 ноября 2025
+                                        </p>
+                                        <p class="text-light mb-0">
+                                            Начал изучение React - современной библиотеки для создания пользовательских интерфейсов. 
+                                            Разбираюсь с компонентами, хуками и управлением состоянием.
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <button class="btn btn-warning mt-3" data-bs-toggle="modal" data-bs-target="#addEntryModal">
-                            <i class="bi bi-plus-circle me-2"></i>Добавить запись
-                        </button>
+                        <div class="text-center mt-4">
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addEntryModal">
+                                <i class="bi bi-plus-circle me-2"></i>Добавить новую запись
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Learning Stats -->
+                <div class="card bg-dark border-info glass-effect">
+                    <div class="card-body">
+                        <h4 class="text-white mb-4">
+                            <i class="bi bi-graph-up me-2"></i>Статистика обучения
+                        </h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="stat-item p-3 rounded text-center" style="background: rgba(168, 85, 247, 0.1);">
+                                    <i class="bi bi-book text-warning" style="font-size: 2.5rem;"></i>
+                                    <h3 class="text-white mt-2 mb-1">15+</h3>
+                                    <p class="text-light mb-0 small">Пройденных уроков</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="stat-item p-3 rounded text-center" style="background: rgba(168, 85, 247, 0.1);">
+                                    <i class="bi bi-clock text-info" style="font-size: 2.5rem;"></i>
+                                    <h3 class="text-white mt-2 mb-1">50+</h3>
+                                    <p class="text-light mb-0 small">Часов практики</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             
+            <!-- Sidebar -->
             <div class="col-lg-4">
-                <div class="card bg-dark border-info glass-effect">
+                <!-- Current Courses -->
+                <div class="card bg-dark border-info glass-effect mb-4">
                     <div class="card-body">
                         <h3 class="card-title h4 text-white mb-4">
                             <i class="bi bi-book me-2"></i>Текущие курсы
                         </h3>
                         
-                        <div class="course-item mb-4">
+                        <!-- Course 1 -->
+                        <div class="course-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.08);">
+                            <h6 class="text-white mb-2">
+                                <i class="bi bi-laptop me-2"></i>Веб-разработка
+                            </h6>
                             <div class="d-flex justify-content-between mb-2">
-                                <span class="text-light fw-bold">Веб-разработка</span>
+                                <span class="text-light small">Прогресс</span>
                                 <span class="text-warning fw-bold">90%</span>
                             </div>
                             <div class="progress">
                                 <div class="progress-bar bg-success" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 2 -->
+                        <div class="course-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.08);">
+                            <h6 class="text-white mb-2">
+                                <i class="bi bi-filetype-js me-2"></i>JavaScript Advanced
+                            </h6>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light small">Прогресс</span>
+                                <span class="text-warning fw-bold">70%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 3 -->
+                        <div class="course-item mb-4 p-3 rounded" style="background: rgba(168, 85, 247, 0.08);">
+                            <h6 class="text-white mb-2">
+                                <i class="bi bi-react me-2"></i>React для начинающих
+                            </h6>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light small">Прогресс</span>
+                                <span class="text-warning fw-bold">50%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-info" style="width: 50%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Course 4 -->
+                        <div class="course-item p-3 rounded" style="background: rgba(168, 85, 247, 0.08);">
+                            <h6 class="text-white mb-2">
+                                <i class="bi bi-database me-2"></i>Базы данных SQL
+                            </h6>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span class="text-light small">Прогресс</span>
+                                <span class="text-warning fw-bold">30%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Achievements -->
+                <div class="card bg-dark border-success glass-effect">
+                    <div class="card-body">
+                        <h4 class="text-white mb-4">
+                            <i class="bi bi-trophy me-2"></i>Достижения
+                        </h4>
+                        <div class="achievements">
+                            <div class="achievement-item text-center mb-3 p-3 rounded" style="background: rgba(16, 185, 129, 0.1);">
+                                <i class="bi bi-trophy-fill text-warning" style="font-size: 2.5rem;"></i>
+                                <h6 class="text-white mt-2 mb-1">Первый проект</h6>
+                                <p class="text-light mb-0 small">Создал первый сайт на HTML/CSS</p>
+                            </div>
+                            <div class="achievement-item text-center mb-3 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
+                                <i class="bi bi-star-fill text-info" style="font-size: 2.5rem;"></i>
+                                <h6 class="text-white mt-2 mb-1">JavaScript Master</h6>
+                                <p class="text-light mb-0 small">Освоил основы JavaScript</p>
+                            </div>
+                            <div class="achievement-item text-center p-3 rounded" style="background: rgba(6, 182, 212, 0.1);">
+                                <i class="bi bi-lightning-fill text-success" style="font-size: 2.5rem;"></i>
+                                <h6 class="text-white mt-2 mb-1">Быстрый старт</h6>
+                                <p class="text-light mb-0 small">Завершил 5 проектов за месяц</p>
                             </div>
                         </div>
                     </div>
@@ -95,56 +275,70 @@
         </div>
     </main>
 
-    <!-- Modal для добавления записи -->
+    <!-- Add Entry Modal -->
     <div class="modal fade" id="addEntryModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-dark border-warning glass-effect">
                 <div class="modal-header border-warning">
                     <h5 class="modal-title text-white">
-                        <i class="bi bi-plus-circle me-2"></i>Добавить запись
+                        <i class="bi bi-plus-circle me-2"></i>Добавить новую запись
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <form id="diaryForm">
                         <div class="mb-3">
-                            <label for="entryDate" class="form-label text-light">Дата</label>
+                            <label for="entryDate" class="form-label text-light">
+                                <i class="bi bi-calendar3 me-2"></i>Дата
+                            </label>
                             <input type="date" class="form-control" id="entryDate" required>
                         </div>
                         <div class="mb-3">
-                            <label for="entryTitle" class="form-label text-light">Заголовок</label>
-                            <input type="text" class="form-control" id="entryTitle" required>
+                            <label for="entryTitle" class="form-label text-light">
+                                <i class="bi bi-card-heading me-2"></i>Заголовок
+                            </label>
+                            <input type="text" class="form-control" id="entryTitle" placeholder="Название достижения" required>
                         </div>
                         <div class="mb-3">
-                            <label for="entryDescription" class="form-label text-light">Описание</label>
-                            <textarea class="form-control" id="entryDescription" rows="3" required></textarea>
+                            <label for="entryDescription" class="form-label text-light">
+                                <i class="bi bi-text-paragraph me-2"></i>Описание
+                            </label>
+                            <textarea class="form-control" id="entryDescription" rows="4" placeholder="Подробное описание того, что вы изучили или достигли..." required></textarea>
                         </div>
                         <div class="mb-3">
-                            <label for="entryStatus" class="form-label text-light">Статус</label>
+                            <label for="entryStatus" class="form-label text-light">
+                                <i class="bi bi-check2-circle me-2"></i>Статус
+                            </label>
                             <select class="form-select" id="entryStatus" required>
-                                <option value="completed">Завершено</option>
-                                <option value="in-progress">В процессе</option>
+                                <option value="completed">✅ Завершено</option>
+                                <option value="in-progress">🔄 В процессе</option>
+                                <option value="planned">📅 Запланировано</option>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer border-warning">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-circle me-2"></i>Отмена
+                    </button>
                     <button type="button" class="btn btn-warning" id="saveEntryBtn">
-                        <i class="bi bi-check-circle me-2"></i>Сохранить
+                        <i class="bi bi-check-circle me-2"></i>Сохранить запись
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-dark text-warning text-center py-3 border-top border-warning mt-5">
+    <footer class="bg-dark text-warning text-center py-4 border-top border-warning mt-5">
         <div class="container">
-            <p class="mb-0">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
+            <p class="mb-2">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
+            <p class="small mb-0">
+                <i class="bi bi-heart-fill text-danger me-1"></i>
+                Сделано с любовью к коду
+            </p>
         </div>
     </footer>
 
-    <!-- ПОДКЛЮЧЕНИЕ СКРИПТОВ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/plasma-background.js"></script>
     <script src="../js/notifications.js"></script>
