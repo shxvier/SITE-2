@@ -3,10 +3,8 @@
    ============================================ */
 
 :root {
-    /* Color scheme для темной темы */
     color-scheme: dark;
     
-    /* CSS переменные для адаптивности */
     --space-sm: 0.5rem;
     --space-md: 1rem;
     --space-lg: 1.5rem;
@@ -24,6 +22,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 html, body {
     height: 100%;
 }
@@ -36,16 +38,13 @@ body {
     position: relative;
     overflow-x: hidden;
     
-    /* Современные единицы viewport (задание 15) */
     min-height: 100vh;
-    min-height: 100svh; /* Small Viewport Height - для мобильных */
-    min-height: 100dvh; /* Dynamic Viewport Height - учитывает интерфейс */
+    min-height: 100svh;
+    min-height: 100dvh;
     
-    /* Safe areas для устройств с вырезами */
     padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
 }
 
-/* Canvas фон Plasma */
 #plasmaCanvas {
     position: fixed;
     top: 0;
@@ -56,7 +55,6 @@ body {
     pointer-events: none;
 }
 
-/* Свечение за курсором */
 #cursorGlow {
     position: fixed;
     pointer-events: none;
@@ -75,7 +73,6 @@ body {
     mix-blend-mode: screen;
 }
 
-/* Все остальное содержимое выше canvas */
 header, nav, main, footer {
     position: relative;
     z-index: 10;
@@ -85,7 +82,6 @@ header, nav, main, footer {
    ДОСТУПНОСТЬ (Задание 15)
    ============================================ */
 
-/* Skip-link для клавиатурной навигации */
 .skip-link {
     position: absolute;
     inset-inline-start: 1rem;
@@ -105,7 +101,6 @@ header, nav, main, footer {
     inset-block-start: 1rem;
 }
 
-/* Улучшенный видимый фокус */
 :focus-visible {
     outline: 3px solid #ffc107 !important;
     outline-offset: 3px;
@@ -118,7 +113,6 @@ textarea:focus-visible {
     outline-offset: 2px;
 }
 
-/* Скрытый, но доступный для скринридеров текст */
 .visually-hidden {
     position: absolute !important;
     width: 1px;
@@ -132,7 +126,7 @@ textarea:focus-visible {
 }
 
 /* ============================================
-   GLASSMORPHISM - СТЕКЛЯННЫЙ ЭФФЕКТ
+   GLASSMORPHISM
    ============================================ */
 
 .glass-effect {
@@ -164,7 +158,6 @@ header {
     animation: headerSlideDown 0.8s ease;
     border-radius: 0 0 24px 24px;
     
-    /* Safe areas */
     padding-inline: calc(1rem + env(safe-area-inset-left)) calc(1rem + env(safe-area-inset-right));
 }
 
@@ -193,7 +186,6 @@ header img {
     }
 }
 
-/* Навигация - Sticky с Safe Areas (Задание 15) */
 .navbar {
     position: sticky !important;
     top: 0;
@@ -205,13 +197,11 @@ header img {
     box-shadow: 0 8px 30px rgba(168, 85, 247, 0.25);
     animation: navSlideIn 1s ease;
     
-    /* Safe areas для устройств с вырезами */
     padding-block-start: calc(0.5rem + env(safe-area-inset-top)) !important;
     padding-block-end: 0.5rem !important;
     padding-inline-start: calc(1rem + env(safe-area-inset-left)) !important;
     padding-inline-end: calc(1rem + env(safe-area-inset-right)) !important;
     
-    /* Изоляция для предотвращения проблем с z-index */
     isolation: isolate;
 }
 
@@ -234,8 +224,6 @@ header img {
     border-radius: 14px;
     font-weight: 500;
     text-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
-    
-    /* Минимальная зона клика 44px (WCAG 2.1) */
     min-height: 44px;
 }
 
@@ -337,11 +325,8 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
 }
 
-/* Профильное фото */
 .profile-photo {
     aspect-ratio: 1 / 1;
     object-fit: cover;
@@ -351,7 +336,6 @@ img {
                 0 0 90px rgba(168, 85, 247, 0.5);
     border: 4px solid rgba(192, 132, 252, 0.7) !important;
     transition: all 0.4s ease;
-    image-rendering: auto;
 }
 
 .profile-photo:hover {
@@ -361,7 +345,6 @@ img {
     border-color: rgba(216, 180, 254, 0.9) !important;
 }
 
-/* Picture элементы */
 picture {
     display: block;
     width: 100%;
@@ -374,7 +357,7 @@ picture img {
 }
 
 /* ============================================
-   КАРТОЧКИ
+   КАРТОЧКИ - ИСПРАВЛЕНО
    ============================================ */
 
 .card {
@@ -387,6 +370,9 @@ picture img {
     box-shadow: 0 10px 35px rgba(168, 85, 247, 0.25), 
                 inset 0 1px 0 rgba(255, 255, 255, 0.12);
     will-change: transform;
+    
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -402,8 +388,9 @@ picture img {
     transition: transform 0.5s ease;
     border-radius: 24px 24px 0 0;
     object-fit: cover;
-    aspect-ratio: 16 / 9;
     width: 100%;
+    height: 220px !important;
+    flex-shrink: 0;
 }
 
 .card:hover .card-img-top {
@@ -412,60 +399,64 @@ picture img {
 
 .project-card {
     cursor: pointer;
-    min-width: 0; /* Предотвращение переполнения */
+    min-width: 0;
+    height: auto !important;
 }
 
 .project-card h3,
 .project-card .h5,
 .project-card p {
-    overflow-wrap: anywhere; /* Перенос длинных слов */
+    overflow-wrap: anywhere;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1.25rem;
+}
+
+.project-card .card-body p.small {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1rem;
+}
+
+.card-body .text-center:last-child {
+    margin-top: auto;
 }
 
 /* ============================================
-   КОНТЕЙНЕРНЫЕ ЗАПРОСЫ (Задание 15)
+   АДАПТИВНАЯ СЕТКА ПРОЕКТОВ - ИСПРАВЛЕНО
    ============================================ */
 
-@supports (container-type: inline-size) {
-    .projects-area {
-        container-type: inline-size;
-        container-name: projects;
-    }
-    
-    .projects-list,
+.projects-area .row.g-4 {
+    display: grid !important;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+    grid-auto-rows: auto;
+}
+
+.projects-area [class*="col-"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    align-self: start;
+}
+
+@media (min-width: 768px) {
     .projects-area .row.g-4 {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    @container projects (min-width: 640px) {
-        .projects-list,
-        .projects-area .row.g-4 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    @container projects (min-width: 960px) {
-        .projects-list,
-        .projects-area .row.g-4 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-    
-    @container projects (min-width: 640px) {
-        .project-card h3,
-        .project-card .h5 {
-            font-size: clamp(1rem, 0.875rem + 2cqi, 1.5rem);
-        }
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@supports not (container-type: inline-size) {
-    .projects-list,
-    .row.g-4 {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-        gap: 1.5rem;
+@media (min-width: 992px) {
+    .projects-area .row.g-4 {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -486,8 +477,6 @@ picture img {
     text-transform: uppercase;
     letter-spacing: 1.2px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    
-    /* Минимальная зона клика 44px */
     min-height: 44px;
     will-change: transform;
 }
@@ -797,7 +786,6 @@ footer {
     border-color: rgba(16, 185, 129, 0.5) !important;
 }
 
-/* Сканлайны */
 body::after {
     content: '';
     position: fixed;
@@ -828,7 +816,6 @@ body::after {
     cursor: pointer;
 }
 
-/* Контактные элементы */
 .contact-item {
     transition: all 0.3s ease;
 }
@@ -838,7 +825,6 @@ body::after {
     transform: translateX(6px);
 }
 
-/* Плавное масштабирование через clamp */
 .container {
     padding-inline: clamp(1rem, calc(0.5rem + 1vw), 2rem);
 }
@@ -856,9 +842,7 @@ body {
     font-size: clamp(0.875rem, 0.85rem + 0.3vw, 1rem);
 }
 
-/* Ограничение ширины текста для читабельности */
-.lead,
-.hero__description {
+.lead {
     max-width: 65ch;
 }
 
@@ -866,7 +850,6 @@ body {
    ПРЕДПОЧТЕНИЯ ПОЛЬЗОВАТЕЛЯ (Задание 15)
    ============================================ */
 
-/* Уважение к снижению движения */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -882,7 +865,6 @@ body {
     }
 }
 
-/* Повышенный контраст */
 @media (prefers-contrast: more) {
     .btn,
     .card,
@@ -897,7 +879,6 @@ body {
     }
 }
 
-/* Поддержка светлой темы */
 @media (prefers-color-scheme: light) {
     :root {
         color-scheme: light;
@@ -941,7 +922,6 @@ body {
    АДАПТИВНОСТЬ
    ============================================ */
 
-/* Минимальная зона клика для тач-устройств (WCAG) */
 @media (pointer: coarse) {
     a, button, .nav-link, .btn {
         min-height: 44px;
@@ -950,7 +930,6 @@ body {
     }
 }
 
-/* Touch-устройства - убираем hover */
 @media (hover: none) and (pointer: coarse) {
     .card:hover {
         transform: none;
@@ -970,7 +949,6 @@ body {
     }
 }
 
-/* Очень маленькие экраны (до 375px) */
 @media (max-width: 374px) {
     .profile-photo {
         width: 120px !important;
@@ -987,7 +965,6 @@ body {
     }
 }
 
-/* Маленькие экраны (375px - 767px) */
 @media (max-width: 767px) {
     .display-4, .display-5 {
         font-size: clamp(1.5rem, 1.2rem + 1.5vw, 1.8rem);
@@ -1029,7 +1006,6 @@ body {
     }
 }
 
-/* Ландшафтная ориентация на мобильных */
 @media (max-width: 767px) and (orientation: landscape) {
     .profile-photo {
         width: 100px !important;
@@ -1045,7 +1021,6 @@ body {
     }
 }
 
-/* Средние экраны (768px - 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
     .profile-photo {
         width: 200px !important;
@@ -1053,7 +1028,6 @@ body {
     }
 }
 
-/* Большие экраны (1200px+) */
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
@@ -1064,14 +1038,12 @@ body {
     }
 }
 
-/* Очень большие экраны (1920px+) */
 @media (min-width: 1920px) {
     .container {
         max-width: 1400px;
     }
 }
 
-/* Фикс для Safari */
 @supports (-webkit-appearance: none) {
     .profile-photo {
         -webkit-transform: translateZ(0);
@@ -1079,7 +1051,6 @@ body {
     }
 }
 
-/* Фикс для Firefox */
 @-moz-document url-prefix() {
     .glass-effect {
         background: rgba(30, 20, 50, 0.8) !important;
