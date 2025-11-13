@@ -2,34 +2,49 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Портфолио - Журавлев Алексей</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="style/styles.css">
+    <link rel="stylesheet" href="style/responsive.css">
 </head>
 <body>
-    <canvas id="plasmaCanvas"></canvas>
-    
-    <!-- Свечение за курсором -->
-    <div id="cursorGlow"></div>
+    <!-- Skip-link для доступности (из задания 15) -->
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
 
-    <!-- Уведомления -->
+    <canvas id="plasmaCanvas"></canvas>
+    <div id="cursorGlow"></div>
     <div id="notificationContainer"></div>
 
     <header class="bg-dark border-bottom border-warning">
         <div class="container py-3">
             <div class="d-flex align-items-center justify-content-center">
-                <img src="images/logo.png" alt="Логотип" class="me-3" style="height: 40px;" onerror="this.style.display='none'">
+                <img src="images/logo.png" 
+                     alt="Логотип" 
+                     class="me-3" 
+                     width="40" 
+                     height="40"
+                     style="height: 40px;" 
+                     onerror="this.style.display='none'">
                 <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
             </div>
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <!-- Sticky-навигация с safe areas (задание 15) -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" 
+         style="padding-top: calc(0.5rem + env(safe-area-inset-top)); 
+                padding-bottom: 0.5rem;
+                padding-left: calc(1rem + env(safe-area-inset-left));
+                padding-right: calc(1rem + env(safe-area-inset-right));">
         <div class="container">
             <a class="navbar-brand fw-bold text-white" href="index.html">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                    aria-label="Переключить навигацию">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -43,16 +58,34 @@
         </div>
     </nav>
 
-    <main class="container my-5">
-        <!-- Hero Section с фото и описанием -->
+    <main id="main" class="container my-5">
+        <!-- Hero Section с адаптивным изображением (задание 16) -->
         <section class="row g-4 mb-5 align-items-center">
             <div class="col-lg-4 text-center">
                 <div class="profile-photo-container">
-                    <img src="images/photo.jpg" 
-                         alt="Фото студента" 
-                         class="profile-photo img-fluid rounded-circle border border-warning" 
-                         style="width: 280px; height: 280px; object-fit: cover;"
-                         onerror="this.src='https://via.placeholder.com/280/8b5cf6/ffffff?text=Фото'">
+                    <!-- Picture element с WebP и srcset (задание 16) -->
+                    <picture>
+                        <!-- WebP для современных браузеров -->
+                        <source type="image/webp" 
+                                srcset="images/photo-150.webp 150w,
+                                        images/photo-200.webp 200w,
+                                        images/photo-280.webp 280w"
+                                sizes="(max-width: 768px) 150px, 280px">
+                        
+                        <!-- Fallback JPEG -->
+                        <img src="images/photo.jpg" 
+                             srcset="images/photo-150.jpg 150w,
+                                     images/photo-200.jpg 200w,
+                                     images/photo-280.jpg 280w"
+                             sizes="(max-width: 768px) 150px, 280px"
+                             alt="Фото студента Журавлева Алексея" 
+                             class="profile-photo img-fluid rounded-circle border border-warning" 
+                             width="280" 
+                             height="280"
+                             fetchpriority="high"
+                             style="object-fit: cover;"
+                             onerror="this.src='https://via.placeholder.com/280/8b5cf6/ffffff?text=Фото'">
+                    </picture>
                 </div>
             </div>
             <div class="col-lg-8">
@@ -87,7 +120,7 @@
             </div>
         </section>
 
-        <!-- Обо мне - дополнительная информация -->
+        <!-- Обо мне -->
         <section class="mb-5">
             <div class="row g-4">
                 <div class="col-lg-6">
@@ -138,7 +171,7 @@
             </div>
         </section>
 
-        <!-- Мои навыки -->
+        <!-- Навыки -->
         <section class="mb-5">
             <h2 class="text-center text-white mb-4">
                 <i class="bi bi-gear-fill me-2"></i>Мои навыки и технологии
@@ -158,7 +191,7 @@
                                     <span class="text-warning fw-bold">90%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" style="width: 90%"></div>
+                                    <div class="progress-bar bg-success" style="width: 90%" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
 
@@ -170,7 +203,7 @@
                                     <span class="text-warning fw-bold">80%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-warning" style="width: 80%"></div>
+                                    <div class="progress-bar bg-warning" style="width: 80%" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
 
@@ -182,7 +215,7 @@
                                     <span class="text-warning fw-bold">85%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                    <div class="progress-bar bg-primary" style="width: 85%" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
@@ -203,7 +236,7 @@
                                     <span class="text-warning fw-bold">60%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-info" style="width: 60%"></div>
+                                    <div class="progress-bar bg-info" style="width: 60%" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
 
@@ -215,7 +248,7 @@
                                     <span class="text-warning fw-bold">75%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-danger" style="width: 75%"></div>
+                                    <div class="progress-bar bg-danger" style="width: 75%" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
 
@@ -227,7 +260,7 @@
                                     <span class="text-warning fw-bold">70%</span>
                                 </div>
                                 <div class="progress">
-                                    <div class="progress-bar bg-success" style="width: 70%"></div>
+                                    <div class="progress-bar bg-success" style="width: 70%" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
@@ -236,29 +269,35 @@
             </div>
         </section>
 
-        <!-- Лучшие проекты - ВСЕ 6 ПРОЕКТОВ! -->
-        <section class="mb-5">
+        <!-- Проекты с адаптивными изображениями и Grid (задания 15 + 16) -->
+        <section class="mb-5 projects-area">
             <h2 class="text-center text-white mb-4">
                 <i class="bi bi-folder-fill me-2"></i>Лучшие проекты
             </h2>
             <p class="text-center text-light mb-4">
                 Здесь представлены мои лучшие работы в области веб-разработки. Каждый проект демонстрирует различные навыки и технологии.
             </p>
-            <div class="row g-4">
+            <div class="projects-list row g-4">
                 <!-- Проект 1 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project1" class="text-decoration-none">
-                        <div class="card bg-dark border-warning h-100 project-card glass-effect">
-                            <img src="images/project1.jpg" 
-                                 class="card-img-top" 
-                                 alt="Личный сайт" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/8b5cf6/ffffff?text=Проект+1'">
+                        <article class="card bg-dark border-warning h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project1.webp">
+                                <img src="images/project1.jpg" 
+                                     class="card-img-top" 
+                                     alt="Личный сайт - адаптивное портфолио" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/8b5cf6/ffffff?text=Проект+1'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-globe2 text-warning" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Личный сайт</h5>
+                                <h3 class="h5 text-white text-center mb-2">Личный сайт</h3>
                                 <p class="text-light small text-center mb-3">Адаптивный сайт-портфолио с современным дизайном</p>
                                 <div class="text-center">
                                     <span class="badge bg-primary">HTML5</span>
@@ -266,127 +305,157 @@
                                     <span class="badge bg-info">Bootstrap</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
 
                 <!-- Проект 2 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project2" class="text-decoration-none">
-                        <div class="card bg-dark border-info h-100 project-card glass-effect">
-                            <img src="images/project2.jpg" 
-                                 class="card-img-top" 
-                                 alt="Todo-приложение" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/a855f7/ffffff?text=Проект+2'">
+                        <article class="card bg-dark border-info h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project2.webp">
+                                <img src="images/project2.jpg" 
+                                     class="card-img-top" 
+                                     alt="Todo-приложение для управления задачами" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/a855f7/ffffff?text=Проект+2'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-list-check text-info" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Todo-приложение</h5>
+                                <h3 class="h5 text-white text-center mb-2">Todo-приложение</h3>
                                 <p class="text-light small text-center mb-3">Приложение для управления задачами с Local Storage</p>
                                 <div class="text-center">
                                     <span class="badge bg-warning text-dark">JavaScript</span>
                                     <span class="badge bg-success">Local Storage</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
 
                 <!-- Проект 3 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project3" class="text-decoration-none">
-                        <div class="card bg-dark border-success h-100 project-card glass-effect">
-                            <img src="images/project3.jpg" 
-                                 class="card-img-top" 
-                                 alt="Интернет-магазин" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/c084fc/ffffff?text=Проект+3'">
+                        <article class="card bg-dark border-success h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project3.webp">
+                                <img src="images/project3.jpg" 
+                                     class="card-img-top" 
+                                     alt="Интернет-магазин на React" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/c084fc/ffffff?text=Проект+3'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-shop text-success" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Интернет-магазин</h5>
+                                <h3 class="h5 text-white text-center mb-2">Интернет-магазин</h3>
                                 <p class="text-light small text-center mb-3">E-commerce платформа на React с корзиной</p>
                                 <div class="text-center">
                                     <span class="badge bg-info">React</span>
                                     <span class="badge bg-primary">API</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
 
                 <!-- Проект 4 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project4" class="text-decoration-none">
-                        <div class="card bg-dark border-warning h-100 project-card glass-effect">
-                            <img src="images/project4.jpg" 
-                                 class="card-img-top" 
-                                 alt="Портфолио" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/d8b4fe/ffffff?text=Проект+4'">
+                        <article class="card bg-dark border-warning h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project4.webp">
+                                <img src="images/project4.jpg" 
+                                     class="card-img-top" 
+                                     alt="Профессиональное портфолио" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/d8b4fe/ffffff?text=Проект+4'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-person-badge text-warning" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Портфолио</h5>
+                                <h3 class="h5 text-white text-center mb-2">Портфолио</h3>
                                 <p class="text-light small text-center mb-3">Профессиональное портфолио с анимациями</p>
                                 <div class="text-center">
                                     <span class="badge bg-info">Bootstrap</span>
                                     <span class="badge bg-success">Responsive</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
 
                 <!-- Проект 5 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project5" class="text-decoration-none">
-                        <div class="card bg-dark border-info h-100 project-card glass-effect">
-                            <img src="images/project5.jpg" 
-                                 class="card-img-top" 
-                                 alt="Weather App" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/ec4899/ffffff?text=Проект+5'">
+                        <article class="card bg-dark border-info h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project5.webp">
+                                <img src="images/project5.jpg" 
+                                     class="card-img-top" 
+                                     alt="Weather App - приложение прогноза погоды" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/ec4899/ffffff?text=Проект+5'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-cloud-sun text-info" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Weather App</h5>
+                                <h3 class="h5 text-white text-center mb-2">Weather App</h3>
                                 <p class="text-light small text-center mb-3">Приложение прогноза погоды с API интеграцией</p>
                                 <div class="text-center">
                                     <span class="badge bg-warning text-dark">JavaScript</span>
                                     <span class="badge bg-primary">Weather API</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
 
                 <!-- Проект 6 -->
                 <div class="col-lg-4 col-md-6">
                     <a href="pages/projects.html#project6" class="text-decoration-none">
-                        <div class="card bg-dark border-success h-100 project-card glass-effect">
-                            <img src="images/project6.jpg" 
-                                 class="card-img-top" 
-                                 alt="Task Manager" 
-                                 style="height: 220px; object-fit: cover;"
-                                 onerror="this.src='https://via.placeholder.com/400x220/9333ea/ffffff?text=Проект+6'">
+                        <article class="card bg-dark border-success h-100 project-card glass-effect">
+                            <picture>
+                                <source type="image/webp" srcset="images/project6.webp">
+                                <img src="images/project6.jpg" 
+                                     class="card-img-top" 
+                                     alt="Task Manager - система управления проектами" 
+                                     width="400"
+                                     height="220"
+                                     loading="lazy"
+                                     style="height: 220px; object-fit: cover;"
+                                     onerror="this.src='https://via.placeholder.com/400x220/9333ea/ffffff?text=Проект+6'">
+                            </picture>
                             <div class="card-body">
                                 <div class="text-center mb-3">
                                     <i class="bi bi-kanban text-success" style="font-size: 2.5rem;"></i>
                                 </div>
-                                <h5 class="text-white text-center mb-2">Task Manager</h5>
+                                <h3 class="h5 text-white text-center mb-2">Task Manager</h3>
                                 <p class="text-light small text-center mb-3">Система управления проектами на React</p>
                                 <div class="text-center">
                                     <span class="badge bg-info">React</span>
                                     <span class="badge bg-success">Context API</span>
                                 </div>
                             </div>
-                        </div>
+                        </article>
                     </a>
                 </div>
             </div>
@@ -439,7 +508,7 @@
             </div>
         </section>
 
-        <!-- Контактная информация -->
+        <!-- Контакты -->
         <section class="row g-4">
             <div class="col-12">
                 <div class="card bg-dark border-warning glass-effect">
@@ -455,10 +524,10 @@
                             <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="btn btn-outline-warning">
                                 <i class="bi bi-envelope me-2"></i>Email
                             </a>
-                            <a href="https://github.com/shxvier" target="_blank" class="btn btn-outline-warning">
+                            <a href="https://github.com/shxvier" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning">
                                 <i class="bi bi-github me-2"></i>GitHub
                             </a>
-                            <a href="https://t.me/k1riho" target="_blank" class="btn btn-outline-warning">
+                            <a href="https://t.me/k1riho" target="_blank" rel="noopener noreferrer" class="btn btn-outline-warning">
                                 <i class="bi bi-telegram me-2"></i>Telegram
                             </a>
                         </div>
@@ -471,7 +540,8 @@
         </section>
     </main>
 
-    <footer class="bg-dark text-warning text-center py-4 border-top border-warning mt-5">
+    <footer class="bg-dark text-warning text-center py-4 border-top border-warning mt-5" 
+            style="padding-bottom: calc(1rem + env(safe-area-inset-bottom));">
         <div class="container">
             <p class="mb-2">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
             <p class="small mb-0">
@@ -484,7 +554,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/plasma-background.js"></script>
     <script src="js/cursor-glow.js"></script>
-    <script src="js/notifications.js"></script>
     <script src="js/notifications.js"></script>
 </body>
 </html>
