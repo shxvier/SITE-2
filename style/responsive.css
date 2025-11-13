@@ -1,0 +1,124 @@
+/* ==================================================
+   ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ПРАКТИЧЕСКИХ ЗАДАНИЙ 15-16
+   ================================================== */
+
+/* Skip-link для доступности (задание 15) */
+.skip-link {
+    position: absolute;
+    inset-inline-start: 1rem;
+    inset-block-start: -100%;
+    z-index: 10000;
+    padding: 0.5rem 0.75rem;
+    background: #111;
+    color: #fff;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    inset-block-start: 1rem;
+}
+
+/* Улучшенный фокус для доступности */
+:focus-visible {
+    outline: 3px solid #ffc107;
+    outline-offset: 2px;
+}
+
+/* Минимальная область клика 44px для WCAG (задание 15) */
+@media (pointer: coarse) {
+    a, button, .nav-link, .btn {
+        min-height: 44px;
+        padding-block: max(0.5rem, calc((44px - 1em) / 2));
+    }
+}
+
+/* Адаптивная Grid для проектов (задание 15) */
+@supports (container-type: inline-size) {
+    .projects-area {
+        container-type: inline-size;
+        container-name: projects;
+    }
+    
+    /* При контейнере шире 960px → 3 колонки */
+    @container projects (min-width: 960px) {
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+    }
+}
+
+/* Фолбэк для браузеров без Container Queries */
+@supports not (container-type: inline-size) {
+    .projects-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+/* Плавное масштабирование шрифтов через clamp (задание 15) */
+h1, .display-5 {
+    font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem);
+}
+
+h2 {
+    font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem);
+}
+
+/* Object-fit для всех изображений (задание 16) */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-card img {
+    object-fit: cover;
+}
+
+/* Предотвращение CLS через width/height (задание 16) */
+.profile-photo {
+    aspect-ratio: 1 / 1;
+}
+
+/* Уважение к предпочтениям пользователя (задание 15) */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Темная тема (задание 15) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+    }
+}
+
+/* Safe areas для устройств с вырезами (задание 15) */
+body {
+    padding-inline: calc(1rem + env(safe-area-inset-left)) calc(1rem + env(safe-area-inset-right));
+}
+
+/* Адаптивные breakpoints */
+@media (max-width: 768px) {
+    .profile-photo {
+        width: 150px !important;
+        height: 150px !important;
+    }
+    
+    .project-card img {
+        height: 180px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .projects-list {
+        grid-template-columns: 1fr !important;
+    }
+}
