@@ -4,7 +4,6 @@
 
 :root {
     color-scheme: dark;
-    
     --space-sm: 0.5rem;
     --space-md: 1rem;
     --space-lg: 1.5rem;
@@ -37,11 +36,9 @@ body {
     color: #e8d5ff;
     position: relative;
     overflow-x: hidden;
-    
     min-height: 100vh;
     min-height: 100svh;
     min-height: 100dvh;
-    
     padding-inline: env(safe-area-inset-left) env(safe-area-inset-right);
 }
 
@@ -157,7 +154,6 @@ header {
     border-bottom: 2px solid rgba(192, 132, 252, 0.5);
     animation: headerSlideDown 0.8s ease;
     border-radius: 0 0 24px 24px;
-    
     padding-inline: calc(1rem + env(safe-area-inset-left)) calc(1rem + env(safe-area-inset-right));
 }
 
@@ -190,18 +186,15 @@ header img {
     position: sticky !important;
     top: 0;
     z-index: 1000 !important;
-    
     background: rgba(30, 20, 55, 0.7) !important;
     backdrop-filter: blur(25px) saturate(180%);
     border-bottom: 1px solid rgba(192, 132, 252, 0.3);
     box-shadow: 0 8px 30px rgba(168, 85, 247, 0.25);
     animation: navSlideIn 1s ease;
-    
     padding-block-start: calc(0.5rem + env(safe-area-inset-top)) !important;
     padding-block-end: 0.5rem !important;
     padding-inline-start: calc(1rem + env(safe-area-inset-left)) !important;
     padding-inline-end: calc(1rem + env(safe-area-inset-right)) !important;
-    
     isolation: isolate;
 }
 
@@ -256,7 +249,7 @@ header img {
 }
 
 /* ============================================
-   АНИМАЦИИ
+   АНИМАЦИИ - ОПТИМИЗИРОВАННЫЕ
    ============================================ */
 
 @keyframes fadeInUp {
@@ -273,7 +266,7 @@ header img {
 @keyframes scaleIn {
     from {
         opacity: 0;
-        transform: scale(0.93);
+        transform: scale(0.95);
     }
     to {
         opacity: 1;
@@ -282,40 +275,41 @@ header img {
 }
 
 h1 {
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.2s;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.1s;
     opacity: 0;
     text-shadow: 0 0 25px rgba(192, 132, 252, 0.6);
     font-size: clamp(1.5rem, 1.1rem + 2vw, 2.5rem) !important;
 }
 
 h2 {
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.3s;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.15s;
     opacity: 0;
     text-shadow: 0 0 18px rgba(192, 132, 252, 0.4);
     font-size: clamp(1.3rem, 1rem + 1.5vw, 2rem) !important;
 }
 
 h3 {
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.3s;
+    animation: fadeInUp 0.6s ease forwards;
+    animation-delay: 0.15s;
     opacity: 0;
     text-shadow: 0 0 18px rgba(192, 132, 252, 0.4);
     font-size: clamp(1.1rem, 1rem + 0.5vw, 1.5rem) !important;
 }
 
+/* Упрощенные анимации для карточек */
 .card {
-    animation: scaleIn 0.7s ease forwards;
+    animation: scaleIn 0.5s ease forwards;
     opacity: 0;
 }
 
-.card:nth-child(1) { animation-delay: 0.3s; }
-.card:nth-child(2) { animation-delay: 0.4s; }
-.card:nth-child(3) { animation-delay: 0.5s; }
-.card:nth-child(4) { animation-delay: 0.6s; }
-.card:nth-child(5) { animation-delay: 0.7s; }
-.card:nth-child(6) { animation-delay: 0.8s; }
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.15s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.25s; }
+.card:nth-child(5) { animation-delay: 0.3s; }
+.card:nth-child(6) { animation-delay: 0.35s; }
 
 /* ============================================
    АДАПТИВНЫЕ ИЗОБРАЖЕНИЯ (Задание 16)
@@ -357,7 +351,7 @@ picture img {
 }
 
 /* ============================================
-   КАРТОЧКИ - ИСПРАВЛЕНО
+   КАРТОЧКИ - ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ
    ============================================ */
 
 .card {
@@ -365,42 +359,41 @@ picture img {
     backdrop-filter: blur(25px) saturate(180%);
     border-radius: 24px !important;
     overflow: hidden;
-    transition: all 0.4s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid rgba(192, 132, 252, 0.35) !important;
     box-shadow: 0 10px 35px rgba(168, 85, 247, 0.25), 
                 inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    will-change: transform;
     
+    /* Flexbox для контроля содержимого */
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     box-shadow: 0 20px 50px rgba(192, 132, 252, 0.6), 
                 0 0 70px rgba(168, 85, 247, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.22);
     border-color: rgba(216, 180, 254, 0.7) !important;
-    will-change: auto;
 }
 
 .card-img-top {
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
     border-radius: 24px 24px 0 0;
     object-fit: cover;
     width: 100%;
-    height: 220px !important;
+    height: 220px;
     flex-shrink: 0;
 }
 
 .card:hover .card-img-top {
-    transform: scale(1.08);
+    transform: scale(1.05);
 }
 
 .project-card {
     cursor: pointer;
     min-width: 0;
-    height: auto !important;
 }
 
 .project-card h3,
@@ -418,45 +411,82 @@ picture img {
 
 .project-card .card-body p.small {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
     margin-bottom: 1rem;
+    flex: 0 1 auto;
 }
 
 .card-body .text-center:last-child {
     margin-top: auto;
+    flex-shrink: 0;
 }
 
 /* ============================================
-   АДАПТИВНАЯ СЕТКА ПРОЕКТОВ - ИСПРАВЛЕНО
+   ПРОЕКТЫ - ЧИСТЫЙ BOOTSTRAP (БЕЗ GRID!)
    ============================================ */
 
+/* Отключаем все Grid стили */
 .projects-area .row.g-4 {
-    display: grid !important;
-    gap: 1.5rem;
-    grid-template-columns: 1fr;
-    align-items: start;
-    grid-auto-rows: auto;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1.5rem !important;
+    align-items: stretch !important;
 }
 
-.projects-area [class*="col-"] {
-    width: 100% !important;
-    max-width: 100% !important;
-    height: auto !important;
-    align-self: start;
+/* Убираем стандартные отступы Bootstrap */
+.projects-area .row.g-4 > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-@media (min-width: 768px) {
-    .projects-area .row.g-4 {
-        grid-template-columns: repeat(2, 1fr);
+/* Мобильные - 1 колонка */
+@media (max-width: 767px) {
+    .projects-area .col-lg-4,
+    .projects-area .col-md-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
     }
 }
 
+/* Планшеты - 2 колонки */
+@media (min-width: 768px) and (max-width: 991px) {
+    .projects-area .col-md-6 {
+        flex: 0 0 calc(50% - 0.75rem) !important;
+        max-width: calc(50% - 0.75rem) !important;
+    }
+}
+
+/* Десктоп - 3 колонки */
 @media (min-width: 992px) {
-    .projects-area .row.g-4 {
-        grid-template-columns: repeat(3, 1fr);
+    .projects-area .col-lg-4 {
+        flex: 0 0 calc(33.333% - 1rem) !important;
+        max-width: calc(33.333% - 1rem) !important;
+    }
+}
+
+/* Фиксированная высота изображений */
+.projects-area .card-img-top {
+    height: 220px !important;
+    min-height: 220px !important;
+    max-height: 220px !important;
+}
+
+@media (max-width: 767px) {
+    .projects-area .card-img-top {
+        height: 180px !important;
+        min-height: 180px !important;
+        max-height: 180px !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .projects-area .card-img-top {
+        height: 240px !important;
+        min-height: 240px !important;
+        max-height: 240px !important;
     }
 }
 
@@ -478,7 +508,6 @@ picture img {
     letter-spacing: 1.2px;
     border: 1px solid rgba(255, 255, 255, 0.15);
     min-height: 44px;
-    will-change: transform;
 }
 
 .btn-warning:hover {
@@ -488,7 +517,6 @@ picture img {
     box-shadow: 0 0 35px rgba(216, 180, 254, 0.9), 
                 0 10px 30px rgba(192, 132, 252, 0.6),
                 inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    will-change: auto;
 }
 
 .btn-outline-warning {
@@ -981,16 +1009,8 @@ body {
         height: 150px !important;
     }
     
-    .card-img-top {
-        height: 180px !important;
-    }
-    
     #cursorGlow {
         display: none !important;
-    }
-    
-    .card {
-        animation-duration: 0.3s !important;
     }
     
     .nav-link {
@@ -1031,10 +1051,6 @@ body {
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
-    }
-    
-    .card-img-top {
-        height: 250px !important;
     }
 }
 
