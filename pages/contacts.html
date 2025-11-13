@@ -2,29 +2,44 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты - Журавлев Алексей</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Контакты - Портфолио Журавлева Алексея</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../style/styles.css">
 </head>
 <body>
+    <!-- Skip-link для доступности (Задание 17) -->
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
     <canvas id="plasmaCanvas"></canvas>
-    <div id="notificationContainer"></div>
+    <div id="cursorGlow"></div>
 
     <header class="bg-dark border-bottom border-warning">
         <div class="container py-3">
             <div class="d-flex align-items-center justify-content-center">
-                <img src="../images/logo.png" alt="Логотип" class="me-3" style="height: 40px;" onerror="this.style.display='none'">
-                <h1 class="h3 mb-0 text-white">Журавлев Алексей</h1>
+                <img src="../images/logo.png" 
+                     alt="Логотип портфолио" 
+                     class="me-3" 
+                     width="40" 
+                     height="40"
+                     style="height: 40px;" 
+                     onerror="this.style.display='none'">
+                <h1 class="h3 mb-0 text-white">Контакты</h1>
             </div>
         </div>
     </header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Основная навигация">
         <div class="container">
             <a class="navbar-brand fw-bold text-white" href="../index.html">Portfolio</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <button class="navbar-toggler" 
+                    type="button" 
+                    data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav"
+                    aria-label="Переключить навигацию"
+                    aria-expanded="false"
+                    aria-controls="navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -32,183 +47,267 @@
                     <li class="nav-item"><a class="nav-link text-white" href="../index.html">Главная</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="projects.html">Проекты</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="diary.html">Дневник</a></li>
-                    <li class="nav-item"><a class="nav-link active text-white" href="contacts.html">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="contacts.html" aria-current="page">Контакты</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-5">
-        <h1 class="text-center mb-3 text-white">
-            <i class="bi bi-envelope-heart me-2"></i>Свяжитесь со мной
-        </h1>
-        <p class="text-center text-light mb-5 lead">
-            Открыт для новых проектов и сотрудничества
-        </p>
-        
-        <div class="row g-4">
-            <div class="col-lg-8 mx-auto">
-                <!-- Contact Form -->
-                <div class="card bg-dark border-warning mb-4 glass-effect">
-                    <div class="card-body p-4">
-                        <h3 class="card-title h4 text-white mb-4">
-                            <i class="bi bi-envelope me-2"></i>Контактная форма
-                        </h3>
-                        <p class="text-light mb-4">
-                            Заполните форму ниже, и я свяжусь с вами в ближайшее время!
-                        </p>
-                        
-                        <form id="contactForm">
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="name" class="form-label text-light">
-                                            <i class="bi bi-person me-2"></i>Ваше имя *
-                                        </label>
-                                        <input type="text" class="form-control" id="name" placeholder="Иван Иванов" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="email" class="form-label text-light">
-                                            <i class="bi bi-envelope me-2"></i>Email *
-                                        </label>
-                                        <input type="email" class="form-control" id="email" placeholder="example@mail.ru" required>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <label for="subject" class="form-label text-light">
-                                    <i class="bi bi-card-heading me-2"></i>Тема сообщения
-                                </label>
-                                <input type="text" class="form-control" id="subject" placeholder="Предложение о сотрудничестве">
-                            </div>
-                            
-                            <div class="mb-4">
-                                <label for="message" class="form-label text-light">
-                                    <i class="bi bi-chat-left-text me-2"></i>Сообщение *
-                                </label>
-                                <textarea class="form-control" id="message" rows="6" placeholder="Расскажите подробнее о вашем проекте или вопросе..." required></textarea>
-                            </div>
-                            
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-warning btn-lg px-5">
-                                    <i class="bi bi-send me-2"></i>Отправить сообщение
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <main id="main" class="container my-5">
+        <!-- Заголовок страницы -->
+        <header>
+            <h1 class="text-center text-white mb-4">
+                <i class="bi bi-envelope-heart me-2" aria-hidden="true"></i>
+                Свяжитесь со мной
+            </h1>
+            <p class="text-center text-light lead mb-5">
+                Заполните форму ниже, и я свяжусь с вами в течение 24 часов
+            </p>
+        </header>
 
-                <!-- Contact Information -->
-                <div class="card bg-dark border-info glass-effect mb-4">
-                    <div class="card-body p-4">
-                        <h3 class="card-title h4 text-white mb-4">
-                            <i class="bi bi-person-lines-fill me-2"></i>Контактная информация
-                        </h3>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <!-- Доступная форма обратной связи (Задания 17 + 18) -->
+                <form class="card bg-dark border-warning glass-effect p-4" 
+                      aria-labelledby="contact-form-title"
+                      novalidate>
+                    
+                    <h2 id="contact-form-title" class="visually-hidden">Форма обратной связи</h2>
+
+                    <!-- Live region для объявления успешной отправки -->
+                    <div id="form-status" 
+                         role="status" 
+                         aria-live="polite" 
+                         aria-atomic="true"
+                         class="visually-hidden"></div>
+
+                    <!-- Группа: Имя (обязательное поле) -->
+                    <fieldset class="mb-4">
+                        <legend class="visually-hidden">Личная информация</legend>
                         
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="contact-item d-flex align-items-center mb-3 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
-                                    <div class="rounded-circle p-3 me-3" style="background: rgba(139, 92, 246, 0.3);">
-                                        <i class="bi bi-envelope-fill text-warning fs-4"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-warning mb-1">Email</h6>
-                                        <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="text-light text-decoration-none small">
-                                            zhuravlev.a.i1@edu.mirea.ru
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="contact-item d-flex align-items-center mb-3 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
-                                    <div class="rounded-circle p-3 me-3" style="background: rgba(16, 185, 129, 0.3);">
-                                        <i class="bi bi-github text-success fs-4"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-warning mb-1">GitHub</h6>
-                                        <a href="https://github.com/shxvier" target="_blank" class="text-light text-decoration-none small">
-                                            github.com/shxvier
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="contact-item d-flex align-items-center mb-3 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
-                                    <div class="rounded-circle p-3 me-3" style="background: rgba(6, 182, 212, 0.3);">
-                                        <i class="bi bi-geo-alt-fill text-info fs-4"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-warning mb-1">Местоположение</h6>
-                                        <p class="text-light mb-0 small">Москва, Россия</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="col-md-6">
-                                <div class="contact-item d-flex align-items-center mb-3 p-3 rounded" style="background: rgba(168, 85, 247, 0.1);">
-                                    <div class="rounded-circle p-3 me-3" style="background: rgba(59, 130, 246, 0.3);">
-                                        <i class="bi bi-telegram text-info fs-4"></i>
-                                    </div>
-                                    <div>
-                                        <h6 class="text-warning mb-1">Telegram</h6>
-                                        <a href="https://t.me/k1riho" target="_blank" class="text-light text-decoration-none small">
-                                            @k1riho
-                                        </a>
-                                    </div>
-                                </div>
+                        <div class="form-group mb-3">
+                            <label for="name" class="form-label text-light">
+                                Ваше имя 
+                                <span class="text-danger" aria-hidden="true">*</span>
+                                <span class="visually-hidden">(обязательное поле)</span>
+                            </label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="name" 
+                                   name="name"
+                                   required
+                                   aria-required="true"
+                                   aria-invalid="false"
+                                   aria-describedby="name-help name-error"
+                                   autocomplete="name">
+                            <small id="name-help" class="form-text text-light">
+                                Введите ваше полное имя
+                            </small>
+                            <div id="name-error" class="invalid-feedback" role="alert" aria-live="assertive">
+                                Пожалуйста, введите ваше имя
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <!-- Social Links -->
-                <div class="card bg-dark border-success glass-effect">
-                    <div class="card-body text-center p-4">
-                        <h4 class="text-white mb-4">
-                            <i class="bi bi-share me-2"></i>Социальные сети
-                        </h4>
-                        <div class="d-flex justify-content-center gap-3 flex-wrap">
-                            <a href="https://github.com/shxvier" target="_blank" class="btn btn-outline-warning btn-lg">
-                                <i class="bi bi-github fs-5"></i>
-                            </a>
-                            <a href="https://t.me/k1riho" target="_blank" class="btn btn-outline-warning btn-lg">
-                                <i class="bi bi-telegram fs-5"></i>
-                            </a>
-                            <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="btn btn-outline-warning btn-lg">
-                                <i class="bi bi-envelope fs-5"></i>
-                            </a>
-                            <a href="#" class="btn btn-outline-warning btn-lg">
-                                <i class="bi bi-linkedin fs-5"></i>
-                            </a>
+                        <!-- Группа: Email (обязательное поле) -->
+                        <div class="form-group mb-3">
+                            <label for="email" class="form-label text-light">
+                                Email адрес 
+                                <span class="text-danger" aria-hidden="true">*</span>
+                                <span class="visually-hidden">(обязательное поле)</span>
+                            </label>
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email" 
+                                   name="email"
+                                   required
+                                   aria-required="true"
+                                   aria-invalid="false"
+                                   aria-describedby="email-help email-error"
+                                   autocomplete="email"
+                                   inputmode="email">
+                            <small id="email-help" class="form-text text-light">
+                                Мы отправим ответ на этот адрес
+                            </small>
+                            <div id="email-error" class="invalid-feedback" role="alert" aria-live="assertive">
+                                Пожалуйста, введите корректный email
+                            </div>
                         </div>
-                        <p class="text-light mt-4 mb-0 small">
-                            <i class="bi bi-clock me-2"></i>
-                            Обычно отвечаю в течение 24 часов
-                        </p>
+                    </fieldset>
+
+                    <!-- Группа: Тема обращения -->
+                    <fieldset class="mb-4">
+                        <legend class="form-label text-light">Тема обращения</legend>
+                        
+                        <select class="form-select" 
+                                id="topic" 
+                                name="topic"
+                                aria-describedby="topic-help">
+                            <option value="" selected>Выберите тему...</option>
+                            <option value="question">Общий вопрос</option>
+                            <option value="collaboration">Предложение о сотрудничестве</option>
+                            <option value="job">Предложение о работе</option>
+                            <option value="feedback">Отзыв о портфолио</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <small id="topic-help" class="form-text text-light">
+                            Выберите наиболее подходящую тему
+                        </small>
+                    </fieldset>
+
+                    <!-- Группа: Сообщение (обязательное поле) -->
+                    <fieldset class="mb-4">
+                        <legend class="visually-hidden">Ваше сообщение</legend>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label text-light">
+                                Сообщение 
+                                <span class="text-danger" aria-hidden="true">*</span>
+                                <span class="visually-hidden">(обязательное поле)</span>
+                            </label>
+                            <textarea class="form-control" 
+                                      id="message" 
+                                      name="message"
+                                      rows="5"
+                                      required
+                                      aria-required="true"
+                                      aria-invalid="false"
+                                      aria-describedby="message-help message-error"
+                                      minlength="10"
+                                      maxlength="1000"></textarea>
+                            <small id="message-help" class="form-text text-light">
+                                Опишите ваш вопрос подробно (минимум 10 символов)
+                            </small>
+                            <div id="message-error" class="invalid-feedback" role="alert" aria-live="assertive">
+                                Сообщение должно содержать минимум 10 символов
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Кнопка отправки -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" 
+                                class="btn btn-warning btn-lg"
+                                aria-label="Отправить форму обратной связи">
+                            <i class="bi bi-send me-2" aria-hidden="true"></i>
+                            Отправить сообщение
+                        </button>
+                        <button type="reset" 
+                                class="btn btn-outline-warning"
+                                aria-label="Очистить все поля формы">
+                            <i class="bi bi-x-circle me-2" aria-hidden="true"></i>
+                            Очистить форму
+                        </button>
                     </div>
-                </div>
+
+                    <!-- Информация об обязательных полях -->
+                    <p class="text-light small mt-3 mb-0">
+                        <span class="text-danger" aria-hidden="true">*</span> 
+                        — обязательные поля для заполнения
+                    </p>
+                </form>
             </div>
         </div>
+
+        <!-- Контактная информация -->
+        <section class="mt-5" aria-labelledby="contact-info-title">
+            <h2 id="contact-info-title" class="text-center text-white mb-4">
+                <i class="bi bi-info-circle me-2" aria-hidden="true"></i>
+                Другие способы связи
+            </h2>
+            
+            <div class="row g-4">
+                <!-- Email -->
+                <div class="col-md-4">
+                    <article class="card bg-dark border-info glass-effect h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-envelope-fill text-info" style="font-size: 3rem;" aria-hidden="true"></i>
+                            <h3 class="h5 text-white mt-3 mb-2">Email</h3>
+                            <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" 
+                               class="text-light text-decoration-none">
+                                zhuravlev.a.i1@edu.mirea.ru
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- GitHub -->
+                <div class="col-md-4">
+                    <article class="card bg-dark border-success glass-effect h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-github text-success" style="font-size: 3rem;" aria-hidden="true"></i>
+                            <h3 class="h5 text-white mt-3 mb-2">GitHub</h3>
+                            <a href="https://github.com/shxvier" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="text-light text-decoration-none">
+                                github.com/shxvier
+                                <span class="visually-hidden">(откроется в новой вкладке)</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Telegram -->
+                <div class="col-md-4">
+                    <article class="card bg-dark border-warning glass-effect h-100">
+                        <div class="card-body text-center">
+                            <i class="bi bi-telegram text-warning" style="font-size: 3rem;" aria-hidden="true"></i>
+                            <h3 class="h5 text-white mt-3 mb-2">Telegram</h3>
+                            <a href="https://t.me/k1riho" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="text-light text-decoration-none">
+                                @k1riho
+                                <span class="visually-hidden">(откроется в новой вкладке)</span>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bg-dark text-warning text-center py-4 border-top border-warning mt-5">
         <div class="container">
             <p class="mb-2">© 2025 Журавлев Алексей | ЭФБО-12-24</p>
             <p class="small mb-0">
-                <i class="bi bi-heart-fill text-danger me-1"></i>
+                <i class="bi bi-heart-fill text-danger me-1" aria-hidden="true"></i>
                 Сделано с любовью к коду
             </p>
         </div>
     </footer>
 
+    <!-- Модальное окно успешной отправки (Задание 17) -->
+    <div class="overlay" 
+         id="successOverlay" 
+         style="display: none;"
+         aria-hidden="true"></div>
+    
+    <div class="modal" 
+         id="successModal" 
+         role="dialog" 
+         aria-modal="true" 
+         aria-labelledby="success-title" 
+         aria-describedby="success-desc"
+         tabindex="-1"
+         style="display: none;">
+        <h2 id="success-title" class="text-white mb-3">
+            <i class="bi bi-check-circle-fill text-success me-2" aria-hidden="true"></i>
+            Сообщение отправлено!
+        </h2>
+        <p id="success-desc" class="text-light mb-4">
+            Спасибо за обращение! Я свяжусь с вами в течение 24 часов.
+        </p>
+        <button class="btn btn-warning" 
+                onclick="closeSuccessModal()" 
+                aria-label="Закрыть уведомление об успешной отправке">
+            Закрыть
+        </button>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/plasma-background.js"></script>
-    <script src="../js/notifications.js"></script>
-    <script src="../js/contact-form.js"></script>
+    <script src="../js/cursor-glow.js"></script>
+    <script src="../js/form-validation.js"></script>
 </body>
 </html>
