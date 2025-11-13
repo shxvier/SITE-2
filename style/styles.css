@@ -1166,3 +1166,59 @@ legend {
     color: #e8d5ff;
     margin-bottom: 0.5rem;
 }
+/* ============================================
+   КРИТИЧЕСКИЙ ФИКС ДЛЯ DIARY - ДОБАВЬ В КОНЕЦ
+   ============================================ */
+
+/* Отключаем ВСЕ grid-стили для ВСЕХ .row (включая diary) */
+.row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    grid-template-columns: none !important;
+}
+
+/* Убираем кастомный gap из grid - только Bootstrap margins */
+.row.g-4 {
+    margin-right: -0.75rem !important;
+    margin-left: -0.75rem !important;
+}
+
+.row.g-4 > * {
+    padding-right: 0.75rem !important;
+    padding-left: 0.75rem !important;
+}
+
+/* Все карточки внутри .col-* должны тянуться */
+.row [class*="col-"] {
+    display: flex !important;
+}
+
+.row .card {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Исправление timeline-items */
+.timeline-item {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Исправление stat-items */
+.stat-item {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Убираем конфликты с projects-area */
+.projects-area .row.g-4 {
+    /* Только для проектов оставляем gap */
+    gap: 1.5rem !important;
+    margin: 0 !important;
+}
+
+.projects-area .row.g-4 > * {
+    padding: 0 !important;
+}
