@@ -2,7 +2,7 @@
    ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ ДЛЯ МОРСКОЙ ТЕМЫ
    ============================================ */
 
-/* Анимация появления элементов */
+/* Базовые анимации */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -11,6 +11,17 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
     }
 }
 
@@ -25,7 +36,7 @@
     }
 }
 
-/* Анимация ряби воды */
+/* Анимация ряби воды - ИСПРАВЛЕННАЯ */
 @keyframes waterRippleEffect {
     0% {
         transform: scale(1);
@@ -49,7 +60,7 @@
     }
     50% {
         transform: scale(1.02);
-        opacity: 0.8;
+        opacity: 0.9;
     }
 }
 
@@ -66,20 +77,19 @@
     }
 }
 
-/* Дрожание воды */
-@keyframes waterShake {
-    0%, 100% {
-        transform: translateX(0);
+/* Анимация для модальных окон - НОВАЯ */
+@keyframes modalWaveIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(-50px);
     }
-    25% {
-        transform: translateX(-2px);
-    }
-    75% {
-        transform: translateX(2px);
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
     }
 }
 
-/* Применение анимаций к элементам */
+/* Анимация появления элементов с задержкой */
 .card {
     animation: scaleIn 0.6s ease forwards;
     opacity: 0;
@@ -92,28 +102,34 @@
 .card:nth-child(5) { animation-delay: 0.3s; }
 .card:nth-child(6) { animation-delay: 0.35s; }
 
-/* Анимация для статистики */
-.counter {
-    animation: fadeInUp 0.8s ease forwards;
+/* Анимация для проектов */
+.project-item {
+    transition: all 0.4s ease;
 }
 
-/* Анимация для навыков */
-.skill-item {
+.project-card {
+    transition: all 0.3s ease;
     animation: fadeInUp 0.6s ease forwards;
     opacity: 0;
 }
 
-.skill-item:nth-child(1) { animation-delay: 0.4s; }
-.skill-item:nth-child(2) { animation-delay: 0.5s; }
-.skill-item:nth-child(3) { animation-delay: 0.6s; }
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 255, 234, 0.2);
+}
 
-/* Эффект ряби при hover */
-.ripple-effect {
+/* Анимация для кнопок */
+.btn {
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
 }
 
-.ripple-effect::after {
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -121,242 +137,19 @@
     width: 0;
     height: 0;
     border-radius: 50%;
-    background: rgba(0, 255, 234, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     transform: translate(-50%, -50%);
     transition: width 0.6s, height 0.6s;
 }
 
-.ripple-effect:hover::after {
+.btn:hover::before {
     width: 300px;
     height: 300px;
 }
 
-/* Специфичные анимации для контактов */
-.contact-card {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-.contact-card:nth-child(1) { animation-delay: 0.2s; }
-.contact-card:nth-child(2) { animation-delay: 0.3s; }
-.contact-card:nth-child(3) { animation-delay: 0.4s; }
-
-.water-form {
-    animation: scaleIn 0.8s ease forwards;
-    animation-delay: 0.1s;
-    opacity: 0;
-}
-
-/* Анимация появления полей формы */
-.form-group {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.form-group:nth-child(1) { animation-delay: 0.3s; }
-.form-group:nth-child(2) { animation-delay: 0.4s; }
-.form-group:nth-child(3) { animation-delay: 0.5s; }
-.form-group:nth-child(4) { animation-delay: 0.6s; }
-
-/* Анимация плавающих иконок */
-@keyframes floatIcon {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-    }
-    33% {
-        transform: translateY(-10px) rotate(5deg);
-    }
-    66% {
-        transform: translateY(-5px) rotate(-5deg);
-    }
-}
-
-/* Анимация подсветки при фокусе */
-@keyframes inputFocusGlow {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 234, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(0, 255, 234, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(0, 255, 234, 0);
-    }
-}
-
-.input-focused .form-control:focus {
-    animation: inputFocusGlow 0.6s ease;
-}
-
-/* Анимация плавающих пузырьков */
-@keyframes bubbleFloat {
-    0% {
-        transform: translateY(0) translateX(0);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-100px) translateX(20px);
-        opacity: 0;
-    }
-}
-
-/* Анимация волн */
-@keyframes waveMove {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-/* Специфичные анимации для дневника */
-.timeline-item {
-    animation: fadeInUp 0.6s ease forwards;
-    opacity: 0;
-}
-
-.timeline-item:nth-child(1) { animation-delay: 0.2s; }
-.timeline-item:nth-child(2) { animation-delay: 0.3s; }
-.timeline-item:nth-child(3) { animation-delay: 0.4s; }
-.timeline-item:nth-child(4) { animation-delay: 0.5s; }
-
-.goal-item {
-    animation: scaleIn 0.5s ease forwards;
-    opacity: 0;
-}
-
-.goal-item:nth-child(1) { animation-delay: 0.3s; }
-.goal-item:nth-child(2) { animation-delay: 0.4s; }
-.goal-item:nth-child(3) { animation-delay: 0.5s; }
-
-.achievement-item {
-    animation: fadeInUp 0.5s ease forwards;
-    opacity: 0;
-}
-
-.achievement-item:nth-child(1) { animation-delay: 0.4s; }
-.achievement-item:nth-child(2) { animation-delay: 0.5s; }
-.achievement-item:nth-child(3) { animation-delay: 0.6s; }
-
-/* Анимация исчезновения */
-@keyframes fadeOut {
-    from {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    to {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-}
-
-/* Анимация появления для проектов */
-.project-card {
-    transition: all 0.3s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-}
-
-/* Анимация для кнопок */
-.btn {
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-/* Анимация свечения текста */
-@keyframes textGlow {
-    0%, 100% {
-        text-shadow: 0 0 5px rgba(0, 255, 234, 0.5);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(0, 255, 234, 0.8), 0 0 30px rgba(0, 255, 234, 0.6);
-    }
-}
-
-/* Анимация для загрузки */
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Анимация для уведомлений */
-@keyframes slideInRight {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-@keyframes slideOutRight {
-    from {
-        transform: translateX(0);
-        opacity: 1;
-    }
-    to {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-}
-
-/* Минимальные стили для модальных окон без нарушения функциональности */
-.ocean-modal .modal-content {
-    border-radius: 15px;
-    background: rgba(3, 4, 94, 0.95);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 255, 234, 0.3);
-}
-
-.ocean-modal .modal-header {
-    border-bottom: 1px solid rgba(0, 255, 234, 0.3);
-}
-
-.ocean-modal .modal-footer {
-    border-top: 1px solid rgba(0, 255, 234, 0.3);
-}
-
-/* Анимация появления модального окна */
-@keyframes modalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+/* Анимация для модальных окон */
 .modal.show .modal-dialog {
-    animation: modalSlideIn 0.3s ease;
-}
-
-/* Анимация для изображений проектов */
-.project-image {
-    transition: transform 0.3s ease;
-}
-
-.project-card:hover .project-image {
-    transform: scale(1.05);
+    animation: modalWaveIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Анимация для навигации */
@@ -382,46 +175,68 @@
     width: 100%;
 }
 
+/* Анимация для фильтров */
+.filter-btn.active {
+    animation: waterRippleEffect 0.6s ease;
+}
+
+/* Анимация для изображений проектов */
+.project-image {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+/* Анимация для статистики */
+.counter {
+    animation: fadeInUp 0.8s ease forwards;
+}
+
 /* Анимация для прогресс-баров */
 @keyframes progressFill {
     from {
         width: 0%;
     }
     to {
-        width: attr(data-width);
+        width: var(--progress-width, 0%);
     }
 }
 
-.progress-bar {
+.water-progress-bar {
     animation: progressFill 1.5s ease-in-out;
 }
 
-/* Анимация для переключателей */
-.form-check-input:checked {
-    animation: gentlePulse 0.3s ease;
+/* Анимация для уведомлений */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-/* Анимация для карточек статистики */
-.stat-card {
-    transition: all 0.3s ease;
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(100%);
+        opacity: 0;
+    }
 }
 
-.stat-card:hover {
-    transform: translateY(-5px) scale(1.02);
+.ocean-notification {
+    animation: slideInRight 0.3s ease;
 }
 
-/* Анимация для иконок */
-.water-icon {
-    transition: all 0.3s ease;
-}
-
-.water-icon:hover {
-    animation: floatIcon 1s ease infinite;
-}
-
-/* Анимация для фона */
-.ocean-background {
-    animation: waterFlow 15s ease infinite;
+.ocean-notification.hiding {
+    animation: slideOutRight 0.3s ease;
 }
 
 /* Анимация для курсора */
@@ -438,83 +253,6 @@
 
 .aqua-cursor {
     animation: cursorPulse 2s ease-in-out infinite;
-}
-
-/* Анимация для уведомлений */
-.ocean-notification {
-    animation: slideInRight 0.3s ease;
-}
-
-.ocean-notification.hiding {
-    animation: slideOutRight 0.3s ease;
-}
-
-/* Анимация для фильтров проектов */
-.filter-btn {
-    transition: all 0.3s ease;
-}
-
-.filter-btn.active {
-    animation: waterRippleEffect 0.6s ease;
-}
-
-/* Анимация для счетчиков */
-@keyframes countUp {
-    from {
-        transform: scale(0.5);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-.counter-animated {
-    animation: countUp 0.6s ease;
-}
-
-/* Анимация для подсказок */
-@keyframes tooltipFade {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.tooltip {
-    animation: tooltipFade 0.3s ease;
-}
-
-/* Анимация для алертов */
-.alert {
-    animation: fadeInUp 0.5s ease;
-}
-
-/* Адаптивные анимации */
-@media (max-width: 768px) {
-    .card {
-        animation: fadeInUp 0.6s ease forwards;
-    }
-    
-    @keyframes mobileSlideIn {
-        from {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-    
-    .navbar-collapse.show {
-        animation: mobileSlideIn 0.3s ease;
-    }
 }
 
 /* Анимация для логотипа */
@@ -550,4 +288,136 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
+}
+
+/* Улучшенные анимации для мобильных устройств */
+@media (max-width: 768px) {
+    .card {
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes mobileSlideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    .navbar-collapse.show {
+        animation: mobileSlideIn 0.3s ease;
+    }
+    
+    .project-card:hover {
+        transform: none;
+    }
+}
+
+/* Анимация для загрузки */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Анимация для переключателей */
+.form-check-input:checked {
+    animation: gentlePulse 0.3s ease;
+}
+
+/* Анимация для алертов */
+.alert {
+    animation: fadeInUp 0.5s ease;
+}
+
+/* Анимация для подсказок */
+@keyframes tooltipFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tooltip {
+    animation: tooltipFade 0.3s ease;
+}
+
+/* НОВЫЕ АНИМАЦИИ ДЛЯ УЛУЧШЕНИЙ */
+
+/* Анимация волны при клике */
+@keyframes clickWave {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.click-wave {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(0, 255, 234, 0.3);
+    animation: clickWave 0.6s ease-out;
+    pointer-events: none;
+}
+
+/* Анимация появления текста */
+@keyframes textReveal {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-reveal {
+    animation: textReveal 0.8s ease forwards;
+}
+
+/* Анимация плавающих элементов */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.floating {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Анимация свечения */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(0, 255, 234, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 234, 0.8), 0 0 30px rgba(0, 255, 234, 0.6);
+    }
+}
+
+.glow-effect {
+    animation: glow 2s ease-in-out infinite;
 }
