@@ -38,6 +38,41 @@
             border: 2px solid rgba(0, 255, 234, 0.4);
             box-shadow: 0 0 50px rgba(0, 255, 234, 0.3);
         }
+
+        /* Анимация для водных эффектов */
+        @keyframes waterRipple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+
+        /* Стили для курсора */
+        .aqua-cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, rgba(0,255,234,0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10000;
+            animation: cursorPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes cursorPulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 <body class="ocean-theme">
@@ -72,10 +107,10 @@
 
     <!-- Основной контейнер с стеклянным эффектом -->
     <div class="glass-container">
-        <!-- Header и Navigation остаются без изменений -->
         <header class="ocean-header">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-center py-3">
+                    <!-- Анимированный логотип с водой -->
                     <div class="logo-container me-3">
                         <div class="water-logo">
                             <svg width="40" height="40" viewBox="0 0 40 40" class="logo-wave">
@@ -96,6 +131,7 @@
             </div>
         </header>
 
+        <!-- Навигация с водным эффектом -->
         <nav class="navbar navbar-expand-lg ocean-navbar" aria-label="Основная навигация">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-glow water-text" href="../index.html">
@@ -511,18 +547,145 @@
 
     <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/aqua-engine.js"></script>
+    <script src="../js/liquid-canvas.js"></script>
+    <script src="../js/water-animations.js"></script>
+    <script src="../js/ocean-interactions.js"></script>
+    <script src="../js/notifications.js"></script>
     
-    <!-- Упрощенный JavaScript -->
+    <!-- Восстановленный JavaScript с водными эффектами -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Страница проектов загружена');
+            console.log('Страница проектов загружена - полная версия с эффектами');
+            
+            // Инициализация водных эффектов
+            initWaterEffects();
             
             // Инициализация фильтров проектов
             initProjectsFilter();
             
             // Инициализация интерактивных эффектов
             initProjectInteractions();
+            
+            // Инициализация курсора
+            initCursorEffects();
         });
+
+        function initWaterEffects() {
+            // Инициализация водного движка если он доступен
+            if (typeof AquaEngine !== 'undefined') {
+                AquaEngine.init();
+                console.log('AquaEngine инициализирован');
+            }
+            
+            // Инициализация жидкого канваса
+            if (typeof LiquidCanvas !== 'undefined') {
+                LiquidCanvas.init();
+                console.log('LiquidCanvas инициализирован');
+            }
+        }
+
+        function initCursorEffects() {
+            const cursor = document.getElementById('cursorGlow');
+            if (!cursor) return;
+
+            document.addEventListener('mousemove', function(e) {
+                cursor.style.left = (e.clientX - 20) + 'px';
+                cursor.style.top = (e.clientY - 20) + 'px';
+                
+                // Создаем след из пузырьков
+                if (Math.random() > 0.7) {
+                    createBubble(e.clientX, e.clientY);
+                }
+            });
+
+            // Эффекты при клике
+            document.addEventListener('click', function(e) {
+                createWaterRipple(e.clientX, e.clientY);
+                
+                // Дополнительные эффекты для интерактивных элементов
+                if (e.target.classList.contains('btn') || 
+                    e.target.classList.contains('filter-btn') ||
+                    e.target.classList.contains('project-detail-btn')) {
+                    createSplashEffect(e.clientX, e.clientY);
+                }
+            });
+        }
+
+        function createBubble(x, y) {
+            const bubble = document.createElement('div');
+            bubble.style.cssText = `
+                position: fixed;
+                width: ${Math.random() * 10 + 5}px;
+                height: ${Math.random() * 10 + 5}px;
+                background: radial-gradient(circle, rgba(0,255,234,0.3) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                left: ${x}px;
+                top: ${y}px;
+                animation: bubbleFloat ${Math.random() * 2 + 1}s ease-out forwards;
+            `;
+            
+            document.body.appendChild(bubble);
+            
+            setTimeout(() => {
+                bubble.remove();
+            }, 2000);
+        }
+
+        function createWaterRipple(x, y) {
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: fixed;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(0,255,234,0.3) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                left: ${x - 50}px;
+                top: ${y - 50}px;
+                animation: waterRipple 0.6s ease-out forwards;
+            `;
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        function createSplashEffect(x, y) {
+            // Создаем несколько брызг
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => {
+                    const splash = document.createElement('div');
+                    const size = Math.random() * 30 + 20;
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 50 + 30;
+                    
+                    splash.style.cssText = `
+                        position: fixed;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: radial-gradient(circle, rgba(0,255,234,0.4) 0%, transparent 70%);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 10000;
+                        left: ${x - size/2 + Math.cos(angle) * distance}px;
+                        top: ${y - size/2 + Math.sin(angle) * distance}px;
+                        animation: splashEffect 0.8s ease-out forwards;
+                    `;
+                    
+                    document.body.appendChild(splash);
+                    
+                    setTimeout(() => {
+                        splash.remove();
+                    }, 800);
+                }, i * 100);
+            }
+        }
 
         function initProjectsFilter() {
             const filterBtns = document.querySelectorAll('.filter-btn');
@@ -558,16 +721,20 @@
                             setTimeout(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'translateY(0)';
+                                item.style.animation = 'fadeInUp 0.6s ease forwards';
                             }, 50);
                         } else {
                             // Анимация скрытия
-                            item.style.opacity = '0';
-                            item.style.transform = 'translateY(20px)';
+                            item.style.animation = 'fadeOut 0.4s ease forwards';
                             setTimeout(() => {
                                 item.style.display = 'none';
-                            }, 300);
+                            }, 400);
                         }
                     });
+
+                    // Водный эффект
+                    const rect = this.getBoundingClientRect();
+                    createSplashEffect(rect.left + rect.width/2, rect.top + rect.height/2);
                 });
             });
         }
@@ -578,12 +745,20 @@
             
             projectCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
                     this.style.transition = 'all 0.3s ease';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 255, 234, 0.3)';
+                    
+                    // Эффект волны при наведении
+                    createWaterRipple(
+                        this.getBoundingClientRect().left + this.offsetWidth/2,
+                        this.getBoundingClientRect().top + this.offsetHeight/2
+                    );
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
+                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.boxShadow = '';
                 });
             });
 
@@ -592,10 +767,19 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     console.log('Клик по GitHub ссылке');
-                    // Здесь можно добавить уведомление
+                    
+                    // Уведомление
+                    if (window.OceanNotifications) {
+                        window.OceanNotifications.info('Переход на GitHub...', 'info', 2000);
+                    }
+                    
+                    // Водный эффект
+                    const rect = this.getBoundingClientRect();
+                    createSplashEffect(rect.left + rect.width/2, rect.top + rect.height/2);
+                    
                     setTimeout(() => {
                         window.open(this.href, '_blank');
-                    }, 100);
+                    }, 1000);
                 });
             });
 
@@ -604,65 +788,88 @@
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     console.log('Клик по тестовой ссылке');
-                    alert('Эта функция находится в разработке');
+                    
+                    // Уведомление
+                    if (window.OceanNotifications) {
+                        window.OceanNotifications.warning('Эта функция находится в разработке', 'warning', 3000);
+                    }
+                    
+                    // Водный эффект
+                    const rect = this.getBoundingClientRect();
+                    createSplashEffect(rect.left + rect.width/2, rect.top + rect.height/2);
+                });
+            });
+
+            // Эффекты для модальных окон
+            document.querySelectorAll('.project-detail-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const rect = this.getBoundingClientRect();
+                    createSplashEffect(rect.left + rect.width/2, rect.top + rect.height/2);
                 });
             });
         }
 
-        // Простая функция для создания водного эффекта
-        function createWaterEffect(x, y) {
-            const ripple = document.createElement('div');
-            ripple.style.cssText = `
-                position: fixed;
-                width: 100px;
-                height: 100px;
-                background: radial-gradient(circle, rgba(0,255,234,0.3) 0%, transparent 70%);
-                border-radius: 50%;
-                pointer-events: none;
-                z-index: 10000;
-                left: ${x - 50}px;
-                top: ${y - 50}px;
-                animation: waterRipple 0.6s ease-out forwards;
-            `;
-            
-            document.body.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        }
-
-        // Добавляем стили для анимации
+        // Добавляем дополнительные CSS анимации
         const style = document.createElement('style');
         style.textContent = `
-            @keyframes waterRipple {
+            @keyframes bubbleFloat {
+                0% {
+                    transform: translateY(0) translateX(0);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(-100px) translateX(${Math.random() * 40 - 20}px);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes splashEffect {
                 0% {
                     transform: scale(0.8);
                     opacity: 1;
                 }
                 100% {
-                    transform: scale(2);
+                    transform: scale(1.5);
                     opacity: 0;
                 }
             }
             
             .project-item {
-                transition: all 0.3s ease;
+                transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             }
             
             .filter-btn {
                 transition: all 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .filter-btn::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                background: rgba(255, 255, 255, 0.2);
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: width 0.3s, height 0.3s;
+            }
+            
+            .filter-btn:hover::before {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .filter-btn.active {
+                animation: waterRippleEffect 0.6s ease;
+                background: linear-gradient(135deg, #00b4d8, #0077b6) !important;
+                border-color: #00b4d8 !important;
+                box-shadow: 0 0 20px rgba(0, 255, 234, 0.4) !important;
             }
         `;
         document.head.appendChild(style);
-
-        // Добавляем обработчик кликов для водных эффектов
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('filter-btn') || 
-                e.target.classList.contains('project-detail-btn')) {
-                createWaterEffect(e.clientX, e.clientY);
-            }
-        });
     </script>
 </body>
 </html>
