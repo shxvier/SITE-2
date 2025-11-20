@@ -21,9 +21,8 @@
     <meta name="description" content="Портфолио проектов Журавлева Алексея - коллекция работ в веб-разработке с морской тематикой">
     <meta name="keywords" content="веб-разработка, проекты, портфолио, морская тема">
     
-    <!-- Критический CSS для исправления модальных окон -->
     <style>
-        /* ИСПРАВЛЕНИЕ: Убираем проблемные стили для модальных окон */
+        /* Стили для модальных окон */
         .modal {
             z-index: 1060;
         }
@@ -32,34 +31,12 @@
             z-index: 1055;
         }
         
-        /* Гарантия работоспособности скролла */
-        body.modal-open {
-            overflow: auto !important;
-            padding-right: 0 !important;
-        }
-        
         /* Улучшение видимости модальных окон */
         .ocean-modal .modal-content {
             background: rgba(3, 4, 94, 0.95);
             backdrop-filter: blur(20px);
             border: 2px solid rgba(0, 255, 234, 0.4);
             box-shadow: 0 0 50px rgba(0, 255, 234, 0.3);
-        }
-        
-        /* Анимация появления модального окна */
-        @keyframes modalWaveIn {
-            0% {
-                opacity: 0;
-                transform: scale(0.8) translateY(-50px);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-        
-        .modal.show .modal-dialog {
-            animation: modalWaveIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
     </style>
 </head>
@@ -95,10 +72,10 @@
 
     <!-- Основной контейнер с стеклянным эффектом -->
     <div class="glass-container">
+        <!-- Header и Navigation остаются без изменений -->
         <header class="ocean-header">
             <div class="container-fluid">
                 <div class="d-flex align-items-center justify-content-center py-3">
-                    <!-- Анимированный логотип с водой -->
                     <div class="logo-container me-3">
                         <div class="water-logo">
                             <svg width="40" height="40" viewBox="0 0 40 40" class="logo-wave">
@@ -119,7 +96,6 @@
             </div>
         </header>
 
-        <!-- Навигация с водным эффектом -->
         <nav class="navbar navbar-expand-lg ocean-navbar" aria-label="Основная навигация">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold text-glow water-text" href="../index.html">
@@ -257,7 +233,7 @@
                                     <span class="badge ocean-badge">CSS3</span>
                                     <span class="badge aqua-badge">Bootstrap</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="1">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal1">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -289,7 +265,7 @@
                                     <span class="badge ocean-badge">JavaScript</span>
                                     <span class="badge aqua-badge">Local Storage</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="2">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal2">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -321,7 +297,7 @@
                                     <span class="badge aqua-badge">React</span>
                                     <span class="badge ocean-badge">REST API</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="3">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal3">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -354,7 +330,7 @@
                                     <span class="badge ocean-badge">Responsive</span>
                                     <span class="badge aqua-badge">Animations</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="4">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal4">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -386,7 +362,7 @@
                                     <span class="badge ocean-badge">JavaScript</span>
                                     <span class="badge aqua-badge">Weather API</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="5">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal5">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -419,7 +395,7 @@
                                     <span class="badge ocean-badge">Context API</span>
                                     <span class="badge aqua-badge">Drag & Drop</span>
                                 </div>
-                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-project="6">
+                                <button class="btn ocean-outline-btn w-100 project-detail-btn" data-bs-toggle="modal" data-bs-target="#projectModal6">
                                     <i class="bi bi-info-circle me-2"></i>Подробнее
                                 </button>
                             </div>
@@ -464,8 +440,7 @@
         </footer>
     </div>
 
-    <!-- Модальные окна с ИСПРАВЛЕННЫМ центрированием -->
-    
+    <!-- Модальные окна -->
     <!-- Modal 1: Личный сайт -->
     <div class="modal fade ocean-modal" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
@@ -477,71 +452,88 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
                 </div>
                 <div class="modal-body">
-                    <!-- Содержимое модального окна остается без изменений -->
+                    <div class="project-modal-image mb-4">
+                        <img src="../images/project1.jpg" class="img-fluid rounded" alt="Личный сайт" 
+                             onerror="this.src='https://via.placeholder.com/800x400/0077b6/ffffff?text=Проект+1'">
+                    </div>
+                    <h6 class="aqua-gradient mb-3"><i class="bi bi-info-circle me-2"></i>Описание проекта:</h6>
+                    <p class="ocean-text">
+                        Адаптивный личный сайт-портфолио, разработанный с использованием современных технологий веб-разработки. 
+                        Проект демонстрирует навыки работы с HTML5, CSS3 и Bootstrap для создания отзывчивого дизайна.
+                    </p>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <a href="#" class="btn aqua-btn">
+                            <i class="bi bi-box-arrow-up-right me-2"></i>Живая версия
+                        </a>
+                        <a href="https://github.com/shxvier" target="_blank" class="btn ocean-outline-btn">
+                            <i class="bi bi-github me-2"></i>Исходный код
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Остальные модальные окна аналогично -->
+    <!-- Modal 2: Todo-приложение -->
+    <div class="modal fade ocean-modal" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content ocean-glass aqua-card">
+                <div class="modal-header ocean-border">
+                    <h5 class="modal-title text-glow" id="projectModal2Label">
+                        <i class="bi bi-list-check me-2 water-icon"></i>Todo-приложение для управления задачами
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="project-modal-image mb-4">
+                        <img src="../images/project2.jpg" class="img-fluid rounded" alt="Todo приложение" 
+                             onerror="this.src='https://via.placeholder.com/800x400/00b4d8/ffffff?text=Проект+2'">
+                    </div>
+                    <h6 class="aqua-gradient mb-3"><i class="bi bi-info-circle me-2"></i>Описание проекта:</h6>
+                    <p class="ocean-text">
+                        Функциональное приложение для управления задачами с возможностью добавления, редактирования, 
+                        удаления и фильтрации задач. Использует Local Storage для сохранения данных между сеансами работы.
+                    </p>
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+                        <a href="#" class="btn aqua-btn">
+                            <i class="bi bi-box-arrow-up-right me-2"></i>Попробовать
+                        </a>
+                        <a href="https://github.com/shxvier" target="_blank" class="btn ocean-outline-btn">
+                            <i class="bi bi-github me-2"></i>Код на GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Добавьте остальные модальные окна по аналогии -->
 
     <!-- Скрипты -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aqua-engine.js"></script>
-    <script src="../js/liquid-canvas.js"></script>
-    <script src="../js/water-animations.js"></script>
-    <script src="../js/ocean-interactions.js"></script>
-    <script src="../js/notifications.js"></script>
     
-    <!-- Инициализация -->
+    <!-- Упрощенный JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('DOM загружен, инициализация...');
+            console.log('Страница проектов загружена');
             
-            // Инициализация водной анимации
-            if (typeof AquaEngine !== 'undefined') {
-                AquaEngine.init();
-            }
-            
-            // Инициализация фильтрации проектов
+            // Инициализация фильтров проектов
             initProjectsFilter();
             
             // Инициализация интерактивных эффектов
             initProjectInteractions();
-            
-            // Гарантированное исправление позиционирования модальных окон
-            fixModalPositioning();
-            
-            // Добавляем обработчики для всех кнопок
-            initButtonHandlers();
         });
-        
-        function fixModalPositioning() {
-            console.log('Исправление позиционирования модальных окон...');
-            
-            // Убираем проблемные стили, которые могут блокировать взаимодействие
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                modal.style.position = 'fixed';
-                modal.style.zIndex = '1060';
-            });
-            
-            // Исправляем бэкдроп
-            const backdrops = document.querySelectorAll('.modal-backdrop');
-            backdrops.forEach(backdrop => {
-                backdrop.style.zIndex = '1055';
-            });
-        }
-        
+
         function initProjectsFilter() {
-            console.log('Инициализация фильтров проектов...');
-            
             const filterBtns = document.querySelectorAll('.filter-btn');
             const projectItems = document.querySelectorAll('.project-item');
             
+            console.log('Найдено фильтров:', filterBtns.length);
+            console.log('Найдено проектов:', projectItems.length);
+
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', function() {
-                    console.log('Фильтр нажат:', this.dataset.filter);
+                    console.log('Клик по фильтру:', this.dataset.filter);
                     
                     // Убираем активный класс у всех кнопок
                     filterBtns.forEach(b => {
@@ -557,320 +549,68 @@
                     
                     // Фильтруем проекты
                     projectItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                        const categories = item.getAttribute('data-category');
+                        const shouldShow = filter === 'all' || categories.includes(filter);
+                        
+                        if (shouldShow) {
                             item.style.display = 'block';
+                            // Анимация появления
                             setTimeout(() => {
                                 item.style.opacity = '1';
                                 item.style.transform = 'translateY(0)';
-                            }, 100);
+                            }, 50);
                         } else {
+                            // Анимация скрытия
                             item.style.opacity = '0';
                             item.style.transform = 'translateY(20px)';
                             setTimeout(() => {
                                 item.style.display = 'none';
-                            }, 400);
+                            }, 300);
                         }
                     });
-                    
-                    // Водный эффект при фильтрации
-                    createWaterEffect(this);
                 });
             });
         }
-        
+
         function initProjectInteractions() {
-            console.log('Инициализация интерактивных эффектов...');
-            
             // Эффекты для карточек проектов
             const projectCards = document.querySelectorAll('.project-card');
             
             projectCards.forEach(card => {
                 card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                    this.style.transform = 'translateY(-5px)';
                     this.style.transition = 'all 0.3s ease';
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0) scale(1)';
+                    this.style.transform = 'translateY(0)';
                 });
             });
-            
-            // Обработчики для кнопок "Подробнее"
-            const detailBtns = document.querySelectorAll('.project-detail-btn');
-            detailBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
+
+            // Обработчики для кнопок GitHub
+            document.querySelectorAll('a[href*="github.com"]').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const projectId = this.getAttribute('data-project');
-                    const modalId = `#projectModal${projectId}`;
-                    const modal = new bootstrap.Modal(document.querySelector(modalId));
-                    modal.show();
-                    
-                    // Водный эффект
-                    createWaterEffect(this);
+                    console.log('Клик по GitHub ссылке');
+                    // Здесь можно добавить уведомление
+                    setTimeout(() => {
+                        window.open(this.href, '_blank');
+                    }, 100);
                 });
             });
-        }
-        
-        function initButtonHandlers() {
-            console.log('Инициализация обработчиков кнопок...');
-            
-            // Обработчики для всех ссылок и кнопок
-            document.querySelectorAll('a, button').forEach(element => {
-                element.addEventListener('click', function(e) {
-                    console.log('Клик по элементу:', this.tagName, this.className);
-                    
-                    // Предотвращаем только для тестовых ссылок
-                    if (this.getAttribute('href') === '#' || 
-                        this.textContent.includes('GitHub') && this.getAttribute('href').includes('shxvier')) {
-                        e.preventDefault();
-                        
-                        if (window.OceanNotifications) {
-                            window.OceanNotifications.info(
-                                this.textContent.includes('GitHub') ? 
-                                'Переход на GitHub...' : 'Функция в разработке',
-                                'info', 
-                                2000
-                            );
-                        }
-                        
-                        // Водный эффект
-                        createWaterEffect(this);
-                    }
-                });
-            });
-        }
-        
-        function createWaterEffect(element) {
-            if (window.WaterUtils) {
-                const rect = element.getBoundingClientRect();
-                window.WaterUtils.createSplash(
-                    rect.left + rect.width / 2,
-                    rect.top + rect.height / 2,
-                    0.3
-                );
-            }
-        }
-        
-        // Глобальные функции для отладки
-        window.debugModal = function(modalId) {
-            const modal = document.querySelector(modalId);
-            console.log('Modal debug:', modal);
-            if (modal) {
-                const modalInstance = bootstrap.Modal.getInstance(modal);
-                console.log('Modal instance:', modalInstance);
-            }
-        };
-        
-        // Обработка ошибок
-        window.addEventListener('error', function(e) {
-            console.error('Global error:', e.error);
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM загружен, инициализация...');
-        
-        // Инициализация водной анимации
-        if (typeof AquaEngine !== 'undefined') {
-            AquaEngine.init();
-        }
-        
-        // Инициализация фильтрации проектов
-        initProjectsFilter();
-        
-        // Инициализация интерактивных эффектов
-        initProjectInteractions();
-        
-        // Гарантированное исправление позиционирования модальных окон
-        fixModalPositioning();
-        
-        // Добавляем обработчики для всех кнопок
-        initButtonHandlers();
-        
-        console.log('Инициализация завершена');
-    });
-    
-    function fixModalPositioning() {
-        console.log('Исправление позиционирования модальных окон...');
-        
-        // Убираем проблемные стили, которые могут блокировать взаимодействие
-        const modals = document.querySelectorAll('.modal');
-        modals.forEach(modal => {
-            modal.style.position = 'fixed';
-            modal.style.zIndex = '1060';
-        });
-        
-        // Исправляем бэкдроп
-        const backdrops = document.querySelectorAll('.modal-backdrop');
-        backdrops.forEach(backdrop => {
-            backdrop.style.zIndex = '1055';
-        });
-    }
-    
-    function initProjectsFilter() {
-        console.log('Инициализация фильтров проектов...');
-        
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectItems = document.querySelectorAll('.project-item');
-        
-        console.log('Найдено кнопок фильтров:', filterBtns.length);
-        console.log('Найдено проектов:', projectItems.length);
-        
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                console.log('Фильтр нажат:', this.dataset.filter);
-                
-                // Убираем активный класс у всех кнопок
-                filterBtns.forEach(b => {
-                    b.classList.remove('active', 'aqua-btn');
-                    b.classList.add('ocean-outline-btn');
-                });
-                
-                // Добавляем активный класс текущей кнопке
-                this.classList.add('active', 'aqua-btn');
-                this.classList.remove('ocean-outline-btn');
-                
-                const filter = this.getAttribute('data-filter');
-                console.log('Применяем фильтр:', filter);
-                
-                // Фильтруем проекты
-                let visibleCount = 0;
-                projectItems.forEach(item => {
-                    const categories = item.getAttribute('data-category');
-                    const shouldShow = filter === 'all' || categories.includes(filter);
-                    
-                    console.log('Проект:', item.id, 'Категории:', categories, 'Показывать:', shouldShow);
-                    
-                    if (shouldShow) {
-                        item.style.display = 'block';
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                        visibleCount++;
-                    } else {
-                        item.style.opacity = '0';
-                        item.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 400);
-                    }
-                });
-                
-                console.log('Показано проектов:', visibleCount);
-                
-                // Водный эффект при фильтрации
-                createWaterEffect(this);
-            });
-        });
-        
-        // Активируем фильтр "Все" по умолчанию
-        const allFilter = document.querySelector('.filter-btn[data-filter="all"]');
-        if (allFilter) {
-            allFilter.click();
-        }
-    }
-    
-    function initProjectInteractions() {
-        console.log('Инициализация интерактивных эффектов...');
-        
-        // Эффекты для карточек проектов
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        projectCards.forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-                this.style.transition = 'all 0.3s ease';
-                this.style.boxShadow = '0 20px 40px rgba(0, 255, 234, 0.3)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-                this.style.boxShadow = '';
-            });
-        });
-        
-        // Обработчики для кнопок "Подробнее" - ИСПРАВЛЕННАЯ ВЕРСИЯ
-        const detailBtns = document.querySelectorAll('.project-detail-btn');
-        console.log('Найдено кнопок "Подробнее":', detailBtns.length);
-        
-        detailBtns.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const projectId = this.getAttribute('data-project');
-                const modalId = `#projectModal${projectId}`;
-                console.log('Открываем модальное окно:', modalId);
-                
-                const modalElement = document.querySelector(modalId);
-                if (modalElement) {
-                    // Закрываем все открытые модальные окна
-                    const openModals = document.querySelectorAll('.modal.show');
-                    openModals.forEach(modal => {
-                        const bsModal = bootstrap.Modal.getInstance(modal);
-                        if (bsModal) bsModal.hide();
-                    });
-                    
-                    // Создаем новое модальное окно
-                    const modal = new bootstrap.Modal(modalElement);
-                    modal.show();
-                    
-                    console.log('Модальное окно открыто');
-                } else {
-                    console.error('Модальное окно не найдено:', modalId);
-                }
-                
-                // Водный эффект
-                createWaterEffect(this);
-            });
-        });
-    }
-    
-    function initButtonHandlers() {
-        console.log('Инициализация обработчиков кнопок...');
-        
-        // Обработчики для всех ссылок и кнопок
-        document.querySelectorAll('a, button').forEach(element => {
-            element.addEventListener('click', function(e) {
-                console.log('Клик по элементу:', this.tagName, this.className, this.textContent);
-                
-                // Предотвращаем только для тестовых ссылок
-                const href = this.getAttribute('href');
-                if (href === '#' || (href && href.includes('shxvier'))) {
+
+            // Обработчики для тестовых ссылок
+            document.querySelectorAll('a[href="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
                     e.preventDefault();
-                    
-                    if (window.OceanNotifications) {
-                        const message = this.textContent.includes('GitHub') ? 
-                            'Переход на GitHub...' : 'Функция в разработке';
-                        window.OceanNotifications.info(message, 'info', 2000);
-                    }
-                    
-                    // Водный эффект
-                    createWaterEffect(this);
-                    
-                    // Если это GitHub ссылка, открываем в новом окне после задержки
-                    if (href && href.includes('shxvier')) {
-                        setTimeout(() => {
-                            window.open(href, '_blank');
-                        }, 1000);
-                    }
-                }
+                    console.log('Клик по тестовой ссылке');
+                    alert('Эта функция находится в разработке');
+                });
             });
-        });
-    }
-    
-    function createWaterEffect(element) {
-        if (window.WaterUtils && typeof window.WaterUtils.createSplash === 'function') {
-            const rect = element.getBoundingClientRect();
-            window.WaterUtils.createSplash(
-                rect.left + rect.width / 2,
-                rect.top + rect.height / 2,
-                0.3
-            );
-        } else {
-            // Фолбэк эффект если WaterUtils не доступен
+        }
+
+        // Простая функция для создания водного эффекта
+        function createWaterEffect(x, y) {
             const ripple = document.createElement('div');
             ripple.style.cssText = `
                 position: fixed;
@@ -880,73 +620,49 @@
                 border-radius: 50%;
                 pointer-events: none;
                 z-index: 10000;
-                transform: translate(-50%, -50%);
+                left: ${x - 50}px;
+                top: ${y - 50}px;
                 animation: waterRipple 0.6s ease-out forwards;
             `;
-            
-            const rect = element.getBoundingClientRect();
-            ripple.style.left = (rect.left + rect.width / 2) + 'px';
-            ripple.style.top = (rect.top + rect.height / 2) + 'px';
             
             document.body.appendChild(ripple);
             
             setTimeout(() => {
-                if (ripple.parentNode) {
-                    ripple.parentNode.removeChild(ripple);
-                }
+                ripple.remove();
             }, 600);
         }
-    }
-    
-    // Добавляем CSS для фолбэк анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes waterRipple {
-            0% {
-                transform: translate(-50%, -50%) scale(0.8);
-                opacity: 1;
+
+        // Добавляем стили для анимации
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes waterRipple {
+                0% {
+                    transform: scale(0.8);
+                    opacity: 1;
+                }
+                100% {
+                    transform: scale(2);
+                    opacity: 0;
+                }
             }
-            100% {
-                transform: translate(-50%, -50%) scale(2);
-                opacity: 0;
+            
+            .project-item {
+                transition: all 0.3s ease;
             }
-        }
-        
-        /* Улучшенные стили для активных фильтров */
-        .filter-btn.active {
-            background: linear-gradient(135deg, #00b4d8, #0077b6) !important;
-            border-color: #00b4d8 !important;
-            box-shadow: 0 0 20px rgba(0, 255, 234, 0.4) !important;
-        }
-        
-        /* Плавные переходы для проектов */
-        .project-item {
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-        }
-    `;
-    document.head.appendChild(style);
-    
-    // Глобальные функции для отладки
-    window.debugModal = function(modalId) {
-        const modal = document.querySelector(modalId);
-        console.log('Modal debug:', modal);
-        if (modal) {
-            const modalInstance = bootstrap.Modal.getInstance(modal);
-            console.log('Modal instance:', modalInstance);
-        }
-    };
-    
-    window.showAllProjects = function() {
-        document.querySelectorAll('.project-item').forEach(item => {
-            item.style.display = 'block';
-            item.style.opacity = '1';
+            
+            .filter-btn {
+                transition: all 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Добавляем обработчик кликов для водных эффектов
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('filter-btn') || 
+                e.target.classList.contains('project-detail-btn')) {
+                createWaterEffect(e.clientX, e.clientY);
+            }
         });
-    };
-    
-    // Обработка ошибок
-    window.addEventListener('error', function(e) {
-        console.error('Global error:', e.error);
-    });
-</script>
+    </script>
 </body>
 </html>
