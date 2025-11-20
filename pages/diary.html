@@ -466,11 +466,11 @@
     </div>
 
     <!-- Модальное окно добавления записи -->
-    <div class="modal fade ocean-modal" id="addEntryModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+    <div class="modal fade" id="addEntryModal" tabindex="-1" aria-labelledby="addEntryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content ocean-glass aqua-card">
-                <div class="modal-header border-bottom ocean-border">
-                    <h5 class="modal-title text-glow">
+                <div class="modal-header ocean-border">
+                    <h5 class="modal-title text-glow" id="addEntryModalLabel">
                         <i class="bi bi-plus-circle me-2 water-icon"></i>Добавить новую запись
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -480,50 +480,64 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="entryTitle" class="form-label text-glow">Заголовок</label>
+                                    <label for="entryTitle" class="form-label text-glow">
+                                        <i class="bi bi-card-heading me-2 water-icon"></i>Заголовок
+                                    </label>
                                     <input type="text" class="form-control ocean-input" id="entryTitle" 
                                            placeholder="Название этапа обучения" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="entryDate" class="form-label text-glow">Дата</label>
+                                    <label for="entryDate" class="form-label text-glow">
+                                        <i class="bi bi-calendar me-2 water-icon"></i>Дата
+                                    </label>
                                     <input type="date" class="form-control ocean-input" id="entryDate" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="entryDescription" class="form-label text-glow">Описание</label>
+                                    <label for="entryDescription" class="form-label text-glow">
+                                        <i class="bi bi-text-paragraph me-2 water-icon"></i>Описание
+                                    </label>
                                     <textarea class="form-control ocean-textarea" id="entryDescription" 
                                               rows="4" placeholder="Опишите ваш прогресс..." required></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="form-label text-glow">Технологии</label>
-                                    <div class="d-flex flex-wrap gap-2">
+                                    <label class="form-label text-glow">
+                                        <i class="bi bi-tags me-2 water-icon"></i>Технологии
+                                    </label>
+                                    <div class="d-flex flex-wrap gap-3">
                                         <div class="form-check">
-                                            <input class="form-check-input ocean-check" type="checkbox" id="techHTML">
+                                            <input class="form-check-input ocean-check" type="checkbox" id="techHTML" value="HTML/CSS">
                                             <label class="form-check-label ocean-text" for="techHTML">HTML/CSS</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input ocean-check" type="checkbox" id="techJS">
+                                            <input class="form-check-input ocean-check" type="checkbox" id="techJS" value="JavaScript">
                                             <label class="form-check-label ocean-text" for="techJS">JavaScript</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input ocean-check" type="checkbox" id="techReact">
+                                            <input class="form-check-input ocean-check" type="checkbox" id="techReact" value="React">
                                             <label class="form-check-label ocean-text" for="techReact">React</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input ocean-check" type="checkbox" id="techNode">
+                                            <input class="form-check-input ocean-check" type="checkbox" id="techNode" value="Node.js">
                                             <label class="form-check-label ocean-text" for="techNode">Node.js</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input ocean-check" type="checkbox" id="techBootstrap" value="Bootstrap">
+                                            <label class="form-check-label ocean-text" for="techBootstrap">Bootstrap</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label for="entryStatus" class="form-label text-glow">Статус</label>
+                                    <label for="entryStatus" class="form-label text-glow">
+                                        <i class="bi bi-clock me-2 water-icon"></i>Статус
+                                    </label>
                                     <select class="form-select ocean-select" id="entryStatus">
                                         <option value="planned">Запланировано</option>
                                         <option value="in-progress">В процессе</option>
@@ -533,11 +547,13 @@
                             </div>
                             <div class="col-12" id="progressSection" style="display: none;">
                                 <div class="form-group">
-                                    <label for="entryProgress" class="form-label text-glow">Прогресс</label>
-                                    <input type="range" class="form-range ocean-range" id="entryProgress" min="0" max="100">
-                                    <div class="d-flex justify-content-between ocean-text small">
+                                    <label for="entryProgress" class="form-label text-glow">
+                                        <i class="bi bi-graph-up me-2 water-icon"></i>Прогресс
+                                    </label>
+                                    <input type="range" class="form-range ocean-range" id="entryProgress" min="0" max="100" value="0">
+                                    <div class="d-flex justify-content-between ocean-text small mt-2">
                                         <span>0%</span>
-                                        <span id="progressValue">50%</span>
+                                        <span id="progressValue">0%</span>
                                         <span>100%</span>
                                     </div>
                                 </div>
@@ -545,7 +561,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer border-top ocean-border">
+                <div class="modal-footer ocean-border">
                     <button type="button" class="btn ocean-outline-btn" data-bs-dismiss="modal">
                         <i class="bi bi-x-circle me-2"></i>Отмена
                     </button>
@@ -582,7 +598,93 @@
             
             // Инициализация взаимодействий с дневником
             initDiaryInteractions();
+            
+            // Инициализация модального окна
+            initAddEntryModal();
         });
+        
+        function initAddEntryModal() {
+            const modal = document.getElementById('addEntryModal');
+            const statusSelect = document.getElementById('entryStatus');
+            const progressSection = document.getElementById('progressSection');
+            const progressRange = document.getElementById('entryProgress');
+            const progressValue = document.getElementById('progressValue');
+            
+            if (!modal) {
+                console.error('Modal element not found');
+                return;
+            }
+            
+            // Обработчик изменения статуса
+            if (statusSelect && progressSection) {
+                statusSelect.addEventListener('change', function() {
+                    if (this.value === 'in-progress') {
+                        progressSection.style.display = 'block';
+                        // Анимация появления
+                        progressSection.style.animation = 'fadeInUp 0.4s ease';
+                    } else {
+                        progressSection.style.animation = 'fadeOut 0.3s ease';
+                        setTimeout(() => {
+                            progressSection.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            }
+            
+            // Обработчик для range input
+            if (progressRange && progressValue) {
+                progressRange.addEventListener('input', function() {
+                    progressValue.textContent = this.value + '%';
+                    
+                    // Водный эффект при изменении прогресса
+                    if (window.WaterUtils) {
+                        const rect = progressRange.getBoundingClientRect();
+                        window.WaterUtils.createSplash(
+                            rect.left + (rect.width * this.value / 100),
+                            rect.top,
+                            0.1
+                        );
+                    }
+                });
+            }
+            
+            // Обработчик открытия модального окна
+            modal.addEventListener('show.bs.modal', function() {
+                // Устанавливаем текущую дату
+                const dateInput = document.getElementById('entryDate');
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.value = today;
+                }
+                
+                // Сбрасываем прогресс секцию
+                if (progressSection) {
+                    progressSection.style.display = 'none';
+                }
+                
+                // Водный эффект при открытии
+                if (window.AquaEngine) {
+                    for (let i = 0; i < 5; i++) {
+                        setTimeout(() => {
+                            window.AquaEngine.createSplash(
+                                window.innerWidth / 2 + (Math.random() - 0.5) * 300,
+                                window.innerHeight / 2 + (Math.random() - 0.5) * 200,
+                                0.2
+                            );
+                        }, i * 100);
+                    }
+                }
+            });
+            
+            // Обработчик закрытия модального окна
+            modal.addEventListener('hidden.bs.modal', function() {
+                // Сбрасываем форму
+                const form = document.getElementById('diaryEntryForm');
+                if (form) {
+                    form.reset();
+                }
+            });
+        }
         
         function initCounters() {
             const counters = document.querySelectorAll('.counter');
@@ -637,28 +739,6 @@
         }
         
         function initDiaryInteractions() {
-            // Обработчик изменения статуса в модальном окне
-            const statusSelect = document.getElementById('entryStatus');
-            const progressSection = document.getElementById('progressSection');
-            const progressRange = document.getElementById('entryProgress');
-            const progressValue = document.getElementById('progressValue');
-            
-            if (statusSelect && progressSection) {
-                statusSelect.addEventListener('change', function() {
-                    if (this.value === 'in-progress') {
-                        progressSection.style.display = 'block';
-                    } else {
-                        progressSection.style.display = 'none';
-                    }
-                });
-            }
-            
-            if (progressRange && progressValue) {
-                progressRange.addEventListener('input', function() {
-                    progressValue.textContent = this.value + '%';
-                });
-            }
-            
             // Эффекты для timeline items
             const timelineItems = document.querySelectorAll('.timeline-item');
             timelineItems.forEach(item => {
@@ -693,9 +773,9 @@
         
         // Обработчик сохранения записи
         document.getElementById('saveEntryBtn')?.addEventListener('click', function() {
-            const title = document.getElementById('entryTitle').value;
-            const date = document.getElementById('entryDate').value;
-            const description = document.getElementById('entryDescription').value;
+            const title = document.getElementById('entryTitle')?.value;
+            const date = document.getElementById('entryDate')?.value;
+            const description = document.getElementById('entryDescription')?.value;
             
             if (!title || !date || !description) {
                 if (window.OceanNotifications) {
@@ -704,17 +784,26 @@
                 return;
             }
             
+            // Показываем индикатор загрузки
+            this.innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Сохранение...';
+            this.disabled = true;
+            
             // Имитация сохранения
-            if (window.OceanNotifications) {
-                window.OceanNotifications.success('Запись успешно добавлена в дневник!');
-            }
-            
-            // Закрываем модальное окно
-            const modal = bootstrap.Modal.getInstance(document.getElementById('addEntryModal'));
-            modal.hide();
-            
-            // Сбрасываем форму
-            document.getElementById('diaryEntryForm').reset();
+            setTimeout(() => {
+                if (window.OceanNotifications) {
+                    window.OceanNotifications.success('Запись успешно добавлена в дневник!');
+                }
+                
+                // Восстанавливаем кнопку
+                this.innerHTML = '<i class="bi bi-check-circle me-2"></i>Сохранить запись';
+                this.disabled = false;
+                
+                // Закрываем модальное окно
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addEntryModal'));
+                if (modal) {
+                    modal.hide();
+                }
+            }, 1500);
         });
     </script>
 </body>
