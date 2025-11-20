@@ -1,5 +1,5 @@
 /* ============================================
-   ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ ДЛЯ ФОРМ И КОНТАКТОВ
+   ДОПОЛНИТЕЛЬНЫЕ АНИМАЦИИ ДЛЯ МОРСКОЙ ТЕМЫ
    ============================================ */
 
 /* Анимация появления элементов */
@@ -188,6 +188,204 @@
     animation: inputFocusGlow 0.6s ease;
 }
 
+/* ============================================
+   ИСПРАВЛЕНИЯ ДЛЯ МОДАЛЬНЫХ ОКОН
+   ============================================ */
+
+/* Базовые стили для модальных окон Bootstrap */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1060;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+    transform: translate(0, -50px);
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-clip: padding-box;
+    outline: 0;
+}
+
+.modal-dialog-centered {
+    display: flex;
+    align-items: center;
+    min-height: calc(100% - 1rem);
+}
+
+/* Специфичные стили для океанской темы */
+.ocean-modal .modal-dialog {
+    max-width: 800px;
+    margin: 1.75rem auto;
+}
+
+.ocean-modal .modal-content {
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Анимации для модальных окон */
+@keyframes modalOceanAppear {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes modalOceanDisappear {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+}
+
+.modal.show .ocean-modal .modal-dialog {
+    animation: modalOceanAppear 0.3s ease-out;
+}
+
+.modal.fade .ocean-modal .modal-dialog {
+    animation: modalOceanDisappear 0.2s ease-in;
+}
+
+/* Стили для формы в модальном окне */
+.ocean-input, .ocean-select, .ocean-textarea {
+    background: rgba(3, 4, 94, 0.3) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 255, 234, 0.3) !important;
+    color: var(--ocean-glow) !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+}
+
+.ocean-input:focus, .ocean-select:focus, .ocean-textarea:focus {
+    background: rgba(3, 4, 94, 0.5) !important;
+    border-color: var(--aqua-accent) !important;
+    box-shadow: 0 0 0 0.2rem rgba(0, 255, 234, 0.25) !important;
+    color: var(--ocean-glow) !important;
+}
+
+.ocean-check:checked {
+    background-color: var(--aqua-accent);
+    border-color: var(--aqua-accent);
+}
+
+.ocean-range::-webkit-slider-thumb {
+    background: var(--aqua-accent);
+    border: 2px solid var(--ocean-deep);
+}
+
+.ocean-range::-moz-range-thumb {
+    background: var(--aqua-accent);
+    border: 2px solid var(--ocean-deep);
+}
+
+/* Стили для placeholder */
+.ocean-input::placeholder,
+.ocean-textarea::placeholder {
+    color: rgba(202, 240, 248, 0.6) !important;
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+    .ocean-modal .modal-dialog {
+        margin: 0.5rem;
+        max-width: calc(100% - 1rem);
+    }
+    
+    .modal-dialog-centered {
+        min-height: calc(100% - 1rem);
+    }
+}
+
+@media (max-width: 576px) {
+    .ocean-modal .modal-dialog {
+        margin: 0.25rem;
+        max-width: calc(100% - 0.5rem);
+    }
+    
+    .modal-dialog-centered {
+        min-height: calc(100% - 0.5rem);
+    }
+    
+    .modal-body {
+        padding: 1rem !important;
+    }
+    
+    .modal-footer {
+        padding: 0.75rem !important;
+    }
+}
+
+/* Исправление z-index для перекрытия */
+.modal-backdrop {
+    z-index: 1050 !important;
+    background: rgba(3, 4, 94, 0.8) !important;
+}
+
+.modal {
+    z-index: 1060 !important;
+}
+
+/* Стили для кнопок в модальном окне */
+.modal-footer .btn {
+    min-width: 120px;
+}
+
+/* Специфичные исправления для diary modal */
+#addEntryModal .modal-dialog {
+    max-width: 600px;
+}
+
+#addEntryModal .form-check {
+    margin-bottom: 0.5rem;
+}
+
+/* Водные эффекты для модальных окон */
+.modal.show::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 255, 234, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
 /* Анимация появления модального окна */
 @keyframes modalSlideIn {
     from {
@@ -216,4 +414,45 @@
 
 .ocean-overlay {
     animation: overlayFadeIn 0.3s ease forwards;
+}
+
+/* Специфичные анимации для дневника */
+.timeline-item {
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.3s; }
+.timeline-item:nth-child(3) { animation-delay: 0.4s; }
+.timeline-item:nth-child(4) { animation-delay: 0.5s; }
+
+.goal-item {
+    animation: scaleIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+.goal-item:nth-child(1) { animation-delay: 0.3s; }
+.goal-item:nth-child(2) { animation-delay: 0.4s; }
+.goal-item:nth-child(3) { animation-delay: 0.5s; }
+
+.achievement-item {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+.achievement-item:nth-child(1) { animation-delay: 0.4s; }
+.achievement-item:nth-child(2) { animation-delay: 0.5s; }
+.achievement-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Анимация исчезновения */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(20px);
+    }
 }
