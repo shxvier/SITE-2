@@ -666,5 +666,287 @@
             console.error('Global error:', e.error);
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM загружен, инициализация...');
+        
+        // Инициализация водной анимации
+        if (typeof AquaEngine !== 'undefined') {
+            AquaEngine.init();
+        }
+        
+        // Инициализация фильтрации проектов
+        initProjectsFilter();
+        
+        // Инициализация интерактивных эффектов
+        initProjectInteractions();
+        
+        // Гарантированное исправление позиционирования модальных окон
+        fixModalPositioning();
+        
+        // Добавляем обработчики для всех кнопок
+        initButtonHandlers();
+        
+        console.log('Инициализация завершена');
+    });
+    
+    function fixModalPositioning() {
+        console.log('Исправление позиционирования модальных окон...');
+        
+        // Убираем проблемные стили, которые могут блокировать взаимодействие
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
+            modal.style.position = 'fixed';
+            modal.style.zIndex = '1060';
+        });
+        
+        // Исправляем бэкдроп
+        const backdrops = document.querySelectorAll('.modal-backdrop');
+        backdrops.forEach(backdrop => {
+            backdrop.style.zIndex = '1055';
+        });
+    }
+    
+    function initProjectsFilter() {
+        console.log('Инициализация фильтров проектов...');
+        
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+        
+        console.log('Найдено кнопок фильтров:', filterBtns.length);
+        console.log('Найдено проектов:', projectItems.length);
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                console.log('Фильтр нажат:', this.dataset.filter);
+                
+                // Убираем активный класс у всех кнопок
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'aqua-btn');
+                    b.classList.add('ocean-outline-btn');
+                });
+                
+                // Добавляем активный класс текущей кнопке
+                this.classList.add('active', 'aqua-btn');
+                this.classList.remove('ocean-outline-btn');
+                
+                const filter = this.getAttribute('data-filter');
+                console.log('Применяем фильтр:', filter);
+                
+                // Фильтруем проекты
+                let visibleCount = 0;
+                projectItems.forEach(item => {
+                    const categories = item.getAttribute('data-category');
+                    const shouldShow = filter === 'all' || categories.includes(filter);
+                    
+                    console.log('Проект:', item.id, 'Категории:', categories, 'Показывать:', shouldShow);
+                    
+                    if (shouldShow) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                        visibleCount++;
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 400);
+                    }
+                });
+                
+                console.log('Показано проектов:', visibleCount);
+                
+                // Водный эффект при фильтрации
+                createWaterEffect(this);
+            });
+        });
+        
+        // Активируем фильтр "Все" по умолчанию
+        const allFilter = document.querySelector('.filter-btn[data-filter="all"]');
+        if (allFilter) {
+            allFilter.click();
+        }
+    }
+    
+    function initProjectInteractions() {
+        console.log('Инициализация интерактивных эффектов...');
+        
+        // Эффекты для карточек проектов
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+                this.style.transition = 'all 0.3s ease';
+                this.style.boxShadow = '0 20px 40px rgba(0, 255, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // Обработчики для кнопок "Подробнее" - ИСПРАВЛЕННАЯ ВЕРСИЯ
+        const detailBtns = document.querySelectorAll('.project-detail-btn');
+        console.log('Найдено кнопок "Подробнее":', detailBtns.length);
+        
+        detailBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const projectId = this.getAttribute('data-project');
+                const modalId = `#projectModal${projectId}`;
+                console.log('Открываем модальное окно:', modalId);
+                
+                const modalElement = document.querySelector(modalId);
+                if (modalElement) {
+                    // Закрываем все открытые модальные окна
+                    const openModals = document.querySelectorAll('.modal.show');
+                    openModals.forEach(modal => {
+                        const bsModal = bootstrap.Modal.getInstance(modal);
+                        if (bsModal) bsModal.hide();
+                    });
+                    
+                    // Создаем новое модальное окно
+                    const modal = new bootstrap.Modal(modalElement);
+                    modal.show();
+                    
+                    console.log('Модальное окно открыто');
+                } else {
+                    console.error('Модальное окно не найдено:', modalId);
+                }
+                
+                // Водный эффект
+                createWaterEffect(this);
+            });
+        });
+    }
+    
+    function initButtonHandlers() {
+        console.log('Инициализация обработчиков кнопок...');
+        
+        // Обработчики для всех ссылок и кнопок
+        document.querySelectorAll('a, button').forEach(element => {
+            element.addEventListener('click', function(e) {
+                console.log('Клик по элементу:', this.tagName, this.className, this.textContent);
+                
+                // Предотвращаем только для тестовых ссылок
+                const href = this.getAttribute('href');
+                if (href === '#' || (href && href.includes('shxvier'))) {
+                    e.preventDefault();
+                    
+                    if (window.OceanNotifications) {
+                        const message = this.textContent.includes('GitHub') ? 
+                            'Переход на GitHub...' : 'Функция в разработке';
+                        window.OceanNotifications.info(message, 'info', 2000);
+                    }
+                    
+                    // Водный эффект
+                    createWaterEffect(this);
+                    
+                    // Если это GitHub ссылка, открываем в новом окне после задержки
+                    if (href && href.includes('shxvier')) {
+                        setTimeout(() => {
+                            window.open(href, '_blank');
+                        }, 1000);
+                    }
+                }
+            });
+        });
+    }
+    
+    function createWaterEffect(element) {
+        if (window.WaterUtils && typeof window.WaterUtils.createSplash === 'function') {
+            const rect = element.getBoundingClientRect();
+            window.WaterUtils.createSplash(
+                rect.left + rect.width / 2,
+                rect.top + rect.height / 2,
+                0.3
+            );
+        } else {
+            // Фолбэк эффект если WaterUtils не доступен
+            const ripple = document.createElement('div');
+            ripple.style.cssText = `
+                position: fixed;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, rgba(0,255,234,0.3) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 10000;
+                transform: translate(-50%, -50%);
+                animation: waterRipple 0.6s ease-out forwards;
+            `;
+            
+            const rect = element.getBoundingClientRect();
+            ripple.style.left = (rect.left + rect.width / 2) + 'px';
+            ripple.style.top = (rect.top + rect.height / 2) + 'px';
+            
+            document.body.appendChild(ripple);
+            
+            setTimeout(() => {
+                if (ripple.parentNode) {
+                    ripple.parentNode.removeChild(ripple);
+                }
+            }, 600);
+        }
+    }
+    
+    // Добавляем CSS для фолбэк анимации
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes waterRipple {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Улучшенные стили для активных фильтров */
+        .filter-btn.active {
+            background: linear-gradient(135deg, #00b4d8, #0077b6) !important;
+            border-color: #00b4d8 !important;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.4) !important;
+        }
+        
+        /* Плавные переходы для проектов */
+        .project-item {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Глобальные функции для отладки
+    window.debugModal = function(modalId) {
+        const modal = document.querySelector(modalId);
+        console.log('Modal debug:', modal);
+        if (modal) {
+            const modalInstance = bootstrap.Modal.getInstance(modal);
+            console.log('Modal instance:', modalInstance);
+        }
+    };
+    
+    window.showAllProjects = function() {
+        document.querySelectorAll('.project-item').forEach(item => {
+            item.style.display = 'block';
+            item.style.opacity = '1';
+        });
+    };
+    
+    // Обработка ошибок
+    window.addEventListener('error', function(e) {
+        console.error('Global error:', e.error);
+    });
+</script>
 </body>
 </html>
