@@ -20,6 +20,40 @@
     <!-- Мета-теги -->
     <meta name="description" content="Портфолио проектов Журавлева Алексея - коллекция работ в веб-разработке с морской тематикой">
     <meta name="keywords" content="веб-разработка, проекты, портфолио, морская тема">
+    
+    <!-- Критический CSS для исправления модальных окон -->
+    <style>
+        /* Критически важные стили для модальных окон */
+        .modal {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            z-index: 1060 !important;
+            background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+        
+        .modal-dialog {
+            margin: auto !important;
+            max-width: 90% !important;
+        }
+        
+        @media (min-width: 576px) {
+            .modal-dialog {
+                max-width: 500px !important;
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .modal-lg {
+                max-width: 800px !important;
+            }
+        }
+    </style>
 </head>
 <body class="ocean-theme">
     <!-- Анимированный океанский фон -->
@@ -422,14 +456,14 @@
         </footer>
     </div>
 
-    <!-- Модальные окна с ПОЛНЫМИ описаниями в морском стиле -->
+    <!-- Модальные окна с ИСПРАВЛЕННЫМ центрированием -->
     
     <!-- Modal 1: Личный сайт -->
-    <div class="modal fade ocean-modal" id="projectModal1" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal1Label">
                         <i class="bi bi-globe2 me-2 water-icon"></i>Личный сайт-портфолио
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -495,11 +529,11 @@
     </div>
 
     <!-- Modal 2: Todo-приложение -->
-    <div class="modal fade ocean-modal" id="projectModal2" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal2Label">
                         <i class="bi bi-list-check me-2 water-icon"></i>Todo-приложение для управления задачами
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -566,11 +600,11 @@
     </div>
 
     <!-- Modal 3: Интернет-магазин -->
-    <div class="modal fade ocean-modal" id="projectModal3" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal3" tabindex="-1" aria-labelledby="projectModal3Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal3Label">
                         <i class="bi bi-shop me-2 water-icon"></i>Интернет-магазин E-commerce
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -638,11 +672,11 @@
     </div>
 
     <!-- Modal 4: Портфолио -->
-    <div class="modal fade ocean-modal" id="projectModal4" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal4" tabindex="-1" aria-labelledby="projectModal4Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal4Label">
                         <i class="bi bi-person-badge me-2 water-icon"></i>Профессиональное портфолио
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -701,11 +735,11 @@
     </div>
 
     <!-- Modal 5: Weather App -->
-    <div class="modal fade ocean-modal" id="projectModal5" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal5" tabindex="-1" aria-labelledby="projectModal5Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal5Label">
                         <i class="bi bi-cloud-sun me-2 water-icon"></i>Приложение прогноза погоды
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -773,11 +807,11 @@
     </div>
 
     <!-- Modal 6: Task Manager -->
-    <div class="modal fade ocean-modal" id="projectModal6" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal fade ocean-modal" id="projectModal6" tabindex="-1" aria-labelledby="projectModal6Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content ocean-glass aqua-card">
                 <div class="modal-header ocean-border">
-                    <h5 class="modal-title text-glow">
+                    <h5 class="modal-title text-glow" id="projectModal6Label">
                         <i class="bi bi-kanban me-2 water-icon"></i>Task Manager - Система управления проектами
                     </h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Закрыть"></button>
@@ -876,7 +910,42 @@
             
             // Инициализация интерактивных эффектов
             initProjectInteractions();
+            
+            // Гарантированное исправление позиционирования модальных окон
+            fixModalPositioning();
         });
+        
+        function fixModalPositioning() {
+            // Принудительное центрирование всех модальных окон
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100vw';
+                modal.style.height = '100vh';
+                modal.style.zIndex = '1060';
+            });
+            
+            // Обработка открытия модальных окон
+            document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+                button.addEventListener('click', function() {
+                    const target = this.getAttribute('data-bs-target');
+                    const modal = document.querySelector(target);
+                    if (modal) {
+                        setTimeout(() => {
+                            const modalDialog = modal.querySelector('.modal-dialog');
+                            if (modalDialog) {
+                                modalDialog.style.margin = 'auto';
+                            }
+                        }, 10);
+                    }
+                });
+            });
+        }
         
         function initProjectsFilter() {
             const filterBtns = document.querySelectorAll('.filter-btn');
