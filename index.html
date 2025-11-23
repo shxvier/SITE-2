@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Портфолио - Журавлев Алексей</title>
     
-    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     
-    <!-- Стили -->
-    <link rel="stylesheet" href="style/japanese.css">
+    <meta name="description" content="Портфолио веб-разработчика Журавлева Алексея. Студент МИРЭА, группа ЭФБО-12-24. Современные веб-приложения с минималистичным дизайном.">
+    <meta property="og:title" content="Портфолио - Журавлев Алексей">
+    <meta property="og:description" content="Студент МИРЭА, веб-разработчик. Адаптивные сайты, чистый код, внимание к деталям.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="images/photo.jpg">
     
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="style/japanese.css">
 </head>
 <body class="page">
 
-    <!-- Фон: круг-солнце и лепестки сакуры -->
+    <!-- Японский декор: фоновые круги и лепестки сакуры -->
     <div class="page-bg">
         <div class="page-bg-circle page-bg-circle--sun"></div>
         <div class="page-bg-circle page-bg-circle--accent"></div>
@@ -26,9 +30,10 @@
             <div class="sakura-petal sakura-petal--2"></div>
             <div class="sakura-petal sakura-petal--3"></div>
         </div>
+        <!-- Декоративный иероглиф -->
+        <div class="decoration-kanji">[translate:技術]</div>
     </div>
 
-    <!-- Хедер -->
     <header class="header">
         <div class="container header__inner">
             <div class="header__brand">
@@ -39,13 +44,34 @@
                 </div>
             </div>
 
-            <nav class="nav">
+            <!-- Десктоп навигация -->
+            <nav class="nav nav--desktop">
                 <a href="#about" class="nav__link">Обо мне</a>
                 <a href="#skills" class="nav__link">Навыки</a>
                 <a href="#projects" class="nav__link">Проекты</a>
                 <a href="#contact" class="nav__link">Контакты</a>
             </nav>
+
+            <!-- Тоггл темы -->
+            <button class="theme-toggle" aria-label="Переключить тему">
+                <i class="bi bi-moon-fill theme-icon"></i>
+            </button>
+
+            <!-- Мобильное меню -->
+            <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
         </div>
+
+        <!-- Мобильная навигация (выезжает) -->
+        <nav class="nav nav--mobile">
+            <a href="#about" class="nav__link">Обо мне</a>
+            <a href="#skills" class="nav__link">Навыки</a>
+            <a href="#projects" class="nav__link">Проекты</a>
+            <a href="#contact" class="nav__link">Контакты</a>
+        </nav>
     </header>
 
     <!-- Основное содержимое -->
@@ -80,7 +106,7 @@
                 </div>
 
                 <div class="hero__side">
-                    <div class="hero-card">
+                    <div class="hero-card parallax-element" data-speed="0.5">
                         <div class="hero-card__avatar">
                             <img src="images/photo.jpg" alt="Фото Журавлева Алексея">
                         </div>
@@ -93,7 +119,7 @@
                         </div>
                     </div>
 
-                    <div class="stats">
+                    <div class="stats parallax-element" data-speed="0.7">
                         <div class="stat">
                             <span class="stat__value counter" data-target="6">0</span>
                             <span class="stat__label">завершённых проектов</span>
@@ -206,7 +232,7 @@
                         <div class="project-card__body">
                             <h3 class="project-card__title">Личный сайт</h3>
                             <p class="project-card__text">
-                                Адаптивный сайт‑портфолио с современным дизайном и минималистичной эстетикой.
+                                Адаптивный сайт‑портфолио с современным дизайном, минималистичной эстетикой и плавными анимациями.
                             </p>
                             <div class="project-card__meta">
                                 <span class="tag">HTML5</span>
@@ -268,7 +294,7 @@
                     <p class="section__text">
                         Заинтересованы в совместной работе или хотите обсудить проект? Свяжитесь со мной любым удобным способом. Обычно отвечаю в течение 24 часов.
                     </p>
-                    <ul class="list">
+                    <ul class="list" style="margin-top: 1.5rem;">
                         <li class="list__item">
                             <i class="bi bi-envelope me-2"></i>Email: zhuravlev.a.i1@edu.mirea.ru
                         </li>
@@ -284,15 +310,15 @@
                 <form class="contact-form">
                     <div class="contact-form__field">
                         <label class="contact-form__label" for="name">Имя</label>
-                        <input class="contact-form__input" id="name" type="text" placeholder="Ваше имя">
+                        <input class="contact-form__input" id="name" type="text" placeholder="Ваше имя" required>
                     </div>
                     <div class="contact-form__field">
                         <label class="contact-form__label" for="email">Email</label>
-                        <input class="contact-form__input" id="email" type="email" placeholder="mail@example.com">
+                        <input class="contact-form__input" id="email" type="email" placeholder="mail@example.com" required>
                     </div>
                     <div class="contact-form__field">
                         <label class="contact-form__label" for="message">Сообщение</label>
-                        <textarea class="contact-form__input contact-form__input--textarea" id="message" rows="4" placeholder="Кратко опишите задачу"></textarea>
+                        <textarea class="contact-form__input contact-form__input--textarea" id="message" rows="4" placeholder="Кратко опишите задачу" required></textarea>
                     </div>
                     <button class="btn btn--primary contact-form__submit" type="submit">
                         <i class="bi bi-send me-2"></i>Отправить
@@ -310,7 +336,6 @@
         </div>
     </footer>
 
-    <!-- Скрипты -->
     <script src="js/japanese.js"></script>
 </body>
 </html>
