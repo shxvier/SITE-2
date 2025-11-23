@@ -2,32 +2,40 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Портфолио разработчика</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Шрифты (латиница/кириллица + аккуратный sans) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Портфолио - Журавлев Алексей</title>
+    
+    <!-- Шрифты -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- Японская тема -->
-    <link rel="stylesheet" href="japanese.css">
+    
+    <!-- Стили -->
+    <link rel="stylesheet" href="style/japanese.css">
+    
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
 <body class="page">
 
-    <!-- Фон-слои -->
+    <!-- Фон: круг-солнце и лепестки сакуры -->
     <div class="page-bg">
         <div class="page-bg-circle page-bg-circle--sun"></div>
         <div class="page-bg-circle page-bg-circle--accent"></div>
+        <div class="sakura-petals">
+            <div class="sakura-petal sakura-petal--1"></div>
+            <div class="sakura-petal sakura-petal--2"></div>
+            <div class="sakura-petal sakura-petal--3"></div>
+        </div>
     </div>
 
+    <!-- Хедер -->
     <header class="header">
         <div class="container header__inner">
             <div class="header__brand">
                 <span class="header__logo-mark">⟡</span>
                 <div class="header__titles">
-                    <span class="header__title">Твой Ник / Имя</span>
-                    <span class="header__subtitle">Frontend · Web&nbsp;Developer</span>
+                    <span class="header__title">Журавлев Алексей</span>
+                    <span class="header__subtitle">[translate:ポートフォリオ] Портфолио</span>
                 </div>
             </div>
 
@@ -40,59 +48,62 @@
         </div>
     </header>
 
+    <!-- Основное содержимое -->
     <main class="main">
-
-        <!-- Hero -->
+        
+        <!-- Hero Section -->
         <section class="section section--hero">
             <div class="container hero">
                 <div class="hero__content">
-                    <p class="hero__eyebrow">Портфолио веб‑разработчика</p>
+                    <p class="hero__eyebrow">[translate:プロフィール] Профиль</p>
                     <h1 class="hero__title">
-                        Создаю лаконичные интерфейсы<br>
-                        с вниманием к деталям
+                        Студент группы ЭФБО-12-24<br>
+                        Создаю современные веб‑приложения
                     </h1>
                     <p class="hero__text">
-                        Разрабатываю адаптивные веб‑приложения, лендинги и личные сайты,
-                        фокусируясь на понятном UX, чистом UI и аккуратной анимации.
+                        Увлекаюсь веб‑разработкой и создаю адаптивные веб‑приложения. Специализируюсь на HTML, CSS, JavaScript, React и других современных технологиях. Обучаюсь в МИРЭА — Российском технологическом университете на факультете информационных технологий. Активно участвую в хакатонах, изучаю новые фреймворки и постоянно совершенствую свои навыки программирования.
                     </p>
 
                     <div class="hero__actions">
-                        <a href="#projects" class="btn btn--primary">Смотреть проекты</a>
-                        <a href="#contact" class="btn btn--ghost">Связаться</a>
+                        <a href="files/resume.txt" download class="btn btn--primary">
+                            <i class="bi bi-download me-2"></i>Скачать резюме
+                        </a>
+                        <a href="pages/projects.html" class="btn btn--ghost">
+                            <i class="bi bi-folder me-2"></i>Мои работы
+                        </a>
                     </div>
 
                     <div class="hero__meta">
-                        <div class="meta-pill">HTML · CSS · JavaScript · React</div>
-                        <div class="meta-pill">Git · адаптивная верстка · UI/UX</div>
+                        <div class="meta-pill">HTML/CSS · JavaScript · React</div>
+                        <div class="meta-pill">Git · Bootstrap · UI/UX</div>
                     </div>
                 </div>
 
                 <div class="hero__side">
                     <div class="hero-card">
                         <div class="hero-card__avatar">
-                            <img src="photo.jpg" alt="Фото разработчика">
+                            <img src="images/photo.jpg" alt="Фото Журавлева Алексея">
                         </div>
                         <div class="hero-card__body">
-                            <p class="hero-card__name">Твое Имя</p>
+                            <p class="hero-card__name">Журавлев Алексей</p>
                             <p class="hero-card__role">Студент МИРЭА · Веб‑разработчик</p>
                             <p class="hero-card__text">
-                                Практикуюсь в создании современных интерфейсов, изучаю новые фреймворки
-                                и участвую в pet‑проектах и хакатонах.
+                                Практикуюсь в создании современных интерфейсов, изучаю новые фреймворки и участвую в pet‑проектах и хакатонах.
                             </p>
                         </div>
                     </div>
 
                     <div class="stats">
                         <div class="stat">
-                            <span class="stat__value">10+</span>
+                            <span class="stat__value counter" data-target="6">0</span>
                             <span class="stat__label">завершённых проектов</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__value">15+</span>
+                            <span class="stat__value counter" data-target="10">0</span>
                             <span class="stat__label">изученных технологий</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__value">300+</span>
+                            <span class="stat__value counter" data-target="50">0</span>
                             <span class="stat__label">коммитов на GitHub</span>
                         </div>
                         <div class="stat">
@@ -108,27 +119,23 @@
         <section id="about" class="section">
             <div class="container section__grid section__grid--split">
                 <div>
-                    <h2 class="section__title">Обо мне</h2>
+                    <h2 class="section__title">[translate:私について] Обо мне</h2>
                     <p class="section__lead">
-                        Строю путь в разработке через учебу, практику и постоянные эксперименты с UI.
+                        Интересы и увлечения в веб‑разработке и программировании
                     </p>
                     <p class="section__text">
-                        Обучаюсь в МИРЭА на направлении, связанном с информационными технологиями.
-                        Активно изучаю современные технологии фронтенда, интересуюсь UX‑подходами и
-                        люблю переводить сложные вещи в простые интерфейсы.
+                        Разработка веб‑приложений с нуля, UI/UX дизайн и прототипирование, изучение алгоритмов и структур данных, участие в open‑source проектах, хакатоны и соревнования по программированию.
                     </p>
                     <p class="section__text">
-                        В проектах делаю упор на структуру кода, читаемость верстки и аккуратные
-                        микровзаимодействия, не перегружая интерфейс лишними эффектами.
+                        В работе делаю упор на чистую архитектуру, читаемость кода и аккуратные микровзаимодействия, не перегружая интерфейс лишними эффектами.
                     </p>
                 </div>
                 <div class="about-panel">
-                    <h3 class="about-panel__title">Фокус в работе</h3>
+                    <h3 class="about-panel__title">Достижения</h3>
                     <ul class="list">
-                        <li class="list__item">Чистый макет и продуманная сетка</li>
-                        <li class="list__item">Адаптивность под мобильные устройства</li>
-                        <li class="list__item">Быстрая и отзывчивая анимация</li>
-                        <li class="list__item">Поддерживаемый и понятный код</li>
+                        <li class="list__item">Успешно завершил 6+ проектов</li>
+                        <li class="list__item">Опыт работы в команде с Git и Agile</li>
+                        <li class="list__item">Непрерывное обучение и эксперименты</li>
                     </ul>
                 </div>
             </div>
@@ -137,30 +144,47 @@
         <!-- Навыки -->
         <section id="skills" class="section section--muted">
             <div class="container">
-                <h2 class="section__title">Навыки</h2>
+                <h2 class="section__title">[translate:スキル] Навыки</h2>
                 <p class="section__lead">
-                    Основные технологии, с которыми работаю в реальных проектах.
+                    Технологии и инструменты, с которыми работаю
                 </p>
 
                 <div class="skills">
                     <div class="skill-card">
                         <h3 class="skill-card__title">Frontend</h3>
                         <p class="skill-card__text">
-                            HTML5, семантическая верстка, современный CSS (flex, grid),
-                            адаптив под разные экраны.
+                            HTML5, CSS3, семантическая верстка, Bootstrap, адаптивность под разные экраны.
                         </p>
+                        <div class="skill-bar">
+                            <div class="skill-bar__fill" style="width: 90%;"></div>
+                        </div>
                     </div>
                     <div class="skill-card">
                         <h3 class="skill-card__title">JavaScript</h3>
                         <p class="skill-card__text">
-                            Взаимодействие с DOM, анимации, работа с API, организация кода.
+                            Работа с DOM, анимации, работа с API, организация кода, React.
                         </p>
+                        <div class="skill-bar">
+                            <div class="skill-bar__fill" style="width: 80%;"></div>
+                        </div>
                     </div>
                     <div class="skill-card">
                         <h3 class="skill-card__title">Инструменты</h3>
                         <p class="skill-card__text">
-                            Git, GitHub, сборка проектов, работа с макетами и дизайн‑системами.
+                            Git/GitHub, управление версиями, деплой, работа с макетами.
                         </p>
+                        <div class="skill-bar">
+                            <div class="skill-bar__fill" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="skill-card">
+                        <h3 class="skill-card__title">C++/C#</h3>
+                        <p class="skill-card__text">
+                            Базовые знания, алгоритмы, структуры данных, Qt Creator.
+                        </p>
+                        <div class="skill-bar">
+                            <div class="skill-bar__fill" style="width: 70%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -169,63 +193,66 @@
         <!-- Проекты -->
         <section id="projects" class="section">
             <div class="container">
-                <h2 class="section__title">Выбранные проекты</h2>
+                <h2 class="section__title">[translate:プロジェクト] Лучшие проекты</h2>
                 <p class="section__lead">
-                    Несколько работ, в которых можно увидеть твой подход к структуре и деталям.
+                    Здесь представлены мои лучшие работы в области веб‑разработки.
                 </p>
 
                 <div class="projects">
                     <article class="project-card">
                         <div class="project-card__image">
-                            <img src="project1.jpg" alt="Проект 1">
+                            <img src="images/project1.jpg" alt="Личный сайт - адаптивное портфолио">
                         </div>
                         <div class="project-card__body">
-                            <h3 class="project-card__title">Название проекта 1</h3>
+                            <h3 class="project-card__title">Личный сайт</h3>
                             <p class="project-card__text">
-                                Краткое описание проекта: что делал, какие технологии использовал,
-                                какая была задача.
+                                Адаптивный сайт‑портфолио с современным дизайном и минималистичной эстетикой.
                             </p>
                             <div class="project-card__meta">
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
-                                <span class="tag">JS</span>
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">Bootstrap</span>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card">
                         <div class="project-card__image">
-                            <img src="project2.jpg" alt="Проект 2">
+                            <img src="images/project2.jpg" alt="Todo-приложение для управления задачами">
                         </div>
                         <div class="project-card__body">
-                            <h3 class="project-card__title">Название проекта 2</h3>
+                            <h3 class="project-card__title">Todo‑приложение</h3>
                             <p class="project-card__text">
-                                Еще один пример интерфейса: акцент на аккуратной типографике,
-                                цвете и плавных переходах.
+                                Приложение для управления задачами с Local Storage и чистым интерфейсом.
+                            </p>
+                            <div class="project-card__meta">
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">Local Storage</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-card__image">
+                            <img src="images/project3.jpg" alt="Интернет-магазин на React">
+                        </div>
+                        <div class="project-card__body">
+                            <h3 class="project-card__title">Интернет‑магазин</h3>
+                            <p class="project-card__text">
+                                E‑commerce платформа на React с корзиной и современной архитектурой.
                             </p>
                             <div class="project-card__meta">
                                 <span class="tag">React</span>
-                                <span class="tag">SPA</span>
+                                <span class="tag">API</span>
                             </div>
                         </div>
                     </article>
+                </div>
 
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="project3.jpg" alt="Проект 3">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Название проекта 3</h3>
-                            <p class="project-card__text">
-                                Мини‑приложение или лендинг, где ты попробовал новые паттерны
-                                или анимации.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">UI</span>
-                                <span class="tag">UX</span>
-                            </div>
-                        </div>
-                    </article>
+                <div class="text-center mt-4">
+                    <a href="pages/projects.html" class="btn btn--primary">
+                        <i class="bi bi-folder2-open me-2"></i>Посмотреть все проекты
+                    </a>
                 </div>
             </div>
         </section>
@@ -234,18 +261,23 @@
         <section id="contact" class="section section--muted">
             <div class="container section__grid section__grid--split">
                 <div>
-                    <h2 class="section__title">Контакты</h2>
+                    <h2 class="section__title">[translate:お問い合わせ] Контакты</h2>
                     <p class="section__lead">
-                        Готов обсудить учебные проекты, стажировки и небольшие коммерческие задачи.
+                        Готов к сотрудничеству и обсуждению проектов
                     </p>
                     <p class="section__text">
-                        Связаться можно любым удобным способом — по почте, в Telegram
-                        или через форму ниже.
+                        Заинтересованы в совместной работе или хотите обсудить проект? Свяжитесь со мной любым удобным способом. Обычно отвечаю в течение 24 часов.
                     </p>
                     <ul class="list">
-                        <li class="list__item">Email: you@example.com</li>
-                        <li class="list__item">Telegram: @your_nick</li>
-                        <li class="list__item">GitHub: github.com/your-nick</li>
+                        <li class="list__item">
+                            <i class="bi bi-envelope me-2"></i>Email: zhuravlev.a.i1@edu.mirea.ru
+                        </li>
+                        <li class="list__item">
+                            <i class="bi bi-github me-2"></i>GitHub: github.com/shxvier
+                        </li>
+                        <li class="list__item">
+                            <i class="bi bi-telegram me-2"></i>Telegram: @k1riho
+                        </li>
                     </ul>
                 </div>
 
@@ -263,7 +295,7 @@
                         <textarea class="contact-form__input contact-form__input--textarea" id="message" rows="4" placeholder="Кратко опишите задачу"></textarea>
                     </div>
                     <button class="btn btn--primary contact-form__submit" type="submit">
-                        Отправить
+                        <i class="bi bi-send me-2"></i>Отправить
                     </button>
                 </form>
             </div>
@@ -273,10 +305,12 @@
 
     <footer class="footer">
         <div class="container footer__inner">
-            <span class="footer__copy">© 2025 · Твой Ник</span>
-            <span class="footer__note">Сделано с вниманием к деталям</span>
+            <span class="footer__copy">© 2025 Журавлев Алексей | ЭФБО-12-24</span>
+            <span class="footer__note">[translate:細部に注意を払って作られました] Сделано с вниманием к деталям</span>
         </div>
     </footer>
 
+    <!-- Скрипты -->
+    <script src="js/japanese.js"></script>
 </body>
 </html>
