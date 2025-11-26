@@ -1,110 +1,258 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Дневник - Журавлев Алексей</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
-    <meta name="description" content="Заметки и размышления о веб-разработке, обучении и проектах">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../style/japanese.css">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Дневник — путь в веб‑разработку</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page">
+<body>
+  <div class="sakura-container" aria-hidden="true"></div>
 
-    <div class="page-bg">
-        <div class="page-bg-circle page-bg-circle--sun"></div>
-        <div class="page-bg-circle page-bg-circle--accent"></div>
-        <div class="sakura-petals">
-            <div class="sakura-petal sakura-petal--1"></div>
-            <div class="sakura-petal sakura-petal--2"></div>
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="container header__inner">
-            <div class="header__brand">
-                <span class="header__logo-mark">⟡</span>
-                <div class="header__titles">
-                    <span class="header__title">Журавлев Алексей</span>
-                    <span class="header__subtitle">[translate:日記] Дневник</span>
-                </div>
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="nav-logo">桜</div>
+            <div class="nav-title">
+              <div class="nav-title-main">Shxvier</div>
+              <div class="nav-title-sub">Frontend • JS • React</div>
             </div>
+          </div>
 
-            <nav class="nav nav--desktop">
-                <a href="../index.html" class="nav__link">Главная</a>
-                <a href="projects.html" class="nav__link">Проекты</a>
-                <a href="#diary" class="nav__link active">Дневник</a>
-                <a href="contacts.html" class="nav__link">Контакты</a>
-            </nav>
+          <div class="nav-center">
+            <a href="index.html#about" class="nav-link">Обо мне</a>
+            <a href="projects.html" class="nav-link">Проекты</a>
+            <a href="diary.html" class="nav-link nav-link--primary">Дневник</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+          </div>
 
-            <button class="theme-toggle" aria-label="Переключить тему">
-                <i class="bi bi-moon-fill theme-icon"></i>
+          <div class="nav-right">
+            <button
+              class="icon-button"
+              type="button"
+              data-theme-toggle
+              aria-label="Переключить тему"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 3.1a1 1 0 0 1 .95.69 7 7 0 1 0 8.26 8.26 1 1 0 0 1 1.22 1.28A9 9 0 1 1 11.44 1.9a1 1 0 0 1 .56 1.2z"
+                />
+              </svg>
             </button>
 
-            <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+            <button
+              class="icon-button"
+              type="button"
+              data-notification-bell
+              aria-label="Открыть уведомления"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a6 6 0 0 0-6 6v3.45l-1.35 2.7A1 1 0 0 0 5.5 16h13a1 1 0 0 0 .88-1.48L18 11.45V8a6 6 0 0 0-6-6zM10 18a2 2 0 1 0 4 0h-4z"
+                />
+              </svg>
+              <span class="notification-dot"></span>
             </button>
-        </div>
 
-        <nav class="nav nav--mobile">
-            <a href="../index.html" class="nav__link">Главная</a>
-            <a href="projects.html" class="nav__link">Проекты</a>
-            <a href="#diary" class="nav__link active">Дневник</a>
-            <a href="contacts.html" class="nav__link">Контакты</a>
+            <button
+              class="icon-button nav-toggle"
+              type="button"
+              data-nav-toggle
+              aria-label="Открыть меню"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
+                />
+              </svg>
+            </button>
+          </div>
         </nav>
+      </div>
     </header>
 
-    <main class="main">
-        <section id="diary" class="section">
-            <div class="container">
-                <h1 class="section__title">[translate:日記] Дневник разработки</h1>
-                <p class="section__lead">
-                    Заметки, идеи и размышления о веб-разработке и обучении
-                </p>
+    <main>
+      <!-- HERO ДНЕВНИКА -->
+      <section class="hero reveal">
+        <div class="container">
+          <p class="hero-kana">diary • growth</p>
+          <h1 class="hero-title">
+            Учебный дневник<br />
+            и путь в веб‑разработке.
+          </h1>
+          <p class="hero-subtitle">
+            Фиксирую ключевые этапы обучения: от первых макетов до работы с 
+            фреймворками и серверной частью.
+          </p>
 
-                <div class="diary-entries">
-                    <article class="diary-entry">
-                        <div class="diary-entry__date">23.11.2025</div>
-                        <h3 class="diary-entry__title">Переход на японский стиль</h3>
-                        <p class="diary-entry__text">
-                            Начал полную переработку своего портфолио в японском минималистичном стиле. Убрал все лишние эффекты, оставил только чистую типографику и аккуратные анимации. Первые результаты уже видны!
-                        </p>
-                    </article>
+          <div class="hero-actions">
+            <a href="index.html" class="btn btn-ghost">На главную</a>
+            <a href="projects.html" class="btn btn-primary">Смотреть проекты</a>
+          </div>
+        </div>
+      </section>
 
-                    <article class="diary-entry">
-                        <div class="diary-entry__date">15.11.2025</div>
-                        <h3 class="diary-entry__title">Изучение React Hooks</h3>
-                        <p class="diary-entry__text">
-                            Понял, как работают useEffect и useContext. Сделал первое приложение с глобальным состоянием без Redux. Планирую использовать в следующем проекте.
-                        </p>
-                    </article>
-
-                    <article class="diary-entry">
-                        <div class="diary-entry__date">08.11.2025</div>
-                        <h3 class="diary-entry__title">Участие в хакатоне</h3>
-                        <p class="diary-entry__text">
-                            Впервые участвовал в командной разработке. Освоил Git flow и понял важность code review. Проект не выиграл, но опыт был бесценным.
-                        </p>
-                    </article>
-                </div>
+      <!-- ВРЕМЕННАЯ ЛИНИЯ -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">timeline</p>
+              <h2 class="section-title">Этапы обучения</h2>
             </div>
-        </section>
+            <p class="section-description">
+              Основные вехи: старт с вёрстки, переход к JavaScript, изучение React 
+              и планы по backend‑разработке.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">15 октября 2025</div>
+              <h3 class="card-title">Первые макеты и вёрстка</h3>
+              <p class="card-text">
+                Освоены основы HTML и CSS, собран первый адаптивный макет,
+                изучены семантические теги, Flexbox и базовые Grid‑сетки.
+              </p>
+              <div class="card-meta">
+                <span>HTML • CSS</span>
+                <span>responsive</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">1 ноября 2025</div>
+              <h3 class="card-title">JavaScript и интерактив</h3>
+              <p class="card-text">
+                Переменные, функции, работа с DOM и событиями — добавлены 
+                интерактивные элементы и базовая логика на сайте.
+              </p>
+              <div class="card-meta">
+                <span>JS базовый</span>
+                <span>DOM</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">15 ноября 2025</div>
+              <h3 class="card-title">React и SPA‑подход</h3>
+              <p class="card-text">
+                Компонентный подход, состояние и пропсы, создание приложения для 
+                задач и работа с хуками.
+              </p>
+              <div class="card-meta">
+                <span>React</span>
+                <span>hooks</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Декабрь 2025</div>
+              <h3 class="card-title">Планы по backend</h3>
+              <p class="card-text">
+                Изучение Node.js, Express, баз данных и REST API, чтобы собирать
+                полноценных веб‑приложения.
+              </p>
+              <div class="card-meta">
+                <span>Node.js • DB</span>
+                <span>REST</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ПРОГРЕСС -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">progress</p>
+              <h2 class="section-title">Прогресс и навыки</h2>
+            </div>
+            <p class="section-description">
+              Коротко о накопленном опыте: практика, завершённые проекты и 
+              освоенные технологии в процессе обучения.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">Практика</div>
+              <h3 class="card-title">Часы за кодом</h3>
+              <p class="card-text">
+                Регулярная работа над pet‑проектами и задачами по учебному плану,
+                оттачивание вёрстки и логики.
+              </p>
+              <div class="card-meta">
+                <span>концентрация</span>
+                <span>привычка</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Проекты</div>
+              <h3 class="card-title">Завершённые работы</h3>
+              <p class="card-text">
+                Несколько полноценных учебных проектов: сайты, приложения,
+                эксперименты с интерфейсами.
+              </p>
+              <div class="card-meta">
+                <span>pet‑проекты</span>
+                <span>портфолио</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Технологии</div>
+              <h3 class="card-title">Стек и развитие</h3>
+              <p class="card-text">
+                Постепенное наращивание стека: от базового фронтенда к фреймворкам
+                и дальнейшему выходу на full‑stack.
+              </p>
+              <div class="card-meta">
+                <span>frontend → full‑stack</span>
+                <span>рост</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer__inner">
-            <span class="footer__copy">© 2025 Журавлев Алексей | ЭФБО-12-24</span>
-            <span class="footer__note">[translate:細部に注意を払って作られました] Сделано с вниманием к деталям</span>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>© 2025 Shxvier. Все права защищены.</div>
+        <div>
+          GitHub:
+          <a href="https://github.com/shxvier" target="_blank" rel="noreferrer"
+            >github.com/shxvier</a
+          >
         </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="../js/japanese.js"></script>
+  <div class="notifications-panel" hidden>
+    <div class="notifications-panel-header">
+      <div class="notifications-panel-title">Уведомления</div>
+      <span class="section-kana">activity</span>
+    </div>
+    <div class="notifications-list">
+      <div>Можно отслеживать прогресс в обучении через дневник.</div>
+    </div>
+  </div>
+
+  <div class="toast-root"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
