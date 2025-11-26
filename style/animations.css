@@ -1,0 +1,498 @@
+/* ============================================
+   САКУРА АНИМАЦИИ - JAPANESE NIGHT THEME
+   ============================================ */
+
+/* Базовые анимации */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Анимация ряби сакуры */
+@keyframes sakuraRippleEffect {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.8);
+  }
+  70% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 15px rgba(255, 105, 180, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 105, 180, 0);
+  }
+}
+
+/* Пульсация */
+@keyframes gentlePulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.95;
+  }
+}
+
+/* Течение (sakura flow) */
+@keyframes sakuraFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Модальное окно в стиле сакуры */
+@keyframes modalSakuraIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.75) translateY(-60px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Появление карточек */
+.card {
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+.card:nth-child(1) { animation-delay: 0.1s; }
+.card:nth-child(2) { animation-delay: 0.15s; }
+.card:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(4) { animation-delay: 0.25s; }
+.card:nth-child(5) { animation-delay: 0.3s; }
+.card:nth-child(6) { animation-delay: 0.35s; }
+
+/* Проекты */
+.project-card {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: fadeInUp 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  opacity: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(255, 105, 180, 0.25);
+}
+
+/* Кнопки */
+.btn {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%);
+  transition: width 0.7s, height 0.7s;
+}
+
+.btn:hover::before {
+  width: 350px;
+  height: 350px;
+}
+
+/* Модальные окна */
+.modal.show .modal-dialog {
+  animation: modalSakuraIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Навигация */
+.nav-link {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2.5px;
+  background: linear-gradient(90deg, #ff69b4, #ffd700);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 90%;
+}
+
+/* Фильтры */
+.filter-btn.active {
+  animation: sakuraRippleEffect 0.6s ease;
+}
+
+/* Изображения проектов */
+.project-image {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.08);
+}
+
+/* Счётчики */
+.counter {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* Прогресс-бары */
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: var(--progress-width, 0%);
+  }
+}
+
+.water-progress-bar {
+  animation: progressFill 2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Уведомления */
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+.ocean-notification {
+  animation: slideInRight 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ocean-notification.hiding {
+  animation: slideOutRight 0.4s ease;
+}
+
+/* Курсор */
+@keyframes cursorPulseSakura {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.aqua-cursor {
+  animation: cursorPulseSakura 2.5s ease-in-out infinite;
+}
+
+/* Логотип */
+@keyframes sakuraLogoFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-3deg);
+  }
+}
+
+.logo-wave {
+  animation: sakuraLogoFloat 4.5s ease-in-out infinite;
+}
+
+/* Футер */
+.ocean-footer {
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+/* Уменьшение движения */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Мобильные устройства */
+@media (max-width: 768px) {
+  .card {
+    animation: fadeInUp 0.5s ease forwards;
+  }
+
+  @keyframes mobileSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .navbar-collapse.show {
+    animation: mobileSlideIn 0.4s ease;
+  }
+
+  .project-card:hover {
+    transform: none;
+  }
+}
+
+/* Загрузка */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-spinner {
+  animation: spin 1.2s linear infinite;
+}
+
+/* Переключатели */
+.form-check-input:checked {
+  animation: gentlePulse 0.3s ease;
+}
+
+/* Алерты */
+.alert {
+  animation: fadeInUp 0.5s ease;
+}
+
+/* Подсказки */
+@keyframes tooltipFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip {
+  animation: tooltipFade 0.3s ease;
+}
+
+/* Волна при клике */
+@keyframes clickWave {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.click-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 105, 180, 0.4);
+  animation: clickWave 0.7s ease-out;
+  pointer-events: none;
+}
+
+/* Раскрытие текста */
+@keyframes textReveal {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-reveal {
+  animation: textReveal 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Плавающие элементы */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.floating {
+  animation: float 3.5s ease-in-out infinite;
+}
+
+/* Свечение */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(255, 105, 180, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.9), 0 0 40px rgba(255, 212, 0, 0.5);
+  }
+}
+
+.glow-effect {
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+/* Фильтры */
+.filter-btn {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.filter-btn:hover::before {
+  width: 120px;
+  height: 120px;
+}
+
+.filter-btn.active {
+  animation: sakuraRippleEffect 0.6s ease !important;
+  background: linear-gradient(135deg, #ff69b4, #ffd700) !important;
+  border-color: #ff69b4 !important;
+  box-shadow: 0 0 30px rgba(255, 105, 180, 0.6) !important;
+}
+
+/* Кнопки проектов */
+.project-detail-btn {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-detail-btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4) !important;
+}
+
+.project-detail-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 105, 180, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s, height 0.4s;
+}
+
+.project-detail-btn:hover::after {
+  width: 120px;
+  height: 120px;
+}
+
+/* Появление проектов */
+@keyframes projectAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-item {
+  animation: projectAppear 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.project-item:nth-child(1) { animation-delay: 0.1s; }
+.project-item:nth-child(2) { animation-delay: 0.15s; }
+.project-item:nth-child(3) { animation-delay: 0.2s; }
+.project-item:nth-child(4) { animation-delay: 0.25s; }
+.project-item:nth-child(5) { animation-delay: 0.3s; }
+.project-item:nth-child(6) { animation-delay: 0.35s; }
