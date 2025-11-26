@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  /* ========= ФОРМА КОНТАКТА (contacts.html) ========= */
+  /* ========= ФОРМА КОНТАКТА ========= */
   const contactForm = document.querySelector("[data-contact-form]");
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
@@ -161,7 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Здесь ты можешь добавить реальный отправитель (fetch и т.п.)
       showToast("Сообщение отправлено. Ответ в течение 24 часов.", "success");
       contactForm.reset();
     });
