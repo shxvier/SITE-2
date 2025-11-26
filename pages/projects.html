@@ -1,182 +1,233 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Проекты - Журавлев Алексей</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
-    <meta name="description" content="Все проекты Журавлева Алексея: личные сайты, веб-приложения, интернет-магазины">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../style/japanese.css">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Проекты — японский стиль</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page">
+<body>
+  <div class="sakura-container" aria-hidden="true"></div>
 
-    <div class="page-bg">
-        <div class="page-bg-circle page-bg-circle--sun"></div>
-        <div class="page-bg-circle page-bg-circle--accent"></div>
-        <div class="sakura-petals">
-            <div class="sakura-petal sakura-petal--1"></div>
-            <div class="sakura-petal sakura-petal--2"></div>
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="container header__inner">
-            <div class="header__brand">
-                <span class="header__logo-mark">⟡</span>
-                <div class="header__titles">
-                    <span class="header__title">Журавлев Алексей</span>
-                    <span class="header__subtitle">[translate:プロジェクト] Проекты</span>
-                </div>
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="nav-logo">桜</div>
+            <div class="nav-title">
+              <div class="nav-title-main">Shxvier</div>
+              <div class="nav-title-sub">Frontend • JS • React</div>
             </div>
+          </div>
 
-            <nav class="nav nav--desktop">
-                <a href="../index.html" class="nav__link">Главная</a>
-                <a href="#projects" class="nav__link active">Проекты</a>
-                <a href="diary.html" class="nav__link">Дневник</a>
-                <a href="contacts.html" class="nav__link">Контакты</a>
-            </nav>
+          <div class="nav-center">
+            <a href="index.html#about" class="nav-link">Обо мне</a>
+            <a href="projects.html" class="nav-link nav-link--primary">Проекты</a>
+            <a href="diary.html" class="nav-link">Дневник</a>
+            <a href="contacts.html" class="nav-link">Контакты</a>
+          </div>
 
-            <button class="theme-toggle" aria-label="Переключить тему">
-                <i class="bi bi-moon-fill theme-icon"></i>
+          <div class="nav-right">
+            <button
+              class="icon-button"
+              type="button"
+              data-theme-toggle
+              aria-label="Переключить тему"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 3.1a1 1 0 0 1 .95.69 7 7 0 1 0 8.26 8.26 1 1 0 0 1 1.22 1.28A9 9 0 1 1 11.44 1.9a1 1 0 0 1 .56 1.2z"
+                />
+              </svg>
             </button>
 
-            <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+            <button
+              class="icon-button"
+              type="button"
+              data-notification-bell
+              aria-label="Открыть уведомления"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a6 6 0 0 0-6 6v3.45l-1.35 2.7A1 1 0 0 0 5.5 16h13a1 1 0 0 0 .88-1.48L18 11.45V8a6 6 0 0 0-6-6zM10 18a2 2 0 1 0 4 0h-4z"
+                />
+              </svg>
+              <span class="notification-dot"></span>
             </button>
-        </div>
 
-        <nav class="nav nav--mobile">
-            <a href="../index.html" class="nav__link">Главная</a>
-            <a href="#projects" class="nav__link active">Проекты</a>
-            <a href="diary.html" class="nav__link">Дневник</a>
-            <a href="contacts.html" class="nav__link">Контакты</a>
+            <button
+              class="icon-button nav-toggle"
+              type="button"
+              data-nav-toggle
+              aria-label="Открыть меню"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
+                />
+              </svg>
+            </button>
+          </div>
         </nav>
+      </div>
     </header>
 
-    <main class="main">
-        <section id="projects" class="section">
-            <div class="container">
-                <h1 class="section__title">Все проекты</h1>
-                <p class="section__lead">
-                    Коллекция завершённых работ с разной сложностью и технологиями
-                </p>
+    <main>
+      <!-- HERO ПРОЕКТОВ -->
+      <section class="hero reveal">
+        <div class="container">
+          <p class="hero-kana">projects • sakura</p>
+          <h1 class="hero-title">
+            Подборка проектов<br />
+            с акцентом на практику и дизайн.
+          </h1>
+          <p class="hero-subtitle">
+            Здесь собраны веб‑проекты: от личного сайта и приложений для задач до 
+            работы с внешними API и e‑commerce функционалом.
+          </p>
 
-                <div class="projects">
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project1.jpg" alt="Личный сайт - адаптивное портфолио">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Личный сайт</h3>
-                            <p class="project-card__text">
-                                Адаптивный сайт‑портфолио с современным дизайном, минималистичной эстетикой и плавными анимациями. Сделан с нуля на HTML, CSS и JavaScript.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">HTML5</span>
-                                <span class="tag">CSS3</span>
-                                <span class="tag">Bootstrap</span>
-                            </div>
-                        </div>
-                    </article>
+          <div class="hero-actions">
+            <a href="index.html" class="btn btn-ghost">На главную</a>
+            <a href="contacts.html" class="btn btn-primary">Обсудить проект</a>
+          </div>
+        </div>
+      </section>
 
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project2.jpg" alt="Todo-приложение для управления задачами">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Todo‑приложение</h3>
-                            <p class="project-card__text">
-                                Приложение для управления задачами с Local Storage, фильтрацией и чистым интерфейсом. Позволяет добавлять, редактировать и удалять задачи.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">JavaScript</span>
-                                <span class="tag">Local Storage</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project3.jpg" alt="Интернет-магазин на React">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Интернет‑магазин</h3>
-                            <p class="project-card__text">
-                                E‑commerce платформа на React с корзиной, каталогом товаров и современной архитектурой компонентов.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">React</span>
-                                <span class="tag">API</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project4.jpg" alt="Проект 4">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Проект 4</h3>
-                            <p class="project-card__text">
-                                Описание четвертого проекта с акцентом на новые технологии и подходы.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">C++</span>
-                                <span class="tag">Qt</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project5.jpg" alt="Проект 5">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Проект 5</h3>
-                            <p class="project-card__text">
-                                Еще один пример интерфейса с акцентом на аккуратную типографику и плавные переходы.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">UI</span>
-                                <span class="tag">UX</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-card__image">
-                            <img src="../images/project6.jpg" alt="Проект 6">
-                        </div>
-                        <div class="project-card__body">
-                            <h3 class="project-card__title">Проект 6</h3>
-                            <p class="project-card__text">
-                                Мини‑приложение или лендинг, где ты попробовал новые паттерны или анимации.
-                            </p>
-                            <div class="project-card__meta">
-                                <span class="tag">Experiment</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+      <!-- СЕТКА ПРОЕКТОВ -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">featured</p>
+              <h2 class="section-title">Основные проекты</h2>
             </div>
-        </section>
+            <p class="section-description">
+              Практика адаптивной вёрстки, состояния приложения, работы с данными и
+              созданием приятного UX в реальных кейсах.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <!-- ЛИЧНЫЙ САЙТ -->
+            <article class="card">
+              <div class="card-label">Web • UI</div>
+              <h3 class="card-title">Личный сайт в японском стиле</h3>
+              <p class="card-text">
+                Адаптивный сайт‑портфолио с темой сакуры, плавной навигацией,
+                анимациями, переключением темы и уведомлениями.
+              </p>
+              <div class="card-meta">
+                <span>HTML • CSS • JS</span>
+                <span>SPA‑подход</span>
+              </div>
+            </article>
+
+            <!-- TODO / KANBAN -->
+            <article class="card">
+              <div class="card-label">Productivity</div>
+              <h3 class="card-title">Приложение задач / Kanban</h3>
+              <p class="card-text">
+                Управление задачами в стиле Kanban с drag &amp; drop, сохранением
+                состояния и удобной визуальной структурой.
+              </p>
+              <div class="card-meta">
+                <span>React • hooks</span>
+                <span>localStorage</span>
+              </div>
+            </article>
+
+            <!-- E‑COMMERCE -->
+            <article class="card">
+              <div class="card-label">E‑commerce</div>
+              <h3 class="card-title">Магазин с корзиной и фильтрами</h3>
+              <p class="card-text">
+                Прототип интернет‑магазина с каталогом товаров, корзиной,
+                фильтрацией и понятной структурой карточек.
+              </p>
+              <div class="card-meta">
+                <span>React</span>
+                <span>SPA • UX</span>
+              </div>
+            </article>
+
+            <!-- ПОГОДА -->
+            <article class="card">
+              <div class="card-label">API</div>
+              <h3 class="card-title">Прогноз погоды</h3>
+              <p class="card-text">
+                Приложение с интеграцией внешнего API погоды, карточками городов,
+                отображением температуры и состояний.
+              </p>
+              <div class="card-meta">
+                <span>fetch • API</span>
+                <span>UX‑индикаторы</span>
+              </div>
+            </article>
+
+            <!-- УЧЕБНЫЕ ПРОЕКТЫ -->
+            <article class="card">
+              <div class="card-label">Study</div>
+              <h3 class="card-title">Учебные мини‑проекты</h3>
+              <p class="card-text">
+                Небольшие демо‑проекты для закрепления тем: анимации, формы,
+                валидация, работа с DOM и сетками.
+              </p>
+              <div class="card-meta">
+                <span>HTML • CSS • JS</span>
+                <span>практика</span>
+              </div>
+            </article>
+
+            <!-- СОВМЕСТНЫЕ РАБОТЫ -->
+            <article class="card">
+              <div class="card-label">Team</div>
+              <h3 class="card-title">Командные проекты</h3>
+              <p class="card-text">
+                Опыт разработки в команде с Git, code review и задачами
+                по Agile‑подходу.
+              </p>
+              <div class="card-meta">
+                <span>Git • Agile</span>
+                <span>collaboration</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer__inner">
-            <span class="footer__copy">© 2025 Журавлев Алексей | ЭФБО-12-24</span>
-            <span class="footer__note">[translate:細部に注意を払って作られました] Сделано с вниманием к деталям</span>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>© 2025 Shxvier. Все права защищены.</div>
+        <div>
+          GitHub:
+          <a href="https://github.com/shxvier" target="_blank" rel="noreferrer"
+            >github.com/shxvier</a
+          >
         </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="../js/japanese.js"></script>
+  <div class="notifications-panel" hidden>
+    <div class="notifications-panel-header">
+      <div class="notifications-panel-title">Уведомления</div>
+      <span class="section-kana">activity</span>
+    </div>
+    <div class="notifications-list">
+      <div>Проекты загружены. Можно выбирать идеи для доработки.</div>
+    </div>
+  </div>
+
+  <div class="toast-root"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
