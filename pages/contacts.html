@@ -1,154 +1,328 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Контакты - Журавлев Алексей</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
-    
-    <meta name="description" content="Свяжитесь с Журавлевым Алексеем: email, Telegram, GitHub. Готов к сотрудничеству и новым проектам.">
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    <link rel="stylesheet" href="../style/japanese.css">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Контакты — связаться со мной</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page">
+<body>
+  <div class="sakura-container" aria-hidden="true"></div>
 
-    <div class="page-bg">
-        <div class="page-bg-circle page-bg-circle--sun"></div>
-        <div class="page-bg-circle page-bg-circle--accent"></div>
-        <div class="sakura-petals">
-            <div class="sakura-petal sakura-petal--1"></div>
-            <div class="sakura-petal sakura-petal--2"></div>
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="container header__inner">
-            <div class="header__brand">
-                <span class="header__logo-mark">⟡</span>
-                <div class="header__titles">
-                    <span class="header__title">Журавлев Алексей</span>
-                    <span class="header__subtitle">[translate:コンタクト] Контакты</span>
-                </div>
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="nav-logo">桜</div>
+            <div class="nav-title">
+              <div class="nav-title-main">Shxvier</div>
+              <div class="nav-title-sub">Frontend • JS • React</div>
             </div>
+          </div>
 
-            <nav class="nav nav--desktop">
-                <a href="../index.html" class="nav__link">Главная</a>
-                <a href="projects.html" class="nav__link">Проекты</a>
-                <a href="diary.html" class="nav__link">Дневник</a>
-                <a href="#contact" class="nav__link active">Контакты</a>
-            </nav>
+          <div class="nav-center">
+            <a href="index.html#about" class="nav-link">Обо мне</a>
+            <a href="projects.html" class="nav-link">Проекты</a>
+            <a href="diary.html" class="nav-link">Дневник</a>
+            <a href="contacts.html" class="nav-link nav-link--primary">Контакты</a>
+          </div>
 
-            <button class="theme-toggle" aria-label="Переключить тему">
-                <i class="bi bi-moon-fill theme-icon"></i>
+          <div class="nav-right">
+            <button
+              class="icon-button"
+              type="button"
+              data-theme-toggle
+              aria-label="Переключить тему"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 3.1a1 1 0 0 1 .95.69 7 7 0 1 0 8.26 8.26 1 1 0 0 1 1.22 1.28A9 9 0 1 1 11.44 1.9a1 1 0 0 1 .56 1.2z"
+                />
+              </svg>
             </button>
 
-            <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+            <button
+              class="icon-button"
+              type="button"
+              data-notification-bell
+              aria-label="Открыть уведомления"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a6 6 0 0 0-6 6v3.45l-1.35 2.7A1 1 0 0 0 5.5 16h13a1 1 0 0 0 .88-1.48L18 11.45V8a6 6 0 0 0-6-6zM10 18a2 2 0 1 0 4 0h-4z"
+                />
+              </svg>
+              <span class="notification-dot"></span>
             </button>
-        </div>
 
-        <nav class="nav nav--mobile">
-            <a href="../index.html" class="nav__link">Главная</a>
-            <a href="projects.html" class="nav__link">Проекты</a>
-            <a href="diary.html" class="nav__link">Дневник</a>
-            <a href="#contact" class="nav__link active">Контакты</a>
+            <button
+              class="icon-button nav-toggle"
+              type="button"
+              data-nav-toggle
+              aria-label="Открыть меню"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
+                />
+              </svg>
+            </button>
+          </div>
         </nav>
+      </div>
     </header>
 
-    <main class="main">
-        <section id="contact" class="section">
-            <div class="container section__grid section__grid--split">
-                <div>
-                    <h1 class="section__title">[translate:お問い合わせ] Контакты</h1>
-                    <p class="section__lead">
-                        Готов к сотрудничеству и обсуждению проектов
-                    </p>
-                    <p class="section__text">
-                        Заинтересованы в совместной работе или хотите обсудить проект? Свяжитесь со мной любым удобным способом. Обычно отвечаю в течение 24 часов.
-                    </p>
-                    
-                    <ul class="list" style="margin-top: 1.5rem;">
-                        <li class="list__item">
-                            <i class="bi bi-envelope me-2"></i>Email: zhuravlev.a.i1@edu.mirea.ru
-                        </li>
-                        <li class="list__item">
-                            <i class="bi bi-github me-2"></i>GitHub: github.com/shxvier
-                        </li>
-                        <li class="list__item">
-                            <i class="bi bi-telegram me-2"></i>Telegram: @k1riho
-                        </li>
-                        <li class="list__item">
-                            <i class="bi bi-mortarboard me-2"></i>Группа: ЭФБО-12-24
-                        </li>
-                    </ul>
+    <main>
+      <!-- HERO КОНТАКТОВ -->
+      <section class="hero reveal">
+        <div class="container">
+          <p class="hero-kana">contact</p>
+          <h1 class="hero-title">
+            Связаться со мной<br />
+            и обсудить идею или проект.
+          </h1>
+          <p class="hero-subtitle">
+            Быстрее всего отвечаю в Telegram, на почту обычно отвечаю в течение 
+            суток. Можно сразу описать задачу в форме ниже.
+          </p>
 
-                    <div style="margin-top: 2rem;">
-                        <h3 class="about-panel__title">Обычно доступен</h3>
-                        <p class="section__text">
-                            <i class="bi bi-clock me-2"></i>Пн-Пт: 10:00 - 22:00<br>
-                            <i class="bi bi-calendar3 me-2"></i>Выходные: по договоренности
-                        </p>
-                    </div>
-                </div>
+          <div class="hero-actions">
+            <a href="index.html" class="btn btn-ghost">На главную</a>
+            <a href="#contact-form" class="btn btn-primary">Написать через форму</a>
+          </div>
+        </div>
+      </section>
 
-                <div>
-                    <div class="contact-form">
-                        <h3 class="about-panel__title" style="margin-bottom: 1.5rem;">Отправить сообщение</h3>
-                        
-                        <div class="contact-form__field">
-                            <label class="contact-form__label" for="name">Имя</label>
-                            <input class="contact-form__input" id="name" type="text" placeholder="Ваше имя" required>
-                        </div>
-                        
-                        <div class="contact-form__field">
-                            <label class="contact-form__label" for="email">Email</label>
-                            <input class="contact-form__input" id="email" type="email" placeholder="mail@example.com" required>
-                        </div>
-                        
-                        <div class="contact-form__field">
-                            <label class="contact-form__label" for="subject">Тема</label>
-                            <input class="contact-form__input" id="subject" type="text" placeholder="О чем сообщение?">
-                        </div>
-                        
-                        <div class="contact-form__field">
-                            <label class="contact-form__label" for="message">Сообщение</label>
-                            <textarea class="contact-form__input contact-form__input--textarea" id="message" rows="5" placeholder="Опишите задачу или проект..." required></textarea>
-                        </div>
-                        
-                        <button class="btn btn--primary contact-form__submit" type="submit">
-                            <i class="bi bi-send me-2"></i>Отправить
-                        </button>
-                    </div>
-
-                    <div class="about-panel" style="margin-top: 1.5rem;">
-                        <h3 class="about-panel__title">Или используйте</h3>
-                        <div class="hero__actions" style="margin-top: 1rem;">
-                            <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" class="btn btn--ghost">
-                                <i class="bi bi-envelope me-2"></i>Написать email
-                            </a>
-                            <a href="https://t.me/k1riho" target="_blank" rel="noopener noreferrer" class="btn btn--ghost">
-                                <i class="bi bi-telegram me-2"></i>Telegram
-                            </a>
-                        </div>
-                    </div>
-                </div>
+      <!-- СПОСОБЫ СВЯЗи -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">channels</p>
+              <h2 class="section-title">Основные каналы связи</h2>
             </div>
-        </section>
+            <p class="section-description">
+              Укажи удобный способ контакта и немного расскажи о задаче — 
+              вернусь с ответом и идеями по реализации.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">GitHub</div>
+              <h3 class="card-title">Профиль с проектами</h3>
+              <p class="card-text">
+                Репозитории с учебными и pet‑проектами, актуальный код и примеры
+                реализации интерфейсов.
+              </p>
+              <div class="card-meta">
+                <a
+                  href="https://github.com/shxvier"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="nav-link"
+                >
+                  Открыть GitHub
+                </a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Telegram</div>
+              <h3 class="card-title">Быстрый контакт</h3>
+              <p class="card-text">
+                Для оперативных вопросов и обмена идеями удобнее всего писать 
+                в Telegram.
+              </p>
+              <div class="card-meta">
+                <a
+                  href="https://t.me/k1riho"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="nav-link"
+                >
+                  Написать в Telegram
+                </a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">E‑mail</div>
+              <h3 class="card-title">Почта для подробностей</h3>
+              <p class="card-text">
+                Если нужно структурно описать задачу или выслать ТЗ — 
+                удобнее всего сделать это по почте.
+              </p>
+              <div class="card-meta">
+                <button
+                  type="button"
+                  class="nav-link"
+                  data-copy-email="your@email"
+                >
+                  Скопировать e‑mail
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ВРЕМЯ ОТВЕТА -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">response</p>
+              <h2 class="section-title">Время ответа</h2>
+            </div>
+            <p class="section-description">
+              Приоритет — Telegram, на почту обычно отвечаю в течение 24 часов.
+              В рабочее время отвечаю заметно быстрее.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">Обычно</div>
+              <h3 class="card-title">До 24 часов</h3>
+              <p class="card-text">
+                Стандартное время ответа на запросы, описания проектов и ТЗ.
+              </p>
+              <div class="card-meta">
+                <span>24ч</span>
+                <span>стандарт</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Рабочее время</div>
+              <h3 class="card-title">Несколько часов</h3>
+              <p class="card-text">
+                В активные часы обычно отвечаю в пределах нескольких часов.
+              </p>
+              <div class="card-meta">
+                <span>~6ч</span>
+                <span>быстрее</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Срочно</div>
+              <h3 class="card-title">Лучше Telegram</h3>
+              <p class="card-text">
+                Для срочных задач лучше сразу писать в Telegram и кратко описать,
+                что нужно.
+              </p>
+              <div class="card-meta">
+                <span>приоритет</span>
+                <span>tg</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ФОРМА КОНТАКТА -->
+      <section id="contact-form" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">form</p>
+              <h2 class="section-title">Форма для сообщения</h2>
+            </div>
+            <p class="section-description">
+              Заполни форму: имя, почта и несколько строк о задаче. Поля
+              проверяются на заполненность на стороне клиента.
+            </p>
+          </div>
+
+          <form class="card" data-contact-form>
+            <div class="card-text" style="margin-bottom: 12px;">
+              Поля обязательны к заполнению, отправка обрабатывается JavaScript
+              (можно подключить реальный backend позже).
+            </div>
+
+            <div style="display: grid; gap: 10px; margin-bottom: 10px;">
+              <div>
+                <label for="name" class="card-label">Имя</label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  style="width: 100%; padding: 8px 10px; border-radius: 10px;
+                         border: 1px solid rgba(148,163,184,0.7); background: rgba(15,23,42,0.9);
+                         color: #f9fafb; font-size: 13px;"
+                />
+              </div>
+
+              <div>
+                <label for="email" class="card-label">E‑mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  style="width: 100%; padding: 8px 10px; border-radius: 10px;
+                         border: 1px solid rgba(148,163,184,0.7); background: rgba(15,23,42,0.9);
+                         color: #f9fafb; font-size: 13px;"
+                />
+              </div>
+
+              <div>
+                <label for="message" class="card-label">Сообщение</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  style="width: 100%; padding: 8px 10px; border-radius: 10px;
+                         border: 1px solid rgba(148,163,184,0.7); background: rgba(15,23,42,0.9);
+                         color: #f9fafb; font-size: 13px; resize: vertical;"
+                ></textarea>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              Отправить сообщение
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer__inner">
-            <span class="footer__copy">© 2025 Журавлев Алексей | ЭФБО-12-24</span>
-            <span class="footer__note">[translate:細部に注意を払って作られました] Сделано с вниманием к деталям</span>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>© 2025 Shxvier. Все права защищены.</div>
+        <div>
+          GitHub:
+          <a href="https://github.com/shxvier" target="_blank" rel="noreferrer"
+            >github.com/shxvier</a
+          >
         </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="../js/japanese.js"></script>
+  <div class="notifications-panel" hidden>
+    <div class="notifications-panel-header">
+      <div class="notifications-panel-title">Уведомления</div>
+      <span class="section-kana">activity</span>
+    </div>
+    <div class="notifications-list">
+      <div>Можно написать через форму или напрямую в Telegram.</div>
+    </div>
+  </div>
+
+  <div class="toast-root"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
