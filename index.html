@@ -1,191 +1,309 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Журавлев Алексей — Портфолио</title>
-    
-    <!-- Традиционные японские шрифты -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <meta name="description" content="Портфолио веб-разработчика. МИРЭА, группа ЭФБО-12-24.">
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-    <link rel="stylesheet" href="style/japanese.css">
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>Личный сайт — японский стиль</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="page">
+<body>
+  <div class="sakura-container" aria-hidden="true"></div>
 
-    <!-- Только минимальный фон, без декора -->
-    <div class="page-bg"></div>
-
-    <header class="header">
-        <div class="container header__inner">
-            <!-- Вертикальная типографика как в японских книгах -->
-            <div class="header__vertical">
-                <span class="vertical-text">[translate:ポートフォリオ]</span>
+  <div class="page">
+    <header class="site-header">
+      <div class="container">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="nav-logo">桜</div>
+            <div class="nav-title">
+              <div class="nav-title-main">Shxvier</div>
+              <div class="nav-title-sub">Frontend • JS • React</div>
             </div>
-            
-            <div class="header__main">
-                <h1 class="header__title">Журавлев Алексей</h1>
-                <p class="header__subtitle">Студент МИРЭА · Веб-разработчик</p>
-            </div>
+          </div>
 
-            <!-- Навигация как в Joen-ji Temple -->
-            <nav class="nav">
-                <a href="#about" class="nav__link">О себе</a>
-                <a href="#skills" class="nav__link">Навыки</a>
-                <a href="#projects" class="nav__link">Работы</a>
-                <a href="#contact" class="nav__link">Связь</a>
-            </nav>
-        </div>
+          <div class="nav-center">
+            <a href="#about" class="nav-link">Обо мне</a>
+            <a href="projects.html" class="nav-link">Проекты</a>
+            <a href="diary.html" class="nav-link">Дневник</a>
+            <a href="contacts.html" class="nav-link nav-link--primary">Контакты</a>
+          </div>
+
+          <div class="nav-right">
+            <button
+              class="icon-button"
+              type="button"
+              data-theme-toggle
+              aria-label="Переключить тему"
+            >
+              <!-- Иконка “полумесяц/солнышко” -->
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 3.1a1 1 0 0 1 .95.69 7 7 0 1 0 8.26 8.26 1 1 0 0 1 1.22 1.28A9 9 0 1 1 11.44 1.9a1 1 0 0 1 .56 1.2z"
+                />
+              </svg>
+            </button>
+
+            <button
+              class="icon-button"
+              type="button"
+              data-notification-bell
+              aria-label="Открыть уведомления"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M12 2a6 6 0 0 0-6 6v3.45l-1.35 2.7A1 1 0 0 0 5.5 16h13a1 1 0 0 0 .88-1.48L18 11.45V8a6 6 0 0 0-6-6zM10 18a2 2 0 1 0 4 0h-4z"
+                />
+              </svg>
+              <span class="notification-dot"></span>
+            </button>
+
+            <button
+              class="icon-button nav-toggle"
+              type="button"
+              data-nav-toggle
+              aria-label="Открыть меню"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill="currentColor"
+                  d="M4 7h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
+                />
+              </svg>
+            </button>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <main class="main">
-        
-        <!-- Hero: как у Morikawa Ltd — огромный заголовок, минимум текста -->
-        <section class="section section--hero">
-            <div class="container">
-                <div class="hero__massive">
-                    <h2 class="hero__massive-text">
-                        Создаю цифровые<br>
-                        пространства
-                    </h2>
-                    <p class="hero__massive-sub">
-                        Студент МИРЭА, группа ЭФБО-12-24<br>
-                        Увлекаюсь веб-разработкой и создаю адаптивные веб-приложения
-                    </p>
-                </div>
-                
-                <div class="hero__photo">
-                    <img src="images/photo.jpg" alt="" width="280" height="280">
-                </div>
+    <main>
+      <!-- HERO -->
+      <section class="hero reveal">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-badge">
+              <span class="hero-badge-dot"></span>
+              <span>Личный сайт в японском стиле</span>
             </div>
-        </section>
+            <p class="hero-kana">sakura • web • portfolio</p>
+            <h1 class="hero-title">
+              Веб‑разработчик,<br />
+              вдохновлённый эстетикой Токио и сакуры.
+            </h1>
+            <p class="hero-subtitle">
+              Создаю адаптивные веб‑приложения с плавными анимациями, чистой
+              архитектурой и вниманием к деталям интерфейса.
+            </p>
 
-        <!-- Обо мне: как у Kiyasuya — вертикальная типографика -->
-        <section id="about" class="section">
-            <div class="container">
-                <div class="about__grid">
-                    <div class="about__vertical">
-                        <span class="vertical-text">[translate:私について]</span>
-                    </div>
-                    
-                    <div class="about__content">
-                        <h3 class="about__title">О себе</h3>
-                        <p class="about__text">
-                            Разработка веб-приложений с нуля, UI/UX дизайн, изучение алгоритмов, 
-                            участие в open-source проектах, хакатоны.
-                        </p>
-                        <p class="about__text">
-                            В работе делаю упор на чистую архитектуру и читаемость кода.
-                        </p>
-                        
-                        <div class="about__meta">
-                            <div class="meta-item">
-                                <span class="meta-value">6+</span>
-                                <span class="meta-label">проектов</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-value">МИРЭА</span>
-                                <span class="meta-label">образование</span>
-                            </div>
-                            <div class="meta-item">
-                                <span class="meta-value">Git</span>
-                                <span class="meta-label">опыт</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="hero-actions">
+              <a href="projects.html" class="btn btn-primary">
+                Смотреть проекты
+              </a>
+              <a href="contacts.html" class="btn btn-ghost">
+                Написать мне
+              </a>
             </div>
-        </section>
 
-        <!-- Навыки: как у Not a Hotel — минимум текста, максимум пробела -->
-        <section id="skills" class="section section--muted">
-            <div class="container">
-                <div class="skills__grid">
-                    <div class="skill-item">
-                        <h4 class="skill-item__title">HTML/CSS</h4>
-                        <div class="skill-item__level">90%</div>
-                    </div>
-                    <div class="skill-item">
-                        <h4 class="skill-item__title">JavaScript</h4>
-                        <div class="skill-item__level">80%</div>
-                    </div>
-                    <div class="skill-item">
-                        <h4 class="skill-item__title">Git</h4>
-                        <div class="skill-item__level">75%</div>
-                    </div>
-                    <div class="skill-item">
-                        <h4 class="skill-item__title">React</h4>
-                        <div class="skill-item__level">60%</div>
-                    </div>
-                </div>
+            <div class="hero-stats">
+              <div class="hero-stat">
+                <div class="hero-stat-number">10+</div>
+                <div>Завершённых проектов</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-number">20+</div>
+                <div>Изученных технологий</div>
+              </div>
+              <div class="hero-stat">
+                <div class="hero-stat-number">∞</div>
+                <div>Идей для новых сайтов</div>
+              </div>
             </div>
-        </section>
+          </div>
 
-        <!-- Проекты: как у Bakezori Books — текст как графика -->
-        <section id="projects" class="section">
-            <div class="container">
-                <div class="projects__grid">
-                    <article class="project-item" id="project1">
-                        <img src="images/project1.jpg" alt="" class="project-item__img">
-                        <div class="project-item__content">
-                            <h3 class="project-item__title">Личный сайт</h3>
-                            <p class="project-item__desc">Адаптивное портфолио</p>
-                        </div>
-                    </article>
-                    
-                    <article class="project-item" id="project2">
-                        <img src="images/project2.jpg" alt="" class="project-item__img">
-                        <div class="project-item__content">
-                            <h3 class="project-item__title">Todo-приложение</h3>
-                            <p class="project-item__desc">Управление задачами</p>
-                        </div>
-                    </article>
-                    
-                    <article class="project-item" id="project3">
-                        <img src="images/project3.jpg" alt="" class="project-item__img">
-                        <div class="project-item__content">
-                            <h3 class="project-item__title">Интернет-магазин</h3>
-                            <p class="project-item__desc">E-commerce на React</p>
-                        </div>
-                    </article>
-                </div>
+          <aside class="hero-card">
+            <div class="hero-card-header">
+              <div class="hero-chip">Tokyo‑inspired frontend</div>
+              <div class="hero-photo-circle"></div>
             </div>
-        </section>
-
-        <!-- Контакты: как у Jibun Pharmacy — минимум элементов -->
-        <section id="contact" class="section">
-            <div class="container">
-                <div class="contact__grid">
-                    <div>
-                        <h3 class="contact__title">Связь</h3>
-                        <p class="contact__text">
-                            zhuravlev.a.i1@edu.mirea.ru<br>
-                            github.com/shxvier<br>
-                            @k1riho
-                        </p>
-                    </div>
-                    
-                    <form class="contact__form">
-                        <input type="text" placeholder="Имя" required>
-                        <input type="email" placeholder="Email" required>
-                        <textarea placeholder="Сообщение" rows="3" required></textarea>
-                        <button type="submit">Отправить</button>
-                    </form>
+            <div class="hero-card-body">
+              <div>
+                <div class="hero-card-tagline">
+                  Разрабатываю интерфейсы с акцентом на UX, скорость и эстетику.
                 </div>
+                <div class="hero-card-tags">
+                  <span class="hero-card-tag">HTML • CSS • JS</span>
+                  <span class="hero-card-tag">React</span>
+                  <span class="hero-card-tag">SPA • анимации</span>
+                  <span class="hero-card-tag">Git • Agile</span>
+                </div>
+              </div>
+              <div class="hero-card-projects">
+                <div class="hero-card-project">
+                  <span>Личный сайт</span>
+                  <span>сакура‑тема</span>
+                </div>
+                <div class="hero-card-project">
+                  <span>Kanban‑доска</span>
+                  <span>drag &amp; drop</span>
+                </div>
+                <div class="hero-card-project">
+                  <span>Todo‑приложение</span>
+                  <span>React hooks</span>
+                </div>
+              </div>
             </div>
-        </section>
+          </aside>
+        </div>
+      </section>
 
+      <!-- ОБО МНЕ -->
+      <section id="about" class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">about</p>
+              <h2 class="section-title">Обо мне</h2>
+            </div>
+            <p class="section-description">
+              Студент МИРЭА, увлечённый фронтендом, архитектурой приложений и
+              продуманным UI. Люблю совмещать чистый код с атмосферным дизайном.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">Профиль</div>
+              <h3 class="card-title">Frontend / Web‑разработка</h3>
+              <p class="card-text">
+                Верстаю адаптивные интерфейсы, работаю с анимациями и состоянием
+                приложения, настраиваю взаимодействия для пользователей.
+              </p>
+              <div class="card-meta">
+                <span>HTML • CSS • JS • React</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Обучение</div>
+              <h3 class="card-title">МИРЭА • ИТ</h3>
+              <p class="card-text">
+                Изучаю алгоритмы, структуры данных и современные фреймворки.
+                Развиваю навыки командной разработки.
+              </p>
+              <div class="card-meta">
+                <span>хакатоны • pet‑проекты</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">Фокус</div>
+              <h3 class="card-title">Чистый UI и UX</h3>
+              <p class="card-text">
+                Продумываю логичные пользовательские сценарии, уделяю внимание
+                деталям: плавные переходы, понятные статусы, анимации.
+              </p>
+              <div class="card-meta">
+                <span>доступность • перформанс</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ПРОЕКТЫ (тизер) -->
+      <section class="section reveal">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="section-kana">projects</p>
+              <h2 class="section-title">Подборка проектов</h2>
+            </div>
+            <p class="section-description">
+              От простых лендингов до приложений с управлением задачами и
+              интеграцией внешних API.
+            </p>
+          </div>
+
+          <div class="card-grid">
+            <article class="card">
+              <div class="card-label">Web</div>
+              <h3 class="card-title">Личный сайт</h3>
+              <p class="card-text">
+                Адаптивный сайт‑портфолио с японским оформлением, анимациями и
+                плавной навигацией.
+              </p>
+              <div class="card-meta">
+                <span>HTML • CSS • JS</span>
+                <a href="projects.html" class="nav-link">Подробнее</a>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">App</div>
+              <h3 class="card-title">Kanban‑доска</h3>
+              <p class="card-text">
+                Приложение для управления задачами с drag &amp; drop и
+                сохранением состояния.
+              </p>
+              <div class="card-meta">
+                <span>React • localStorage</span>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-label">API</div>
+              <h3 class="card-title">Прогноз погоды</h3>
+              <p class="card-text">
+                Приложение с интеграцией внешнего API, карточками городов и
+                аккуратным UI.
+              </p>
+              <div class="card-meta">
+                <span>API • UX</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <p class="footer__text">2025 · Журавлев Алексей · ЭФБО-12-24</p>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>© 2025 Shxvier. Все права защищены.</div>
+        <div>
+          GitHub:
+          <a href="https://github.com/shxvier" target="_blank" rel="noreferrer"
+            >github.com/shxvier</a
+          >
+          &nbsp;•&nbsp;
+          <button
+            type="button"
+            class="nav-link"
+            data-copy-email="your@email"
+          >
+            Скопировать e‑mail
+          </button>
         </div>
+      </div>
     </footer>
+  </div>
 
-    <script src="js/japanese.js"></script>
+  <div class="notifications-panel" hidden>
+    <div class="notifications-panel-header">
+      <div class="notifications-panel-title">Уведомления</div>
+      <span class="section-kana">activity</span>
+    </div>
+    <div class="notifications-list">
+      <div>Добро пожаловать на обновлённый сайт в японском стиле.</div>
+      <div>Попробуй переключить тему и открыть проекты.</div>
+    </div>
+  </div>
+
+  <div class="toast-root"></div>
+
+  <script src="main.js"></script>
 </body>
 </html>
