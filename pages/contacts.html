@@ -30,7 +30,7 @@
             <div class="wave wave-3"></div>
             <div class="bubbles-container"></div>
         </div>
-        <canvas id="liquidCanvas" class="liquid-canvas"></canvas>
+        nvas id="liquidCanvas"" class="liquid-canvas"></canvas>
     </div>
 
     <!-- Свечение за курсором -->
@@ -124,10 +124,10 @@
         <main id="main" class="container-fluid my-5">
             <!-- Заголовок страницы -->
             <header class="mb-5">
-                <h1 class="text-center text-glow mb-4">
+                <h2 class="text-center text-glow mb-4">
                     <i class="bi bi-envelope-heart me-2 water-icon" aria-hidden="true"></i>
                     Свяжитесь со мной
-                </h1>
+                </h2>
                 <p class="text-center ocean-text lead mb-5">
                     Заполните форму ниже, и я свяжусь с вами в течение 24 часов
                 </p>
@@ -140,7 +140,7 @@
                           aria-labelledby="contact-form-title"
                           novalidate>
                         
-                        <h2 id="contact-form-title" class="visually-hidden">Форма обратной связи</h2>
+                        <h3 id="contact-form-title" class="visually-hidden">Форма обратной связи</h3>
 
                         <!-- Live region для объявления успешной отправки -->
                         <div id="form-status" 
@@ -206,12 +206,12 @@
                             </div>
                         </fieldset>
 
-                        <!-- Группа: Тема обращения -->
-                        <fieldset class="mb-4">
-                            <legend class="form-label text-glow">
+                        <!-- Группа: Тема обращения (ИСПРАВЛЕНО) -->
+                        <div class="form-group mb-4">
+                            <label for="topic" class="form-label text-glow">
                                 <i class="bi bi-chat-dots-fill me-2 water-icon"></i>
                                 Тема обращения
-                            </legend>
+                            </label>
                             
                             <select class="form-select ocean-select" 
                                     id="topic" 
@@ -227,7 +227,7 @@
                             <small id="topic-help" class="form-text ocean-text">
                                 Выберите наиболее подходящую тему
                             </small>
-                        </fieldset>
+                        </div>
 
                         <!-- Группа: Сообщение (обязательное поле) -->
                         <fieldset class="mb-4">
@@ -288,22 +288,22 @@
                 </div>
             </div>
 
-            <!-- Контактная информация -->
+            <!-- Контактная информация (ИСПРАВЛЕНО: h2 -> h3) -->
             <section class="mt-5" aria-labelledby="contact-info-title">
-                <h2 id="contact-info-title" class="text-center text-glow mb-4">
+                <h3 id="contact-info-title" class="text-center text-glow mb-4">
                     <i class="bi bi-info-circle me-2 water-icon" aria-hidden="true"></i>
                     Другие способы связи
-                </h2>
+                </h3>
                 
                 <div class="row g-4 justify-content-center">
-                    <!-- Email -->
+                    <!-- Email (ИСПРАВЛЕНО: h4 -> h5) -->
                     <div class="col-md-4">
                         <article class="card ocean-glass aqua-card h-100 contact-card">
                             <div class="card-body text-center p-4">
                                 <div class="contact-icon mb-3">
                                     <i class="bi bi-envelope-fill water-icon" aria-hidden="true"></i>
                                 </div>
-                                <h4 class="h5 text-glow mt-3 mb-2">Email</h4>
+                                <h5 class="text-glow mt-3 mb-2">Email</h5>
                                 <a href="mailto:zhuravlev.a.i1@edu.mirea.ru" 
                                    class="ocean-text text-decoration-none contact-link"
                                    aria-label="Написать письмо на zhuravlev.a.i1@edu.mirea.ru">
@@ -316,14 +316,14 @@
                         </article>
                     </div>
 
-                    <!-- GitHub -->
+                    <!-- GitHub (ИСПРАВЛЕНО: h4 -> h5) -->
                     <div class="col-md-4">
                         <article class="card ocean-glass aqua-card h-100 contact-card">
                             <div class="card-body text-center p-4">
                                 <div class="contact-icon mb-3">
                                     <i class="bi bi-github water-icon" aria-hidden="true"></i>
                                 </div>
-                                <h4 class="h5 text-glow mt-3 mb-2">GitHub</h4>
+                                <h5 class="text-glow mt-3 mb-2">GitHub</h5>
                                 <a href="https://github.com/shxvier" 
                                    target="_blank" 
                                    rel="noopener noreferrer"
@@ -339,14 +339,14 @@
                         </article>
                     </div>
 
-                    <!-- Telegram -->
+                    <!-- Telegram (ИСПРАВЛЕНО: h4 -> h5) -->
                     <div class="col-md-4">
                         <article class="card ocean-glass aqua-card h-100 contact-card">
                             <div class="card-body text-center p-4">
                                 <div class="contact-icon mb-3">
                                     <i class="bi bi-telegram water-icon" aria-hidden="true"></i>
                                 </div>
-                                <h4 class="h5 text-glow mt-3 mb-2">Telegram</h4>
+                                <h5 class="text-glow mt-3 mb-2">Telegram</h5>
                                 <a href="https://t.me/k1riho" 
                                    target="_blank" 
                                    rel="noopener noreferrer"
@@ -364,16 +364,16 @@
                 </div>
             </section>
 
-            <!-- Дополнительная контактная информация -->
+            <!-- Дополнительная контактная информация (ИСПРАВЛЕНО: h2 -> h3) -->
             <section class="mt-5" aria-labelledby="additional-info-title">
                 <div class="row justify-content-center">
                     <div class="col-lg-8">
                         <div class="card ocean-glass aqua-card">
                             <div class="card-body text-center p-5">
-                                <h2 id="additional-info-title" class="text-glow mb-3">
+                                <h3 id="additional-info-title" class="text-glow mb-3">
                                     <i class="bi bi-clock-history me-2 water-icon"></i>
                                     Время ответа
-                                </h2>
+                                </h3>
                                 <p class="ocean-text lead mb-4">
                                     Обычно я отвечаю в течение 24 часов. Для срочных вопросов 
                                     рекомендую использовать Telegram.
@@ -410,7 +410,7 @@
         </footer>
     </div>
 
-    <!-- Модальное окно успешной отправки в морском стиле -->
+    <!-- Модальное окно успешной отправки в морском стиле (ИСПРАВЛЕНО: h2 -> h3) -->
     <div class="overlay ocean-overlay" 
          id="successOverlay" 
          style="display: none;"
@@ -425,10 +425,10 @@
          tabindex="-1"
          style="display: none;">
         <div class="modal-content ocean-glass aqua-card p-4">
-            <h2 id="success-title" class="text-glow mb-3 text-center">
+            <h3 id="success-title" class="text-glow mb-3 text-center">
                 <i class="bi bi-check-circle-fill water-icon me-2" aria-hidden="true"></i>
                 Сообщение отправлено!
-            </h2>
+            </h3>
             <p id="success-desc" class="ocean-text mb-4 text-center">
                 Спасибо за обращение! Я свяжусь с вами в течение 24 часов.
             </p>
