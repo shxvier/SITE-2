@@ -12,7 +12,7 @@
     
     <!-- Оптимизация загрузки шрифтов -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
     
     <!-- Основные стили -->
     <link rel="stylesheet" href="style/ocean-theme.css">
@@ -29,8 +29,8 @@
     <meta property="og:type" content="website">
     
     <!-- Предзагрузка ключевых изображений -->
-    <link rel="preload" href="images/photo.webp" as="image" type="image/webp">
-    <link rel="preload" href="images/wave-pattern.svg" as="image" type="image/svg+xml">
+    <!-- Removed non-critical preload for better performance -->
+    <!-- Removed non-critical preload for better performance -->
 </head>
 <body class="ocean-theme">
     <!-- Анимированный океанский фон -->
@@ -155,7 +155,7 @@
                 <div class="col-lg-8">
                     <div class="card ocean-glass aqua-card">
                         <div class="card-body p-4">
-                            <h2 class="display-5 text-glow mb-3">
+                            <h1 class="display-5 text-glow mb-3">
                                 <i class="bi bi-person-badge me-2 water-icon"></i>Привет! Я студент
                             </h1>
                             <h2 class="h4 aqua-gradient mb-3">группы ЭФБО-12-24</h2>
@@ -545,11 +545,11 @@
     </div>
 
     <!-- Скрипты -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/aqua-engine.js"></script>
-    <script src="js/liquid-canvas.js"></script>
-    <script src="js/water-animations.js"></script>
-    <script src="js/ocean-interactions.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="js/aqua-engine.js" defer></script>
+    <script src="js/liquid-canvas.js" defer></script>
+    <script src="js/water-animations.js" defer></script>
+    <script src="js/ocean-interactions.js" defer></script>
     
     <!-- Инициализация -->
     <script>
