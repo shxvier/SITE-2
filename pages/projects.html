@@ -11,7 +11,7 @@
     
     <!-- Оптимизация загрузки -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" media="print" onload="this.media='all'">
     
     <!-- Основные стили морской темы -->
     <link rel="stylesheet" href="../style/ocean-theme.css">
@@ -249,7 +249,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project1.jpg" class="card-img-top project-image" alt="Личный сайт" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/0077b6/ffffff?text=Проект+1'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/0077b6/ffffff?text=Проект+1'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -282,7 +282,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project2.jpg" class="card-img-top project-image" alt="Todo приложение" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/00b4d8/ffffff?text=Проект+2'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/00b4d8/ffffff?text=Проект+2'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -314,7 +314,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project3.jpg" class="card-img-top project-image" alt="Интернет-магазин" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/0096c7/ffffff?text=Проект+3'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/0096c7/ffffff?text=Проект+3'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -346,7 +346,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project4.jpg" class="card-img-top project-image" alt="Портфолио" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/48cae4/ffffff?text=Проект+4'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/48cae4/ffffff?text=Проект+4'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -379,7 +379,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project5.jpg" class="card-img-top project-image" alt="Weather App" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/90e0ef/ffffff?text=Проект+5'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/90e0ef/ffffff?text=Проект+5'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -411,7 +411,7 @@
                     <article class="card ocean-glass aqua-card h-100 project-card">
                         <div class="project-image-container">
                             <img src="../images/project6.jpg" class="card-img-top project-image" alt="Task Manager" 
-                                 onerror="this.src='https://via.placeholder.com/400x220/caf0f8/ffffff?text=Проект+6'">
+                                 onerror="this.src='https://via.placeholder.com/400x220/caf0f8/ffffff?text=Проект+6'" loading="lazy">
                             <div class="water-overlay"></div>
                             <div class="project-hover-content">
                                 <i class="bi bi-eye-fill water-icon"></i>
@@ -490,7 +490,7 @@
                 <div class="modal-body">
                     <div class="project-modal-image mb-4">
                         <img src="../images/project1.jpg" class="img-fluid rounded" alt="Личный сайт" 
-                             onerror="this.src='https://via.placeholder.com/800x400/0077b6/ffffff?text=Проект+1'">
+                             onerror="this.src='https://via.placeholder.com/800x400/0077b6/ffffff?text=Проект+1'" loading="lazy">
                     </div>
                     <h6 class="aqua-gradient mb-3"><i class="bi bi-info-circle me-2"></i>Описание проекта:</h6>
                     <p class="ocean-text">
@@ -523,7 +523,7 @@
                 <div class="modal-body">
                     <div class="project-modal-image mb-4">
                         <img src="../images/project2.jpg" class="img-fluid rounded" alt="Todo приложение" 
-                             onerror="this.src='https://via.placeholder.com/800x400/00b4d8/ffffff?text=Проект+2'">
+                             onerror="this.src='https://via.placeholder.com/800x400/00b4d8/ffffff?text=Проект+2'" loading="lazy">
                     </div>
                     <h6 class="aqua-gradient mb-3"><i class="bi bi-info-circle me-2"></i>Описание проекта:</h6>
                     <p class="ocean-text">
@@ -546,12 +546,12 @@
     <!-- Добавьте остальные модальные окна по аналогии -->
 
     <!-- Скрипты -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/aqua-engine.js"></script>
-    <script src="../js/liquid-canvas.js"></script>
-    <script src="../js/water-animations.js"></script>
-    <script src="../js/ocean-interactions.js"></script>
-    <script src="../js/notifications.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="../js/aqua-engine.js" defer></script>
+    <script src="../js/liquid-canvas.js" defer></script>
+    <script src="../js/water-animations.js" defer></script>
+    <script src="../js/ocean-interactions.js" defer></script>
+    <script src="../js/notifications.js" defer></script>
     
     <!-- Восстановленный JavaScript с водными эффектами -->
     <script>
